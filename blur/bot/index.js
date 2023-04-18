@@ -1039,6 +1039,8 @@ const setup = async () => {
 ////////////////////////////////////////
 
 (async function root() {
+	console.log('TEST: wallet.address', wallet.address)
+	return
 	try {
 		await setup() //1-time
 
