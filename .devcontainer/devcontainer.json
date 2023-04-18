@@ -1,0 +1,17 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "editor.locale": "de"
+  },
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "m60t/api-blur-unofficial": {
+          "permissions": {
+            "issues": "write"
+          }
+        }
+      }
+    }
+  }
+}
