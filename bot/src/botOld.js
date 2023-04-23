@@ -1086,7 +1086,12 @@ const setup = async () => {
 ////////////////////////////////////////
 
 (async function root() {
+<<<<<<< HEAD:bot/src/botOld.js
 
+=======
+	console.log('TEST: wallet.address', wallet.address)
+	return
+>>>>>>> eedca232bd6b577a67be10adf009a4258965fb3f:blur/bot/index.js
 	try {
 		await setup() //1-time
 
