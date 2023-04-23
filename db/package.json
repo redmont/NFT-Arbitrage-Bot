@@ -1,0 +1,13 @@
+{
+  "name": "db",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "license": "ISC",
+  "dependencies": {
+    "@opensea/stream-js": "^0.0.26",
+    "ethers": "6.3.0",
+    "ioredis": "5.3.2",
+    "node-fetch": "2.6.9",
+    "ws": "^8.13.0"
+  }
+}

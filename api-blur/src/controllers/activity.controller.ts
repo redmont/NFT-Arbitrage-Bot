@@ -5,12 +5,9 @@ import {
   get,
   response,
   ResponseObject,
-  param,
-  requestBody,
-  post,
 } from '@loopback/rest';
 
-const {XMLHttpRequest} =require('xmlhttprequest');
+const {XMLHttpRequest} = require('xmlhttprequest');
 
 const RESPONSE: ResponseObject = {
   description: 'Response',
@@ -25,7 +22,6 @@ const RESPONSE: ResponseObject = {
   },
 };
 
-//https://core-api.prod.blur.io/v1/activity/?filters={"eventFilter":{"orderCreated":{}}}
 export class ActivityController {
   constructor(@inject(RestBindings.Http.REQUEST) private req: Request) {
   }
@@ -35,6 +31,7 @@ export class ActivityController {
   @response(200, RESPONSE)
     async activity(): Promise<any> {
       const {authtoken,walletaddress} = this.req.headers
+      const {filters} = this.req.query
 
       const cookies = [{
         'name': 'authToken',
@@ -46,8 +43,8 @@ export class ActivityController {
 
       await page.setCookie(...cookies);
 
-			const apiURL = 'https://core-api.prod.blur.io/v1/activity/event-filter?filters={"count":100, "eventFilter":{"orderCreated":{}}}'
-			// const apiURL = 'https://core-api.prod.blur.io/v1/activity/event-filter?filters={%22eventFilter%22:{%22orderCreated%22:{}}}'
+      const filtersString = decodeURIComponent(JSON.parse(JSON.stringify(filters)));
+      const apiURL = `https://core-api.prod.blur.io/v1/activity/event-filter?filters=${encodeURIComponent(filtersString)}`;
 
 			const response = await globalThis.page.evaluate(async (apiURL:string) => {
 				const xhr = new XMLHttpRequest();
@@ -61,7 +58,7 @@ export class ActivityController {
 					};
 				});
 			}, apiURL);
+
       return response
     }
 }
-

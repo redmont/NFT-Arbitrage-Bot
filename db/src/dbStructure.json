@@ -1,0 +1,52 @@
+{
+	"0xAddrCollection0": {
+		"SLUG": "Cryptopunks",
+		"COLLECTION": {
+			"SALES (IDs with lowest price)": {
+				"PRICE (lowest) | EXP_DATE (longest) | Owner": { //if same price & owner but longer EXP_DATE, replace
+					"ORDER_DATA": "..."
+				},
+				"PRICE (higher) | EXP_DATE (shorten) | Owner": {
+					"ORDER_DATA": "..."
+				}
+			},
+			"BIDS": {
+				...
+			}
+		},
+		"ID": {
+			"1": {
+				"SALES": {
+					"PRICE (lowest) | EXP_DATE (longest) | Owner": {
+						"ORDER_DATA": "..."
+					},
+					"PRICE (higher) | EXP_DATE (shorten) | Owner": {
+						"ORDER_DATA": "..."
+					}
+				},
+				"BIDS": {
+					"PRICE (highest) | EXP_DATE (longest) | Offerer": {
+						"ORDER_DATA": "..."
+					},
+					"PRICE (lower) | EXP_DATE (shorten) | Offerer": {
+						"ORDER_DATA": "..."
+					}
+				}
+			},
+			"N": {"...": "..."}
+		},
+		"TRAITS": {
+			"EYES": {
+				"Blue": [
+					"ID_7",
+					"ID_11"
+				],
+				"Black": [
+					"..."
+				]
+			},
+			"...": {}
+		}
+	},
+	"0xAddrCollectionN": {"...": "..."}
+}

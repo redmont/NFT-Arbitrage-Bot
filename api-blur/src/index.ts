@@ -24,7 +24,7 @@ export async function main(options: ApplicationConfig = {}) {
       headless: true,
       devtools: true,
         args: [
-            `--proxy-server=${newProxyUrl}`, //can comment locally
+            // `--proxy-server=${newProxyUrl}`, //can comment locally
             "--disable-web-security",
             "--disable-features=IsolateOrigins",
             "--disable-site-isolation-trials",

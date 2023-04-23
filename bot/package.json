@@ -1,0 +1,11 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "main": "./index.js",
+  "dependencies": {
+    "@opensea/stream-js": "^0.0.26",
+    "ethers": "6.3.0",
+    "node-fetch": "2.6.9",
+    "ws": "^8.13.0"
+  }
+}
