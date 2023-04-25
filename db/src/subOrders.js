@@ -6,7 +6,11 @@ const ethers = require('ethers');
 const wallet = ethers.Wallet.createRandom()
 
 
-//@todo only add (blur sales & os bids + os sales) to db.
+/** @todo
+ * 	[ ] add blur sales
+ * 	[ ] add os bids (if corresponding saleBlur exists & bid is top10 highest price)
+ *  [ ] os sales (later)
+ */
 
 const osClient = new OpenSeaStreamClient({
   token: process.env.API_OS,
@@ -56,14 +60,24 @@ const apiCall = async ({url, options}) => {
 
 const subSalesBidsOs = async () => {
 
-	const handleBasicOffer= async ({payload}) => {
-		if (payload?.item?.chain?.name !== 'ethereum') return;
+	const handleBasicOffer= async (event) => {
+		if (event.payload?.item?.chain?.name !== 'ethereum') return;
 
-		const addr = ethers.getAddress(payload?.protocol_data?.parameters?.consideration[0]?.token);
-		const id = payload?.protocol_data?.parameters?.consideration[0]?.identifierOrCriteria;
-		const salePrice = BigInt(payload.base_price);
+		const addr = ethers.getAddress(event.payload?.protocol_data?.parameters?.consideration[0]?.token);
+		const id = event.payload?.protocol_data?.parameters?.consideration[0]?.identifierOrCriteria;
+
+		let _sellToPrice = BigInt(sellTo.payload.base_price);
+
+		for (const osFeeData of event.payload?.protocol_data?.parameters.consideration) {
+			if(osFeeData.itemType <= 1) { //0: ETH, 1: ERC20, 2: ERC721...
+				_sellToPrice -= BigInt(osFeeData.startAmount)
+			}
+		}
+		event.priceNet = _sellToPrice.toString();
+
 		//@todo add to db
-
+		//read prev bids from db
+		//if bid is top10 highest price && corresponding saleBlur exists, add.
 		return
 	}
 

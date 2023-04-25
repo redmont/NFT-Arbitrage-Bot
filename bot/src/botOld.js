@@ -502,6 +502,9 @@ const subscribeBuys = async () => {
 				return
 			}
 			console.log('\n\n\x1b[32m---DETECTED BID_ENTERED---\x1b[0m');
+			console.log('\n\npayload JSON:', payload)
+			console.log('\n\npayload string', JSON.stringify(payload))
+			process.exit()
 		}
 
 		const nft = db.nft[addr];
@@ -778,7 +781,34 @@ const subscribeBuys = async () => {
 	}
 
 	//↓↓↓ STARTS BELOW ↓↓↓
-  const handleBasicOffer = async ({payload}) => {
+  const handleBasicOffer = async (event) => {
+		/// NEW TEST ///
+		const payload = event.payload
+
+		const addr = ethers.getAddress(payload?.protocol_data?.parameters?.consideration[0]?.token);
+		const id = payload?.protocol_data?.parameters?.consideration[0]?.identifierOrCriteria;
+
+		if(TEST_MODE) {
+			if (addr !== db.var.TEST_NFT || id !== db.var.TEST_NFT_ID) {
+				return
+			}
+
+			let sellHighPrice = BigInt(payload.base_price);
+			for (const osFeeData of payload?.protocol_data?.parameters.consideration) {
+				if(osFeeData.itemType <= 1) { //0: ETH, 1: ERC20, 2: ERC721...
+					sellHighPrice -= BigInt(osFeeData.startAmount)
+				}
+			}
+
+			event.priceNet = sellHighPrice.toString()
+			console.log('\n\n\x1b[32m---DETECTED BID_ENTERED---\x1b[0m');
+			console.log('\n\npayload JSON:', event)
+			console.log('\n\npayload string', JSON.stringify(event))
+			process.exit()
+		}
+
+		/// END NEW TEST ///
+
 		try {
 			const [ addr, id, buyLowPrice ] = await _preValidateArb(payload) ?? [];
 			if (!addr) return
@@ -918,6 +948,8 @@ const subscribeSells = async () => {
 		//4test
 		if (TEST_MODE && addr == db.var.TEST_NFT && order.tokenId == db.var.TEST_NFT_ID) {
 			console.log('\n DETECTED Blur sell!')
+			console.log('\nJSON order:', order)
+			console.log('\nString order:', JSON.stringify(order))
 		}
 
 		switch (true) {
@@ -965,15 +997,8 @@ const subscribeSells = async () => {
 		//todo add activity
 		const filters = prev_cursor ? { "cursor": prev_cursor, ...baseFilter } : baseFilter;
 
-		// `https://core-api.prod.blur.io/v1/activity/event-filter?filters={"cursor": ${cursor}, "count":100, "eventFilter":{"orderCreated":{}}}`
-
-		// const url = `http://127.0.0.1:3000/v1/collections/${slug}/prices?filters=${encodeURIComponent(JSON.stringify(filters))};
-		console.log('filters', filters)
 		const url = `http://127.0.0.1:3000/v1/activity?filters=${encodeURIComponent(JSON.stringify(filters))}`;
 		const data = await apiCall({ url: url, options: db.api.blur.options.GET })
-		// const { success, activityItems, cursor} = await apiCall({ url: url, options: db.api.blur.options.GET })
-		// console.log('is success?', success, 'cursor', cursor)
-		// if (!success) return false
 		return [
 			data.activityItems,
 			data.cursor
@@ -983,25 +1008,25 @@ const subscribeSells = async () => {
 	//→→→ STARTS HERE ←←←
 	try {
 		while (true){
-			console.log('\nnew call...')
+			// console.log('\nnew call...')
 
 			const [activityItems, cursor] = await _getData()
-			console.log('activityItems', activityItems.length)
-			console.log('cursor', cursor)
-			console.log('decoded cursor', Buffer.from(cursor, 'base64').toString('ascii'))
+			// console.log('activityItems', activityItems.length)
+			// console.log('cursor', cursor)
+			// console.log('decoded cursor', Buffer.from(cursor, 'base64').toString('ascii'))
 
 			const newOrders = activityItems.filter(order => !prevOrders.has(order.id));
 
-			if (newOrders.length >= 100) {
-				console.log('--DETECTED')
-				const[activityItems1, cursor1] = await _getData(cursor)
-				console.log('NEW activityItems.length', activityItems1.length)
-				console.log('NEW cursor', cursor1)
-				if(cursor == cursor1) {
-					console.log('!!! same cursor')
-				}
-			}
-			process.exit()
+			// if (newOrders.length >= 100) {
+			// 	console.log('--DETECTED')
+			// 	const[activityItems1, cursor1] = await _getData(cursor)
+			// 	console.log('NEW activityItems.length', activityItems1.length)
+			// 	console.log('NEW cursor', cursor1)
+			// 	if(cursor == cursor1) {
+			// 		console.log('!!! same cursor')
+			// 	}
+			// }
+			// process.exit()
 
 			if (newOrders.length > db.var.MAX_AMT_NEW_BLUR_SELL_ORDERS && prevOrders.size > 0) {
 				db.var.MAX_AMT_NEW_BLUR_SELL_ORDERS = newOrders.length
@@ -1086,18 +1111,12 @@ const setup = async () => {
 ////////////////////////////////////////
 
 (async function root() {
-<<<<<<< HEAD:bot/src/botOld.js
-
-=======
-	console.log('TEST: wallet.address', wallet.address)
-	return
->>>>>>> eedca232bd6b577a67be10adf009a4258965fb3f:blur/bot/index.js
 	try {
 		await setup() //1-time
 
-		// subscribeBlocks() //to get curr. fees, balance, blockNum
+		subscribeBlocks() //to get curr. fees, balance, blockNum
 		subscribeSells() //to buy low on blur & add new 4sale NFTs
-		// subscribeBuys() //to sell high on os (only here exec arb)
+		subscribeBuys() //to sell high on os (only here exec arb)
 
 		// await getAllNfts() //1-time (~1m)
 		// await getEachNftId() //1-time (~1h)

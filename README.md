@@ -10,6 +10,8 @@
 - [ ] ...
 - [ ] Buy DEX - Sell DEX
 
+- [ ] add validation: "osBid chain==ethereum"
+
 ## Git Commit Types :construction_worker:
 
 - :sparkles: `feat`: A new feature

@@ -83,6 +83,9 @@ export class CollectionsController {
     const _filtersString = decodeURIComponent(JSON.stringify(filters));
     const filtersString = decodeURIComponent(JSON.parse(_filtersString));
     const apiURL = "https://core-api.prod.blur.io/v1/collections/"+collection+"/prices?filters="+encodeURIComponent(filtersString);
+    console.log(`\nGET ID SLUG for: https://blur.io/asset/${collection} ...`)
+
+    const timeStart = Date.now()
 
     const response = await globalThis.page.evaluate(async (apiURL:string) => {
       const xhr = new XMLHttpRequest();
@@ -97,6 +100,16 @@ export class CollectionsController {
       });
     }, apiURL);
 
+    const timeEnd = Date.now();
+    const timeDiff = timeEnd - timeStart;
+
+    //timeDiff > 10s
+    if(timeDiff > 5000){
+      console.log('timeDiff>5000ms, timeDiff', timeDiff)
+    } else {
+      console.log('ok, timeDiff', timeDiff)
+    }
+
     return response
   }
 
@@ -104,7 +117,7 @@ export class CollectionsController {
   @get('/v1/collections/{collection}/tokens/{id}')
   @response(200, RESPONSE)
   async collectionPrice(@param.path.string('collection') collection: string, @param.path.string('id') id: string): Promise<any> {
-    console.log(`GET price for: https://blur.io/asset/${collection}/${id}`)
+    console.log(`GET ID for: https://blur.io/asset/${collection}/${id}`)
     const {authtoken,walletaddress} = this.req.headers
     const cookies = [{
       'name': 'authToken',
