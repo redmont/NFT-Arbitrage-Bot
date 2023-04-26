@@ -1,7 +1,7 @@
 {
 	"0xAddrCollection0": {
 		"SLUG": "Cryptopunks",
-		"COLLECTION": {
+ 		"COLLECTION": {
 			"SALES (IDs with lowest price)": {
 				"PRICE (lowest) | EXP_DATE (longest) | Owner": { //if same price & owner but longer EXP_DATE, replace
 					"ORDER_DATA": "..."

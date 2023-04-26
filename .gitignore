@@ -17,6 +17,7 @@ tmp/
 types/
 yarn.lock
 package-lock.json
+pnpm-lock.yaml
 
 # Ignore logs, backups, and environment files
 *.log

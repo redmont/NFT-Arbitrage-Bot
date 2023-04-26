@@ -12,10 +12,16 @@ const {InitializeDB} = require("./mongo");
  * 		1. all nfts collections
  * 		2. each collection all ids
  */
+
+const TEST_MODE = false;
+
 const db = {
     var: {
         BLUR_AUTH_TKN: "",
         PROGRESS_GET_ID_PERCENT: 0,
+        PROGRESS_GET_ID: 0,
+        START_TIME_GET_ID: 0,
+        NFT_COUNT: 0,
     },
     api: {
         blur: {
@@ -65,6 +71,7 @@ const getAllNftsBlur = async () => {
                 id: {}, //same as above
             };
         }
+
         // upsert (update or insert) into DB
         const collection = db.mongoDB.collection("idData");
         const query = {contractAddr: addr};
@@ -97,7 +104,6 @@ const getAllNftsBlur = async () => {
             "http://127.0.0.1:3000/v1/collections/" + "?filters=" + filtersURLencoded;
     };
 
-    let count = 0; //test
     const _getAllNfts = async () => {
         try {
             const data = await apiCall({
@@ -110,7 +116,8 @@ const getAllNftsBlur = async () => {
                 await _updateDb(nft);
             }
 
-            if (count++ > 2) return; //test
+            if (TEST_MODE && db.var.NFT_COUNT++ > 2) return;
+
             await _setNewPage(data);
             await _getAllNfts();
         } catch (e) {
@@ -131,10 +138,24 @@ const getAllNftsBlur = async () => {
     console.timeEnd("getAllNftsBlur");
 };
 
-const getEachNftIdBlur = async () => {
+const getEachNftIdSaleBlur = async () => {
+    const _updateProgress = (SLUG) => {
+        const percent = Math.round((++db.var.PROGRESS_GET_ID / Object.values(db.nft).length) * 100);
+        if (percent > 100) percent = 100;
+
+        const currTime = Math.floor(Date.now() / 1000);
+        const timeDiff = currTime - db.var.START_TIME_GET_ID;
+        const timeDiffStr = new Date(timeDiff * 1000).toISOString().substr(11, 8);
+
+        process.stdout.write(`\r\x1B[2K ID progress: ${percent}%;  time: ${timeDiffStr};  ${SLUG}`);
+        // if(percent > db.var.PROGRESS_GET_ID_PERCENT){
+        // 	console.log(`\ngetEachNftId completed in ${percent}%`);
+        // }
+        db.var.PROGRESS_GET_ID_PERCENT = percent;
+    };
+
     const _updateDb = async (_data) => {
         if (!_data.nftPrices) return;
-        //console.log(_data);
         for (const {tokenId, price} of _data.nftPrices) {
             const addr = ethers.getAddress(_data.contractAddress);
             const nft = db.nft[addr]?.id?.[tokenId] ?? {DEX: ""}; //read or assign "{}"
@@ -181,39 +202,45 @@ const getEachNftIdBlur = async () => {
     };
 
     //→→→ STARTS HERE ←←←
-    console.time("getEachNftIdBlur");
+    // console.time('getEachNftIdSaleBlur')
     console.log("\x1b[33m%s\x1b[0m", "\nSTARTED COLLECTING EACH NFT ID PRICE");
 
     try {
         for (const {SLUG} of Object.values(db.nft)) {
-            console.log("SLUG", SLUG);
+            _updateProgress(SLUG);
+
             let data = {};
             let countPages = 0; //for collections > 1k
 
             do {
                 const url = await _setURL(data, SLUG);
                 data = await apiCall({url, options: db.api.blur.options.GET});
+                if (!data) {
+                    console.log("ERR: getEachNftIdSaleBlur, no data, SLUG:", SLUG);
+                    continue;
+                }
                 await _updateDb(data);
                 countPages += data?.nftPrices?.length;
             } while (countPages < data.totalCount);
         }
     } catch (e) {
-        console.error("\nERR: getEachNftIdBlur", e);
-        console.log("\nERROR_SLUG:", SLUG);
+        console.error("\nERR: getEachNftIdSaleBlur", e);
+        // console.log('\nERROR_SLUG:', SLUG)
         // db.var.ERROR_SLUG = SLUG
-        await getEachNftIdBlur();
+        await getEachNftIdSaleBlur();
     }
 
     console.log("\x1b[33m%s\x1b[0m", "\nCOMPLETED COLLECTING EACH NFT ID PRICE");
-    console.timeEnd("getEachNftIdBlur");
+    // console.timeEnd('getEachNftIdSaleBlur')
 };
+
+const getEachNftIdBidOs = async () => {};
 
 const setup = async () => {
     const dataToSign = await apiCall({
         url: db.api.blur.url.AUTH_GET,
         options: db.api.blur.options.AUTH,
     });
-    console.log(dataToSign);
 
     dataToSign.signature = await wallet.signMessage(dataToSign.message);
     db.api.blur.options.AUTH.body = JSON.stringify(dataToSign);
@@ -230,6 +257,7 @@ const setup = async () => {
             "content-type": "application/json",
         },
     };
+
     // DB CLIENT
     db.mongoDB = await InitializeDB();
 };
@@ -237,10 +265,11 @@ const setup = async () => {
 (async () => {
     await setup();
     await getAllNftsBlur(); //<1m
-    console.log("\ndb after all nfts", db.nft);
-    return;
-    await getEachNftIdBlur(); //~1h
+    // console.log('\ndb after all nfts', db.nft)
+
+    db.var.START_TIME_GET_ID = Math.floor(Date.now() / 1000);
+    getEachNftIdSaleBlur(); //~1h
+    getEachNftIdBidOs();
     // console.log('\ndb after all ids', db.nft)
     //@todo same from os
-    //console.log(db.nft);
 })();
