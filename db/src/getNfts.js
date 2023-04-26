@@ -71,7 +71,6 @@ const getAllNftsBlur = async () => {
                 id: {}, //same as above
             };
         }
-
         // upsert (update or insert) into DB
         const collection = db.mongoDB.collection("idData");
         const query = {contractAddr: addr};
