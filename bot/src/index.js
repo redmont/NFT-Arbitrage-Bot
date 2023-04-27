@@ -1,8 +1,12 @@
-const ethers = require('ethers');
+const { MongoClient } = require('mongodb');
 const fetch = require('node-fetch');
+const ethers = require('ethers');
+
 const provider = new ethers.AlchemyProvider("homestead", process.env.API_ALCHEMY);
 const wallet = new ethers.Wallet(process.env.PK_0, provider);
+const uri = 'mongodb://localhost:27017';
 
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const TEST_MODE = true
 
 
@@ -14,6 +18,9 @@ const TEST_MODE = true
 
 const db = {
 	var: {
+		TEST_NFT: '0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0',
+		TEST_NFT_ID: '877',
+
 		STARTED: false,
 		BLUR_AUTH_TKN: '',
 
@@ -527,15 +534,93 @@ const execArb = async (arbData) => {
 
 //3
 const getArbDataFromDb = async () => {
-	if(db.var.STARTED) return false //4test interval
-	db.var.STARTED = true
+	// if(db.var.STARTED) return false //4test interval
+	// db.var.STARTED = true
+	try {
+		await client.connect();
+		console.log('Connected to MongoDB');
 
-	//@todo get data from MongoDB
-	const buyFrom0 = {"id":"210200019","contractAddress":"0xa7f551feab03d1f34138c900e7c08821f3c3d1d0","tokenId":"877","imageUrl":"https://images.blur.io/_blur-prod/0xa7f551feab03d1f34138c900e7c08821f3c3d1d0/877-e970d7a39851472a","eventType":"ORDER_CREATED","price":{"amount":"0.002","unit":"ETH"},"fromTrader":{"address":"0x77777484802d14b8346d04fd506a1dc897800b41","username":null},"toTrader":null,"createdAt":"2023-04-25T12:15:20.000Z","transactionHash":null,"marketplace":"BLUR","makerSide":null}
-	const sellTo0 = {"event_type":"item_received_bid","payload":{"base_price":"3000000000000000","collection":{"slug":"yes-ser"},"created_date":"2023-04-25T12:15:29.000000+00:00","event_timestamp":"2023-04-25T12:15:33.191774+00:00","expiration_date":"2023-04-28T12:15:26.000000+00:00","item":{"chain":{"name":"ethereum"},"metadata":{"animation_url":null,"image_url":"https://i.seadn.io/gcs/files/c57b8fd6b09e165d3b2f05a9575bea63.png?w=500&auto=format","metadata_url":"ipfs://QmfSTAYLVVjtcS9wn5fSCkcMr1AKwK5nVu4vZ6LgWWGbhz/877","name":"Yes Ser #877"},"nft_id":"ethereum/0xa7f551feab03d1f34138c900e7c08821f3c3d1d0/877","permalink":"https://opensea.io/assets/ethereum/0xa7f551feab03d1f34138c900e7c08821f3c3d1d0/877"},"maker":{"address":"0xfffff8f8122eb53e503a535ba0ed63d35906f52f"},"order_hash":"0x36134352f665ee2497c7e2b2b8799d0c9d9675dff280a91f0440bc6c3182a9ec","payment_token":{"address":"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2","decimals":18,"eth_price":"1.000000000000000","name":"Wrapped Ether","symbol":"WETH","usd_price":"1826.269999999999982000"},"protocol_address":"0x00000000000001ad428e4906ae43d8f9852d0dd6","protocol_data":{"parameters":{"conduitKey":"0x0000007b02230091a7ed01230072f7006a004d60a8d4e71d599b8104250f0000","consideration":[{"endAmount":"1","identifierOrCriteria":"877","itemType":2,"recipient":"0xffFFF8F8122eb53e503A535ba0eD63D35906F52f","startAmount":"1","token":"0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0"},{"endAmount":"75000000000000","identifierOrCriteria":"0","itemType":1,"recipient":"0x0000a26b00c1F0DF003000390027140000fAa719","startAmount":"75000000000000","token":"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"}],"counter":0,"endTime":"1682684126","offer":[{"endAmount":"3000000000000000","identifierOrCriteria":"0","itemType":1,"startAmount":"3000000000000000","token":"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"}],"offerer":"0xfffff8f8122eb53e503a535ba0ed63d35906f52f","orderType":0,"salt":"0x360c6ebe0000000000000000000000000000000000000000207ea242c19878a3","startTime":"1682424929","totalOriginalConsiderationItems":2,"zone":"0x004C00500000aD104D7DBd00e3ae0A5C00560C00","zoneHash":"0x0000000000000000000000000000000000000000000000000000000000000000"},"signature":null},"quantity":1,"taker":null},"sent_at":"2023-04-25T12:15:33.248884+00:00","priceNet":"2925000000000000"}
+		const dbSales = client.db('botNftData').collection('SALES');
+		const dbBids = client.db('botNftData').collection('BIDS');
 
-	const arbData = [[buyFrom0, sellTo0]]
-	return arbData
+		const streamSales = dbSales.watch();
+		const streamBids = dbBids.watch();
+
+		streamSales.on('change', async (sale) => {
+			const matchingBids = await dbBids.find({
+				$and: [
+					{ id: sale.fullDocument?.tokenId },
+					{ id: db.var.TEST_NFT_ID },
+					{
+						addr: {
+							$regex: sale.fullDocument?.contractAddress,
+							$options: 'i', // Case-insensitive flag
+						},
+					},
+					{
+						addr: {
+							$regex: db.var.TEST_NFT,
+							$options: 'i', // Case-insensitive flag
+						},
+					},
+				],
+			}).toArray();
+
+			const salePriceBigInt = BigInt(sale.fullDocument.price);
+			const filteredBids = matchingBids.filter(bid => {
+				const bidPriceBigInt = BigInt(bid.priceNet);
+				return bidPriceBigInt > salePriceBigInt;
+			});
+
+			// If matching documents are found in the dbBids collection, log the sale and process them
+			if (filteredBids.length > 0) {
+				console.log('\nFound matching bids in streamSales:', sale);
+				filteredBids.forEach(matchingBid => {
+					// Process each matching bid here
+					console.log('Matching bid:', matchingBid);
+				});
+			}
+		});
+
+
+		streamBids.on('change', async (bid) => {
+			const matchingSales = await dbSales.find({
+				$and: [
+					{ tokenId: bid.fullDocument?.id },
+					{ tokenId: db.var.TEST_NFT_ID },
+					{
+						contractAddress: {
+							$regex: bid.fullDocument?.addr,
+							$options: 'i', // Case-insensitive flag
+						},
+					},
+					{
+						contractAddress: {
+							$regex: db.var.TEST_NFT,
+							$options: 'i', // Case-insensitive flag
+						},
+					},
+				],
+			}).toArray();
+
+			const bidPriceBigInt = BigInt(bid.fullDocument.priceNet);
+			const filteredSales = matchingSales.filter(sale => {
+				const salePriceBigInt = BigInt(sale.price);
+				return salePriceBigInt < bidPriceBigInt;
+			});
+
+			if (filteredSales.length > 0) {
+				console.log('\nFound matching sales in streamBids:', bid);
+				filteredSales.forEach(matchingSale => {
+					console.log('Matching sale:', matchingSale);
+				});
+			}
+		}
+	);
+
+	} catch (err) {
+		console.error('Failed to connect to MongoDB', err);
+	}
 }
 
 //2
@@ -614,13 +699,7 @@ const apiCall = async ({url, options}) => {
 	try {
 		await setup() //1-time
 		subscribeBlocks()
-
-		setInterval(async () => {
-			const arbData = await getArbDataFromDb()
-			if (arbData) {
-				execArb(arbData)
-			}
-		}, db.var.INTERVAL_DB_DATA)
+		await getArbDataFromDb()
 	} catch (e) {
 		console.error('\nERR: root:', e)
 		await root()
