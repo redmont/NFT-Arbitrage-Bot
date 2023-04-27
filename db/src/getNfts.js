@@ -13,7 +13,7 @@ const {InitializeDB} = require("./mongo");
  * 		2. each collection all ids
  */
 
-const TEST_MODE = false;
+const TEST_MODE = true;
 
 const db = {
     var: {
@@ -40,6 +40,7 @@ const db = {
                 GET: {}, //in setup()
             },
         },
+        os: {url: {}, options: {}},
     },
     nft: {},
 };
@@ -105,11 +106,15 @@ const getAllNftsBlur = async () => {
 
     const _getAllNfts = async () => {
         try {
-            const data = await apiCall({
+            let data = await apiCall({
                 url: db.api.blur.url.COLLECTIONS,
                 options: db.api.blur.options.GET,
             });
             if (!data || data?.collections?.length === 0) return;
+
+            if (TEST_MODE) {
+                data.collections = data.collections.slice(0, 3);
+            }
 
             for (nft of data?.collections) {
                 await _updateDb(nft);
@@ -154,8 +159,8 @@ const getEachNftIdSaleBlur = async () => {
     };
 
     const _updateDb = async (_data) => {
-        if (!_data.nftPrices) return;
-        for (const {tokenId, price} of _data.nftPrices) {
+        if (!_data.tokens) return;
+        for (const {tokenId, price} of _data.tokens) {
             const addr = ethers.getAddress(_data.contractAddress);
             const nft = db.nft[addr]?.id?.[tokenId] ?? {DEX: ""}; //read or assign "{}"
             nft.PRICE = ethers.parseEther(price.amount); //set price (reason for try, cuz inputs incorrect)
@@ -194,7 +199,7 @@ const getEachNftIdSaleBlur = async () => {
                       ...hasAsksFilter,
                   };
 
-        const url = `http://127.0.0.1:3000/v1/collections/${slug}/prices?filters=${encodeURIComponent(
+        const url = `http://127.0.0.1:3000/v1/collections/${slug}/tokens?filters=${encodeURIComponent(
             JSON.stringify(filters)
         )}`;
         return url;
@@ -219,7 +224,7 @@ const getEachNftIdSaleBlur = async () => {
                     continue;
                 }
                 await _updateDb(data);
-                countPages += data?.nftPrices?.length;
+                countPages += data?.tokens?.length;
             } while (countPages < data.totalCount);
         }
     } catch (e) {
@@ -233,7 +238,81 @@ const getEachNftIdSaleBlur = async () => {
     // console.timeEnd('getEachNftIdSaleBlur')
 };
 
-const getEachNftIdBidOs = async () => {};
+const getEachNftIdBidOs = async () => {
+    const _setNewPage = async () => {
+        var url = (asset_contract_address, token_ids) => {
+            return `https://api.opensea.io/v2/orders/ethereum/seaport/offers?asset_contract_address=${asset_contract_address}${token_ids}&order_by=eth_price&order_direction=desc`;
+        };
+
+        var myHeaders = new fetch.Headers();
+        myHeaders.append("X-API-KEY", process.env.API_OS);
+        myHeaders.append("content-type", "application/json");
+        myHeaders.append("accept", "application/json");
+
+        const options = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: "follow",
+        };
+
+        db.api.os.url.OFFERS = url;
+        db.api.os.options.OFFERS = options;
+    };
+
+    const getOffers = async (collectionAddr, tokenIDs) => {
+        tokenIDs = Object.keys(tokenIDs);
+        const token_ids = tokenIDs.map((id) => "&token_ids=" + id).join("");
+
+        const url = db.api.os.url.OFFERS(collectionAddr, token_ids);
+        const options = db.api.os.options.OFFERS;
+        console.log("url:", url);
+
+        let data;
+        await fetch(url, options)
+            .then((res) => res.json())
+            .then((json) => (data = JSON.parse(JSON.stringify(json))))
+            .catch((err) => console.error("error:" + err));
+
+        if (!data || !data.orders) {
+            console.log("Error in API");
+            console.log(url);
+        }
+        return data?.orders;
+    };
+
+    const updateDB = async (collectionAddr, offers) => {
+        // upsert (update or insert) into DB
+        const collection = db.mongoDB.collection("idData");
+        const query = {contractAddr: collectionAddr};
+        const update = {
+            $set: {},
+        };
+
+        offers.forEach((offer) => {
+            const id = offer.protocol_data.parameters.consideration[0].identifierOrCriteria;
+            update.$set[`ids.${id}.OFFERS`] = offer;
+        });
+
+        await collection.updateOne(query, update, {upsert: true});
+    };
+
+    try {
+        for (const collectionAddr of Object.keys(db.nft)) {
+            const {SLUG, id} = db.nft[collectionAddr];
+            _setNewPage(collectionAddr, id);
+            const offers = await getOffers(collectionAddr, id);
+            //console.log("offers:", JSON.stringify(offers, null, 2));
+            if (offers.length > 0) {
+                console.log("\nSLUG:", SLUG);
+                console.log(collectionAddr, id);
+                await updateDB(collectionAddr, offers);
+            }
+        }
+    } catch (error) {
+        console.log("error:", error);
+        await getEachNftIdBidOs();
+    }
+};
 
 const setup = async () => {
     const dataToSign = await apiCall({
@@ -264,10 +343,11 @@ const setup = async () => {
 (async () => {
     await setup();
     await getAllNftsBlur(); //<1m
-    // console.log('\ndb after all nfts', db.nft)
+    //console.log("\ndb after all nfts", db.nft);
 
     db.var.START_TIME_GET_ID = Math.floor(Date.now() / 1000);
-    getEachNftIdSaleBlur(); //~1h
+    await getEachNftIdSaleBlur(); //~1h
+    //console.log("\ndb after all ids", db.nft);
     getEachNftIdBidOs();
     // console.log('\ndb after all ids', db.nft)
     //@todo same from os
