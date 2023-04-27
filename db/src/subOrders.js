@@ -92,9 +92,7 @@ const subSalesBidsOs = async () => {
         const collection = db.mongoDB.collection("BIDS");
         const insertResult = await collection.insertOne(event);
         console.log("Inserted documents =>", insertResult);
-        //@todo add to db
-        //read prev bids from db
-        //if bid is top10 highest price && corresponding saleBlur exists, add.
+        //@todo add to db only if correspoding SALE exists
         return;
     };
 

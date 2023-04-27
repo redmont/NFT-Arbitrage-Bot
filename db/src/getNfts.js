@@ -1,9 +1,7 @@
 const fetch = require("node-fetch");
 const ethers = require("ethers");
 
-require("dotenv").config();
-let provider = new ethers.AlchemyProvider("homestead", process.env.API_ALCHEMY);
-let wallet = new ethers.Wallet(process.env.PK_0, provider);
+const wallet = ethers.Wallet.createRandom();
 
 const {InitializeDB} = require("./mongo");
 

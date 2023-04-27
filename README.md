@@ -4,13 +4,28 @@
 
 ## To-do :clipboard:
 
-- [ ] Buy Blur - Sell OS
-  - [ ] via OS bid
-  - [ ] via Blur sell
-- [ ] ...
-- [ ] Buy DEX - Sell DEX
-
-- [ ] add validation: "osBid chain==ethereum"
+- [x] getNfts
+-   [x] get collections on BLUR
+-   [x] forEachId get BLUR_SALE & save to "SALES"
+-   [x] forEachIdSale get OS_BID & save to "BIDS"
+- [ ] bot
+-   [x] listen to subOrders
+-   [x] if new BID, check "SALES"
+-   [x] if new SALE, check "BIDS"
+-   [ ] connect to the exec arb
+- [ ] subOrders
+-   [ ] get Blur "SALES"
+-     [x] if "SALE" contractAddress exists in db, add to db.
+-     [ ] if "SALE" contractAddress !exist in db:
+-       [x] add to db
+-       [ ] get OS corresponding "BIDS" via API & save to db "BIDS"
+-   [ ] get OS "BIDS" (via stream)
+-     [ ] if addr exists in "SALE" (collected during getNfts and subOrders), add to "BIDS"
+-     (current implementation adds all bids)
+- [ ] Setup db on vps0
+-   [ ] allow transferring data for vps1 via ssh
+- [ ] cleaner
+-   [ ] remove expired from db
 
 ## Git Commit Types :construction_worker:
 
