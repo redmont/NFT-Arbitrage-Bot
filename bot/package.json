@@ -5,6 +5,7 @@
   "dependencies": {
     "@opensea/stream-js": "^0.0.26",
     "ethers": "6.3.0",
+    "mongodb": "^5.3.0",
     "node-fetch": "2.6.9",
     "ws": "^8.13.0"
   }

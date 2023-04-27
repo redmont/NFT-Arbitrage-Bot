@@ -22,7 +22,10 @@ const osClient = new OpenSeaStreamClient({
 
 const db = {
     var: {
+        TEST_NFT: '0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0',
+		TEST_NFT_ID: '877',
         BLUR_AUTH_TKN: "",
+        MIN_SELL_TO_PRICE: 10n**16n,
         OS_SUB_EVENTS: [
             EventType.ITEM_RECEIVED_BID,
             EventType.COLLECTION_OFFER,
@@ -67,7 +70,10 @@ const subSalesBidsOs = async () => {
         );
         const id = event.payload?.protocol_data?.parameters?.consideration[0]?.identifierOrCriteria;
 
-        let _sellToPrice = BigInt(sellTo.payload.base_price);
+        if(addr !== db.var.TEST_NFT || id !== db.var.TEST_NFT_ID) return;
+        console.log(`\n\x1b[38;5;202mSTARTED SUBSCRIBE OS BIDS\x1b[0m`)
+
+        let _sellToPrice = BigInt(event.payload.base_price);
 
         for (const osFeeData of event.payload?.protocol_data?.parameters.consideration) {
             if (osFeeData.itemType <= 1) {
@@ -75,8 +81,17 @@ const subSalesBidsOs = async () => {
                 _sellToPrice -= BigInt(osFeeData.startAmount);
             }
         }
-        event.priceNet = _sellToPrice.toString();
 
+        if(_sellToPrice <= db.var.MIN_SELL_TO_PRICE) return; //2small
+        event.priceNet = _sellToPrice.toString();
+        event.addr = addr;
+        event.id = id;
+        event.type = 'BID'
+
+        //add to mongodb
+        const collection = db.mongoDB.collection("BIDS");
+        const insertResult = await collection.insertOne(event);
+        console.log("Inserted documents =>", insertResult);
         //@todo add to db
         //read prev bids from db
         //if bid is top10 highest price && corresponding saleBlur exists, add.
@@ -139,9 +154,15 @@ const subSalesBlur = async () => {
 
     //↓↓↓ STARTS BELOW ↓↓↓
     const _handleNewOrders = async (orders) => {
-        const collection = db.mongoDB.collection("collectionSalesBids");
-        const insertResult = await collection.insertMany(orders);
-        console.log("Inserted documents =>", insertResult);
+      // Convert BigInt price values to strings
+      const ordersWithStringPrice = orders.map((order) => {
+        const stringPrice = order.price.toString();
+        return { ...order, price: stringPrice };
+      });
+
+      const collection = db.mongoDB.collection("SALES");
+      const insertResult = await collection.insertMany(ordersWithStringPrice);
+      console.log("Inserted documents =>", insertResult);
     };
 
     //↓↓↓ STARTS BELOW ↓↓↓
@@ -236,9 +257,10 @@ const setup = async () => {
 (async function root() {
     try {
         await setup();
+        console.log('setup done', db.var.BLUR_AUTH_TKN)
 
         subSalesBlur();
-        //subSalesBidsOs();
+        subSalesBidsOs();
     } catch (e) {
         console.error("\nERR: root:", e);
         await root();
