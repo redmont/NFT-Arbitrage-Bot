@@ -5,7 +5,7 @@ const wallet = ethers.Wallet.createRandom();
 
 const {InitializeDB} = require("./mongo");
 
-const TEST_MODE = true;
+const TEST_MODE = false;
 
 const db = {
     var: {
@@ -32,7 +32,15 @@ const db = {
                 GET: {}, //in setup()
             },
         },
-        os: {url: {}, options: {}},
+        os: {
+            url: {},
+            options: {
+                GET: {
+                    method: "GET",
+                    headers: {accept: "application/json", "X-API-KEY": process.env.API_OS},
+                },
+            }
+        },
     },
     nft: {},
     SLUGS: [],
@@ -103,115 +111,84 @@ const getBlurSlugs = async () => {
     console.timeEnd("getAllNftsBlur");
 };
 
-//@todo implement into getBlurSalesAndBids=>_addOsBidsToDb
-// const getEachNftIdBidOs = async () => {
-//     const _setNewPage = async () => {
-//         var url = (asset_contract_address, token_ids) => {
-//             return `https://api.opensea.io/v2/orders/ethereum/seaport/offers?asset_contract_address=${asset_contract_address}${token_ids}&order_by=eth_price&order_direction=desc`;
-//         };
-
-//         var myHeaders = new fetch.Headers();
-//         myHeaders.append("X-API-KEY", process.env.API_OS);
-//         myHeaders.append("content-type", "application/json");
-//         myHeaders.append("accept", "application/json");
-
-//         const options = {
-//             method: "GET",
-//             headers: myHeaders,
-//             redirect: "follow",
-//         };
-
-//         db.api.os.url.OFFERS = url;
-//         db.api.os.options.OFFERS = options;
-//     };
-
-//     const getOffers = async (collectionAddr, tokenIDs) => {
-//         tokenIDs = Object.keys(tokenIDs);
-//         const token_ids = tokenIDs.map((id) => "&token_ids=" + id).join("");
-
-//         const url = db.api.os.url.OFFERS(collectionAddr, token_ids);
-//         const options = db.api.os.options.OFFERS;
-//         console.log("url:", url);
-
-//         let data;
-//         await fetch(url, options)
-//             .then((res) => res.json())
-//             .then((json) => (data = JSON.parse(JSON.stringify(json))))
-//             .catch((err) => console.error("error:" + err));
-
-//         if (!data || !data.orders) {
-//             console.log("Error in API");
-//             console.log(url);
-//         }
-//         return data?.orders;
-//     };
-
-//     const updateDB = async (collectionAddr, offers) => {
-//         // upsert (update or insert) into DB
-//         const collection = db.mongoDB.collection("idData");
-//         const query = {contractAddr: collectionAddr};
-//         const update = {
-//             $set: {},
-//         };
-
-//         offers.forEach((offer) => {
-//             const id = offer.protocol_data.parameters.consideration[0].identifierOrCriteria;
-//             update.$set[`ids.${id}.OFFERS`] = offer;
-//         });
-
-//         await collection.updateOne(query, update, {upsert: true});
-//     };
-
-//     try {
-//         for (const collectionAddr of Object.keys(db.nft)) {
-//             console.log('\n\ncollectionAddr', collectionAddr)
-//             const {SLUG, id} = db.nft[collectionAddr];
-//             // console.log("SLUG:", SLUG);
-//             // console.log("id:", id);
-//             // process.exit(0)
-//             _setNewPage(collectionAddr, id);
-//             const offers = await getOffers(collectionAddr, id);
-//             console.log("offers:", offers)
-//             //console.log("offers:", JSON.stringify(offers, null, 2));
-//             if (offers.length > 0) {
-//                 console.log("\nSLUG:", SLUG);
-//                 console.log(collectionAddr, id);
-//                 await updateDB(collectionAddr, offers);
-//             }
-//         }
-//     } catch (error) {
-//         console.log("error:", error);
-//         await getEachNftIdBidOs();
-//     }
-// };
-
 const getBlurSalesAndOsBids = async () => {
-    // (3/3)
-    const _addOsBidsToDb = async (slug, addr, tkns) => {
-    /**
-     * @todo check max amt of token_ids in: https://api.opensea.io/v2/orders/ethereum/seaport/offers?token_ids=token_ids%3D1%26token_ids%3D209&order_by=created_date&order_direction=desc
-     * @todo check if -> more efficient: https://docs.opensea.io/reference/retrieve-all-offers
-     */
+    // (5/5)
+    const _getAndAddOsBidsToDb = async (slug, addr, blurSales) => {
+        const __fetchAllBids = async (url) => {
+            const batchBids = [];
+
+            const ___fetchBids = async (currUrl) => {
+                while (true) {
+                    try {
+                        const data = await apiCall({ url: currUrl, options: db.api.os.options.GET });
+                        if (data.detail) {//'Request was throttled. Expected available in 1 second.'
+                            console.log('data.detail:', data.detail)
+                            await new Promise(resolve => setTimeout(resolve, 1000));
+                            continue
+                        }
+                        return data;
+                    } catch (error) {
+                        console.error('ERR ___fetchBids: ', error, '\nurl: ', currUrl);
+                        return null;
+                    }
+                }
+            };
+
+            let nextUrl = url;
+            while (nextUrl) {
+                const data = await ___fetchBids(nextUrl);
+                if (!data || data.orders.length === 0) break
+
+                const { next, previous, orders } = data;
+                batchBids.push(...orders);
+                nextUrl = next ? url + '&cursor=' + next : null; //if ordersInBatch>50, nextUrl exists
+            }
+
+            return batchBids;
+        };
+
+        try{
+            let bids = [];
+            const batchSize = 30; //tknsIds/call limit
+            const tknIds = blurSales.map((tkn) => tkn.tokenId);
+            const baseURL = `https://api.opensea.io/v2/orders/ethereum/seaport/offers?limit=50&order_by=eth_price&order_direction=desc&asset_contract_address=${addr}&`;
+
+            for (let i = 0; i < tknIds.length; i += batchSize) {
+                const batchTknIds = tknIds.slice(i, i + batchSize);
+                const url = baseURL + batchTknIds.map(tokenId => `token_ids=${tokenId}`).join('&');
+                const batchBids = await __fetchAllBids(url);
+                bids.push(...batchBids);
+            }
+
+            if (bids.length === 0) return;
+            const collection = db.mongoDB.collection("BIDS1");
+            //@todo consider formatting here price, addr, type (BID_VIA_GET_NFTS), etc.
+            const insertResult = await collection.insertMany(bids);
+            // console.log("\nBids inserted.\n", insertResult.insertedCount);
+        } catch (error) {
+            console.error('\nERR _getAndAddOsBidsToDb: ', error);
+        }
     };
 
-    // (2/3)
-    const _addBlurSalesToDb = async (slug, addr, tkns) => {
+    // (4/5)
+    const _addBlurSalesToDb = async (slug, addr, blurSales) => {
+        if (blurSales.length === 0) return;
         //@todo consider adding formatted price
-        const formattedTkns = tkns.map((tkn) => {
+        const formattedSales = blurSales.map((sales) => {
             return {
-                ...tkn,
+                ...sales,
                 contractAddress: addr,
                 slug: slug,
             };
           });
 
         const collection = db.mongoDB.collection("SALES1");
-        const insertResult = await collection.insertMany(formattedTkns);
-        // console.log("Inserted documents =>", insertResult);
+        const insertResult = await collection.insertMany(formattedSales);
+        console.log("\nBlur SALES, inserted.\n", insertResult.insertedCount);
         return
     };
 
-    // (1/3)
+    // (3/5)
     const _setURL = async (data, slug) => {
         // https://core-api.prod.blur.io/v1/collections/azuki/tokens?filters={"traits":[],"hasAsks":true}
         const baseFilter = {traits: [], hasAsks: true};
@@ -235,9 +212,33 @@ const getBlurSalesAndOsBids = async () => {
         return url;
     };
 
-    // (0/3)
+    // (2/5)
+    const _getBlurSales = async (slug) => {
+        let data = {};
+        let tkns = [];
+        let countPages = 0; //for collections > 100
+
+        try{
+            do {
+                const url = await _setURL(data, slug);
+                data = await apiCall({url, options: db.api.blur.options.GET});
+                if (!data) {
+                    console.log("ERR: getBlurSalesAndOsBids, Blur, no data, slug:", slug);
+                    continue;
+                }
+                tkns = tkns.concat(data.tokens);
+                countPages += data?.tokens?.length;
+            } while (countPages < data.totalCount);
+
+            return [tkns, ethers.getAddress(data.contractAddress)]
+        } catch (error) {
+            console.error('\nERR _getBlurSales: ', error);
+        }
+    }
+
+    // (1/5)
     const _updateProgress = (SLUG) => {
-        const percent = Math.round((++db.var.PROGRESS_GET_ID / db.SLUGS.length * 100));
+        let percent = Math.round((++db.var.PROGRESS_GET_ID / db.SLUGS.length * 100));
         if (percent > 100) percent = 100;
 
         const currTime = Math.floor(Date.now() / 1000);
@@ -248,37 +249,21 @@ const getBlurSalesAndOsBids = async () => {
         db.var.PROGRESS_GET_ID_PERCENT = percent;
     };
 
-    // (0/3)
+    // (0/5)
     console.log("\x1b[33m%s\x1b[0m", "\nSTARTED COLLECTING EACH NFT ID PRICE");
     try {
         for (const SLUG of db.SLUGS) {
             _updateProgress(SLUG);
-            let data = {};
-            let tkns = [];
-            let countPages = 0; //for collections > 100
+            const [blurSales, nftAddr] = await _getBlurSales(SLUG);
+            if(!blurSales) continue
 
-            do {
-                const url = await _setURL(data, SLUG);
-                data = await apiCall({url, options: db.api.blur.options.GET});
-                if (!data) {
-                    console.log("ERR: getEachNftIdSaleBlur, no data, SLUG:", SLUG);
-                    continue;
-                }
-                tkns = tkns.concat(data.tokens);
-                countPages += data?.tokens?.length;
-            } while (countPages < data.totalCount);
-
-            if(!tkns) continue
-
-            const addr = ethers.getAddress(data.contractAddress);
-            await _addBlurSalesToDb(SLUG, addr, tkns);
-
-            //@todo get data from os & add \/
-            //await _addOsBidsToDb(SLUG, addr, tkns);
+            _addBlurSalesToDb(SLUG, nftAddr, blurSales);
+            await _getAndAddOsBidsToDb(SLUG, nftAddr, blurSales); //@todo consider via puppeteer to !w8
         }
     } catch (e) {
         console.error("\nERR: getBlurSalesAndOsBids", e);
-        await getEachNftIdSaleBlur();
+        process.exit();
+        // await getBlurSalesAndOsBids(); //@todo to reset need to save err slug to !loop over all again
     }
 
     console.log("\x1b[33m%s\x1b[0m", "\nCOMPLETED COLLECTING EACH NFT ID PRICE");
@@ -316,8 +301,7 @@ const setup = async () => {
     // await getBlurSlugs(); //<1m
     // console.timeEnd("getBlurSlugs")
 
-    //4test, 1st 344 ids; 2nd 2865 ids
-    db.SLUGS = ['proof-moonbirds', 'otherdeed']
+    db.SLUGS = ['otherdeed', 'proof-moonbirds', 'mutant-ape-yacht-club'] //4test, 1st 344 ids; 2nd 2865 ids, 3rd 875 ids
     db.var.START_TIME_GET_SALES_AND_BIDS = Math.floor(Date.now() / 1000);
     await getBlurSalesAndOsBids();
     return

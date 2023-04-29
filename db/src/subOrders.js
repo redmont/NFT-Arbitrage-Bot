@@ -1,10 +1,12 @@
 const {OpenSeaStreamClient, EventType} = require("@opensea/stream-js");
+const {InitializeDB} = require("./mongo");
 const fetch = require("node-fetch");
 const {WebSocket} = require("ws");
 const ethers = require("ethers");
-const {InitializeDB} = require("./mongo");
 
 const wallet = ethers.Wallet.createRandom();
+
+const TEST_MODE = false
 
 /** @todo
  * 	[ ] add blur sales
@@ -18,6 +20,8 @@ const osClient = new OpenSeaStreamClient({
     connectOptions: {
         transport: WebSocket,
     },
+    onError: (error) => console.error("ERR: osClient", error),
+    logLevel: 1,
 });
 
 const db = {
@@ -28,9 +32,9 @@ const db = {
         MIN_SELL_TO_PRICE: 10n**16n,
         OS_SUB_EVENTS: [
             EventType.ITEM_RECEIVED_BID,
-            EventType.COLLECTION_OFFER,
-            EventType.TRAIT_OFFER,
-            EventType.ITEM_LISTED, //not sure
+            // EventType.COLLECTION_OFFER,
+            // EventType.TRAIT_OFFER,
+            // EventType.ITEM_LISTED,
         ],
     },
     api: {
@@ -47,6 +51,15 @@ const db = {
                 },
                 GET: {}, //in setup()
             },
+        },
+        os: {
+            url: {},
+            options: {
+                GET: {
+                    method: "GET",
+                    headers: {accept: "application/json", "X-API-KEY": process.env.API_OS},
+                },
+            }
         },
     },
     nft: {},
@@ -70,8 +83,10 @@ const subSalesBidsOs = async () => {
         );
         const id = event.payload?.protocol_data?.parameters?.consideration[0]?.identifierOrCriteria;
 
-        if(addr !== db.var.TEST_NFT || id !== db.var.TEST_NFT_ID) return;
-        console.log(`\n\x1b[38;5;202mSTARTED SUBSCRIBE OS BIDS\x1b[0m`)
+        if(TEST_MODE){
+            if (addr !== db.var.TEST_NFT || id !== db.var.TEST_NFT_ID) return
+            console.log(`\n\x1b[38;5;202mSTARTED SUBSCRIBE OS BIDS\x1b[0m`)
+        }
 
         let _sellToPrice = BigInt(event.payload.base_price);
 
@@ -90,8 +105,8 @@ const subSalesBidsOs = async () => {
 
         //add to mongodb
         const collection = db.mongoDB.collection("BIDS");
-        const insertResult = await collection.insertOne(event);
-        console.log("Inserted documents =>", insertResult);
+        // const insertResult = await collection.insertOne(event);
+        // console.log("Inserted OS BIDS:", insertResult);
         //@todo add to db only if correspoding SALE exists
         return;
     };
@@ -109,8 +124,13 @@ const subSalesBidsOs = async () => {
     };
 
     //→→→ STARTS HERE ←←←
+    let count = 0;
     try {
-        osClient.onEvents("*", db.var.OS_SUB_EVENTS, async (event) => {
+        osClient.onEvents("*", db.var.OS_SUB_EVENTS, async (event, error) => {
+            if(error) {
+                console.error("found ERR", error);
+            }
+            process.stdout.write(`\r\x1b[38;5;12mSUBSCRIBE OS BIDS\x1b[0m: ${++count}`);
             switch (event.event_type) {
                 case EventType.ITEM_RECEIVED_BID:
                     handleBasicOffer(event);
@@ -126,6 +146,7 @@ const subSalesBidsOs = async () => {
                     break;
             }
         });
+
     } catch (e) {
         console.error("ERR: subscribeSells", e);
         await subscribeSells();
@@ -159,8 +180,8 @@ const subSalesBlur = async () => {
       });
 
       const collection = db.mongoDB.collection("SALES");
-      const insertResult = await collection.insertMany(ordersWithStringPrice);
-      console.log("Inserted documents =>", insertResult);
+    //   const insertResult = await collection.insertMany(ordersWithStringPrice);
+    //   console.log("Inserted Blur SALES:", insertResult.insertedCount);
     };
 
     //↓↓↓ STARTS BELOW ↓↓↓
