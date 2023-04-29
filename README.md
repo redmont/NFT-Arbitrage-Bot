@@ -7,7 +7,7 @@
 - [x] `getNfts`
   - [x] getBlurSlugs
   - [x] getBlurSales & save to `SALES`
-  - [ ] getOsBids & save to `BIDS`
+  - [x] getOsBids & save to `BIDS`
 - [ ] `bot` (recheck)
   - [ ] Listen to subOrders
   - [ ] If new bid, check `SALES`
@@ -15,30 +15,37 @@
   - [ ] Connect to the exec arb
 - [ ] `subOrders`
   - [ ] Get `BLUR_SALES`
-    - [x] If `SALE` `contractAddress` exists in database, add to database.
-    - [ ] If `SALE` `contractAddress` does not exist in database:
-      - [x] Add to database
-      - [ ] Get corresponding `OS_BIDS` via API and save to database `BIDS`
+    - [x] If `SALE` `contractAddress` exists in db, add to db.
+    - [ ] If `SALE` `contractAddress` does not exist in db:
+      - [x] Add to db
+      - [ ] Get corresponding `OS_BIDS` via API & save to db `BIDS`
   - [ ] Get `OS_BIDS` (via stream)
-    - [ ] If `contractAddress` exists in `SALES` (collected during `getNfts` and `subOrders`), add to `BIDS`
+    - [ ] If `contractAddress` exists in `SALES` (collected during `getNfts` || `subOrders`), add to `BIDS`
     - (Current implementation adds all bids)
 - [ ] Consider: price & addr formatting for db
 - [ ] Consider: `subOrders` Blur Sales does not add traits
-- [ ] Setup database on `vps0`
+- [ ] Consider: getOsBids via puppeteer for speed
+- [ ] Setup db on `vps0`
   - [ ] Allow transferring data for `vps1` via SSH
 - [ ] Cleaner
-  - [ ] Remove expired data from database
+  - [ ] Remove expired data from db
 
 
 ## Commands :
 1st terminal inside bot-nft/api-blur:
-`yarn rebuild && node .`
+```
+yarn rebuild && node .
+```
 
 2nd terminal, run Mongo (with stream support):
-`sudo mongod --port 27017 --dbpath /var/lib/mongodb --replSet rs0 --bind_ip localhost`
+```
+sudo mongod --port 27017 --dbpath /var/lib/mongodb --replSet rs0 --bind_ip localhost
+```
 
 3rd terminal, Mongodb UI:
+```
 `robo3t`
+```
 
 
 ## Git Commit Types :construction_worker:
