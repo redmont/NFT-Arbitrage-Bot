@@ -540,10 +540,11 @@ const getArbDataFromDb = async () => {
 		await client.connect();
 		console.log('Connected to MongoDB');
 
-		const dbSales = client.db('botNftData').collection('SALES');
 		const dbBids = client.db('botNftData').collection('BIDS');
 
 		const streamSales = dbSales.watch();
+
+		const dbSales = client.db('botNftData').collection('SALES');
 		const streamBids = dbBids.watch();
 
 		streamSales.on('change', async (sale) => {

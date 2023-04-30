@@ -7,7 +7,9 @@
 - [x] `getNfts`
   - [x] getBlurSlugs
   - [x] getBlurSales & save to `SALES`
+    - [ ] only if !duplicate
   - [x] getOsBids & save to `BIDS`
+    - [ ] only if !duplicate
 - [ ] `bot` (recheck)
   - [ ] Listen to subOrders
   - [ ] If new bid, check `SALES`
@@ -29,6 +31,24 @@
   - [ ] Allow transferring data for `vps1` via SSH
 - [ ] Cleaner
   - [ ] Remove expired data from db
+
+## To-do DB Initialization :floppy_disk:
+
+### 0. getNfts (create DB base)
+   - get Blur SLUG
+   - get Blur SALE
+   - get OS   BID
+
+### 1. subOrders (collect most recent)
+   - Blur SALE
+     - if tknId !in DB, call for OS BID <b>(not spam, cuz step 0)</b>
+   - OS   BID
+     - add to DB if: <b>"tknId in Blur SALE && price>minPrice"</b>
+
+### 2. getNfts (get missed during getNfts)
+   - get Blur SLUG
+   - get Blur SALE (add only if missed)
+   - get OS   BID (add only if missed)
 
 
 ## Commands :

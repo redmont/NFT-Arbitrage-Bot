@@ -14,6 +14,7 @@ const db = {
         PROGRESS_GET_ID: 0,
         START_TIME_GET_SALES_AND_BIDS: 0,
         NFT_COUNT: 0,
+        MIN_SELL_TO_PRICE: 10n ** 16n,
     },
     api: {
         blur: {
@@ -112,8 +113,73 @@ const getBlurSlugs = async () => {
 };
 
 const getBlurSalesAndOsBids = async () => {
-    // (5/5)
-    const _getAndAddOsBidsToDb = async (slug, addr, blurSales) => {
+    // (6/6)
+    const _addOsBidsToDb = async (slug, addr, osBids) => {
+        const formattedOsBids = osBids
+          .map(bid => {
+            const price_net = BigInt(bid.current_price) - BigInt(
+              bid.protocol_data.parameters.consideration
+                .filter(osFeeData => osFeeData.itemType <= 1)
+                .reduce((sum, osFeeData) => sum + osFeeData.startAmount, 0)
+            );
+
+            if (price_net <= BigInt(db.var.MIN_SELL_TO_PRICE)) return null;
+
+            const order_hash = bid.order_hash.toLowerCase();
+            const expiration_time = bid.expiration_time;
+            const offerer_address = ethers.getAddress(bid.protocol_data.parameters.offerer);
+            const tkn_id = bid.taker_asset_bundle.assets[0].token_id;
+            const tkn_addr = addr
+            const type = "OS_BID_ID"
+
+            return {
+              order_hash,
+              price_net: price_net.toString(),
+              tkn_id,
+              tkn_addr,
+              exp_time: expiration_time,
+              owner_addr: offerer_address,
+              type,
+              raw_bid: bid
+            };
+          })
+          .filter(Boolean);
+
+        const collection = db.mongoDB.collection("BIDS");
+        const bulkOps = formattedOsBids.map(bid => ({
+          updateOne: {
+            filter: { order_hash: bid.order_hash },
+            update: { $set: bid },
+            upsert: true
+          }
+        }));
+
+        try {
+            const result = await collection.bulkWrite(bulkOps, { ordered: true });
+            console.log(`
+                Inserted new OS BIDS for ${slug}:
+                - upsertedCount: ${result.upsertedCount}
+                - matchedCount: ${result.matchedCount}
+                - modifiedCount: ${result.modifiedCount}
+                - insertedCount: ${result.insertedCount}
+            `);
+        } catch (err) {
+          if (err instanceof MongoBulkWriteError) {
+            console.log('Inserted new bids, err?', err.result.insertedCount);
+          } else {
+            console.error('Error during bulkWrite:', err);
+          }
+        }
+
+        try {
+          await collection.createIndex({ order_hash: 1 }, { unique: true });
+        } catch (err) {
+          console.error('Error during createIndex:', err);
+        }
+    };
+
+    // (5/6)
+    const _getOsBids = async (slug, addr, blurSales) => {
         const __fetchAllBids = async (url) => {
             const batchBids = [];
 
@@ -122,7 +188,9 @@ const getBlurSalesAndOsBids = async () => {
                     try {
                         const data = await apiCall({ url: currUrl, options: db.api.os.options.GET });
                         if (data.detail) {//'Request was throttled. Expected available in 1 second.'
-                            console.log('data.detail:', data.detail)
+                            // console.log('data.detail:', data.detail)
+                            console.log('api err limit: ', data)
+                            //Request was throttled.
                             await new Promise(resolve => setTimeout(resolve, 1000));
                             continue
                         }
@@ -151,6 +219,7 @@ const getBlurSalesAndOsBids = async () => {
             let bids = [];
             const batchSize = 30; //tknsIds/call limit
             const tknIds = blurSales.map((tkn) => tkn.tokenId);
+
             const baseURL = `https://api.opensea.io/v2/orders/ethereum/seaport/offers?limit=50&order_by=eth_price&order_direction=desc&asset_contract_address=${addr}&`;
 
             for (let i = 0; i < tknIds.length; i += batchSize) {
@@ -160,35 +229,77 @@ const getBlurSalesAndOsBids = async () => {
                 bids.push(...batchBids);
             }
 
-            if (bids.length === 0) return;
-            const collection = db.mongoDB.collection("BIDS1");
-            //@todo consider formatting here price, addr, type (BID_VIA_GET_NFTS), etc.
-            const insertResult = await collection.insertMany(bids);
-            // console.log("\nBids inserted.\n", insertResult.insertedCount);
+            return bids
         } catch (error) {
             console.error('\nERR _getAndAddOsBidsToDb: ', error);
         }
     };
 
-    // (4/5)
+    // (4/6)
     const _addBlurSalesToDb = async (slug, addr, blurSales) => {
-        if (blurSales.length === 0) return;
-        //@todo consider adding formatted price
-        const formattedSales = blurSales.map((sales) => {
-            return {
-                ...sales,
-                contractAddress: addr,
-                slug: slug,
-            };
-          });
+        const formattedSales = blurSales
+            .map(sale => {
+                const marketplace = sale.price.marketplace;
+                if (marketplace !== 'BLUR') return null
 
-        const collection = db.mongoDB.collection("SALES1");
-        const insertResult = await collection.insertMany(formattedSales);
-        console.log("\nBlur SALES, inserted.\n", insertResult.insertedCount);
-        return
+                const price = ethers.parseEther(sale.price.amount).toString();
+                const owner_addr = ethers.getAddress(sale.owner.address);
+                const tkn_addr = ethers.getAddress(addr);
+                const tkn_id = sale.tokenId;
+                const listed_date_timestamp = Math.floor(Date.parse(sale.price.listedAt));
+                const type = 'BLUR_SALE_ID'
+
+                const order_hash = ethers.solidityPackedKeccak256(
+                    ['address', 'uint256', 'address', 'uint256', 'uint256'],
+                    [tkn_addr, tkn_id, owner_addr, price, listed_date_timestamp]
+                );
+
+                return {
+                    order_hash,
+                    price,
+                    owner_addr,
+                    tkn_addr,
+                    tkn_id,
+                    type,
+                    raw_sale: sale
+                };
+            })
+            .filter(Boolean);
+
+        const collection = db.mongoDB.collection('SALES');
+        const bulkOps = formattedSales.map(sale => ({
+            updateOne: {
+                filter: { order_hash: sale.order_hash },
+                update: { $set: sale },
+                upsert: true
+            }
+        }));
+
+        try {
+            const result = await collection.bulkWrite(bulkOps, { ordered: true });
+            console.log(`
+                Inserted new BLUR SALES for ${slug}:
+                - upsertedCount: ${result.upsertedCount}
+                - matchedCount: ${result.matchedCount}
+                - modifiedCount: ${result.modifiedCount}
+                - insertedCount: ${result.insertedCount}
+            `);
+        } catch (err) {
+            if (err instanceof MongoBulkWriteError) {
+                console.log('Inserted new sales, err', err.result.insertedCount);
+            } else {
+                console.error('Error during bulkWrite:', err);
+            }
+        }
+
+        try {
+            await collection.createIndex({ order_hash: 1 }, { unique: true });
+        } catch (err) {
+            console.error('Error during createIndex:', err);
+        }
     };
 
-    // (3/5)
+    // (3/6)
     const _setURL = async (data, slug) => {
         // https://core-api.prod.blur.io/v1/collections/azuki/tokens?filters={"traits":[],"hasAsks":true}
         const baseFilter = {traits: [], hasAsks: true};
@@ -212,7 +323,7 @@ const getBlurSalesAndOsBids = async () => {
         return url;
     };
 
-    // (2/5)
+    // (2/6)
     const _getBlurSales = async (slug) => {
         let data = {};
         let tkns = [];
@@ -236,8 +347,8 @@ const getBlurSalesAndOsBids = async () => {
         }
     }
 
-    // (1/5)
-    const _updateProgress = (SLUG) => {
+    // (1/6)
+    const _updateProgress = (slug) => {
         let percent = Math.round((++db.var.PROGRESS_GET_ID / db.SLUGS.length * 100));
         if (percent > 100) percent = 100;
 
@@ -245,20 +356,23 @@ const getBlurSalesAndOsBids = async () => {
         const timeDiff = currTime - db.var.START_TIME_GET_SALES_AND_BIDS;
         const timeDiffStr = new Date(timeDiff * 1000).toISOString().substr(11, 8);
 
-        process.stdout.write(`\r\x1B[2K ID progress: ${percent}%;  time: ${timeDiffStr};  ${SLUG}`);
+        process.stdout.write(`\r\x1B[2K ID progress: ${percent}%;  time: ${timeDiffStr};  ${slug}`);
         db.var.PROGRESS_GET_ID_PERCENT = percent;
     };
 
-    // (0/5)
+    // (0/6)
     console.log("\x1b[33m%s\x1b[0m", "\nSTARTED COLLECTING EACH NFT ID PRICE");
     try {
         for (const SLUG of db.SLUGS) {
             _updateProgress(SLUG);
+
             const [blurSales, nftAddr] = await _getBlurSales(SLUG);
             if(!blurSales) continue
-
             _addBlurSalesToDb(SLUG, nftAddr, blurSales);
-            await _getAndAddOsBidsToDb(SLUG, nftAddr, blurSales); //@todo consider via puppeteer to !w8
+
+            const osBids = await _getOsBids(SLUG, nftAddr, blurSales); //@todo consider via puppeteer to !w8
+            if(!osBids) continue
+            _addOsBidsToDb(SLUG, nftAddr, osBids);
         }
     } catch (e) {
         console.error("\nERR: getBlurSalesAndOsBids", e);
@@ -302,6 +416,7 @@ const setup = async () => {
     // console.timeEnd("getBlurSlugs")
 
     db.SLUGS = ['otherdeed', 'proof-moonbirds', 'mutant-ape-yacht-club'] //4test, 1st 344 ids; 2nd 2865 ids, 3rd 875 ids
+    // db.SLUGS = ['proof-moonbirds'] //4test, 1st 344 ids; 2nd 2865 ids, 3rd 875 ids
     db.var.START_TIME_GET_SALES_AND_BIDS = Math.floor(Date.now() / 1000);
     await getBlurSalesAndOsBids();
     return
