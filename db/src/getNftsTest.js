@@ -2,6 +2,7 @@ const fetch = require("node-fetch");
 const ethers = require("ethers");
 
 const wallet = ethers.Wallet.createRandom();
+const TEST_MODE = true;
 
 const db = {
     var: {
@@ -81,7 +82,7 @@ const getOsBidsViaPuppeteer = async (addr, tknIds) => {
                 currUrl = url + "&cursor=" + cursor;
                 const data = await apiCall({url: currUrl, options: db.api.osPuppeteer.options.GET});
                 if (data?.data?.orders?.edges) {
-                    orders.concat(data.data.orders.edges);
+                    orders = orders.concat(data.data.orders.edges);
                 }
                 if (data?.data?.orders?.pageInfo?.hasNextPage) {
                     cursor = data.data.orders.pageInfo.endCursor;
@@ -109,7 +110,7 @@ const getOsBidsViaPuppeteer = async (addr, tknIds) => {
         }
     }
 
-    return bids
+    return bids;
 };
 
 const getOsBidsViaApi = async (addr, tknIds) => {
@@ -247,18 +248,25 @@ const setup = async () => {
         console.log("\nGETTING SLUG: ", slug);
 
         console.time("getBlurSales");
-        const [tknIds, nftAddr] = await getBlurSales(slug);
+        let [tknIds, nftAddr] = await getBlurSales(slug);
         console.timeEnd("getBlurSales");
-        console.log('amt of tknIds: ', tknIds.length)
+        console.log("amt of tknIds: ", tknIds.length);
 
         console.time("getOsBidsViaApi");
-        const bidsViaApi = await getOsBidsViaApi(nftAddr, tknIds);
+        //const bidsViaApi = await getOsBidsViaApi(nftAddr, tknIds);
         console.timeEnd("getOsBidsViaApi");
-        console.log("amt of bidsViaApi: ", bidsViaApi.length)
+        //console.log("amt of bidsViaApi: ", bidsViaApi.length);
 
         console.time("getOsBidsViaPuppeteer");
+
+        if (TEST_MODE) {
+            tknIds = tknIds.slice(0, 5);
+        }
+        console.log("nftAddr: ", nftAddr);
+        console.log("tknIds: ", tknIds);
+
         const bidsViaPuppeteer = await getOsBidsViaPuppeteer(nftAddr, tknIds);
         console.timeEnd("getOsBidsViaPuppeteer");
-        console.log("amt of bidsViaPuppeteer: ", bidsViaPuppeteer.length) //should be same as api
+        console.log("amt of bidsViaPuppeteer: ", bidsViaPuppeteer.length); //should be same as api
     }
 })();
