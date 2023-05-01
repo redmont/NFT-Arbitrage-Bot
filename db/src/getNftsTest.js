@@ -38,7 +38,16 @@ const db = {
                     method: "GET",
                     headers: {accept: "application/json", "X-API-KEY": process.env.API_OS},
                 },
-            }
+            },
+        },
+        osPuppeteer: {
+            url: {},
+            options: {
+                GET: {
+                    method: "GET",
+                    headers: {accept: "application/json"},
+                },
+            },
         },
     },
     nft: {},
@@ -65,7 +74,42 @@ const getOsBidsViaPuppeteer = async (slug, addr, tknIds) => {
      *     - find&set amt bids to retrieve to max value (curr is hardcoded to 10)
      *     - optimize & "test" each solution.
      */
-}
+
+    const getOrders = async (url) => {
+        let cursor = "";
+        let orders = [];
+        while (true) {
+            try {
+                currUrl = url + "&cursor=" + cursor;
+                const data = await apiCall({url: currUrl, options: db.api.osPuppeteer.options.GET});
+                if (data?.data?.orders?.edges) {
+                    orders.concat(data.data.orders.edges);
+                }
+                if (data?.data?.orders?.pageInfo?.hasNextPage) {
+                    cursor = data.data.orders.pageInfo.endCursor;
+                    continue;
+                } else {
+                    return orders;
+                }
+            } catch (error) {
+                console.error("ERR getOsBidsViaPuppeteer.getOrders: ", error, "\nurl: ", currUrl);
+                return null;
+            }
+        }
+    };
+
+    for (let i = 0; i < tknIds.length; i++) {
+        const tknId = tknIds[i];
+        const currUrl = `http://127.0.0.1:3001/v1/${addr}/${tknId}/orders?chain=ETHEREUM&count=100`;
+        try {
+            const orders = await getOrders(currUrl);
+            return orders;
+        } catch (error) {
+            console.error("ERR getOsBidsViaPuppeteer: ", error, "\nurl: ", currUrl);
+            return null;
+        }
+    }
+};
 
 const getOsBidsViaApi = async (addr, tknIds) => {
     const __fetchAllBids = async (url) => {
@@ -74,17 +118,18 @@ const getOsBidsViaApi = async (addr, tknIds) => {
         const ___fetchBids = async (currUrl) => {
             while (true) {
                 try {
-                    const data = await apiCall({ url: currUrl, options: db.api.os.options.GET });
-                    if (data.detail) {//'Request was throttled. Expected available in 1 second.'
+                    const data = await apiCall({url: currUrl, options: db.api.os.options.GET});
+                    if (data.detail) {
+                        //'Request was throttled. Expected available in 1 second.'
                         // console.log('data.detail:', data.detail)
-                        console.log('api err limit: ', data)
+                        console.log("api err limit: ", data);
                         //Request was throttled.
-                        await new Promise(resolve => setTimeout(resolve, 1000));
-                        continue
+                        await new Promise((resolve) => setTimeout(resolve, 1000));
+                        continue;
                     }
                     return data;
                 } catch (error) {
-                    console.error('ERR ___fetchBids: ', error, '\nurl: ', currUrl);
+                    console.error("ERR ___fetchBids: ", error, "\nurl: ", currUrl);
                     return null;
                 }
             }
@@ -93,17 +138,17 @@ const getOsBidsViaApi = async (addr, tknIds) => {
         let nextUrl = url;
         while (nextUrl) {
             const data = await ___fetchBids(nextUrl);
-            if (!data || data.orders.length === 0) break
+            if (!data || data.orders.length === 0) break;
 
-            const { next, previous, orders } = data;
+            const {next, previous, orders} = data;
             batchBids.push(...orders);
-            nextUrl = next ? url + '&cursor=' + next : null; //if ordersInBatch>50, nextUrl exists
+            nextUrl = next ? url + "&cursor=" + next : null; //if ordersInBatch>50, nextUrl exists
         }
 
         return batchBids;
     };
 
-    try{
+    try {
         let bids = [];
         const batchSize = 30; //tknsIds/call limit
 
@@ -111,14 +156,14 @@ const getOsBidsViaApi = async (addr, tknIds) => {
 
         for (let i = 0; i < tknIds.length; i += batchSize) {
             const batchTknIds = tknIds.slice(i, i + batchSize);
-            const url = baseURL + batchTknIds.map(tokenId => `token_ids=${tokenId}`).join('&');
+            const url = baseURL + batchTknIds.map((tokenId) => `token_ids=${tokenId}`).join("&");
             const batchBids = await __fetchAllBids(url);
             bids.push(...batchBids);
         }
 
-        return bids
+        return bids;
     } catch (error) {
-        console.error('\nERR _getAndAddOsBidsToDb: ', error);
+        console.error("\nERR _getAndAddOsBidsToDb: ", error);
     }
 };
 
@@ -133,12 +178,12 @@ const getBlurSales = async (slug) => {
             tkns.length === 0
                 ? baseFilter
                 : {
-                    cursor: {
-                        price: tkns[tkns.length - 1].price,
-                        tokenId: tkns[tkns.length - 1].tokenId,
-                    },
-                    ...baseFilter,
-                };
+                      cursor: {
+                          price: tkns[tkns.length - 1].price,
+                          tokenId: tkns[tkns.length - 1].tokenId,
+                      },
+                      ...baseFilter,
+                  };
 
         const url = `http://127.0.0.1:3000/v1/collections/${slug}/tokens?filters=${encodeURIComponent(
             JSON.stringify(filters)
@@ -150,7 +195,7 @@ const getBlurSales = async (slug) => {
     let tkns = [];
     let countPages = 0; //for collections > 100
 
-    try{
+    try {
         do {
             const url = await _setURL(data, slug);
             data = await apiCall({url, options: db.api.blur.options.GET});
@@ -163,12 +208,12 @@ const getBlurSales = async (slug) => {
         } while (countPages < data.totalCount);
 
         const tknIds = tkns.map((tkn) => tkn.tokenId);
-        console.log('tknIds: ', tknIds.length)
-        return [tknIds, ethers.getAddress(data.contractAddress)]
+        console.log("tknIds: ", tknIds.length);
+        return [tknIds, ethers.getAddress(data.contractAddress)];
     } catch (error) {
-        console.error('\nERR _getBlurSales: ', error);
+        console.error("\nERR _getBlurSales: ", error);
     }
-}
+};
 
 const setup = async () => {
     const dataToSign = await apiCall({
@@ -181,6 +226,7 @@ const setup = async () => {
     db.var.BLUR_AUTH_TKN = (
         await apiCall({url: db.api.blur.url.AUTH_SET, options: db.api.blur.options.AUTH})
     ).accessToken;
+    console.log("BLUR_AUTH_TKN: ", db.var.BLUR_AUTH_TKN);
 
     /// SETUP BLUR API OPTIONS ///
     db.api.blur.options.GET = {
@@ -198,21 +244,21 @@ const setup = async () => {
 
 (async () => {
     await setup();
-    db.SLUGS = ['proof-moonbirds', 'mutant-ape-yacht-club', 'otherdeed'] //4test: ~300, ~900, ~3k ids
+    db.SLUGS = ["proof-moonbirds", "mutant-ape-yacht-club", "otherdeed"]; //4test: ~300, ~900, ~3k ids
 
-    for(const slug of db.SLUGS){
-        console.log('\nGETTING SLUG: ', slug)
+    for (const slug of db.SLUGS) {
+        console.log("\nGETTING SLUG: ", slug);
 
-        console.time('getBlurSales')
+        console.time("getBlurSales");
         const [tknIds, nftAddr] = await getBlurSales(slug);
-        console.timeEnd('getBlurSales')
+        console.timeEnd("getBlurSales");
 
-        console.time('getOsBidsViaApi')
+        console.time("getOsBidsViaApi");
         await getOsBidsViaApi(nftAddr, tknIds);
-        console.timeEnd('getOsBidsViaApi')
+        console.timeEnd("getOsBidsViaApi");
 
-        console.time('getOsBidsViaPuppeteer')
+        console.time("getOsBidsViaPuppeteer");
         await getOsBidsViaPuppeteer();
-        console.timeEnd('getOsBidsViaPuppeteer')
+        console.timeEnd("getOsBidsViaPuppeteer");
     }
 })();
