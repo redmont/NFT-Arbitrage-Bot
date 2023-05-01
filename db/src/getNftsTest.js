@@ -3,8 +3,6 @@ const ethers = require("ethers");
 
 const wallet = ethers.Wallet.createRandom();
 
-const {InitializeDB} = require("./mongo");
-
 const db = {
     var: {
         BLUR_AUTH_TKN: "",
@@ -63,7 +61,7 @@ const apiCall = async ({url, options}) => {
     return res;
 };
 
-const getOsBidsViaPuppeteer = async (slug, addr, tknIds) => {
+const getOsBidsViaPuppeteer = async (addr, tknIds) => {
     /**
      * OS API KEY is 2limited, we need to find alternatives. Please:
      *
@@ -98,17 +96,20 @@ const getOsBidsViaPuppeteer = async (slug, addr, tknIds) => {
         }
     };
 
+    let bids = [];
     for (let i = 0; i < tknIds.length; i++) {
         const tknId = tknIds[i];
         const currUrl = `http://127.0.0.1:3001/v1/${addr}/${tknId}/orders?chain=ETHEREUM&count=100`;
         try {
             const orders = await getOrders(currUrl);
-            return orders;
+            bids.push(...orders);
         } catch (error) {
             console.error("ERR getOsBidsViaPuppeteer: ", error, "\nurl: ", currUrl);
             return null;
         }
     }
+
+    return bids
 };
 
 const getOsBidsViaApi = async (addr, tknIds) => {
@@ -208,7 +209,6 @@ const getBlurSales = async (slug) => {
         } while (countPages < data.totalCount);
 
         const tknIds = tkns.map((tkn) => tkn.tokenId);
-        console.log("tknIds: ", tknIds.length);
         return [tknIds, ethers.getAddress(data.contractAddress)];
     } catch (error) {
         console.error("\nERR _getBlurSales: ", error);
@@ -237,9 +237,6 @@ const setup = async () => {
             "content-type": "application/json",
         },
     };
-
-    // DB CLIENT
-    db.mongoDB = await InitializeDB();
 };
 
 (async () => {
@@ -252,13 +249,16 @@ const setup = async () => {
         console.time("getBlurSales");
         const [tknIds, nftAddr] = await getBlurSales(slug);
         console.timeEnd("getBlurSales");
+        console.log('amt of tknIds: ', tknIds.length)
 
         console.time("getOsBidsViaApi");
-        await getOsBidsViaApi(nftAddr, tknIds);
+        const bidsViaApi = await getOsBidsViaApi(nftAddr, tknIds);
         console.timeEnd("getOsBidsViaApi");
+        console.log("amt of bidsViaApi: ", bidsViaApi.length)
 
         console.time("getOsBidsViaPuppeteer");
-        await getOsBidsViaPuppeteer();
+        const bidsViaPuppeteer = await getOsBidsViaPuppeteer(nftAddr, tknIds);
         console.timeEnd("getOsBidsViaPuppeteer");
+        console.log("amt of bidsViaPuppeteer: ", bidsViaPuppeteer.length) //should be same as api
     }
 })();
