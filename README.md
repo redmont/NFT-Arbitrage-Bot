@@ -32,6 +32,14 @@
 - [ ] Cleaner
   - [ ] Remove expired data from db
 
+## Project Diagram 🔧
+
+![Project Diagram](https://i.gyazo.com/dac07c85761eb9af02413dcc53cbdeb5.png)
+
+📁 [Google Drive](https://drive.google.com/file/d/1Ks5DKz6f9DdRpffOGzYu5gjKxD21WbCk/view?usp=sharing)
+
+🚀 [App](https://app.diagrams.net/#G1Ks5DKz6f9DdRpffOGzYu5gjKxD21WbCk)
+
 ## To-do DB Initialization :floppy_disk:
 
 ### 0. getNfts (create DB base)
