@@ -65,6 +65,5 @@ coverage/
 frontend/
 node_modules/
 reports/
-test/
 tsconfig.tsbuildinfo
 yarn.lock
