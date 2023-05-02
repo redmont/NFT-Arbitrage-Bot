@@ -195,8 +195,8 @@ const getBidsOs = async (collectionsSales) => {
 
 ;(async function root() {
   try {
-		const collectionsSales = 'get from db without duplicates from blur sales'
-		//might edit getSalesBlur, to also add to db smth like: 0xCollection: ids [1, 2]
+		//@todo via sub, get new blur sales (then filter out ids with "false" - not checked for bids yet)
+		const collectionsSales = 'todo'
     getBidsOs(collectionsSales); //then loop to get all bids using multiple keys
   } catch (e) {
     console.error("\nERR: getBidsOs root:", e);
