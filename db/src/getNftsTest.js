@@ -4,6 +4,8 @@ const ethers = require("ethers");
 const wallet = ethers.Wallet.createRandom();
 const TEST_MODE = true;
 
+require("dotenv").config();
+
 const db = {
     var: {
         BLUR_AUTH_TKN: "",
@@ -62,7 +64,7 @@ const apiCall = async ({url, options}) => {
     return res;
 };
 
-const getOsBidsViaPuppeteer = async (addr, tknIds) => {
+const getOsBidsViaPuppeteer = async (addr, tknId) => {
     /**
      * OS API KEY is 2limited, we need to find alternatives. Please:
      *
@@ -79,7 +81,7 @@ const getOsBidsViaPuppeteer = async (addr, tknIds) => {
         let orders = [];
         while (true) {
             try {
-                currUrl = url + "&cursor=" + cursor;
+                let currUrl = url + "&cursor=" + cursor;
                 const data = await apiCall({url: currUrl, options: db.api.osPuppeteer.options.GET});
                 if (data?.data?.orders?.edges) {
                     orders = orders.concat(data.data.orders.edges);
@@ -98,29 +100,30 @@ const getOsBidsViaPuppeteer = async (addr, tknIds) => {
     };
 
     let bids = [];
-    for (let i = 0; i < tknIds.length; i++) {
-        const tknId = tknIds[i];
-        const currUrl = `http://127.0.0.1:3001/v1/${addr}/${tknId}/orders?chain=ETHEREUM&count=100`;
-        try {
-            const orders = await getOrders(currUrl);
-            bids.push(...orders);
-        } catch (error) {
-            console.error("ERR getOsBidsViaPuppeteer: ", error, "\nurl: ", currUrl);
-            return null;
-        }
+    const currUrl = `http://127.0.0.1:3001/v1/${addr}/${tknId}/orders?chain=ETHEREUM&count=100`;
+    try {
+        const orders = await getOrders(currUrl);
+        bids.push(...orders);
+    } catch (error) {
+        console.error("ERR getOsBidsViaPuppeteer: ", error, "\nurl: ", currUrl);
+        return null;
     }
-
+    //Promise.resolve(bids);
     return bids;
 };
 
-const getOsBidsViaApi = async (addr, tknIds) => {
+const getOsBidsViaApi = async (addr, tknIds, osKey) => {
     const __fetchAllBids = async (url) => {
         const batchBids = [];
 
         const ___fetchBids = async (currUrl) => {
             while (true) {
                 try {
-                    const data = await apiCall({url: currUrl, options: db.api.os.options.GET});
+                    let options = db.api.os.options.GET;
+                    if (osKey) options.headers["X-API-KEY"] = osKey;
+                    console.log("currUrl: ", currUrl);
+
+                    const data = await apiCall({url: currUrl, options: options});
                     if (data.detail) {
                         //'Request was throttled. Expected available in 1 second.'
                         // console.log('data.detail:', data.detail)
@@ -151,6 +154,8 @@ const getOsBidsViaApi = async (addr, tknIds) => {
     };
 
     try {
+        console.log(`tknIds: ${tknIds}`);
+        console.log(`osKey: ${osKey}`);
         let bids = [];
         const batchSize = 30; //tknsIds/call limit
 
@@ -254,19 +259,44 @@ const setup = async () => {
 
         console.time("getOsBidsViaApi");
         //const bidsViaApi = await getOsBidsViaApi(nftAddr, tknIds);
-        console.timeEnd("getOsBidsViaApi");
         //console.log("amt of bidsViaApi: ", bidsViaApi.length);
 
-        console.time("getOsBidsViaPuppeteer");
-
         if (TEST_MODE) {
-            tknIds = tknIds.slice(0, 5);
+            tknIds = tknIds.slice(0, 10);
+            console.log("nftAddr: ", nftAddr);
+            console.log("tknIds: ", tknIds);
         }
-        console.log("nftAddr: ", nftAddr);
-        console.log("tknIds: ", tknIds);
 
-        const bidsViaPuppeteer = await getOsBidsViaPuppeteer(nftAddr, tknIds);
-        console.timeEnd("getOsBidsViaPuppeteer");
-        console.log("amt of bidsViaPuppeteer: ", bidsViaPuppeteer.length); //should be same as api
+        const osKeys = process.env.OS_KEYS.split(",");
+        const CONCURRENT_CALLS_PER_SECOND_PER_KEY = 4;
+
+        for (
+            var i = 0;
+            i < tknIds.length;
+            i = i + CONCURRENT_CALLS_PER_SECOND_PER_KEY * osKeys.length
+        ) {
+            let tknIdsArray = tknIds.slice(
+                i,
+                i + CONCURRENT_CALLS_PER_SECOND_PER_KEY * osKeys.length
+            );
+            console.log("tknIdsArray: ", tknIdsArray);
+            await Promise.all(
+                tknIdsArray.map(
+                    async (tknId, k) =>
+                        await getOsBidsViaApi(nftAddr, [tknId], osKeys[k % 2 == 0 ? 0 : 1])
+                )
+            ).then((results) => {
+                console.log("results: ", results);
+            });
+        }
+
+        console.timeEnd("getOsBidsViaApi");
+
+        //console.time("getOsBidsViaPuppeteer");
+
+        // const bidsViaPuppeteer = await getOsBidsViaPuppeteer(nftAddr, tknIds);
+        // console.timeEnd("getOsBidsViaPuppeteer");
+        // console.log("amt of bidsViaPuppeteer: ", bidsViaPuppeteer.length); //should be same as api
+        //console.timeEnd("getOsBidsViaPuppeteer");
     }
 })();
