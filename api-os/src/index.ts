@@ -23,10 +23,10 @@ export async function main(options: ApplicationConfig = {}) {
     console.log(newProxyUrl);
 
     const browser = await puppeteer.launch({
-      headless: true,
+      headless: "new",
       devtools: true,
       args: [
-        `--proxy-server=${newProxyUrl}`,
+        //`--proxy-server=${newProxyUrl}`,
         "--disable-web-security",
         "--disable-features=IsolateOrigins",
         "--disable-site-isolation-trials",
