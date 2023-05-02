@@ -32,6 +32,14 @@
 - [ ] Cleaner
   - [ ] Remove expired data from db
 
+## Project Diagram 🔧
+
+![Project Diagram](https://i.gyazo.com/791201f3bd138f3ee8ffb15d9c177451.png)
+
+📁 [Google Drive](https://drive.google.com/file/d/1Ks5DKz6f9DdRpffOGzYu5gjKxD21WbCk/view?usp=sharing)
+
+🚀 [App](https://app.diagrams.net/#G1Ks5DKz6f9DdRpffOGzYu5gjKxD21WbCk)
+
 ## To-do DB Initialization :floppy_disk:
 
 ### 0. getNfts (create DB base)
@@ -64,7 +72,7 @@ sudo mongod --port 27017 --dbpath /var/lib/mongodb --replSet rs0 --bind_ip local
 
 3rd terminal, Mongodb UI:
 ```
-`robo3t`
+robo3t
 ```
 
 

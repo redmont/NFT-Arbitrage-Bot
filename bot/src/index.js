@@ -6,8 +6,18 @@ const provider = new ethers.AlchemyProvider("homestead", process.env.API_ALCHEMY
 const wallet = new ethers.Wallet(process.env.PK_0, provider);
 const uri = 'mongodb://localhost:27017';
 
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const mongoClient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const TEST_MODE = true
+
+const osClient = new OpenSeaStreamClient({
+	token: process.env.API_OS,
+	networkName: "mainnet",
+	connectOptions: {
+			transport: WebSocket,
+	},
+	onError: (error) => console.error("ERR: osClient", error),
+	logLevel: 1,
+});
 
 
 /**
@@ -464,16 +474,16 @@ const execArb = async (arbData) => {
 		return buyFromBlurData
 	}
 
-	//(2/7)
-	const _getMarketplace = async (addr, id, buyFrom) => {
-		if (buyFrom.marketplace) return buyFrom.marketplace
+	// //(2/7) probably don't need cuz now getting full mplace data
+	// const _getMarketplace = async (addr, id, buyFrom) => {
+	// 	if (buyFrom.marketplace) return buyFrom.marketplace
 
-		console.log('\nMaking a call to get marketplace...')
-		const url = `http://127.0.0.1:3000/v1/collections/${addr.toLowerCase()}/tokens/${id}`
-		const data = await apiCall({ url, options: db.api.blur.options.GET });
-		console.log('\n...marketplace:', data?.token?.price?.marketplace)
-		return data?.token?.price?.marketplace
-	}
+	// 	console.log('\nMaking a call to get marketplace...')
+	// 	const url = `http://127.0.0.1:3000/v1/collections/${addr.toLowerCase()}/tokens/${id}`
+	// 	const data = await apiCall({ url, options: db.api.blur.options.GET });
+	// 	console.log('\n...marketplace:', data?.token?.price?.marketplace)
+	// 	return data?.token?.price?.marketplace
+	// }
 
 	//(1/7)
 	const _preValidate = async (_arbData) => {
@@ -512,9 +522,9 @@ const execArb = async (arbData) => {
 		const [ addr, id, buyFrom, sellTo] = await _preValidate(arbData[i]) ?? [];
 		if (!addr) return
 
-		//@todo update ↓↓↓ when dex-dex
-		const marketplace = await _getMarketplace(addr, id, buyFrom)
-		if(marketplace!=='BLUR') return
+		//@todo update ↓↓↓ when dex-dex, probably don't need anymore, but ensure
+		// const marketplace = await _getMarketplace(addr, id, buyFrom)
+		// if(marketplace!=='BLUR') return
 
 		const buyBlurData = await _getBuyBlurData(addr, id, buyFrom) ?? {};
 		if(!buyBlurData) return
@@ -533,18 +543,18 @@ const execArb = async (arbData) => {
 }
 
 //3
-const getArbDataFromDb = async () => {
+const getArbDataFromDB_full = async () => {
 	// if(db.var.STARTED) return false //4test interval
 	// db.var.STARTED = true
 	try {
-		await client.connect();
+		await mongoClient.connect();
 		console.log('Connected to MongoDB');
 
-		const dbBids = client.db('botNftData').collection('BIDS');
+		const dbBids = mongoClient.db('botNftData').collection('BIDS');
 
 		const streamSales = dbSales.watch();
 
-		const dbSales = client.db('botNftData').collection('SALES');
+		const dbSales = mongoClient.db('botNftData').collection('SALES');
 		const streamBids = dbBids.watch();
 
 		streamSales.on('change', async (sale) => {
@@ -582,7 +592,6 @@ const getArbDataFromDb = async () => {
 				});
 			}
 		});
-
 
 		streamBids.on('change', async (bid) => {
 			const matchingSales = await dbSales.find({
@@ -623,6 +632,91 @@ const getArbDataFromDb = async () => {
 		console.error('Failed to connect to MongoDB', err);
 	}
 }
+
+const subBidsOs = async () => {
+	const handleBasicOffer = async (event) => {
+			if (event.payload?.item?.chain?.name !== "ethereum") return;
+
+			const addr = ethers.getAddress(
+					event.payload?.protocol_data?.parameters?.consideration[0]?.token
+			);
+			const id = event.payload?.protocol_data?.parameters?.consideration[0]?.identifierOrCriteria;
+
+			if(TEST_MODE){
+					if (addr !== db.var.TEST_NFT || id !== db.var.TEST_NFT_ID) return
+					console.log(`\n\x1b[38;5;202mSTARTED SUBSCRIBE OS BIDS\x1b[0m`)
+			}
+
+			let sellToPrice = BigInt(event.payload.base_price);
+
+			for (const osFeeData of event.payload?.protocol_data?.parameters.consideration) {
+					if (osFeeData.itemType <= 1) {
+							//0: ETH, 1: ERC20, 2: ERC721...
+							sellToPrice -= BigInt(osFeeData.startAmount);
+					}
+			}
+
+			if(!TEST_MODE && sellToPrice <= db.var.MIN_SELL_TO_PRICE) return; //2small
+
+			//@todo: get data from db about blur sale, check price & exec arb
+			const matchingSales = db.var.SALES.find(sale => {
+					return sale.tkn_addr === addr && sale.tkn_id === id;
+			}).sort((a, b) => {
+					return BigInt(a.price) - BigInt(b.price);
+			})
+
+
+			if(!matchingSales.length) return; //2no matching sales
+			// const filteredSales = matchingSales.filter(sale => {
+			// 	const salePriceBigInt = BigInt(sale.price);
+			// 	return salePriceBigInt < sellToPrice;
+			// });
+
+			// if(!filteredSales.length) return; //2no matching sales
+
+			// console.log(`\n\x1b[38;5;202mFOUND MATCHING SALES\x1b[0m: ${filteredSales}`)
+			// for (const sale of filteredSales) {
+			// 	await execArb(sale, event);
+			// }
+	};
+
+	const handleCollectionOffer = async (event) => {
+			//@todo add to db
+	};
+
+	const handleTraitOffer = async (event) => {
+			//@todo add to db
+	};
+
+	const handleItemListed = async (event) => {
+			//@todo add to db
+	};
+
+	//→→→ STARTS HERE ←←←
+	try {
+			osClient.onEvents("*", db.var.OS_SUB_EVENTS, async event => {
+					process.stdout.write(`\r\x1b[38;5;12mSUBSCRIBE OS BIDS\x1b[0m: ${++db.var.count}`);
+
+					switch (event.event_type) {
+							case EventType.ITEM_RECEIVED_BID:
+									handleBasicOffer(event);
+									break;
+							// case EventType.COLLECTION_OFFER:
+							//     handleCollectionOffer(event);
+							//     break;
+							// case EventType.TRAIT_OFFER:
+							//     handleTraitOffer(event);
+							//     break;
+							// case EventType.ITEM_LISTED:
+							//     handleItemListed(event);
+							//     break;
+					}
+			});
+	} catch (e) {
+			console.error("ERR: subscribeSells", e);
+			await subBidsOs();
+	}
+};
 
 //2
 const subscribeBlocks = async () => {
@@ -684,6 +778,9 @@ const setup = async () => {
 			body: {}, //pass buy data
     },
   };
+
+	await mongoClient.connect();
+	db.var.SALES = mongoClient.db('botNftData').collection('SALES');
 }
 
 //0
@@ -700,9 +797,24 @@ const apiCall = async ({url, options}) => {
 	try {
 		await setup() //1-time
 		subscribeBlocks()
-		await getArbDataFromDb()
+		//sub os bids here, then for each new read sale from db, check arb & exec
+
+		//\/ get new sale/bid, get sale/bid from db, check arb, exec
+		await getArbDataFromDB_full()
 	} catch (e) {
 		console.error('\nERR: root:', e)
 		await root()
 	}
+})();
+
+(async function root() {
+  try {
+  	await setup();
+
+		await getSlugsBlur();
+		//save to db
+  } catch (e) {
+  	console.error("\nERR: root:", e);
+  	await root();
+  }
 })();

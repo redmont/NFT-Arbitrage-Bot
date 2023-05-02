@@ -3,7 +3,7 @@ const ethers = require("ethers");
 
 const wallet = ethers.Wallet.createRandom();
 
-const {InitializeDB} = require("./mongo");
+const {InitializeDB} = require("../mongo");
 
 const TEST_MODE = false;
 

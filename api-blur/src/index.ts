@@ -19,16 +19,16 @@ export async function main(options: ApplicationConfig = {}) {
     // const url = "http://xnmldktr:p980i7e5knud@185.199.229.156:7492";
     // const proxyUrl = "http://user-sps2v0tyzc-country-us-city-ashburn-sessionduration-30:qW3aVSn6buop47Ndfj@gate.smartproxy.com:10000" //sticky 30m (stop after 30m)
     // const proxyUrl = "http://tJCulVRS:NFA7dwKimBCANhgm5mEaiBBpeFHNGXEy72mfAxUOM1y0CiOJf8PqI65rrwyxrpKQ3s3Pb@ustr16.p.ap2.me:49000" //rotating
-    const proxyUrl = "http://tJCulVRS:NFA7dwKimBCANhgm5mEaiBBpeFHNGXEy72mfAxUOM1y0CiOJf8PqI65rrwyxrpKQ3s3Pb-uw3SY85h@ustr16.p.ap2.me:49006" //sticky
+    // const proxyUrl = "http://tJCulVRS:NFA7dwKimBCANhgm5mEaiBBpeFHNGXEy72mfAxUOM1y0CiOJf8PqI65rrwyxrpKQ3s3Pb-uw3SY85h@ustr16.p.ap2.me:49006" //sticky
 
     // const proxyUrl = "http://user-sps2v0tyzc-country-us-city-ashburn:qW3aVSn6buop47Ndfj@gate.smartproxy.com:7000" //rotating (stop after 10m)
-    const newProxyUrl = await proxyChain.anonymizeProxy(proxyUrl)
-    console.log(newProxyUrl)
+    // const newProxyUrl = await proxyChain.anonymizeProxy(proxyUrl)
+    // console.log(newProxyUrl)
     const browser = await puppeteer.launch({
       headless: true,
       devtools: true,
         args: [
-            `--proxy-server=${newProxyUrl}`, //can comment locally
+            // `--proxy-server=${newProxyUrl}`, //can comment locally
             "--disable-web-security",
             "--disable-features=IsolateOrigins",
             "--disable-site-isolation-trials",

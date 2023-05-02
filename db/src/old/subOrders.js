@@ -1,5 +1,5 @@
 const {OpenSeaStreamClient, EventType} = require("@opensea/stream-js");
-const {InitializeDB} = require("./mongo");
+const {InitializeDB} = require("../mongo");
 const fetch = require("node-fetch");
 const {WebSocket} = require("ws");
 const ethers = require("ethers");
@@ -155,44 +155,78 @@ const subSalesBidsOs = async () => {
 
 const subSalesBlur = async () => {
     console.log(`\n\x1b[38;5;202mSTARTED SUBSCRIBE BLUR SELL ORDERS\x1b[0m`);
-    let prevOrders = new Set(); //needs that, cuz Blur returns "currOrders" in semi-random order.
+    var prevOrders = new Set(); //needs that, cuz Blur returns "currOrders" in semi-random order.
 
-    //↓↓↓ STARTS BELOW ↓↓↓
-    function _waitBasedOn(newOrdersLength) {
+    const _waitBasedOn = async (newOrdersLength) => {
         const toWait = Math.max(0, -10 * newOrdersLength + 500); //0new:500ms; 10new:400ms; ... >=50new:0ms
         return new Promise((resolve) => setTimeout(resolve, toWait));
     }
 
-    //↓↓↓ STARTS BELOW ↓↓↓
-    const _handleNewOrder = async (order) => {
-        const addr = ethers.getAddress(order.contractAddress);
-        const price = ethers.parseEther(order.price.amount);
+    const _addToDB = async (newBlurSales) => {
+        const formattedSales = newBlurSales
+            .map(sale => {
+                const marketplace = sale.marketplace;
+                if (marketplace !== 'BLUR') return null //only Blur
 
-        //@todo add to db
-    };
+                const price = ethers.parseEther(sale.price.amount).toString();
+                const owner_addr = ethers.getAddress(sale.fromTrader.address);
+                const tkn_addr = ethers.getAddress(sale.contractAddress);
+                const tkn_id = sale.tokenId;
+                const listed_date_timestamp = Math.floor(Date.parse(sale.createdAt));
+                const type = 'BLUR_SALE_SUB'
 
-    //↓↓↓ STARTS BELOW ↓↓↓
-    const _handleNewOrders = async (orders) => {
-      // Convert BigInt price values to strings
-      const ordersWithStringPrice = orders.map((order) => {
-        const stringPrice = order.price.toString();
-        return { ...order, price: stringPrice };
-      });
+                const order_hash = ethers.solidityPackedKeccak256(
+                    ['address', 'uint256', 'address', 'uint256', 'uint256'],
+                    [tkn_addr, tkn_id, owner_addr, price, listed_date_timestamp]
+                );
 
-      const collection = db.mongoDB.collection("SALES");
-    //   const insertResult = await collection.insertMany(ordersWithStringPrice);
-    //   console.log("Inserted Blur SALES:", insertResult.insertedCount);
-    };
+                return {
+                    order_hash,
+                    price,
+                    owner_addr,
+                    tkn_addr,
+                    tkn_id,
+                    type,
+                    raw_sale: sale
+                };
+            })
+            .filter(Boolean);
 
-    //↓↓↓ STARTS BELOW ↓↓↓
-    function _getNewOrders(activityItems) {
-        return activityItems.filter((order) => !prevOrders.has(order.id));
+        console.log('formattedSales', formattedSales.length)
+        if (formattedSales.length === 0) return; //can happen if 0 Blur sale
+
+        const collection = db.mongoDB.collection('SALES');
+        const bulkOps = formattedSales.map(sale => ({
+            updateOne: {
+                filter: { order_hash: sale.order_hash },
+                update: { $set: sale },
+                upsert: true
+            }
+        }));
+
+        try {
+            const result = await collection.bulkWrite(bulkOps, { ordered: true });
+            console.log(`
+                Inserted new BLUR SALES:
+                - upsertedCount: ${result.upsertedCount}
+                - matchedCount: ${result.matchedCount}
+                - modifiedCount: ${result.modifiedCount}
+                - insertedCount: ${result.insertedCount}
+            `);
+        } catch (err) {
+            console.error('Error during bulkWrite:', err);
+        }
+
+        try {
+            await collection.createIndex({ order_hash: 1 }, { unique: true });
+        } catch (err) {
+            console.error('Error during createIndex:', err);
+        }
     }
 
-    //↓↓↓ STARTS BELOW ↓↓↓
     const _getData = async (prevCursor) => {
         const baseFilter = {
-            count: 100,
+            count: 100, //or 50 or 25
             eventFilter: {
                 orderCreated: {}, //@todo sub also sold items to delete from db
             },
@@ -203,45 +237,37 @@ const subSalesBlur = async () => {
             JSON.stringify(filters)
         )}`;
         const data = await apiCall({url: url, options: db.api.blur.options.GET});
-
-        return [data.activityItems, data.cursor];
+        return data
     };
 
-    //→→→ STARTS HERE ←←←
+    const _getNewBlurSales = async (sales) => {
+        return sales.filter(order => !prevOrders.has(order.id)); //can't filter Blur only, cuz !detect amt of missed orders
+    }
+
     try {
-        while (true) {
-            let [activityItems, cursor] = await _getData();
-            let newOrders = _getNewOrders(activityItems, prevOrders);
+        while(true){ //@todo when got time, create _getBlurSales() and call it here
+            let data = await _getData();
+            let newBlurSales = await _getNewBlurSales(data.activityItems);
 
-            while (newOrders.length > 99 && prevOrders.size > 0) {
-                //catch missed orders
-                [activityItems, cursor] = await _getData(cursor);
-                const additionalOrders = _getNewOrders(activityItems, prevOrders);
-                newOrders.push(...additionalOrders);
+            if(newBlurSales.length==0) {
+                await _waitBasedOn(0);
+                continue
             }
 
-            if (newOrders.length > 0) {
-                //newOrders.forEach((order) => _handleNewOrder(order)); //update db for each
-                // Prepare Data for DB
-                newOrders = newOrders.map((order) => ({
-                    ...order,
-                    owner: order.fromTrader.address,
-                    collection: order.contractAddress,
-                    price: ethers.parseEther(order.price.amount),
-                    type: "SALE",
-                }));
-
-                // Bulk Insert
-                await _handleNewOrders(newOrders);
+            while(newBlurSales.length%100==0 && prevOrders.size>0) {
+                data = await _getData(data.cursor);
+                const missedNewSales = await _getNewBlurSales(data.activityItems);
+                newBlurSales = [...newBlurSales, ...missedNewSales];
             }
 
-            const orderIds = newOrders.map((order) => order.id); //set prevOrders
-            prevOrders = new Set([...Array.from(prevOrders), ...orderIds].slice(-1000)); //hold 1k orders
-            await _waitBasedOn(newOrders.length);
+            prevOrders = new Set([...prevOrders, ...newBlurSales.map((order) => order.id)].slice(-1000)); //store 1k latest
+            _addToDB(newBlurSales);
+            await _waitBasedOn(newBlurSales.length);
         }
+
     } catch (e) {
-        console.error("\nERR: subscribeSells", e);
-        await subscribeSells();
+        console.error("ERR: subSalesBlur", e);
+        await subSalesBlur();
     }
 };
 
@@ -251,6 +277,8 @@ const setup = async () => {
         url: db.api.blur.url.AUTH_GET,
         options: db.api.blur.options.AUTH,
     });
+
+    console.log('dataToSign', dataToSign)
 
     //!!! @todo validate that (here use random wallet, but keep in mind) !!!
     dataToSign.signature = await wallet.signMessage(dataToSign.message);
@@ -276,10 +304,10 @@ const setup = async () => {
 (async function root() {
     try {
         await setup();
-        console.log('setup done', db.var.BLUR_AUTH_TKN)
+        console.log('setup done:', db.var.BLUR_AUTH_TKN)
 
         subSalesBlur();
-        subSalesBidsOs();
+        // subSalesBidsOs();
     } catch (e) {
         console.error("\nERR: root:", e);
         await root();
