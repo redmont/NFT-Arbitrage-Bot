@@ -1,7 +1,7 @@
 const {MongoClient} = require("mongodb");
 const url = "mongodb://localhost:27017";
 const client = new MongoClient(url);
-const dbName = "botNftData";
+const dbName = "BOT_NFT";
 
 const Init = async () => {
     await client.connect();

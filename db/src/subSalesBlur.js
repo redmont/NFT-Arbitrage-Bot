@@ -41,12 +41,60 @@ const subSalesBlur = async () => {
 	console.log(`\n\x1b[38;5;202mSTARTED SUBSCRIBE BLUR SALES\x1b[0m`);
 	var prevOrders = new Set(); //needs that, cuz Blur returns "currOrders" in semi-random order.
 
+	// (5/5)
 	const _waitBasedOn = async (newOrdersLength) => {
 		const toWait = Math.max(0, -10 * newOrdersLength + 500); //0new:500ms; 10new:400ms; ... >=50new:0ms
 		return new Promise((resolve) => setTimeout(resolve, toWait));
 	}
 
-	const _addToDB = async (newBlurSales) => {
+	// (4/5)
+	const _addToSubsDB = async (blurSales) => {
+		const formattedSales = {};
+
+		// 1. Extract all contractAddress and their ids that marketplace === 'BLUR'
+		for (const sale of blurSales) {
+			if (sale.marketplace === 'BLUR') {
+				const { contractAddress, tokenId } = sale;
+				const addr = ethers.getAddress(contractAddress);
+
+				if (!formattedSales[addr]) {
+					formattedSales[addr] = [tokenId];
+				} else {
+					formattedSales[addr].push(tokenId);
+				}
+			}
+		}
+
+		// 2. For each contractAddress, check if it exists in DB
+		const collection = db.mongoDB.collection('SUBS');
+
+		for (const [addr, ids] of Object.entries(formattedSales)) {
+			const existingDoc = await collection.findOne({ _id: addr });
+
+			// 2.1 If exists, check if any new ids
+			if (existingDoc) {
+				const newIds = ids.filter((id) => !existingDoc.id.includes(id));
+
+				// 2.1.1 If new ids, add to DB
+				if (newIds.length > 0) {
+					console.log('should add to DB addr:', addr, 'newIds:', newIds.length)
+					await collection.updateOne(
+						{ _id: addr },
+						{ $push: { id: { $each: newIds } } }
+					);
+				}
+			}
+			// 2.2 If not exists, add to DB
+			else {
+				console.log('should add to DB addr:', addr, 'allIds:', ids.length)
+				await collection.insertOne({ _id: addr, id: ids });
+			}
+		}
+
+	};
+
+	// (3/5)
+	const _addToSalesDB = async (newBlurSales) => {
 		const formattedSales = newBlurSales
 			.map(sale => {
 				const marketplace = sale.marketplace;
@@ -65,48 +113,43 @@ const subSalesBlur = async () => {
 				);
 
 				return {
-					order_hash,
-					price,
-					owner_addr,
+					_id: order_hash,
 					tkn_addr,
 					tkn_id,
+					owner_addr,
+					price,
 					type,
-					raw_sale: sale
+					sale
 				};
 			})
 			.filter(Boolean);
 
 		if (formattedSales.length === 0) return; //can happen if 0 Blur sales
 
-		const collection = db.mongoDB.collection('SALES');
-		const bulkOps = formattedSales.map(sale => ({
-			updateOne: {
-				filter: { order_hash: sale.order_hash },
-				update: { $set: sale },
-				upsert: true
-			}
-		}));
+    const collection = db.mongoDB.collection('SALES');
+    const bulkOps = formattedSales.map(sale => ({
+      updateOne: {
+        filter: { _id: sale._id }, // Use _id instead of order_hash
+        update: { $set: sale },
+        upsert: true
+      }
+    }));
 
-		try {
-			const result = await collection.bulkWrite(bulkOps, { ordered: true });
-			// console.log(`
-			// 	Inserted new BLUR SALES:
-			// 	- upsertedCount: ${result.upsertedCount}
-			// 	- matchedCount: ${result.matchedCount}
-			// 	- modifiedCount: ${result.modifiedCount}
-			// 	- insertedCount: ${result.insertedCount}
-			// `);
-		} catch (err) {
-			console.error('Error during bulkWrite:', err);
-		}
-
-		try {
-			await collection.createIndex({ order_hash: 1 }, { unique: true });
-		} catch (err) {
-			console.error('Error during createIndex:', err);
-		}
+    try {
+      const result = await collection.bulkWrite(bulkOps, { ordered: true });
+      console.log(`
+        Inserted new BLUR SALES SUB:
+        - upsertedCount: ${result.upsertedCount}
+        - matchedCount: ${result.matchedCount}
+        - modifiedCount: ${result.modifiedCount}
+        - insertedCount: ${result.insertedCount}
+      `);
+    } catch (err) {
+      console.error('Error during bulkWrite:', err);
+    }
 	}
 
+	// (2/5)
 	const _getData = async (prevCursor) => {
 		const baseFilter = {
 			count: 100, //or 50 or 25
@@ -123,10 +166,12 @@ const subSalesBlur = async () => {
 		return data
 	};
 
+	// (1/5)
 	const _getNewBlurSales = async (sales) => {
 		return sales.filter(order => !prevOrders.has(order.id)); //can't filter Blur only, cuz !detect amt of missed orders
 	}
 
+	// (0/5)
 	try {
 		while(true){ //@todo when got time, create _getBlurSales() and call it here
 			let data = await _getData();
@@ -144,7 +189,8 @@ const subSalesBlur = async () => {
 			}
 
 			prevOrders = new Set([...prevOrders, ...newBlurSales.map((order) => order.id)].slice(-1000)); //store 1k latest
-			_addToDB(newBlurSales);
+			_addToSalesDB(newBlurSales);
+			_addToSubsDB(newBlurSales);
 			await _waitBasedOn(newBlurSales.length);
 		}
 

@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 const readline = require('readline');
 const uri = 'mongodb://localhost:27017';
 const client = new MongoClient(uri);
-const collection = client.db('botNftData').collection('SUBS');
+const collection = client.db('BOT_NFT').collection('SUBS');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -41,19 +41,11 @@ async function main() {
     await upsertIds(collection, addrA, idB);
   } catch (error) {
     console.error(error);
+  } finally {
+    await client.close();
   }
-  // finally {
-  //   await client.close();
-  // }
 }
 
-const questionAsync = () => {
-  return new Promise((resolve) => {
-    rl.question('Continue? (y/n) ', (answer) => {
-      resolve(answer);
-    });
-  });
-};
 
 async function upsertIds(collection, addr, ids) {
   const existingDoc = await collection.findOne({ _id: addr });
@@ -70,6 +62,14 @@ async function upsertIds(collection, addr, ids) {
     await collection.insertOne({ _id: addr, id: ids });
   }
 }
+
+const questionAsync = () => {
+  return new Promise((resolve) => {
+    rl.question('Continue? (y/n) ', (answer) => {
+      resolve(answer);
+    });
+  });
+};
 
 
 ;(async () => {

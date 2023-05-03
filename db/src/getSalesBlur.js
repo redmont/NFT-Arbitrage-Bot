@@ -1,6 +1,5 @@
 const fetch = require("node-fetch");
 const ethers = require("ethers");
-const readline = require("readline");
 
 const wallet = ethers.Wallet.createRandom();
 const {InitializeDB} = require("./mongo");
@@ -99,52 +98,31 @@ const getSlugsBlur = async () => {
   );
   console.timeEnd("getBlurSlugs");
 };
-
-    //append to blurSalles 10x elements same as some objects but with diff values
     // blurSales = blurSales.concat(blurSales, blurSales, blurSales, blurSales, blurSales, blurSales, blurSales, blurSales, blurSales);
     // console.log('blurSales', blurSales.length)
     //blurSales[0].tokenId = '7777777777777777'
 
 const getSalesBlur = async () => {
-  const _addBlurSalesToSubsDB = async (address, blurSales) => {
-    const idsWithSub = blurSales.map(sale => ({id: sale.tokenId, sub: false}));
-  
+  const _addToSubsDB = async (addr, blurSales) => {
+    const ids = blurSales.map(sale => sale.tokenId);
     const collection = db.mongoDB.collection("SUBS");
-  
-    try {
-      const existingDoc = await collection.findOne({address});
-      if (existingDoc) {
-        const newIdsWithSub = idsWithSub.filter(({id}) => !existingDoc.hasOwnProperty(id));
-        if (newIdsWithSub.length > 0) {
-          const updateObject = newIdsWithSub.reduce((acc, {id, sub}) => {
-            acc[`ids.${id}`] = sub;
-            return acc;
-          }, {});
-  
-          const result = await collection.updateOne(
-            {address},
-            {$set: updateObject}
-          );
-          console.log("result", result);
-        }
-      } else {
-        const idsObject = idsWithSub.reduce((acc, {id, sub}) => {
-          acc[id] = sub;
-          return acc;
-        }, {});
-  
-        const result = await collection.insertOne({address, ids: idsObject});
-        console.log("result", result);
+    const existingDoc = await collection.findOne({ _id: addr });
+
+    if (existingDoc) {
+      const newIds = ids.filter((id) => !existingDoc.id.includes(id));
+      if (newIds.length > 0) {
+        await collection.updateOne(
+          { _id: addr },
+          { $push: { id: { $each: newIds } } }
+        );
       }
-    } catch (error) {
-      console.error("ERR: addBlurSalesToSubsDB:", error);
+    } else {
+      await collection.insertOne({ _id: addr, id: ids });
     }
   };
-  
-
 
   // (4/6)
-  const _addBlurSalesToSalesDB = async (slug, addr, blurSales) => {
+  const _addToSalesDB = async (slug, addr, blurSales) => {
     const formattedSales = blurSales
       .map(sale => {
         const marketplace = sale.price.marketplace;
@@ -163,13 +141,13 @@ const getSalesBlur = async () => {
         );
 
         return {
-          order_hash,
-          price,
-          owner_addr,
-          tkn_addr,
-          tkn_id,
-          type,
-          raw_sale: sale
+					_id: order_hash,
+					tkn_addr,
+					tkn_id,
+					owner_addr,
+					price,
+					type,
+					sale
         };
       })
       .filter(Boolean);
@@ -177,7 +155,7 @@ const getSalesBlur = async () => {
     const collection = db.mongoDB.collection('SALES');
     const bulkOps = formattedSales.map(sale => ({
       updateOne: {
-        filter: { order_hash: sale.order_hash },
+        filter: { _id: sale._id }, // Use _id instead of order_hash
         update: { $set: sale },
         upsert: true
       }
@@ -193,17 +171,7 @@ const getSalesBlur = async () => {
         - insertedCount: ${result.insertedCount}
       `);
     } catch (err) {
-      if (err instanceof MongoBulkWriteError) {
-        console.log('Inserted new sales, err', err.result.insertedCount);
-      } else {
-        console.error('Error during bulkWrite:', err);
-      }
-    }
-
-    try {
-      await collection.createIndex({ order_hash: 1 }, { unique: true });
-    } catch (err) {
-      console.error('Error during createIndex:', err);
+      console.error('Error during bulkWrite:', err);
     }
   };
 
@@ -275,8 +243,8 @@ const getSalesBlur = async () => {
       _updateProgress(SLUG);
       const [blurSales, nftAddr] = await _getSalesBlur(SLUG);
       if(!blurSales) continue
-      // _addBlurSalesToSalesDB(SLUG, nftAddr, blurSales);
-      _addBlurSalesToSubsDB(nftAddr, blurSales)
+      _addToSalesDB(SLUG, nftAddr, blurSales);
+      _addToSubsDB(nftAddr, blurSales)
     } catch (e) {
       console.error("\nERR: getBlurSalesAndOsBids", e);
       continue
@@ -312,111 +280,13 @@ const setup = async () => {
   db.mongoDB = await InitializeDB();
 };
 
-const MongoClient = require('mongodb').MongoClient;
-
-async function upsertSubs(addr, idArray) {
-  const client = await MongoClient.connect('mongodb://localhost:27017', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
-
-  const collection = client.db('testdb').collection('BIDS');
-
-  // Step 1: Create a MongoDB stream that listens for new SUBS and logs them to the console
-  const changeStream = collection.watch();
-  changeStream.on('change', (change) => {
-    console.log(`New SUBS added: ${JSON.stringify(change.fullDocument)}`);
-  });
-
-  // Step 2: Upsert addr & idArray to "SUBS"
-  try {
-    const result = await collection.updateOne(
-      { _id: addr },
-      { $addToSet: { id: { $each: idArray } } },
-      { upsert: true }
-    );
-    console.log(`Upserted ${result.modifiedCount} document(s).`);
-  } catch (error) {
-    console.error(`Error upserting to SUBS: ${error}`);
-  }
-
-  // Step 3: Upsert idArray to "SUBS" again
-  try {
-    const result = await collection.updateOne(
-      { _id: addr },
-      { $addToSet: { id: { $each: idArray } } },
-      { upsert: true }
-    );
-    console.log(`Upserted ${result.modifiedCount} document(s).`);
-  } catch (error) {
-    console.error(`Error upserting to SUBS: ${error}`);
-  }
-
-  // Step 4: Upsert idB to "SUBS"
-  const idB = ['a1', 'b2', 'b3'];
-  try {
-    const result = await collection.updateOne(
-      { _id: addr },
-      { $addToSet: { id: { $each: idB } } },
-      { upsert: true }
-    );
-    console.log(`Upserted ${result.modifiedCount} document(s).`);
-  } catch (error) {
-    console.error(`Error upserting to SUBS: ${error}`);
-  }
-
-  client.close();
-}
-
-const addrA = '0xa';
-const idA = ['a1', 'a2', 'a3'];
-
-upsertSubs(addrA, idA);
-
-
 (async function root() {
   try {
-    const collection = db.mongoDB.collection("SUBS");
-
-    //Step 1. create mongo stream that will listen for new added SUBS and will log them to console
-    const addrA = '0xa'
-    const idA = [
-      'a1',
-      'a2',
-      'a3'
-    ]
-
-    //Step 2. upsert addrA & idA to "SUBS", so it will have structure:
-    /**
-     * add to mongoDB, so it will have structure:
-     * {
-     *   _id: '0xa',
-     *  id: ['a1', 'a2', 'a3']
-     * }
-     */
-
-    //Note:
-    //if some of the ids are already in the db, then don't add them
-    //if all of the ids are already in the db, then don't add anything
-    //if none of the ids are already in the db, then add all of them
-    //if some of the ids are already in the db, then add only those that are not in the db
-    //basically, db should only increase in size, not decrease & stream should only log new ids, not old ones
-
-    //Step 3. upsert again idA, to "SUBS".
-    //Step 4. upsert idB, to "SUBS"
-    const idB = [
-      'a1',
-      'b2',
-      'b3'
-    ]
-
-
-    return
     await setup();
     // await getSlugsBlur(); //don't separate cuz <1m
 
-    db.SLUGS = ['proof-moonbirds'] //4test, 1st 344 ids; 2nd 2865 ids, 3rd 875 ids
-    // db.SLUGS = ['otherdeed', 'proof-moonbirds', 'mutant-ape-yacht-club'] //4test, 1st 344 ids; 2nd 2865 ids, 3rd 875 ids
+    db.SLUGS = ['proof-moonbirds'] //~350 ids
+    // db.SLUGS = ['otherdeed', 'proof-moonbirds', 'mutant-ape-yacht-club'] //4test: (~) 1st 344 ids; 2nd 2865 ids, 3rd 875 ids
     getSalesBlur();
   } catch (e) {
     console.error("\nERR: getSalesBlur root:", e);
