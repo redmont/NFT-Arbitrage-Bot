@@ -8,13 +8,12 @@ const mongoClient = new MongoClient(uri);
 const wallet = ethers.Wallet.createRandom();
 
 const db = {
+	TEST_MODE: true,
 	SUBS: mongoClient.db('BOT_NFT').collection('SUBS'),
 	SALES: mongoClient.db('BOT_NFT').collection('SALES'),
-	var: {
-		TEST_NFT: '0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0',
-		TEST_NFT_ID: '877',
-		BLUR_AUTH_TKN: "",
-	},
+	TEST_NFT: '0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0',
+	TEST_NFT_ID: '877',
+	BLUR_AUTH_TKN: "",
 	api: {
 		blur: {
 			url: {
@@ -54,40 +53,50 @@ const subSalesBlur = async () => {
 
 	// (4/5)
 	const _addToSubsDB = async (blurSales) => {
-		const formattedSales = {};
+		try {
+			const formattedSales = {};
 
-		// 1. Extract all contractAddress and their ids that marketplace === 'BLUR'
-		for (const sale of blurSales) {
-			if (sale.marketplace === 'BLUR') {
-				const { contractAddress, tokenId } = sale;
-				const addr = ethers.getAddress(contractAddress);
+			// 1. Extract all contractAddress and their ids that marketplace === 'BLUR'
+			for (const sale of blurSales) {
+				if (sale.marketplace === 'BLUR') {
+					const { contractAddress, tokenId } = sale;
+					const addr = ethers.getAddress(contractAddress);
 
-				if (!formattedSales[addr]) {
-					formattedSales[addr] = [tokenId];
-				} else {
-					formattedSales[addr].push(tokenId);
+					if (!formattedSales[addr]) {
+						formattedSales[addr] = [tokenId];
+					} else {
+						formattedSales[addr].push(tokenId);
+					}
 				}
 			}
-		}
 
-		// 2. For each contractAddress, check if it exists in DB
-		for (const [addr, ids] of Object.entries(formattedSales)) {
-			const existingDoc = await db.SUBS.findOne({ _id: addr });
+			// 2. For each contractAddress, check if it exists in DB
+			for (const [addr, ids] of Object.entries(formattedSales)) {
+				const existingDoc = await db.SUBS.findOne({ _id: addr });
 
-			// 2.1 If exists, check if any new ids
-			if (existingDoc) {
-				const newIds = ids.filter((id) => !existingDoc.id.includes(id));
+				// 2.1 If exists, check if any new ids
+				let result;
+				if (existingDoc) {
+					const newIds = ids.filter((id) => !existingDoc.id.includes(id));
 
-				// 2.1.1 If new ids, add to DB
-				if (newIds.length > 0) {
-					await db.SUBS.updateOne(
-						{ _id: addr },
-						{ $push: { id: { $each: newIds } } }
-					);
+					// 2.1.1 If new ids, add to DB
+					if (newIds.length > 0) {
+						result = await db.SUBS.updateOne(
+							{ _id: addr },
+							{ $push: { id: { $each: newIds } } }
+						);
+
+						if(db.TEST_MODE) console.log(`Inserted ${result.modifiedCount} into SUBS`);
+					}
+				} else { // 2.2 If not exists, add to DB
+					result = await db.SUBS.insertOne({ _id: addr, id: ids });
+					if(db.TEST_MODE) console.log(`Inserted 1 into SUBS`);
 				}
-			} else { // 2.2 If not exists, add to DB
-				await db.SUBS.insertOne({ _id: addr, id: ids });
 			}
+		} catch (err) {
+			console.error('ERR: _addToSubsDB', err);
+		}	finally {
+			return
 		}
 	};
 
@@ -107,7 +116,7 @@ const subSalesBlur = async () => {
 			return newBlurSales
 				.map(sale => {
 					const marketplace = sale.marketplace;
-					if (marketplace !== 'BLUR') return null //only Blur
+					if (marketplace !== 'BLUR') return null
 
 					const price = ethers.parseEther(sale.price.amount).toString();
 					const addr_seller = ethers.getAddress(sale.fromTrader.address);
@@ -115,6 +124,10 @@ const subSalesBlur = async () => {
 					const id_tkn = sale.tokenId;
 					const listed_date_timestamp = Math.floor(Date.parse(sale.createdAt));
 					const type = 'BLUR_SALE_SUB'
+
+					if(addr_tkn == db.TEST_NFT && id_tkn==db.TEST_NFT_ID) {
+						console.log(`\nDETECTED TEST_NFT ${addr_tkn} ${id_tkn} ${price} ${addr_seller} ${listed_date_timestamp}`);
+					}
 
 					const order_hash = ethers.solidityPackedKeccak256(
 						['address', 'uint256', 'address', 'uint256', 'uint256'],
@@ -135,24 +148,25 @@ const subSalesBlur = async () => {
 		}
 
 		//start
-		const formattedSales = await __getFormattedSales(newBlurSales);
-		if (formattedSales.length === 0) return; //can happen if amt of Blur Sales = 0
-		const filteredSales = await __getFilteredSales(formattedSales);
-		if (filteredSales.length === 0) return; //can happen if all Blur sales already in DB
-
-    const bulkOps = filteredSales.map(sale => ({
-      insertOne: { document: sale }
-    }));
-
     try {
-      const result = await db.SALES.bulkWrite(bulkOps, { ordered: true });
-      console.log(`
-        Inserted new BLUR SALES:
-        - insertedCount: ${result.insertedCount}
-      `);
+			const formattedSales = await __getFormattedSales(newBlurSales);
+			if (formattedSales.length === 0) return; //can happen if amt of Blur Sales = 0
+			const filteredSales = await __getFilteredSales(formattedSales);
+			if (filteredSales.length === 0) return; //can happen if all Blur sales already in DB
+
+			const bulkOps = filteredSales.map(sale => ({
+				insertOne: { document: sale }
+			}));
+
+			const result = await db.SALES.bulkWrite(bulkOps, { ordered: true });
+			if(db.TEST_MODE){
+				console.log(`\nInserted ${result.insertedCount} new BLUR SALES:`);
+			}
     } catch (err) {
-      console.error('Error during bulkWrite:', err);
-    }
+      console.error('ERR during bulkWrite:', err);
+    } finally {
+			return
+		}
 	}
 
 	// (2/5)
@@ -199,7 +213,6 @@ const subSalesBlur = async () => {
 			_addToSubsDB(newBlurSales);
 			await _waitBasedOn(newBlurSales.length);
 		}
-
 	} catch (e) {
 		console.error("ERR: subSalesBlur", e);
 		await subSalesBlur();
@@ -215,7 +228,7 @@ const setup = async () => {
 
 	dataToSign.signature = await wallet.signMessage(dataToSign.message);
 	db.api.blur.options.AUTH.body = JSON.stringify(dataToSign);
-	db.var.BLUR_AUTH_TKN = (
+	db.BLUR_AUTH_TKN = (
 		await apiCall({url: db.api.blur.url.AUTH_SET, options: db.api.blur.options.AUTH})
 	).accessToken;
 
@@ -223,7 +236,7 @@ const setup = async () => {
 	db.api.blur.options.GET = {
 		method: "GET",
 		headers: {
-			authToken: db.var.BLUR_AUTH_TKN,
+			authToken: db.BLUR_AUTH_TKN,
 			walletAddress: wallet.address,
 			"content-type": "application/json",
 		},

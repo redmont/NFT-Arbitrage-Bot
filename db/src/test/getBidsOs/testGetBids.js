@@ -9,19 +9,20 @@ const mongoClient = new MongoClient(uri);
 const OS_KEYS = [process.env.API_OS_0, process.env.API_OS_1]
 
 const db = {
-  MIN_PING: 1000,
-  PING_TOTAL: 0,
-  AMT_CALLS: 0,
   TEST_MODE: true,
-  TEST_NFT_ID: '877',
-  TEST_NFT: '0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0',
+  INITIATED: false,
 
   QUEUE: [],
   BIDS: mongoClient.db('BOT_NFT').collection('BIDS'),
   SUBS: mongoClient.db('BOT_NFT').collection('SUBS'),
 
-  MIN_SELL_TO_PRICE: 10n ** 16n,
+  AMT_CALLS: 0,
+  PING_TOTAL: 0,
+  MIN_PING: 1000,
+  TEST_NFT_ID: '877',
+  TEST_NFT: '0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0',
 
+  MIN_SELL_TO_PRICE: 10n ** 16n,
   MAX_IDS_PER_CALL: 30,
   KEY_CALLS_PER_SEC: 2,
 
@@ -119,6 +120,7 @@ const getKeys = async () => {
 };
 
 const addToBidsDB = async (addr, osBids) => {
+  console.log('\nAdding to BIDS')
   const _getFilteredBids = async (formattedBids) => {
     // Get an array of all existing _id values in the collection
     const existingDocs = await db.BIDS.find({}, { projection: { _id: 1 } }).toArray();
@@ -130,10 +132,8 @@ const addToBidsDB = async (addr, osBids) => {
   }
 
   const _getFormattedBids = async (osBids) => {
-    console.log('\nosBids', osBids);
     return osBids
     .map(bid => {
-      console.log('\n--bid', bid)
       let price = BigInt(bid.current_price);
       for (const osFeeData of bid.protocol_data?.parameters?.consideration) {
         if (osFeeData.itemType <= 1) { //0: ETH, 1: ERC20, 2: ERC721...
@@ -176,24 +176,21 @@ const addToBidsDB = async (addr, osBids) => {
 
   try {
     const result = await db.BIDS.bulkWrite(bulkOps, { ordered: true });
-    console.log(`
-      Inserted new OS BIDS:
-      - insertedCount: ${result.insertedCount}
-    `);
+    // console.log(`
+    //   Inserted new OS BIDS:
+    //   - insertedCount: ${result.insertedCount}
+    // `);
   } catch (err) {
     console.error('Error during bulkWrite:', err);
   }
 };
 
-const processQueue = async ({addr, tknIds}) => {
-  // const [addr, tknIds] = Object.entries(data)[0];
-
-  // 1
-  const _getBatches = async (addr, tknIds) => {
+const getBidsFor = async ({addr, ids}) => {
+  const _getUrlBatches = () => {
     const batches = [];
     const baseURL = db.URL_GET_OFFERS+addr+'&';
-    for (let i = 0; i < tknIds.length; i += db.MAX_IDS_PER_CALL) {
-      const batch = tknIds.slice(i, i + db.MAX_IDS_PER_CALL);
+    for (let i = 0; i < ids.length; i += db.MAX_IDS_PER_CALL) {
+      const batch = ids.slice(i, i + db.MAX_IDS_PER_CALL);
       const batchUrl = baseURL + batch.map(tokenId => `token_ids=${tokenId}`).join('&');
       batches.push(batchUrl);
     }
@@ -201,13 +198,13 @@ const processQueue = async ({addr, tknIds}) => {
   }
 
   // 2
-  const _processBatches = async (batches) => {
+  const _fetchAndStoreBids = async (urlBatches) => {
 		//// 2.1
-		const __processBatch = async (batchCurrKey, batchCurrUrl) => {
-			// !NOTE: No point of calling this function in parallel as
+		const __fetchAndStoreBids = async (batchCurrUrl, batchCurrKey) => {
+			// !NOTE: No point of calling "batchCurrUrl" in parallel as
       //        the next potential call depends on previous call
       //        and will happen only if "data.next" / amtBids>50.
-			const batchResult = []
+			const bids = []
 
       while(true) {
         setKey(batchCurrKey, true, 0);
@@ -215,78 +212,56 @@ const processQueue = async ({addr, tknIds}) => {
         setKey(batchCurrKey, false, ping);
         if(!data) break
 
-        batchResult.push(...data.orders);
+        bids.push(...data.orders);
         if(!data.next) break
 
         batchCurrUrl += '&cursor=' + data.next;
 				batchCurrKey = (await getKeys())[0];
 			}
 
-      return batchResult
+      if(bids.length > 0) {
+        addToBidsDB(addr, bids);
+      }
 		}
 
-		//// 2.0
-		const batchesResults = [];
-
-    while (batches.length > 0) {
+		//// 2.0 divide batches for parallel processing
+    while (urlBatches.length > 0) {
 			const availableKeys = await getKeys();
-      const parallelBatches = Math.min(availableKeys.length, batches.length);
+      const parallelBatches = Math.min(availableKeys.length, urlBatches.length);
 
 			const promises = availableKeys.slice(0, parallelBatches).map((key, index) => {
-				return __processBatch(key, batches[index]);
+				return __fetchAndStoreBids(urlBatches[index], key);
 			});
 
-      const parallelBatchesResult = await Promise.all(promises);
-      parallelBatchesResult.forEach(result => {
-        if (Object.keys(result).length > 0) {
-          batchesResults.push(result);
-        }
-      });
-      batches.splice(0, parallelBatches);
+      await Promise.all(promises);
+      urlBatches.splice(0, parallelBatches);
     }
-
-    return batchesResults;
   }
 
   // 3
-	const _mergeIdsByAddrInQueue = () => {
-		queueLengthBefore = db.QUEUE.length;
+	const _mergeQueueItemsByAddr = () => {
+    db.QUEUE = db.QUEUE.reduce((accumulator, obj) => {
+      const { addr, ids } = obj;
+      const existing = accumulator.find(item => item.addr === addr);
 
-		// Group elements by their addr key and concatenate ids
-		const groupedById = {};
-		db.QUEUE.forEach((obj) => {
-			const { addr, ids } = obj;
-			if (!groupedById[addr]) {
-				groupedById[addr] = [...new Set(ids)];
-			} else {
-				groupedById[addr] = [...new Set([...groupedById[addr], ...ids])];
-			}
-		});
+      if (existing) {
+        existing.ids = [...new Set([...existing.ids, ...ids])];
+      } else {
+        accumulator.push({ addr, ids: [...new Set(ids)] });
+      }
 
-		// Modify original queue with updated elements
-		db.QUEUE = Object.entries(groupedById).map(([addr, ids]) => ({
-			addr,
-			ids,
-		}));
-
-    if(db.QUEUE.length !== queueLengthBefore ) {
-      // console.log(`\nQueue length: ${queueLengthBefore} -> ${db.QUEUE.length}`);
-    }
+      return accumulator;
+    }, []);
 	};
 
   //0
-  const batches = await _getBatches(addr, tknIds);
-  const batchesResults = await _processBatches(batches) ?? null;
+  const urlBatches = _getUrlBatches();
+  await _fetchAndStoreBids(urlBatches); //w8 to !exceed API limit
 
-  // if(!batchesResults) return
-  // addToBidsDB(addr, batchesResults);
-
-  // 4 Remove from processed from queue, merge, and execute next item if available
-  db.QUEUE.shift();
+  db.QUEUE.shift(); //remove processed addr
   if (db.QUEUE.length > 0) {
-    // _mergeIdsByAddrInQueue();
-    // console.log('<-Finished queue.\n -> Processing next element, queue length: ', db.QUEUE.length + '....');
-    processQueue(db.QUEUE[0]);
+    _mergeQueueItemsByAddr(); //e.g. if new ids added to same addr during subSales
+    getBidsFor(db.QUEUE[0]);
   } else {
     console.log('\nPROCESSED ALL QUEUES.');
   }
@@ -297,59 +272,47 @@ const extractData = async (next) => {
   //also can extract db name and collection from: "next.ns: { db: 'BOT_NFT', coll: 'SUBS' }"
   try{
     const addr = next.documentKey._id;
-    var newTknIDs = [];
+    var ids = [];
 
     switch(next.operationType) {
       case 'insert':
-        newTknIDs = next.fullDocument.id;
+        ids = next.fullDocument.id;
         break;
       case 'update':
-        newTknIDs = Object.values(next.updateDescription?.updatedFields);
+        ids = Object.values(next.updateDescription?.updatedFields);
         break;
     }
 
-    if(!addr || !newTknIDs || newTknIDs.length === 0) return;
-    // console.log(`\nAddress: ${addr} updated with IDs: ${newTknIDs}`);
-    return {[addr]: newTknIDs};
-  } catch (error) {
-    console.error('\nERR extractData: ', error);
+    if(!addr || !ids || ids?.length === 0) return;
+    return { addr, ids };
+  } catch (err) {
+    console.error('\nERR extractData: ', err);
     return;
   }
 }
 
 ;(async function root() {
-  try{
-    const subs = JSON.parse(fs.readFileSync('./subs.json', 'utf8'));
-    subs.forEach((obj) => {
-      const addr = obj._id;
-      const tknIds = obj.id;
-      db.QUEUE.push({ addr, tknIds });
-    })
+  try {
+    if(!db.INITIATED){
+      const subsArray = await db.SUBS.find().toArray();
+      db.QUEUE.push(...subsArray.map(doc => ({ addr: doc._id, ids: doc.id })));
+      db.INITIATED = true;
+      getBidsFor(db.QUEUE[0]);
+    }
 
-    processQueue(db.QUEUE[0]);
-  } catch (error) {
-    console.error('\nERR root: ', error);
-    process.exit(0);
-    // await root();
+    db.streamSUBS = db.SUBS.watch().on('change', async (next) => {
+      const data = await extractData(next);
+      if(!data) return;
+
+      db.QUEUE.push(data);
+
+      if(db.QUEUE.length === 1) {
+        getBidsFor(db.QUEUE[0]);
+      } //else recursive
+    });
+
+  } catch (e) {
+    console.error("\nERR: getBidsOs root:", e);
+    await root();
   }
-
-  // try {
-  //   db.streamSUBS = db.SUBS.watch().on('change', async (next) => {
-  //     const data = await extractData(next);
-  //     if(!data) return;
-
-  //     db.QUEUE.push(data);
-  //     // console.log('QUEUE:', db.QUEUE.length)
-  //     // console.log('QUEUE:', db.QUEUE)
-  //     if(db.QUEUE.length === 1) {
-  //       // console.time('start')
-  //       processQueue(db.QUEUE[0]);
-  //       // console.timeEnd('start')
-  //     } //else exec in processQueue
-  //   });
-
-  // } catch (e) {
-  //   console.error("\nERR: getBidsOs root:", e);
-  //   await root();
-  // }
 })();
