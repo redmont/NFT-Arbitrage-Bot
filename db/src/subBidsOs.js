@@ -6,7 +6,7 @@ const { MongoClient } = require('mongodb');
 const uri = 'mongodb://localhost:27017';
 const mongoClient = new MongoClient(uri);
 
-const TEST_MODE = false
+const TEST_MODE = true
 
 const osClient = new OpenSeaStreamClient({
   token: process.env.API_OS,
@@ -85,19 +85,17 @@ const addToBidsDB = async (bid) => {
     //chain if addr to approve
     const protocol_address = ethers.getAddress(bid.payload.protocol_address);
     if(!db.var.ADDR_SEAPORT.includes(protocol_address)) { //to avoid surprises
-      console.log('ERR: protocol_address!=SeaPort:', protocol_address, '\nbid:', bid);
+      console.log('ERR: protocol_address!=SEAPORT:', protocol_address, '\nbid:', bid);
       return
     }
 
     const addr_tkn = ethers.getAddress(bid.payload?.protocol_data?.parameters?.consideration[0]?.token);
     const id_tkn = bid.payload?.protocol_data?.parameters?.consideration[0]?.identifierOrCriteria;
 
-    //check if were matching blur sale
-    if (!await db.SUBS.findOne({ _id: addr_tkn, id: { $elemMatch: { $eq: id_tkn } } })) {
+    //check if there's a matching blur sale
+    if (!await db.SUBS.findOne({_id: addr_tkn, id: {$elemMatch: {$eq: id_tkn}}}, {projection: {_id: 1}})) {
       return;
     }
-
-    console.log('found in subs')
 
     //check if potential profit higher than fees
     let price = BigInt(bid.payload.base_price);
@@ -107,7 +105,7 @@ const addToBidsDB = async (bid) => {
       }
     }
 
-    if (price <= db.var.MIN_SELL_TO_PRICE) return; //2small
+    if (!TEST_MODE && price <= db.var.MIN_SELL_TO_PRICE) return; //2small
     price = price.toString();
 
     return [
@@ -128,7 +126,7 @@ const addToBidsDB = async (bid) => {
     if (existingBid) return
 
     const result = await db.BIDS.insertOne(formattedBid);
-    console.log('Inserted bid, result: ', result);
+    console.log('Inserted bid, result: ', result)
   } catch (e) {
     console.error("\nERR: addToBidsDB:", e);
     return;

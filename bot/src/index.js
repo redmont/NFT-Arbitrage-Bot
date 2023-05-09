@@ -1,32 +1,37 @@
-const { MongoClient } = require('mongodb');
 const fetch = require('node-fetch');
 const ethers = require('ethers');
 
 const provider = new ethers.AlchemyProvider("homestead", process.env.API_ALCHEMY);
 const wallet = new ethers.Wallet(process.env.PK_0, provider);
+
+const { MongoClient } = require('mongodb');
 const uri = 'mongodb://localhost:27017';
-
-const mongoClient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const mongoClient = new MongoClient(uri);
 const TEST_MODE = true
-
-const osClient = new OpenSeaStreamClient({
-	token: process.env.API_OS,
-	networkName: "mainnet",
-	connectOptions: {
-			transport: WebSocket,
-	},
-	onError: (error) => console.error("ERR: osClient", error),
-	logLevel: 1,
-});
-
 
 /**
  * @todo
- * [x] case0: buyBlur, sellDex;
- * [ ] case1: buyDex, sellDex
-*/
+ * [ ] consider pre-validate in stream, not exec
+ * [ ] support add to queue validate arb, so that i fees go lower, re-exec
+ * [ ] todo function to log compressed data in validate
+ * [ ] validate conduict
+ *
+ * [ ] TEST:
+ * 		 [ ] subStreamSale
+ * 		 	  [x] getSale (should that be tested?)
+ * 		 	  [x] subSale (via app)
+ * 		 			 [x] bid exists in BIDS
+ * 		 [ ] subStreamBid
+ * 		 	  [x] subBid (via app)
+ * 					 [x] bid exists in SALES
+ * 		 	  [ ] getBid (bid not in BIDS)
+ * 		 			 [x] after getSale add new to SUBS
+ * 		 			 [ ] after subSale new new to SUBS ---- not tested, seems like it returns multiple times for the same
+ */
 
 const db = {
+	SALES: mongoClient.db('BOT_NFT').collection('SALES'),
+	BIDS: mongoClient.db('BOT_NFT').collection('BIDS'),
 	var: {
 		TEST_NFT: '0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0',
 		TEST_NFT_ID: '877',
@@ -54,9 +59,15 @@ const db = {
 	},
 	addr: {
 		COINBASE: "0xEcAfdDDcc85BCFa4a4aB8F72a543391c7474F35E",
-		SEAPORT: "0x00000000000001ad428e4906aE43D8F9852d0dD6",
 		CONDUCIT_CONTROLER: "0x00000000F9490004C11Cef243f5400493c00Ad63",
     WETH: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+		SEAPORT: [
+      '0x00000000006c3852cbEf3e08E8dF289169EdE581', //1.1
+      '0x00000000000006c7676171937C444f6BDe3D6282', //1.2
+      '0x0000000000000aD24e80fd803C6ac37206a45f15', //1.3
+      '0x00000000000001ad428e4906aE43D8F9852d0dD6', //1.4
+      '0x00000000000000ADc04C56Bf30aC9d3c0aAF14dC', //1.5
+    ]
 	},
   api: {
 		os: {
@@ -142,7 +153,7 @@ const db = {
 }
 
 //4
-const execArb = async (arbData) => {
+const execArb = async (buyFrom, sellTo) => {
 	//(7/7)
 	const _sendBundle = async bundle => {
 		const __callBundle = async bundle => {
@@ -214,7 +225,7 @@ const execArb = async (arbData) => {
 	}
 
 	//(6/7)
-	const _getBundle = async (_buyBlurData, _sellOsData, _estProfitGross) => {
+	const _getBundle = async (buyBlurData, sellOsData, estProfitGross) => {
 		const __getConduitAddr = _conduitKey => {
 			const addr_in_hash = ethers.solidityPackedKeccak256(
 				['bytes1', 'address', 'bytes32', 'bytes32'],
@@ -246,39 +257,42 @@ const execArb = async (arbData) => {
 
 		console.log('\nPreparing unsigned TXs...')
 		const nonce = await provider.getTransactionCount(wallet.address)
-		const sell_os_params = _sellOsData?.transaction?.input_data?.parameters
+		const sell_os_params = sellOsData?.transaction?.input_data?.parameters
 		const addr_conduict = __getConduitAddr(sell_os_params.offererConduitKey)
-		const tx1_to = _buyBlurData?.buys[0]?.txnData?.to
+		const tx1_to = buyBlurData?.buys[0]?.txnData?.to
 
 		//values
-		const tx1_value = BigInt(_buyBlurData?.buys[0]?.txnData?.value?.hex)
+		const tx1_value = BigInt(buyBlurData?.buys[0]?.txnData?.value?.hex)
 
-		let tx4_amt_withdrawETH = tx1_value+_estProfitGross
-		let tx5_value = (_estProfitGross * db.var.VALIDATOR_FEE_BPS) / 10000n
+		let tx4_amt_withdrawETH = tx1_value+estProfitGross
+		let tx5_value = (estProfitGross * db.var.VALIDATOR_FEE_BPS) / 10000n
 
 		if (TEST_MODE){
 			tx4_amt_withdrawETH = tx1_value
 			tx5_value = 7n
 		}
 
-		const estProfitNet = _estProfitGross - tx5_value
+		const estProfitNet = estProfitGross - tx5_value
 
 		if(!TEST_MODE && estProfitNet<=0n) {
-			console.log('\n\x1b[38;5;202m Profit 2small: _getBundleType, estProfitNet<=0n\x1b[0m', ethers.formatEther(estProfitNet));
+			console.log('\nERR _getBundle: profit 2small', ethers.formatEther(estProfitGross));
+			console.log('buyBlurData', buyBlurData);
+			console.log('sellOsData', sellOsData);
+			console.log('todo, add to queue')
 			return false
 		}
 
 		//calldata
-		const tx1_calldata = _buyBlurData?.buys[0]?.txnData?.data
+		const tx1_calldata = buyBlurData?.buys[0]?.txnData?.data
 		const tx2_calldata = db.interface.NFT.encodeFunctionData('setApprovalForAll', [addr_conduict, true])
-		const tx3_calldata = db.interface.SEAPORT.encodeFunctionData(_sellOsData?.transaction?.function, [sell_os_params])
+		const tx3_calldata = db.interface.SEAPORT.encodeFunctionData(sellOsData?.transaction?.function, [sell_os_params])
 		const tx4_calldata = db.interface.WETH.encodeFunctionData('withdraw', [tx4_amt_withdrawETH])
 
 		const tx1_buyBlur = {
 			to: tx1_to,
 			data: tx1_calldata,
 			value: tx1_value,
-			gasLimit: db.var.EST_GAS_SWAP, //_buyBlurData.buys[0].gasEstimate+10000,
+			gasLimit: db.var.EST_GAS_SWAP, //buyBlurData.buys[0].gasEstimate+10000,
 			nonce: nonce
 		}
 
@@ -291,7 +305,7 @@ const execArb = async (arbData) => {
 		}
 
 		const tx3_sellOs = {
-			to: db.addr.SEAPORT, //hardcode to avoid surprises
+			to: sellOsData?.transaction?.to,
 			data: tx3_calldata,
 			value: 0,
 			gasLimit: db.var.EST_GAS_SWAP,
@@ -334,8 +348,8 @@ const execArb = async (arbData) => {
 
 		if(signed_tx5_sendToCoinbase) bundle.push(signed_tx5_sendToCoinbase)
 
-		const nft_addr = _buyBlurData?.buys[0]?.includedTokens[0]?.contractAddress
-		const nft_id = _buyBlurData?.buys[0]?.includedTokens[0]?.tokenId
+		const nft_addr = buyBlurData?.buys[0]?.includedTokens[0]?.contractAddress
+		const nft_id = buyBlurData?.buys[0]?.includedTokens[0]?.tokenId
 		console.log(`\n\n\x1b[32m
 			Attempting to execute arb with estProfitNet: ${ethers.formatEther(estProfitNet)} ETH
 			for: https://etherscan.io/nft/${nft_addr}/${nft_id}
@@ -345,27 +359,34 @@ const execArb = async (arbData) => {
 	}
 
 	//(5/7)
-	const _validateArb = async (sellTo, buyBlurData, sellOsData) => {
+	const _validateArb = async (buyFrom, sellTo, buyBlurData, sellOsData) => {
+		console.log('\nbuyBlurData', buyBlurData)
+		//recheck values based on returned data
 		const buyLowBlurPrice = BigInt(buyBlurData.buys[0].txnData.value.hex)
 
-		// (if buyLowBlurPrice > db.var.MAX_NOT_WHITELISTED) check if collection whitelisted
+		//@todo (if buyLowBlurPrice > db.var.MAX_NOT_WHITELISTED) check if collection whitelisted
 
-		let sellHighOsPrice = BigInt(sellOsData.transaction.input_data.parameters.offerAmount) //re-check
+		let sellToPrice = BigInt(sellOsData.transaction.input_data.parameters.offerAmount) //re-check
 		for(const osFee of sellOsData?.orders[0]?.parameters?.consideration){
-			sellHighOsPrice -= BigInt(osFee.endAmount) //@todo for diff order type than basic, need to calc based on time
+			sellToPrice -= BigInt(osFee.endAmount) //@todo for diff order type than basic, need to calc based on time
 		}
 
-		const estProfitGross = sellHighOsPrice - buyLowBlurPrice - db.var.MIN_PROFIT;
+		const estProfitGross = sellToPrice - buyLowBlurPrice - db.var.MIN_PROFIT;
 
 		if(!TEST_MODE && estProfitGross<=0n) {
-			console.log('\n\x1b[38;5;202m Profit 2small: _validateArb, estProfitGross<=0n\x1b[0m', ethers.formatEther(estProfitGross));
+			console.log('\nERR _validateARb: profit 2small', ethers.formatEther(estProfitGross));
+			console.log('buyFrom', buyFrom);
+			console.log('sellTo', sellTo);
+			console.log('buyBlurData', buyBlurData);
+			console.log('sellOsData', sellOsData);
+			console.log('todo, add to queue')
 			return false
 		}
 
 		//validate NFT addr
 		if(
 			(
-				ethers.getAddress(sellTo.payload?.protocol_data?.parameters?.consideration[0]?.token)
+				ethers.getAddress(buyFrom.addr_tkn)
 				!==
 				ethers.getAddress(sellOsData?.transaction?.input_data.parameters.considerationToken)
 			)
@@ -378,9 +399,10 @@ const execArb = async (arbData) => {
 		) {
 			console.error(
 				`\n\x1b[38;5;202mERR: _validateArb, NFT ADDR not same!
-				\npayload: ${sellTo.payload}
-				\nsellOsData: ${sellOsData}
-				\nbuyBlurData: ${buyBlurData}\x1b[0m`
+				\nbuyFrom: ${buyFrom}
+				\nsellTo: ${sellTo}
+				\nbuyBlurData: ${buyBlurData}\x1b[0m
+				\nsellOsData: ${sellOsData}`
 			);
 			return false
 		}
@@ -388,7 +410,7 @@ const execArb = async (arbData) => {
 		//validate NFT id
 		if(
 			(
-				sellTo.payload?.protocol_data?.parameters?.consideration[0]?.identifierOrCriteria
+				buyFrom.id_tkn
 				!==
 				sellOsData?.transaction?.input_data?.parameters?.considerationIdentifier
 			)
@@ -401,17 +423,18 @@ const execArb = async (arbData) => {
 		) {
 			console.error(
 				`\n\x1b[38;5;202mERR: _validateArb, NFT ID not same!
-				\npayload: ${sellTo.payload}
-				\nsellOsData: ${sellOsData}
-				\nbuyBlurData: ${buyBlurData}\x1b[0m`
+				\nbuyFrom: ${buyFrom}
+				\nsellTo: ${sellTo}
+				\nbuyBlurData: ${buyBlurData}\x1b[0m
+				\nsellOsData: ${sellOsData}`
 			);
 			return false
 		}
 
 		//check os addr to
-		if(ethers.getAddress(sellOsData?.transaction?.to) !== db.addr.SEAPORT) {
-			console.error(
-				`\n\x1b[38;5;202mERR: _validateArb, addrTo not to SEAPORT 1.4., instead: ${sellOsData?.transaction?.to}\x1b[0m`);
+		const target = ethers.getAddress(sellOsData?.transaction?.to)
+		if(!db.addr.SEAPORT.includes(target)){
+			console.log('ERR, validateArb, addr to approve SEAPORT', sellOsData?.transaction?.to)
 			return false
 		}
 
@@ -419,21 +442,21 @@ const execArb = async (arbData) => {
 	}
 
 	//(4/7)
-	const _getSellOsData = async (addr, id, sellTo) => {
+	const _getSellOsData = async (sellTo) => {
 		console.log('Getting sell data from OS...')
 
 		db.api.os.bidData.options.body = JSON.stringify({
 			offer: {
-				hash: sellTo.payload.order_hash,
+				hash: sellTo._id,
 				chain: 'ethereum', //sellTo.payload.item?.chain?.name,
-				protocol_address: db.addr.SEAPORT //sellTo.payload?.protocol_address
+				protocol_address: sellTo.bid.protocol_address //sellTo.payload?.protocol_address
 			},
 			fulfiller: {
-				address: wallet?.address,
+				address: wallet.address,
 			},
 			consideration: {
-				asset_contract_address: addr,
-				token_id: id
+				asset_contract_address: sellTo.addr_tkn,
+				token_id: sellTo.id_tkn
 			}
 		})
 
@@ -450,18 +473,18 @@ const execArb = async (arbData) => {
 	}
 
 	//(3/7)
-	const _getBuyBlurData = async (addr, id, buyFrom) => {
-		const url = `http://127.0.0.1:3000/v1/buy/${addr.toLowerCase()}?fulldata=true`;
+	const _getBuyBlurData = async (buyFrom) => {
+		const url = `http://127.0.0.1:3000/v1/buy/${buyFrom.addr_tkn.toLowerCase()}?fulldata=true`;
 
 		db.api.blur.options.POST.body = JSON.stringify({
 			tokenPrices: [
 				{
 					isSuspicious: false, //tknIdBlurData.token.isSuspicious,
 					price: {
-						amount: buyFrom.price.amount, //tknIdBlurData.token.price.amount,
-						unit: "ETH", //tknIdBlurData.token.price.unit,
+						amount: buyFrom.sale.price.amount, //tknIdBlurData.token.price.amount,
+						unit: "ETH", //sale.sale.price.unit
 					},
-					tokenId: id //tknIdBlurData.token.tokenId,
+					tokenId: buyFrom.id_tkn //tknIdBlurData.token.tokenId,
 				},
 			],
 			userAddress: wallet.address,
@@ -474,252 +497,168 @@ const execArb = async (arbData) => {
 		return buyFromBlurData
 	}
 
-	// //(2/7) probably don't need cuz now getting full mplace data
-	// const _getMarketplace = async (addr, id, buyFrom) => {
-	// 	if (buyFrom.marketplace) return buyFrom.marketplace
-
-	// 	console.log('\nMaking a call to get marketplace...')
-	// 	const url = `http://127.0.0.1:3000/v1/collections/${addr.toLowerCase()}/tokens/${id}`
-	// 	const data = await apiCall({ url, options: db.api.blur.options.GET });
-	// 	console.log('\n...marketplace:', data?.token?.price?.marketplace)
-	// 	return data?.token?.price?.marketplace
-	// }
-
 	//(1/7)
-	const _preValidate = async (_arbData) => {
-		const buyFrom = _arbData[0]
-		const sellTo = _arbData[1]
-		// buyFrom - 'xxx'
-		// sellTo - {event_type: 'item_received_bid', payload: {...}, signature: null, priceNet: ''}
-		const addr = ethers.getAddress(sellTo.payload?.protocol_data?.parameters?.consideration[0]?.token);
-		const id = sellTo.payload?.protocol_data?.parameters?.consideration[0]?.identifierOrCriteria;
-
-
-		//@todo detect types of buyFrom (e.g. new sales, or getNFT check)
-		const buyFromPrice = ethers.parseEther(buyFrom.price.amount)
-		const sellToPrice = ethers.parseEther(sellTo.priceNet)
-
-		if(buyFromPrice > db.var.CURR_WALLET_BALANCE) {
+	const _preValidate = async (buyFrom, sellTo) => {
+		if(BigInt(buyFrom.price) > db.var.CURR_WALLET_BALANCE) {
+			console.log('\nSALE PRICE TOO HIGH, SKIPPING...')
+			console.log('sale.price', sellTo.price)
+			console.log('db.var.CURR_WALLET_BALANCE', db.var.CURR_WALLET_BALANCE)
+			console.log('sellTo', sellTo)
+			console.log('buyFrom', buyFrom)
 			return //can't afford to buy
 		}
-
-		const preEstProfitGross = sellToPrice - buyFromPrice - db.var.MIN_PROFIT;
-
-		if(preEstProfitGross<=0n) {
-			return //@todo add to queue & each when fees are low, check if can execute profitable (and delete once expired)
-		}
-
-		return [
-			addr,
-			id,
-			buyFrom,
-			sellTo
-		]
+		return true
 	}
 
 	//(0/7)
-	for(let i = 0; i < arbData.length; i++) {
-		const [ addr, id, buyFrom, sellTo] = await _preValidate(arbData[i]) ?? [];
-		if (!addr) return
+	if (!await _preValidate(buyFrom, sellTo)) return
 
-		//@todo update ↓↓↓ when dex-dex, probably don't need anymore, but ensure
-		// const marketplace = await _getMarketplace(addr, id, buyFrom)
-		// if(marketplace!=='BLUR') return
+	const buyBlurData = await _getBuyBlurData(buyFrom) ?? {};
+	if(!buyBlurData) return
 
-		const buyBlurData = await _getBuyBlurData(addr, id, buyFrom) ?? {};
-		if(!buyBlurData) return
+	const sellOsData = await _getSellOsData(sellTo) ?? {};
+	if(!sellOsData) return
 
-		const sellOsData = await _getSellOsData(addr, id, sellTo) ?? {};
-		if(!sellOsData) return
+	const estProfitGross = await _validateArb(buyFrom, sellTo, buyBlurData, sellOsData)
+	if(!estProfitGross) return
 
-		const estProfitGross = await _validateArb(sellTo, buyBlurData, sellOsData)
-		if(!estProfitGross) return
+	const bundle = await _getBundle(buyBlurData, sellOsData, estProfitGross) ?? {};
+	if(!bundle) return
 
-		const bundle = await _getBundle(buyBlurData, sellOsData, estProfitGross) ?? {};
-		if(!bundle) return
+	await _sendBundle(bundle)
+}
 
-		await _sendBundle(bundle)
+//3
+const subBidsGetSales = async () => {
+	const _getArbSales = async (bid) => {
+		// get all matching sales
+		const matchingSalesCursor = db.SALES.find({
+			addr_tkn: bid.addr_tkn,
+			id_tkn: bid.id_tkn,
+		}); //can't price cuz string=>BigInt
+
+		// filter sales that are lower than bid price
+		const arbSales = (await matchingSalesCursor.toArray()).filter((sale) => {
+			const bidPrice = BigInt(bid.price);
+			const salePrice = BigInt(sale.price);
+
+			// return bidPrice < salePrice; //@todo 4test
+			return bidPrice > salePrice;
+		});
+
+		if(bid.addr_tkn === db.var.TEST_NFT){
+			console.log('arbSales', arbSales)
+		}
+		// delete sales that have the same owner and price as another sale
+		arbSales.forEach((sale, i) => {
+			arbSales.forEach((sale2, i2) => {
+				if (sale.addr_seller === sale2.addr_seller && sale.price === sale2.price && i !== i2) {
+					arbSales.splice(i, 1);
+				}
+			});
+		});
+
+		if(bid.addr_tkn === db.var.TEST_NFT){
+			console.log('arbSales', arbSales)
+		}
+
+		// sort sales by lowest (to buy) price
+		arbSales.sort((a, b) => { //need that, cuz string=>BigInt
+			const aPrice = BigInt(a.price);
+			const bPrice = BigInt(b.price);
+			if (aPrice < bPrice) return 1;
+			if (aPrice > bPrice) return -1;
+			return 0;
+		});
+
+		return arbSales;
+	}
+
+	try {
+		db.streamBIDS.on('change', async (raw_bid) => {
+			if (!raw_bid || raw_bid.operationType !== 'insert' || !raw_bid.fullDocument) return;
+
+			const bid = raw_bid.fullDocument;
+			const sales = await _getArbSales(bid);
+			console.log('\nsales', sales)
+
+			for (const sale of sales) {
+				execArb(sale, bid)
+			}
+		});
+	} catch (err) {
+		console.error('ERR: subSalesGetBids', err);
+		await new Promise(resolve => setTimeout(resolve, 1000));
+		await subBidsGetSales();
 	}
 }
 
 //3
-const getArbDataFromDB_full = async () => {
-	// if(db.var.STARTED) return false //4test interval
-	// db.var.STARTED = true
-	try {
-		await mongoClient.connect();
-		console.log('Connected to MongoDB');
+const subSalesGetBids = async () => {
+	const _getArbBids = async (sale) => {
+		// get all matching bids
+		const matchingBidsCursor = db.BIDS.find({
+			addr_tkn: sale.addr_tkn,
+			id_tkn: sale.id_tkn,
+		}); //can't price cuz string=>BigInt
 
-		const dbBids = mongoClient.db('BOT_NFT').collection('BIDS');
+		// console.log('matchingBidsCursor', matchingBidsCursor)
 
-		const streamSales = dbSales.watch();
+		// filter bids that are lower than sale price
+		const arbBids = (await matchingBidsCursor.toArray()).filter((bid) => {
+			const bidPrice = BigInt(bid.price);
+			const salePrice = BigInt(sale.price);
 
-		const dbSales = mongoClient.db('BOT_NFT').collection('SALES');
-		const streamBids = dbBids.watch();
-
-		streamSales.on('change', async (sale) => {
-			const matchingBids = await dbBids.find({
-				$and: [
-					{ id: sale.fullDocument?.tokenId },
-					{ id: db.var.TEST_NFT_ID },
-					{
-						addr: {
-							$regex: sale.fullDocument?.contractAddress,
-							$options: 'i', // Case-insensitive flag
-						},
-					},
-					{
-						addr: {
-							$regex: db.var.TEST_NFT,
-							$options: 'i', // Case-insensitive flag
-						},
-					},
-				],
-			}).toArray();
-
-			const salePriceBigInt = BigInt(sale.fullDocument.price);
-			const filteredBids = matchingBids.filter(bid => {
-				const bidPriceBigInt = BigInt(bid.priceNet);
-				return bidPriceBigInt > salePriceBigInt;
-			});
-
-			// If matching documents are found in the dbBids collection, log the sale and process them
-			if (filteredBids.length > 0) {
-				console.log('\nFound matching bids in streamSales:', sale);
-				filteredBids.forEach(matchingBid => {
-					// Process each matching bid here
-					console.log('Matching bid:', matchingBid);
-				});
-			}
+			// return bidPrice < salePrice; //@todo 4test
+			return bidPrice > salePrice;
 		});
 
-		streamBids.on('change', async (bid) => {
-			const matchingSales = await dbSales.find({
-				$and: [
-					{ tokenId: bid.fullDocument?.id },
-					{ tokenId: db.var.TEST_NFT_ID },
-					{
-						contractAddress: {
-							$regex: bid.fullDocument?.addr,
-							$options: 'i', // Case-insensitive flag
-						},
-					},
-					{
-						contractAddress: {
-							$regex: db.var.TEST_NFT,
-							$options: 'i', // Case-insensitive flag
-						},
-					},
-				],
-			}).toArray();
-
-			const bidPriceBigInt = BigInt(bid.fullDocument.priceNet);
-			const filteredSales = matchingSales.filter(sale => {
-				const salePriceBigInt = BigInt(sale.price);
-				return salePriceBigInt < bidPriceBigInt;
+		// delete bids that have the same owner and price as another bid
+		arbBids.forEach((bid, i) => {
+			arbBids.forEach((bid2, i2) => {
+				if (bid.addr_buyer === bid2.addr_buyer && bid.price === bid2.price && i !== i2) {
+					arbBids.splice(i, 1);
+				}
 			});
+		});
 
-			if (filteredSales.length > 0) {
-				console.log('\nFound matching sales in streamBids:', bid);
-				filteredSales.forEach(matchingSale => {
-					console.log('Matching sale:', matchingSale);
-				});
+		// sort bids by highest (to sell) price
+		arbBids.sort((a, b) => { //need that, cuz string=>BigInt
+			const aPrice = BigInt(a.price);
+			const bPrice = BigInt(b.price);
+			if (aPrice < bPrice) return -1;
+			if (aPrice > bPrice) return 1;
+			return 0;
+		});
+
+		return arbBids;
+	}
+
+	try {
+		db.streamSALES.on('change', async (raw_sale) => {
+			if (!raw_sale || raw_sale.operationType !== 'insert' || !raw_sale.fullDocument) return;
+
+			const sale = raw_sale.fullDocument
+			const bids = await _getArbBids(sale);
+
+			if(!bids.length) return
+			console.log('\ngot bid/s...')
+
+			for (const bid of bids) {
+				execArb(sale, bid);
 			}
-		}
-	);
+		})
 
 	} catch (err) {
-		console.error('Failed to connect to MongoDB', err);
+		console.error('ERR: subSalesGetBids', err);
+		await new Promise(resolve => setTimeout(resolve, 1000));
+		await subSalesGetBids();
 	}
+
 }
 
-const subBidsOs = async () => {
-	const handleBasicOffer = async (event) => {
-			if (event.payload?.item?.chain?.name !== "ethereum") return;
-
-			const addr = ethers.getAddress(
-					event.payload?.protocol_data?.parameters?.consideration[0]?.token
-			);
-			const id = event.payload?.protocol_data?.parameters?.consideration[0]?.identifierOrCriteria;
-
-			if(TEST_MODE){
-					if (addr !== db.var.TEST_NFT || id !== db.var.TEST_NFT_ID) return
-					console.log(`\n\x1b[38;5;202mSTARTED SUBSCRIBE OS BIDS\x1b[0m`)
-			}
-
-			let sellToPrice = BigInt(event.payload.base_price);
-
-			for (const osFeeData of event.payload?.protocol_data?.parameters.consideration) {
-					if (osFeeData.itemType <= 1) {
-							//0: ETH, 1: ERC20, 2: ERC721...
-							sellToPrice -= BigInt(osFeeData.startAmount);
-					}
-			}
-
-			if(!TEST_MODE && sellToPrice <= db.var.MIN_SELL_TO_PRICE) return; //2small
-
-			//@todo: get data from db about blur sale, check price & exec arb
-			const matchingSales = db.var.SALES.find(sale => {
-					return sale.tkn_addr === addr && sale.tkn_id === id;
-			}).sort((a, b) => {
-					return BigInt(a.price) - BigInt(b.price);
-			})
-
-
-			if(!matchingSales.length) return; //2no matching sales
-			// const filteredSales = matchingSales.filter(sale => {
-			// 	const salePriceBigInt = BigInt(sale.price);
-			// 	return salePriceBigInt < sellToPrice;
-			// });
-
-			// if(!filteredSales.length) return; //2no matching sales
-
-			// console.log(`\n\x1b[38;5;202mFOUND MATCHING SALES\x1b[0m: ${filteredSales}`)
-			// for (const sale of filteredSales) {
-			// 	await execArb(sale, event);
-			// }
-	};
-
-	const handleCollectionOffer = async (event) => {
-			//@todo add to db
-	};
-
-	const handleTraitOffer = async (event) => {
-			//@todo add to db
-	};
-
-	const handleItemListed = async (event) => {
-			//@todo add to db
-	};
-
-	//→→→ STARTS HERE ←←←
-	try {
-			osClient.onEvents("*", db.var.OS_SUB_EVENTS, async event => {
-					process.stdout.write(`\r\x1b[38;5;12mSUBSCRIBE OS BIDS\x1b[0m: ${++db.var.count}`);
-
-					switch (event.event_type) {
-							case EventType.ITEM_RECEIVED_BID:
-									handleBasicOffer(event);
-									break;
-							// case EventType.COLLECTION_OFFER:
-							//     handleCollectionOffer(event);
-							//     break;
-							// case EventType.TRAIT_OFFER:
-							//     handleTraitOffer(event);
-							//     break;
-							// case EventType.ITEM_LISTED:
-							//     handleItemListed(event);
-							//     break;
-					}
-			});
-	} catch (e) {
-			console.error("ERR: subscribeSells", e);
-			await subBidsOs();
-	}
-};
-
 //2
-const subscribeBlocks = async () => {
+const subBlocks = async () => {
 	try{
 		provider.on('block', async blockNum => { //for next
 			db.var.BLOCK_NUM = blockNum
@@ -746,6 +685,41 @@ const subscribeBlocks = async () => {
 
 //1
 const setup = async () => {
+	function _isValidDataToSign(dataToSign) {
+		// Check if dataToSign has all required properties
+		if (
+			!dataToSign.hasOwnProperty('message') ||
+			!dataToSign.hasOwnProperty('walletAddress') ||
+			!dataToSign.hasOwnProperty('expiresOn') ||
+			!dataToSign.hasOwnProperty('hmac')
+		) {
+			return false;
+		}
+
+		// Check if the message starts with 'Sign in to Blur'
+		if (!dataToSign.message.startsWith('Sign in to Blur')) {
+			return false;
+		}
+
+		// Check if the wallet address is valid
+		try {
+			ethers.getAddress(dataToSign.walletAddress)==wallet.address;
+		} catch (error) {
+			return false;
+		}
+
+		// Check if expiresOn is a valid ISO 8601 string
+		if (isNaN(Date.parse(dataToSign.expiresOn))) {
+			return false;
+		}
+
+		// Check if hmac is a valid 64-character hexadecimal string
+		if (!/^([A-Fa-f0-9]{64})$/.test(dataToSign.hmac)) {
+			return false;
+		}
+
+		return true;
+	}
 	/// SETUP BLOCK DATA ///
 	db.var.BLOCK_NUM = await provider.getBlockNumber()
 	db.var.FEE = await provider.getFeeData()
@@ -754,6 +728,12 @@ const setup = async () => {
 
 	/// SETUP BLUR AUTH TKN ///
 	const dataToSign = await apiCall({url: db.api.blur.url.AUTH_GET, options: db.api.blur.options.AUTH})
+
+	if (!_isValidDataToSign(dataToSign)) { //in case if proxy provider is malicious
+		console.error('\nERR: _isValidDataToSign', dataToSign)
+		process.exit()
+	}
+
 	dataToSign.signature = await wallet.signMessage(dataToSign.message)
 	db.api.blur.options.AUTH.body = JSON.stringify(dataToSign)
 	db.var.BLUR_AUTH_TKN = (await apiCall({url: db.api.blur.url.AUTH_SET, options: db.api.blur.options.AUTH})).accessToken
@@ -779,8 +759,8 @@ const setup = async () => {
     },
   };
 
-	await mongoClient.connect();
-	db.var.SALES = mongoClient.db('BOT_NFT').collection('SALES');
+	db.streamSALES = db.SALES.watch();
+	db.streamBIDS = db.BIDS.watch();
 }
 
 //0
@@ -795,26 +775,12 @@ const apiCall = async ({url, options}) => {
 
 ;(async function root() {
 	try {
-		await setup() //1-time
-		subscribeBlocks()
-		//sub os bids here, then for each new read sale from db, check arb & exec
-
-		//\/ get new sale/bid, get sale/bid from db, check arb, exec
-		await getArbDataFromDB_full()
+		await setup()
+		subBlocks()
+		// subSalesGetBids()
+		subBidsGetSales()
 	} catch (e) {
 		console.error('\nERR: root:', e)
 		await root()
 	}
-})();
-
-(async function root() {
-  try {
-  	await setup();
-
-		await getSlugsBlur();
-		//save to db
-  } catch (e) {
-  	console.error("\nERR: root:", e);
-  	await root();
-  }
 })();

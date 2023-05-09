@@ -1,17 +1,23 @@
 const fetch = require("node-fetch");
 const ethers = require("ethers");
+const fs = require("fs");
+
+const { MongoClient } = require('mongodb');
+const uri = 'mongodb://localhost:27017';
+const mongoClient = new MongoClient(uri);
 
 const wallet = ethers.Wallet.createRandom();
-const {InitializeDB} = require("./mongo");
-
 const TEST_MODE = false;
 
 const db = {
+  TO_SAVE: {},
+  SLUGS: [],
+  SUBS: mongoClient.db('BOT_NFT').collection('SUBS'),
+  SALES: mongoClient.db('BOT_NFT').collection('SALES'),
   var: {
     BLUR_AUTH_TKN: "",
-    PROGRESS_GET_ID_PERCENT: 0,
     PROGRESS_GET_ID: 0,
-    START_TIME_GET_SALES_AND_BIDS: 0,
+    START_TIME_GET_SALES_AND_BIDS: Math.floor(Date.now() / 1000),
     NFT_COUNT: 0,
   },
   api: {
@@ -32,7 +38,6 @@ const db = {
       },
     },
   },
-  SLUGS: []
 };
 
 const apiCall = async ({url, options}) => {
@@ -98,81 +103,92 @@ const getSlugsBlur = async () => {
   );
   console.timeEnd("getBlurSlugs");
 };
-    // blurSales = blurSales.concat(blurSales, blurSales, blurSales, blurSales, blurSales, blurSales, blurSales, blurSales, blurSales);
-    // console.log('blurSales', blurSales.length)
-    //blurSales[0].tokenId = '7777777777777777'
 
 const getSalesBlur = async () => {
   const _addToSubsDB = async (addr, blurSales) => {
-    const ids = blurSales.map(sale => sale.tokenId);
-    const collection = db.mongoDB.collection("SUBS");
-    const existingDoc = await collection.findOne({ _id: addr });
+    const ids = blurSales
+      .filter(sale => sale.price.marketplace === "BLUR")
+      .map(sale => sale.tokenId);
+
+    const existingDoc = await db.SUBS.findOne({ _id: addr }, { projection: { id: 1 } });
 
     if (existingDoc) {
       const newIds = ids.filter((id) => !existingDoc.id.includes(id));
       if (newIds.length > 0) {
-        await collection.updateOne(
+        await db.SUBS.updateOne(
           { _id: addr },
           { $push: { id: { $each: newIds } } }
         );
       }
     } else {
-      await collection.insertOne({ _id: addr, id: ids });
+      await db.SUBS.insertOne({ _id: addr, id: ids });
     }
   };
 
   // (4/6)
   const _addToSalesDB = async (slug, addr, blurSales) => {
-    const formattedSales = blurSales
-      .map(sale => {
-        const marketplace = sale.price.marketplace;
-        if (marketplace !== 'BLUR') return null
+    const __getFilteredSales = async (formattedSales) => {
+      // Get an array of all existing _id values in the collection
+      const existingDocs = await db.SALES.find({}, { projection: { _id: 1 } }).toArray();
+      const existingIds = existingDocs.map(doc => doc._id);
 
-        const price = ethers.parseEther(sale.price.amount).toString();
-        const owner_addr = ethers.getAddress(sale.owner.address);
-        const tkn_addr = ethers.getAddress(addr);
-        const tkn_id = sale.tokenId;
-        const listed_date_timestamp = Math.floor(Date.parse(sale.price.listedAt));
-        const type = 'BLUR_SALE_GET'
+      // Filter out formattedSales that have an existing _id in the database
+      const filteredSales = formattedSales.filter(sale => !existingIds.includes(sale._id));
+      return filteredSales;
+    }
 
-        const order_hash = ethers.solidityPackedKeccak256(
-          ['address', 'uint256', 'address', 'uint256', 'uint256'],
-          [tkn_addr, tkn_id, owner_addr, price, listed_date_timestamp]
-        );
+    const __getFormattedSales = async (addr, blurSales) => {
+      return blurSales
+        .map(sale => {
+          const marketplace = sale.price.marketplace;
+          if (marketplace !== 'BLUR') return null
 
-        return {
-					_id: order_hash,
-					tkn_addr,
-					tkn_id,
-					owner_addr,
-					price,
-					type,
-					sale
-        };
-      })
-      .filter(Boolean);
+          const price = ethers.parseEther(sale.price.amount).toString();
+          const addr_seller = ethers.getAddress(sale.owner.address);
+          const addr_tkn = ethers.getAddress(addr);
+          const id_tkn = sale.tokenId;
+          const time_start = Math.floor(Date.parse(sale.price.listedAt));
+          const type = 'BLUR_SALE_GET'
 
-    const collection = db.mongoDB.collection('SALES');
-    const bulkOps = formattedSales.map(sale => ({
-      updateOne: {
-        filter: { _id: sale._id }, // Use _id instead of order_hash
-        update: { $set: sale },
-        upsert: true
-      }
+          const order_hash = ethers.solidityPackedKeccak256(
+            ['address', 'uint256', 'address', 'uint256', 'uint256'],
+            [addr_tkn, id_tkn, addr_seller, price, time_start]
+          );
+
+          return {
+            _id: order_hash,
+            addr_tkn,
+            id_tkn,
+            addr_seller,
+            price,
+            type,
+            sale
+          };
+        })
+        .filter(Boolean);
+    }
+
+    //start
+    const formattedSales = await __getFormattedSales(addr, blurSales);
+    if(formattedSales.length === 0) return;
+    const filteredSales = await __getFilteredSales(formattedSales);
+    if(filteredSales.length === 0) return;
+
+    const bulkOps = filteredSales.map(sale => ({
+      insertOne: { document: sale }
     }));
 
     try {
-      const result = await collection.bulkWrite(bulkOps, { ordered: true });
-      console.log(`
-        Inserted new BLUR SALES for ${slug}:
-        - upsertedCount: ${result.upsertedCount}
-        - matchedCount: ${result.matchedCount}
-        - modifiedCount: ${result.modifiedCount}
-        - insertedCount: ${result.insertedCount}
-      `);
+      const result = await db.SALES.bulkWrite(bulkOps, { ordered: true });
+      // console.log(`
+      //   Inserted new BLUR SALES for ${slug}:
+      //   - insertedCount: ${result.insertedCount}
+      // `);
     } catch (err) {
       console.error('Error during bulkWrite:', err);
+      return
     }
+    return
   };
 
   // (3/6)
@@ -225,7 +241,7 @@ const getSalesBlur = async () => {
 
   // (1/6)
   const _updateProgress = (slug) => {
-    let percent = Math.round((++db.var.PROGRESS_GET_ID / db.SLUGS.length * 100));
+    var percent = Math.round((++db.var.PROGRESS_GET_ID / db.SLUGS.length * 100));
     if (percent > 100) percent = 100;
 
     const currTime = Math.floor(Date.now() / 1000);
@@ -233,18 +249,18 @@ const getSalesBlur = async () => {
     const timeDiffStr = new Date(timeDiff * 1000).toISOString().substr(11, 8);
 
     process.stdout.write(`\r\x1B[2K ID progress: ${percent}%;  time: ${timeDiffStr};  ${slug}`);
-    db.var.PROGRESS_GET_ID_PERCENT = percent;
+    return
   };
 
   // (0/6)
   console.log("\x1b[33m%s\x1b[0m", "\nSTARTED COLLECTING BLUR SALES");
-  for (const SLUG of db.SLUGS) {
+  for (const slug of db.SLUGS) {
     try {
-      _updateProgress(SLUG);
-      const [blurSales, nftAddr] = await _getSalesBlur(SLUG);
+      _updateProgress(slug);
+      const [blurSales, addrTkn] = await _getSalesBlur(slug);
       if(!blurSales) continue
-      _addToSalesDB(SLUG, nftAddr, blurSales);
-      _addToSubsDB(nftAddr, blurSales)
+      _addToSalesDB(slug, addrTkn, blurSales);
+      _addToSubsDB(addrTkn, blurSales)
     } catch (e) {
       console.error("\nERR: getBlurSalesAndOsBids", e);
       continue
@@ -275,19 +291,34 @@ const setup = async () => {
       "content-type": "application/json",
     },
   };
-
-  // DB CLIENT
-  db.mongoDB = await InitializeDB();
 };
 
 (async function root() {
   try {
+    // await db.SUBS.deleteMany({}); //clear db
     await setup();
-    // await getSlugsBlur(); //don't separate cuz <1m
+    await getSlugsBlur(); //don't separate cuz <1m
 
-    db.SLUGS = ['proof-moonbirds'] //~350 ids
-    // db.SLUGS = ['otherdeed', 'proof-moonbirds', 'mutant-ape-yacht-club'] //4test: (~) 1st 344 ids; 2nd 2865 ids, 3rd 875 ids
-    getSalesBlur();
+    // db.SLUGS = ['otherdeed'] //4test: (~) 1st 344 ids; 2nd 2865 ids, 3rd 875 ids
+    // db.SLUGS = ['yes-ser'] //testcase
+    // db.SLUGS = ['otherdeed'] //~350 ids
+    // console.time('start')
+    //save SLUGS to ./slugs.json
+
+    // db.SLUGS = ['proof-moonbirds', 'mutant-ape-yacht-club', 'otherdeed'] //4test: (~) 1st 344 ids; 2nd 2865 ids, 3rd 875 ids
+    const start = performance.now();
+    //delete all slugs until finds window-exe
+    console.log('slugs legth before:', db.SLUGS.length)
+    db.SLUGS = db.SLUGS.slice(db.SLUGS.indexOf('degendwarfs')) //last slug b4 err
+    console.log('slugs legth after:', db.SLUGS.length)
+    // return
+    await getSalesBlur();
+    // slugsJson = JSON.stringify(db.SLUGS, null, 2)
+    // fs.writeFileSync('./slugs.json', slugsJson)
+    // return
+    const end = performance.now();
+    console.log('time:', (end - start), 'ms')
+    // console.timeEnd('start')
   } catch (e) {
     console.error("\nERR: getSalesBlur root:", e);
     await root();

@@ -31,6 +31,7 @@
   - [ ] Allow transferring data for `vps1` via SSH
 - [ ] Cleaner
   - [ ] Remove expired data from db
+- [ ] Remember: if sends 2x sets of txs, then increment nonce (send all txs with permutations of nonces)
 
 ## Project Diagram 🔧
 
@@ -74,7 +75,6 @@ sudo mongod --port 27017 --dbpath /var/lib/mongodb --replSet rs0 --bind_ip local
 ```
 robo3t
 ```
-
 
 ## Git Commit Types :construction_worker:
 

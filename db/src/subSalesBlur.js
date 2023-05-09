@@ -1,10 +1,15 @@
-const {InitializeDB} = require("./mongo");
 const fetch = require("node-fetch");
 const ethers = require("ethers");
+
+const { MongoClient } = require('mongodb');
+const uri = 'mongodb://localhost:27017';
+const mongoClient = new MongoClient(uri);
 
 const wallet = ethers.Wallet.createRandom();
 
 const db = {
+	SUBS: mongoClient.db('BOT_NFT').collection('SUBS'),
+	SALES: mongoClient.db('BOT_NFT').collection('SALES'),
 	var: {
 		TEST_NFT: '0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0',
 		TEST_NFT_ID: '877',
@@ -66,10 +71,8 @@ const subSalesBlur = async () => {
 		}
 
 		// 2. For each contractAddress, check if it exists in DB
-		const collection = db.mongoDB.collection('SUBS');
-
 		for (const [addr, ids] of Object.entries(formattedSales)) {
-			const existingDoc = await collection.findOne({ _id: addr });
+			const existingDoc = await db.SUBS.findOne({ _id: addr });
 
 			// 2.1 If exists, check if any new ids
 			if (existingDoc) {
@@ -77,71 +80,74 @@ const subSalesBlur = async () => {
 
 				// 2.1.1 If new ids, add to DB
 				if (newIds.length > 0) {
-					console.log('should add to DB addr:', addr, 'newIds:', newIds.length)
-					await collection.updateOne(
+					await db.SUBS.updateOne(
 						{ _id: addr },
 						{ $push: { id: { $each: newIds } } }
 					);
 				}
-			}
-			// 2.2 If not exists, add to DB
-			else {
-				console.log('should add to DB addr:', addr, 'allIds:', ids.length)
-				await collection.insertOne({ _id: addr, id: ids });
+			} else { // 2.2 If not exists, add to DB
+				await db.SUBS.insertOne({ _id: addr, id: ids });
 			}
 		}
-
 	};
 
 	// (3/5)
 	const _addToSalesDB = async (newBlurSales) => {
-		const formattedSales = newBlurSales
-			.map(sale => {
-				const marketplace = sale.marketplace;
-				if (marketplace !== 'BLUR') return null //only Blur
+		const __getFilteredSales = async (formattedSales) => {
+      // Get an array of all existing _id values in the collection
+      const existingDocs = await db.SALES.find({}, { projection: { _id: 1 } }).toArray();
+      const existingIds = existingDocs.map(doc => doc._id);
 
-				const price = ethers.parseEther(sale.price.amount).toString();
-				const owner_addr = ethers.getAddress(sale.fromTrader.address);
-				const tkn_addr = ethers.getAddress(sale.contractAddress);
-				const tkn_id = sale.tokenId;
-				const listed_date_timestamp = Math.floor(Date.parse(sale.createdAt));
-				const type = 'BLUR_SALE_SUB'
+      // Filter out formattedSales that have an existing _id in the database
+      const filteredSales = formattedSales.filter(sale => !existingIds.includes(sale._id));
+      return filteredSales;
+		}
 
-				const order_hash = ethers.solidityPackedKeccak256(
-					['address', 'uint256', 'address', 'uint256', 'uint256'],
-					[tkn_addr, tkn_id, owner_addr, price, listed_date_timestamp]
-				);
+		const __getFormattedSales = async (newBlurSales) => {
+			return newBlurSales
+				.map(sale => {
+					const marketplace = sale.marketplace;
+					if (marketplace !== 'BLUR') return null //only Blur
 
-				return {
-					_id: order_hash,
-					tkn_addr,
-					tkn_id,
-					owner_addr,
-					price,
-					type,
-					sale
-				};
-			})
-			.filter(Boolean);
+					const price = ethers.parseEther(sale.price.amount).toString();
+					const addr_seller = ethers.getAddress(sale.fromTrader.address);
+					const addr_tkn = ethers.getAddress(sale.contractAddress);
+					const id_tkn = sale.tokenId;
+					const listed_date_timestamp = Math.floor(Date.parse(sale.createdAt));
+					const type = 'BLUR_SALE_SUB'
 
-		if (formattedSales.length === 0) return; //can happen if 0 Blur sales
+					const order_hash = ethers.solidityPackedKeccak256(
+						['address', 'uint256', 'address', 'uint256', 'uint256'],
+						[addr_tkn, id_tkn, addr_seller, price, listed_date_timestamp]
+					);
 
-    const collection = db.mongoDB.collection('SALES');
-    const bulkOps = formattedSales.map(sale => ({
-      updateOne: {
-        filter: { _id: sale._id }, // Use _id instead of order_hash
-        update: { $set: sale },
-        upsert: true
-      }
+					return {
+						_id: order_hash,
+						addr_tkn,
+						id_tkn,
+						addr_seller,
+						price,
+						type,
+						sale
+					};
+				})
+				.filter(Boolean);
+		}
+
+		//start
+		const formattedSales = await __getFormattedSales(newBlurSales);
+		if (formattedSales.length === 0) return; //can happen if amt of Blur Sales = 0
+		const filteredSales = await __getFilteredSales(formattedSales);
+		if (filteredSales.length === 0) return; //can happen if all Blur sales already in DB
+
+    const bulkOps = filteredSales.map(sale => ({
+      insertOne: { document: sale }
     }));
 
     try {
-      const result = await collection.bulkWrite(bulkOps, { ordered: true });
+      const result = await db.SALES.bulkWrite(bulkOps, { ordered: true });
       console.log(`
-        Inserted new BLUR SALES SUB:
-        - upsertedCount: ${result.upsertedCount}
-        - matchedCount: ${result.matchedCount}
-        - modifiedCount: ${result.modifiedCount}
+        Inserted new BLUR SALES:
         - insertedCount: ${result.insertedCount}
       `);
     } catch (err) {
@@ -207,7 +213,6 @@ const setup = async () => {
 		options: db.api.blur.options.AUTH,
 	});
 
-	//!!! @todo validate that (here use random wallet, but keep in mind) !!!
 	dataToSign.signature = await wallet.signMessage(dataToSign.message);
 	db.api.blur.options.AUTH.body = JSON.stringify(dataToSign);
 	db.var.BLUR_AUTH_TKN = (
@@ -223,9 +228,6 @@ const setup = async () => {
 			"content-type": "application/json",
 		},
 	};
-
-	// DB CLIENT
-	db.mongoDB = await InitializeDB();
 };
 
 (async function root() {
