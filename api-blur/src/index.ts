@@ -16,42 +16,68 @@ export async function main(options: ApplicationConfig = {}) {
   await app.start();
 
   ;(async ()=>{
-    // const url = "http://xnmldktr:p980i7e5knud@185.199.229.156:7492";
+    const url1 = "http://xnmldktr:p980i7e5knud@185.199.229.156:7492";
     // const proxyUrl = "http://user-sps2v0tyzc-country-us-city-ashburn-sessionduration-30:qW3aVSn6buop47Ndfj@gate.smartproxy.com:10000" //sticky 30m (stop after 30m)
     // const proxyUrl = "http://tJCulVRS:NFA7dwKimBCANhgm5mEaiBBpeFHNGXEy72mfAxUOM1y0CiOJf8PqI65rrwyxrpKQ3s3Pb@ustr16.p.ap2.me:49000" //rotating
     // const proxyUrl = "http://tJCulVRS:NFA7dwKimBCANhgm5mEaiBBpeFHNGXEy72mfAxUOM1y0CiOJf8PqI65rrwyxrpKQ3s3Pb-uw3SY85h@ustr16.p.ap2.me:49006" //sticky
     // const proxyUrl = "http://user-sps2v0tyzc-country-us-city-ashburn:qW3aVSn6buop47Ndfj@gate.smartproxy.com:7000" //rotating (stop after 10m)
 
     const proxies = [
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.205:24972',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.206:46983',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.207:52014',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.208:16031',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.209:14893',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.210:5482',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.211:56966',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.212:36301',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.213:14739',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.214:58027',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.215:30662',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.216:40265',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.217:7160',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.218:10687',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.219:49121',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.220:52213',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.221:51264',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.222:54986',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.223:44013',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.224:52829',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.225:40341',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.226:54218',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.227:6286',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.228:9566',
-      'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.229:30710'
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.205:24972',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.206:46983',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.207:52014',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.208:16031',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.209:14893',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.210:5482',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.211:56966',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.212:36301',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.213:14739',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.214:58027',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.215:30662',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.216:40265',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.217:7160',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.218:10687',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.219:49121',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.220:52213',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.221:51264',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.222:54986',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.223:44013',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.224:52829',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.225:40341',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.226:54218',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.227:6286',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.228:9566',
+      'http://cus_NrUtR6CVdKk5Ux:ie94797f@64.50.179.229:30710'
     ]
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.205:24972',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.206:46983',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.207:52014',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.208:16031',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.209:14893',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.210:5482',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.211:56966',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.212:36301',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.213:14739',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.214:58027',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.215:30662',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.216:40265',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.217:7160',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.218:10687',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.219:49121',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.220:52213',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.221:51264',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.222:54986',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.223:44013',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.224:52829',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.225:40341',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.226:54218',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.227:6286',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.228:9566',
+      // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.229:30710'
 
 
     const proxyURL = await proxyChain.anonymizeProxy(proxies[0])
+    // const proxyURL = await proxyChain.anonymizeProxy(url1)
 
     const browser = await puppeteer.launch({
       headless: true,
