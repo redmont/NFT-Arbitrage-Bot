@@ -168,18 +168,19 @@ const addToSalesDB = async (newBlurSales) => {
 const subSalesBlur = async () => {
 	console.log(`\n\x1b[38;5;202mSTARTED SUBSCRIBE BLUR SALES\x1b[0m`);
 
-	// (5/5)
+	// (4/4)
 	const _waitBasedOn = async (newOrdersLength) => {
 		const toWait = Math.max(0, -10 * newOrdersLength + 500); //0new:500ms; 10new:400ms; ... >=50new:0ms
 		return new Promise((resolve) => setTimeout(resolve, toWait));
 	}
 
+	// (3/4)
 	const _addToDBs = async (newBlurSales) => {
 		addToSalesDB(newBlurSales);
 		addToSubsDB(newBlurSales);
 	}
 
-	// (2/5)
+	// (2/4)
 	const _getData = async (prevCursor) => {
 		const baseFilter = {
 			count: 100, //or 50 or 25
@@ -196,15 +197,12 @@ const subSalesBlur = async () => {
 		return data
 	};
 
-	// (1/5)
+	// (1/4)
 	const _getNewBlurSales = async (sales) => {
 		return sales.filter(order => !db.PREV_SALES.has(order.id)); //can't filter Blur only, cuz !detect amt of missed orders
 	}
 
-	// (0/5)
-	let count = 0
-	let loopCount = 0
-	let start = performance.now()
+	// (0/4)
 	try {
 		while(true){
 			let data = await _getData();
@@ -219,24 +217,13 @@ const subSalesBlur = async () => {
 
 			while(newBlurSales.length%100==0 && db.PREV_SALES.size>0) {
 				data = await _getData(data.cursor);
-				process.stdout.write(`\rcount ${++count} current: ${data.activityItems[0].createdAt}, len: ${newBlurSales.length}`);
 				const missedNewSales = await _getNewBlurSales(data.activityItems);
 				_addToDBs(missedNewSales);
 				newBlurSales = [...newBlurSales, ...missedNewSales];
 			}
 
-			///edit that
-			// db.PREV_SALES = new Set([...db.PREV_SALES, ...arrA.slice(0, 4)]);
 			db.PREV_SALES = new Set([...db.PREV_SALES, ...newBlurSales.slice(0, 1000).map((order) => order.id)].slice(-1000));
-			// db.PREV_SALES = new Set([...db.PREV_SALES, ...newBlurSales.slice(-1000).map((order) => order.id)]);
-			// db.PREV_SALES = new Set([...db.PREV_SALES, ...newBlurSales.map((order) => order.id)].slice(-1000)); //store 1k latest
 			await _waitBasedOn(newBlurSales.length);
-
-			if(++loopCount>=2){
-				const end = performance.now()
-				console.log(`\n${newBlurSales.length} new Blur sales added in ${(end - start) / 1000} seconds`);
-				process.exit(0)
-			}
 		}
 	} catch (e) {
 		console.error("ERR: subSalesBlur", e);
