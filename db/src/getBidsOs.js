@@ -8,7 +8,7 @@ const mongoClient = new MongoClient(uri);
 const OS_KEYS = [process.env.API_OS_0, process.env.API_OS_1]
 
 const db = {
-  TEST_MODE: true,
+  TEST_MODE: false,
   INITIATED: false,
 
   QUEUE: [],
@@ -243,7 +243,7 @@ const getBidsFor = async ({addr, ids}) => {
   }
 
   // 3
-	const _mergeQueueItemsByAddr = () => {
+	const _mergeQueueItemsByAddr = async () => {
     db.QUEUE = db.QUEUE.reduce((accumulator, obj) => {
       const { addr, ids } = obj;
       const existing = accumulator.find(item => item.addr === addr);
@@ -265,7 +265,7 @@ const getBidsFor = async ({addr, ids}) => {
   // 4
   db.QUEUE.shift(); //remove processed addr
   if (db.QUEUE.length > 0) {
-    _mergeQueueItemsByAddr(); //e.g. if new ids added to same addr during subSales
+    await _mergeQueueItemsByAddr(); //e.g. if new ids added to same addr during subSales
     getBidsFor(db.QUEUE[0]);
   } else {
     console.log('\nPROCESSED ALL QUEUES.');

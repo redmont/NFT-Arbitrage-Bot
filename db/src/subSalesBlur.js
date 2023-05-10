@@ -8,7 +8,7 @@ const mongoClient = new MongoClient(uri);
 const wallet = ethers.Wallet.createRandom();
 
 const db = {
-	TEST_MODE: true,
+	TEST_MODE: false,
 	SUBS: mongoClient.db('BOT_NFT').collection('SUBS'),
 	SALES: mongoClient.db('BOT_NFT').collection('SALES'),
 	TEST_NFT: '0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0',
@@ -72,6 +72,7 @@ const subSalesBlur = async () => {
 
 			// 2. For each contractAddress, check if it exists in DB
 			for (const [addr, ids] of Object.entries(formattedSales)) {
+				if(ids.length == 0) continue;
 				const existingDoc = await db.SUBS.findOne({ _id: addr });
 
 				// 2.1 If exists, check if any new ids
@@ -88,7 +89,8 @@ const subSalesBlur = async () => {
 
 						if(db.TEST_MODE) console.log(`Inserted ${result.modifiedCount} into SUBS`);
 					}
-				} else { // 2.2 If not exists, add to DB
+					// 2.2 If not exists, add to DB
+				} else {
 					result = await db.SUBS.insertOne({ _id: addr, id: ids });
 					if(db.TEST_MODE) console.log(`Inserted 1 into SUBS`);
 				}

@@ -76,7 +76,7 @@ export async function main(options: ApplicationConfig = {}) {
       // 'http://cus_NrUtR6CVdKk5Ux:6479b2h7@64.50.179.229:30710'
 
 
-    const proxyURL = await proxyChain.anonymizeProxy(proxies[0])
+    const proxyURL = await proxyChain.anonymizeProxy(proxies[1])
     // const proxyURL = await proxyChain.anonymizeProxy(url1)
 
     const browser = await puppeteer.launch({

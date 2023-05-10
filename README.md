@@ -6,9 +6,10 @@
 
 - [x] `subSalesBlur` (get & save to `SALES` & `SUBS`)
 - [x] `getSalesBlur` (get & save to `SALES` & `SUBS`)
-- [ ] `subBidsOs` (get, if in `SUBS`, save to `BIDS`)
-- [ ] `getBidsOs` (listen `SUBS` stream, get & save to `BIDS`)
+- [x] `subBidsOs` (get, if in `SUBS`, save to `BIDS`)
+- [x] `getBidsOs` (listen `SUBS` stream, get & save to `BIDS`)
 - [ ] VPS setup
+  - [ ] setup systemctl
 - [ ] Cleaner
   - [ ] Remove expired data from db
 - [ ] Remember: if sends 2x sets of txs, then increment nonce (send all txs with permutations of nonces)
@@ -44,6 +45,30 @@ sudo mongod --port 27017 --dbpath /var/lib/mongodb --replSet rs0 --bind_ip local
 robo3t
 ```
 
+#### DB VPS commands:
+
+Enter mongo terminal
+```
+mongosh
+```
+
+Connect to DB
+```
+use BOT_NFT
+```
+
+Print each collection name, count and size:
+```
+db.getCollectionNames().forEach(function(collName) {
+    var coll = db.getCollection(collName);
+    var stats = coll.stats();
+    var count = coll.count();
+    var sizeInMB = stats.size / (1024 * 1024);
+    print(collName + " (" + count + " elements): " + sizeInMB.toFixed(2) + " MB");
+});
+```
+
+
 ## Git Commit Types :construction_worker:
 
 - :sparkles: `feat`: A new feature
@@ -58,3 +83,15 @@ robo3t
 - :x: `revert`: Reverting a previous commit
 
 Let's go! :muscle:
+
+Provide command to collect all "addr_tkn" and "id_tkn" fields from "SALES" collection, and then add it to a new collection "SUBS1" in such format:
+{
+  _id: "addr_tkn":
+  id: [
+    "id_tkn",
+    ...
+  ]
+}
+
+if "SALES" will have same "addr_tkn" and same "id_tkn", take only first one and ignore rest.
+if "SALES" will have same "addr_tkn" and different "id_tkn", then merge id_tkn with existing addr_tkn.

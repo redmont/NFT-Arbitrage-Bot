@@ -8,7 +8,7 @@ const mongoClient = new MongoClient(uri);
 const wallet = ethers.Wallet.createRandom();
 
 const db = {
-  TEST_MODE: true,
+  TEST_MODE: false,
   SLUGS: [],
   TO_SAVE: {},
 
