@@ -10,7 +10,6 @@ const mongoClient = new MongoClient(uri);
 
 /**
  * @todo
- * add support in stream for update (curr is for insert only)
  * [ ] processQueue (instructions in function)
  * [ ] TEST:
  * 		 [ ] subSalesGetBids
