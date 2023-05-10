@@ -184,7 +184,11 @@ const getSalesBlur = async () => {
       if(filteredSales.length === 0) return;
 
       const bulkOps = filteredSales.map(sale => ({
-        insertOne: { document: sale }
+        updateOne: {
+          filter: { _id: sale._id },
+          update: { $set: sale },
+          upsert: true,
+        },
       }));
 
       const result = await db.SALES.bulkWrite(bulkOps, { ordered: true });
