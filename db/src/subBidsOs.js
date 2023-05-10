@@ -18,6 +18,7 @@ const osClient = new OpenSeaStreamClient({
 
 const db = {
   TEST_MODE: false,
+  INITIATED: false,
 
   SUBS: mongoClient.db('BOT_NFT').collection('SUBS'),
   BIDS: mongoClient.db('BOT_NFT').collection('BIDS'),
@@ -122,6 +123,17 @@ const addToBidsDB = async (bid) => {
 
 (async function root() {
   try {
+    if(!db.INITIATED){
+      while(true) {
+        const count = await db.SUBS.countDocuments();
+        if(count >= 12811) {
+          await new Promise(resolve => setTimeout(resolve, 600000));
+          db.INITIATED = true;
+          break
+        }
+        await new Promise(resolve => setTimeout(resolve, 5000));
+      }
+    }
 
     osClient.onEvents("*", db.OS_SUB_EVENTS, async event => {
       if(db.TEST_MODE){
