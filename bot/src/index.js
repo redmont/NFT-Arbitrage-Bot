@@ -7,31 +7,32 @@ const wallet = new ethers.Wallet(process.env.PK_0, provider);
 const { MongoClient } = require('mongodb');
 const uri = 'mongodb://localhost:27017';
 const mongoClient = new MongoClient(uri);
-const TEST_MODE = true
 
 /**
  * @todo
+ * add support in stream for update (curr is for insert only)
+ * [ ] processQueue (instructions in function)
+ * [ ] TEST:
+ * 		 [ ] subSalesGetBids
+ * 		 	  [ ] sale via subSalesBlur (exec test via blur app, matching bid must already exist in BIDS, use TEST_NFT)
+ * 		 [ ] subBidsGetSales
+ * 		 	  [ ] bid via subBidsOs (exec test via os app, matching sale must already exist in SALES)
+ * 		 	  [ ] bid via getBidsOs (after subSaleBlur add new element to SUBS, getBidsOs finds the bid and return it in subBidsGetSales stream)
+ *
+ * @l0ngt3rm
  * [ ] consider pre-validate in stream, not exec
  * [ ] support add to queue validate arb, so that i fees go lower, re-exec
  * [ ] todo function to log compressed data in validate
  * [ ] validate conduict
- *
- * [ ] TEST:
- * 		 [ ] subStreamSale
- * 		 	  [x] getSale (should that be tested?)
- * 		 	  [x] subSale (via app)
- * 		 			 [x] bid exists in BIDS
- * 		 [ ] subStreamBid
- * 		 	  [x] subBid (via app)
- * 					 [x] bid exists in SALES
- * 		 	  [ ] getBid (bid not in BIDS)
- * 		 			 [x] after getSale add new to SUBS
- * 		 			 [ ] after subSale new new to SUBS ---- not tested, seems like it returns multiple times for the same
  */
 
 const db = {
+	TEST_MODE: true,
+
+	QUEUE: [],
 	SALES: mongoClient.db('BOT_NFT').collection('SALES'),
 	BIDS: mongoClient.db('BOT_NFT').collection('BIDS'),
+
 	var: {
 		TEST_NFT: '0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0',
 		TEST_NFT_ID: '877',
@@ -77,7 +78,7 @@ const db = {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
-						'X-API-KEY': process.env.API_OS
+						'X-API-KEY': process.env.API_OS_0
 					},
 					body: {},
 				},
@@ -152,7 +153,7 @@ const db = {
 	}
 }
 
-//4
+//6
 const execArb = async (buyFrom, sellTo) => {
 	//(7/7)
 	const _sendBundle = async bundle => {
@@ -186,12 +187,11 @@ const execArb = async (buyFrom, sellTo) => {
 			console.log('\n>>>Result:', data.result)
 		}
 
-		if(TEST_MODE) {
+		if(db.TEST_MODE) {
 			await __callBundle(bundle)
 			return
 		}
-		console.log('bug in send')
-		return
+
 		for (const url of db.api.builders) {
 			for(let i=1;i<db.var.BUNDLE_MAX_BLOCK;i++){
 				const blockToSend = db.var.BLOCK_NUM+i
@@ -267,14 +267,14 @@ const execArb = async (buyFrom, sellTo) => {
 		let tx4_amt_withdrawETH = tx1_value+estProfitGross
 		let tx5_value = (estProfitGross * db.var.VALIDATOR_FEE_BPS) / 10000n
 
-		if (TEST_MODE){
+		if (db.TEST_MODE){
 			tx4_amt_withdrawETH = tx1_value
 			tx5_value = 7n
 		}
 
 		const estProfitNet = estProfitGross - tx5_value
 
-		if(!TEST_MODE && estProfitNet<=0n) {
+		if(!db.TEST_MODE && estProfitNet<=0n) {
 			console.log('\nERR _getBundle: profit 2small', ethers.formatEther(estProfitGross));
 			console.log('buyBlurData', buyBlurData);
 			console.log('sellOsData', sellOsData);
@@ -373,7 +373,7 @@ const execArb = async (buyFrom, sellTo) => {
 
 		const estProfitGross = sellToPrice - buyLowBlurPrice - db.var.MIN_PROFIT;
 
-		if(!TEST_MODE && estProfitGross<=0n) {
+		if(!db.TEST_MODE && estProfitGross<=0n) {
 			console.log('\nERR _validateARb: profit 2small', ethers.formatEther(estProfitGross));
 			console.log('buyFrom', buyFrom);
 			console.log('sellTo', sellTo);
@@ -463,12 +463,6 @@ const execArb = async (buyFrom, sellTo) => {
 		console.time('sellOsData')
 		const sellOsData = (await apiCall(db.api.os.bidData))?.fulfillment_data ?? false;
 		console.timeEnd('sellOsData')
-		// console.log('\nsellOsData', sellOsData)
-		// console.log('\nsellOsData.transaction.input_data', sellOsData.transaction.input_data)
-		// console.log('\nsellOsData.transaction.input_data.parameters.additionalRecipients', sellOsData.transaction.input_data.parameters.additionalRecipients)
-		// console.log('\nsellOsData.transaction.input_data.parameters.additionalRecipients', sellOsData.transaction.input_data.parameters.additionalRecipients)
-		// console.log('\nsellOsData.orders[0]', sellOsData.orders[0])
-		// console.log('\nsellOsData.orders, consideration', sellOsData.orders[0].parameters.consideration)
 		return sellOsData
 	}
 
@@ -528,7 +522,58 @@ const execArb = async (buyFrom, sellTo) => {
 	await _sendBundle(bundle)
 }
 
-//3
+//5
+const processQueue = async () => {
+	/**
+	 * @info Each queue object will be either:
+	 *
+	 * 		1. (if via subSalesGetBids)
+	 * 				{
+	 * 					sale: {sale...}
+	 * 					bids: [bid1, ..., bidN] (sorted by highestToSell price; len>=1; no same owner & price duplicates)
+	 * 				}
+	 *
+	 *     or
+	 *
+	 * 		2. (if via subBidsGetSales)
+	 * 			  {
+	 * 					sales: [sale1, ..., saleN] (sorted by lowestToBuy price)
+	 * 					bid: {bid...}
+	 * 				}
+	 *
+	 *    //sales are sorted by lowestToBuy price
+	 *    //bids are sorted by highestToSell price
+	 * 		//sales & bids len >= 1
+	 * 		//sales & bids !have "same owner & same price" duplicates
+	 *      (Prevent spam. Doesn't matter for sale, but need to ensure for bids)
+	 * 		//sales & bids can have "same owner & diff price" duplicates
+	 *      (e.g. if owner has sufficient balance for 2nd bid)
+	 *      (e.g. if only 2nd sale is valid)
+	 *
+	 * @todo Queue needs to be processed in the way that:
+	 * 		1. Don't execute same arbs twice (delete duplicates that might happen if same arb enters via sub sales & bids)
+	 * 		2. Don't reach OS API POST limit (2x req/s, later can ++ to 4x with 2x keys)
+	 * 		3. If multiple objects in curr queue ([{sale, bids}, {...}]), then executes by highest profit first
+	 * 		4. (todo later) If in same block will be > 1 arb, then nonce needs to be incremented for each tx
+	 *
+	 * @pseudocode
+	 * forEach pair in current "queueCurrElement"
+	 * 		execArb(sale, bid)
+	 * 		add delay to not reach API OS POST limit
+	 *
+	 * then after pair is done:
+	 *    save "queueCurrElement"
+	 *    shift queue,
+   *    merge queue same elements
+   *    if "queueCurrElement" in queue:
+	 * 				remove it.
+   *    if queue len>0:
+	 * 				sortByHighestProfit (if len>1)
+	 * 				processQueue()
+	 */
+}
+
+//4
 const subBidsGetSales = async () => {
 	const _getArbSales = async (bid) => {
 		// get all matching sales
@@ -546,9 +591,6 @@ const subBidsGetSales = async () => {
 			return bidPrice > salePrice;
 		});
 
-		if(bid.addr_tkn === db.var.TEST_NFT){
-			console.log('arbSales', arbSales)
-		}
 		// delete sales that have the same owner and price as another sale
 		arbSales.forEach((sale, i) => {
 			arbSales.forEach((sale2, i2) => {
@@ -559,7 +601,7 @@ const subBidsGetSales = async () => {
 		});
 
 		if(bid.addr_tkn === db.var.TEST_NFT){
-			console.log('arbSales', arbSales)
+			console.log('DETECTED TEST arb sale', arbSales)
 		}
 
 		// sort sales by lowest (to buy) price
@@ -580,10 +622,10 @@ const subBidsGetSales = async () => {
 
 			const bid = raw_bid.fullDocument;
 			const sales = await _getArbSales(bid);
-			console.log('\nsales', sales)
+			db.QUEUE.push({sales, bid});
 
-			for (const sale of sales) {
-				execArb(sale, bid)
+			if(db.QUEUE.length === 1) {
+				processQueue()
 			}
 		});
 	} catch (err) {
@@ -602,14 +644,11 @@ const subSalesGetBids = async () => {
 			id_tkn: sale.id_tkn,
 		}); //can't price cuz string=>BigInt
 
-		// console.log('matchingBidsCursor', matchingBidsCursor)
-
 		// filter bids that are lower than sale price
 		const arbBids = (await matchingBidsCursor.toArray()).filter((bid) => {
 			const bidPrice = BigInt(bid.price);
 			const salePrice = BigInt(sale.price);
 
-			// return bidPrice < salePrice; //@todo 4test
 			return bidPrice > salePrice;
 		});
 
@@ -642,10 +681,10 @@ const subSalesGetBids = async () => {
 			const bids = await _getArbBids(sale);
 
 			if(!bids.length) return
-			console.log('\ngot bid/s...')
+			db.QUEUE.push({sale, bids})
 
-			for (const bid of bids) {
-				execArb(sale, bid);
+			if(db.QUEUE.length === 1) {
+				processQueue()
 			}
 		})
 

@@ -268,7 +268,7 @@ const getBidsFor = async ({addr, ids}) => {
     await _mergeQueueItemsByAddr(); //e.g. if new ids added to same addr during subSales
     getBidsFor(db.QUEUE[0]);
   } else {
-    console.log('\nPROCESSED ALL QUEUES.');
+    // console.log('\nPROCESSED ALL QUEUES.');
   }
 }
 

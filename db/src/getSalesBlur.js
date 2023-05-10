@@ -307,7 +307,7 @@ const setup = async () => {
   // await db.SUBS.deleteMany({}); //clear db
 };
 
-(async function root() {
+;(async function root() {
   try {
     await setup();
     await getSlugsBlur(); //don't separate cuz <1m

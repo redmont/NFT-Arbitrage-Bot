@@ -146,11 +146,13 @@ const addToSalesDB = async (newBlurSales) => {
 		if (filteredSales.length === 0) return; //can happen if all Blur sales already in DB
 
 		const bulkOps = filteredSales.map(sale => ({
-			updateOne: { //updateOne, not insertOne to prevent errors caused by race condition
-				filter: { _id: sale._id },
-				update: { $set: sale },
-				upsert: true,
-			},
+			insertOne: { document: sale },
+			//can updateOne instead insertOne to prevent errors caused by race condition while catching-up
+			// updateOne: {
+			// 	filter: { _id: sale._id },
+			// 	update: { $set: sale },
+			// 	upsert: true,
+			// },
 		}));
 
 		const result = await db.SALES.bulkWrite(bulkOps, { ordered: true });
@@ -158,8 +160,8 @@ const addToSalesDB = async (newBlurSales) => {
 			console.log(`\nInserted ${result.insertedCount} new BLUR SALES:`);
 		}
 	} catch (err) {
-		console.error('ERR during bulkWrite:', err);
-		// if(err.code !== 11000) console.error('ERR during bulkWrite:', err);
+		// console.error('ERR during bulkWrite:', err);
+		if(err.code !== 11000) console.error('ERR during bulkWrite:', err);
 	} finally {
 		return
 	}
