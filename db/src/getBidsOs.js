@@ -299,15 +299,6 @@ const extractData = async (next) => {
 ;(async function root() {
   try {
     if(!db.INITIATED){
-      while(true) {
-        const count = await db.SUBS.countDocuments();
-        if(count >= 12811) {
-          await new Promise(resolve => setTimeout(resolve, 600000));
-          break
-        }
-        await new Promise(resolve => setTimeout(resolve, 5000));
-      }
-
       const subsArray = await db.SUBS.find().toArray();
       db.QUEUE.push(...subsArray.map(doc => ({ addr: doc._id, ids: doc.id })));
       db.INITIATED = true;
