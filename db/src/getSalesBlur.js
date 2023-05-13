@@ -310,7 +310,7 @@ const setup = async () => {
 ;(async function root() {
   try {
     await setup();
-    await getSlugsBlur(); //don't separate cuz <1m
+    await getSlugsBlur(); //!separated cuz <1m
     getSalesBlur();
   } catch (e) {
     console.error("\nERR: getSalesBlur root:", e);

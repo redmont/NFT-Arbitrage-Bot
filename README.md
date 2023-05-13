@@ -9,10 +9,7 @@
 - [x] `subBidsOs` (get, if in `SUBS`, save to `BIDS`)
 - [x] `getBidsOs` (listen `SUBS` stream, get & save to `BIDS`)
 - [ ] VPS setup
-  - [ ] setup systemctl
 - [ ] Cleaner
-  - [ ] Remove expired data from db
-- [ ] Remember: if sends 2x sets of txs, then increment nonce (send all txs with permutations of nonces)
 
 ## Project Diagram 🔧
 

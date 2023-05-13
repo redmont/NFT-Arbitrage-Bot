@@ -5,7 +5,7 @@ const { MongoClient } = require('mongodb');
 const uri = 'mongodb://localhost:27017';
 const mongoClient = new MongoClient(uri);
 
-const OS_KEYS = [process.env.API_OS_0, process.env.API_OS_1]
+const OS_KEYS = [process.env.API_OS_1]
 
 const db = {
   TEST_MODE: false,
@@ -60,7 +60,7 @@ const getData = async (url, key) => {
   db.AMT_CALLS==0 ? db.START = start : null;
   db.PING_TOTAL += ping;
 
-  if(db.TEST_MODE) {
+  if(!db.PROCESSED_FIRST_QUEUE || db.TEST_MODE) {
     process.stdout.write(
       `\r\x1b[38;5;12m AMT calls:\x1b[0m ${++db.AMT_CALLS} ` +
       `\x1b[38;5;12m MIN ping:\x1b[0m ${(db.MIN_PING).toFixed(2)} ms ` +
@@ -91,6 +91,7 @@ const getData = async (url, key) => {
 
     default:
       console.error('\nERR Unknown getData case:', data);
+      await new Promise((resolve) => setTimeout(resolve, seconds * 1000));
       return [null, ping];
   }
 }
@@ -120,13 +121,18 @@ const getKeys = async () => {
 
 const addToBidsDB = async (addr, osBids) => {
   const _getFilteredBids = async (formattedBids) => {
-    // Get an array of all existing _id values in the collection
-    const existingDocs = await db.BIDS.find({}, { projection: { _id: 1 } }).toArray();
-    const existingIds = existingDocs.map(doc => doc._id);
+    // Get all _ids from formattedBids
+		const formattedBidsIds = formattedBids.map((sale) => sale._id);
 
-    // Filter out formattedBids that have an existing _id in the database
-    const filteredBids = formattedBids.filter(bid => !existingIds.includes(bid._id));
-    return filteredBids;
+		// Find existing documents that match the _ids from formattedBids
+		const existingDocs = await db.BIDS.find({_id: {$in: formattedBidsIds}}, {projection: {_id: 1}}).toArray();
+
+		// Extract the _ids from the existing documents
+		const existingIds = existingDocs.map((doc) => doc._id);
+
+		// Filter out formattedBids that have an existing _id in the database
+		const filteredBids = formattedBids.filter((sale) => !existingIds.includes(sale._id));
+		return filteredBids;
   }
 
   const _getFormattedBids = async (osBids) => {
@@ -170,16 +176,25 @@ const addToBidsDB = async (addr, osBids) => {
     const formattedBids = await _getFormattedBids(osBids);
     if(formattedBids.length === 0) return; //if price 2small
 
-    const filteredBids = await _getFilteredBids(formattedBids);
-    if(filteredBids.length === 0) return; //if all bids already in db
-
-    const bulkOps = filteredBids.map(bid => ({
-      insertOne: { document: bid }
+    let bulkOps = formattedBids.map(bid => ({
+      updateOne: {
+        filter: { _id: bid._id },
+        update: { $set: bid },
+        upsert: true,
+      },
     }));
+
+    // } else {
+      // const filteredBids = await _getFilteredBids(formattedBids);
+      // if(filteredBids.length === 0) return; //if all bids already in db
+      // bulkOps = filteredBids.map(bid => ({
+      //   insertOne: { document: bid }
+      // }));
+    // }
 
     const result = await db.BIDS.bulkWrite(bulkOps, { ordered: true });
     if(db.TEST_MODE){
-      console.log(`\nInserted new ${result.insertedCount} OS BIDS`);
+      console.log(`\nInserted new ${result} OS BIDS`);
     }
   } catch (err) {
     console.error('Error during bulkWrite:', err);
@@ -267,8 +282,12 @@ const getBidsFor = async ({addr, ids}) => {
   if (db.QUEUE.length > 0) {
     await _mergeQueueItemsByAddr(); //e.g. if new ids added to same addr during subSales
     getBidsFor(db.QUEUE[0]);
-  } else {
-    // console.log('\nPROCESSED ALL QUEUES.');
+  } else if (!db.PROCESSED_FIRST_QUEUE){
+    console.log('\n\n\nPROCESSED_FIRST_QUEUE, DB IS READY FOR BOT.');
+    db.PROCESSED_FIRST_QUEUE = true
+    //await 2s
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    process.exit(0)
   }
 }
 

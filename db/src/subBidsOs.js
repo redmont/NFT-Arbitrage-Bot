@@ -108,11 +108,23 @@ const addToBidsDB = async (bid) => {
     const formattedBid = await _getFormattedBid(addr_tkn, id_tkn, price, bid) || {};
     if(!formattedBid._id) return;
 
-    const existingBid = await db.BIDS.findOne({ _id: formattedBid._id });
-    if (existingBid) return
-    await db.BIDS.insertOne(formattedBid);
+    //// better in case of many duplicates
+    // const existingBid = await db.BIDS.findOne({ _id: formattedBid._id });
+    // if (existingBid) return
+    // await db.BIDS.insertOne(formattedBid);
 
-    if(db.TEST_MODE) console.log(`\nInserted BID`);
+    //// usually it will be unique, so this is better
+    try {
+      await db.BIDS.insertOne(formattedBid);
+      if(db.TEST_MODE) console.log(`\nInserted BID`);
+    } catch (error) {
+      if (error.code !== 11000) {
+        console.error('Error inserting document:', error);
+      }
+    } finally {
+      return
+    }
+
   } catch (e) {
     console.error("\nERR: addToBidsDB:", e);
   } finally {

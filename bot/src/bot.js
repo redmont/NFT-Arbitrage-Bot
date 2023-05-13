@@ -10,15 +10,21 @@ const mongoClient = new MongoClient(uri);
 
 /**
  * @todo
- * [ ] processQueue (instructions in function)
- * [ ] TEST:
- * 		 [ ] subSalesGetBids
- * 		 	  [ ] sale via subSalesBlur (exec test via blur app, matching bid must already exist in BIDS, use TEST_NFT)
- * 		 [ ] subBidsGetSales
- * 		 	  [ ] bid via subBidsOs (exec test via os app, matching sale must already exist in SALES)
- * 		 	  [ ] bid via getBidsOs (after subSaleBlur add new element to SUBS, getBidsOs finds the bid and return it in subBidsGetSales stream)
+ * [x] processQueue (instructions in function)
+ * 		[x] arbBids & arbSales returns only 1x best element.
+ * 			 [x] prevent api post limit (0.5ms delay for each exec)
+ * 			 [x] prevent duplicates (remain in done in 10min or so)
+ * 			 [x] segregate queue by highest profit
+ * 			 [x] filter out expired bids
+ * [x] TEST:
+ * 		 [x] subSalesGetBids
+ * 		 	  [x] sale via subSalesBlur (exec test via blur app, matching bid must already exist in BIDS, use TEST_NFT)
+ * 		 [x] subBidsGetSales
+ * 		 	  [x] bid via subBidsOs (exec test via os app, matching sale must already exist in SALES)
+ * 		 	  [x] bid via getBidsOs (after subSaleBlur add new element to SUBS, getBidsOs finds the bid and return it in subBidsGetSales stream)
  *
  * @l0ngt3rm
+ * [ ] multi tx block, nonce update (send all bundle with nonce +10 permutations for each pack of txs)
  * [ ] consider pre-validate in stream, not exec
  * [ ] support add to queue validate arb, so that i fees go lower, re-exec
  * [ ] todo function to log compressed data in validate
@@ -26,7 +32,7 @@ const mongoClient = new MongoClient(uri);
  */
 
 const db = {
-	TEST_MODE: true,
+	TEST_MODE: false,
 
 	QUEUE: [],
 	SALES: mongoClient.db('BOT_NFT').collection('SALES'),
@@ -77,7 +83,7 @@ const db = {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
-						'X-API-KEY': process.env.API_OS_0
+						'X-API-KEY': process.env.API_OS_1,
 					},
 					body: {},
 				},
@@ -152,8 +158,9 @@ const db = {
 	}
 }
 
-//6
+//6 buy low from blur sale, sell high to os bid
 const execArb = async (buyFrom, sellTo) => {
+	// console.log('\n>>>execArb()\nbuyFrom', buyFrom, '\nsellTo', sellTo)
 	//(7/7)
 	const _sendBundle = async bundle => {
 		const __callBundle = async bundle => {
@@ -448,7 +455,11 @@ const execArb = async (buyFrom, sellTo) => {
 			offer: {
 				hash: sellTo._id,
 				chain: 'ethereum', //sellTo.payload.item?.chain?.name,
-				protocol_address: sellTo.bid.protocol_address //sellTo.payload?.protocol_address
+				protocol_address: (
+					sellTo.type === 'OS_BID_GET' ?
+						sellTo.bid.protocol_address :
+						sellTo.bid.payload.protocol_address//sellTo.payload?.protocol_address
+				),
 			},
 			fulfiller: {
 				address: wallet.address,
@@ -522,54 +533,39 @@ const execArb = async (buyFrom, sellTo) => {
 }
 
 //5
-const processQueue = async () => {
-	/**
-	 * @info Each queue object will be either:
-	 *
-	 * 		1. (if via subSalesGetBids)
-	 * 				{
-	 * 					sale: {sale...}
-	 * 					bids: [bid1, ..., bidN] (sorted by highestToSell price; len>=1; no same owner & price duplicates)
-	 * 				}
-	 *
-	 *     or
-	 *
-	 * 		2. (if via subBidsGetSales)
-	 * 			  {
-	 * 					sales: [sale1, ..., saleN] (sorted by lowestToBuy price)
-	 * 					bid: {bid...}
-	 * 				}
-	 *
-	 *    //sales are sorted by lowestToBuy price
-	 *    //bids are sorted by highestToSell price
-	 * 		//sales & bids len >= 1
-	 * 		//sales & bids !have "same owner & same price" duplicates
-	 *      (Prevent spam. Doesn't matter for sale, but need to ensure for bids)
-	 * 		//sales & bids can have "same owner & diff price" duplicates
-	 *      (e.g. if owner has sufficient balance for 2nd bid)
-	 *      (e.g. if only 2nd sale is valid)
-	 *
-	 * @todo Queue needs to be processed in the way that:
-	 * 		1. Don't execute same arbs twice (delete duplicates that might happen if same arb enters via sub sales & bids)
-	 * 		2. Don't reach OS API POST limit (2x req/s, later can ++ to 4x with 2x keys)
-	 * 		3. If multiple objects in curr queue ([{sale, bids}, {...}]), then executes by highest profit first
-	 * 		4. (todo later) If in same block will be > 1 arb, then nonce needs to be incremented for each tx
-	 *
-	 * @pseudocode
-	 * forEach pair in current "queueCurrElement"
-	 * 		execArb(sale, bid)
-	 * 		add delay to not reach API OS POST limit
-	 *
-	 * then after pair is done:
-	 *    save "queueCurrElement"
-	 *    shift queue,
-   *    merge queue same elements
-   *    if "queueCurrElement" in queue:
-	 * 				remove it.
-   *    if queue len>0:
-	 * 				sortByHighestProfit (if len>1)
-	 * 				processQueue()
-	 */
+const processQueue = async (orders) => {
+	execArb(orders.sale, orders.bid)
+	await new Promise(resolve => setTimeout(resolve, 500)); //prevent POST limit
+
+	const currQueueElem = db.QUEUE[0] //store to prevent potential re-execution
+	db.QUEUE.shift() //delete current
+
+	if (db.QUEUE.length > 1) {
+		// remove potential duplicates
+		db.QUEUE = Array.from(new Set(db.QUEUE.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
+
+		// prevent potential re-execution
+		if (currQueueElem in db.QUEUE) {
+			db.QUEUE = db.QUEUE.filter(item => JSON.stringify(item) !== JSON.stringify(currElem));
+		}
+
+		if(db.QUEUE.length === 0) return
+
+		// sort by highest profit
+		if(db.QUEUE.length > 1) {
+			db.QUEUE.sort((a, b) => {
+        const profitA = BigInt(a.bid.price) - BigInt(a.sale.price);
+        const profitB = BigInt(b.bid.price) - BigInt(b.sale.price);
+        return profitA < profitB ? 1 : -1;
+    	});
+		}
+	}
+
+	if(db.QUEUE.length > 0) {
+		processQueue(db.QUEUE[0])
+	}
+
+	return
 }
 
 //4
@@ -581,6 +577,10 @@ const subBidsGetSales = async () => {
 			id_tkn: bid.id_tkn,
 		}); //can't price cuz string=>BigInt
 
+		if(bid.addr_tkn === db.var.TEST_NFT){
+			console.log('\n\nDETECTED TEST bid:', bid)
+		}
+
 		// filter sales that are lower than bid price
 		const arbSales = (await matchingSalesCursor.toArray()).filter((sale) => {
 			const bidPrice = BigInt(bid.price);
@@ -589,6 +589,12 @@ const subBidsGetSales = async () => {
 			// return bidPrice < salePrice; //@todo 4test
 			return bidPrice > salePrice;
 		});
+
+		if(db.TEST_MODE){
+			console.log('arbSales after arb price filter', arbSales)
+		}
+
+		if (arbSales.length === 0) return;
 
 		// delete sales that have the same owner and price as another sale
 		arbSales.forEach((sale, i) => {
@@ -599,20 +605,24 @@ const subBidsGetSales = async () => {
 			});
 		});
 
-		if(bid.addr_tkn === db.var.TEST_NFT){
-			console.log('DETECTED TEST arb sale', arbSales)
+		if(db.TEST_MODE){
+			console.log('arbSales after owner filter', arbSales)
 		}
 
 		// sort sales by lowest (to buy) price
 		arbSales.sort((a, b) => { //need that, cuz string=>BigInt
 			const aPrice = BigInt(a.price);
 			const bPrice = BigInt(b.price);
-			if (aPrice < bPrice) return 1;
-			if (aPrice > bPrice) return -1;
+			if (aPrice < bPrice) return -1;
+			if (aPrice > bPrice) return 1;
 			return 0;
 		});
 
-		return arbSales;
+		if(db.TEST_MODE) {
+			console.log('arbSales after sort by price', arbSales)
+		}
+
+		return arbSales; //@only best, later more
 	}
 
 	try {
@@ -621,10 +631,14 @@ const subBidsGetSales = async () => {
 
 			const bid = raw_bid.fullDocument;
 			const sales = await _getArbSales(bid);
-			db.QUEUE.push({sales, bid});
+			if(!sales || sales.length === 0) return
 
-			if(db.QUEUE.length === 1) {
-				processQueue()
+			for(let i=0; i<sales.length; i++){
+				db.QUEUE.push({sale: sales[i], bid})
+
+				if(db.QUEUE.length === 1) {
+					processQueue(db.QUEUE[0])
+				}
 			}
 		});
 	} catch (err) {
@@ -643,13 +657,32 @@ const subSalesGetBids = async () => {
 			id_tkn: sale.id_tkn,
 		}); //can't price cuz string=>BigInt
 
+		// console.log('\nGOT matchingBidsCursor', matchingBidsCursor)
+
+		if(sale.addr_tkn == db.var.TEST_NFT && sale.id_tkn == db.var.TEST_NFT_ID){
+			console.log('\nDETECTED TEST arb sale:', sale)
+		}
+
 		// filter bids that are lower than sale price
-		const arbBids = (await matchingBidsCursor.toArray()).filter((bid) => {
+		let arbBids = (await matchingBidsCursor.toArray()).filter((bid) => {
 			const bidPrice = BigInt(bid.price);
 			const salePrice = BigInt(sale.price);
 
 			return bidPrice > salePrice;
 		});
+
+		if(db.TEST_MODE){
+			console.log('\n\narbBids length after price filter', arbBids.length)
+		}
+
+		//filter expires
+		arbBids = arbBids.filter((bid) => {
+			return bid.exp_time > Math.floor(Date.now()/1000)
+		});
+
+		if(db.TEST_MODE){
+			console.log('arbBids length after expires filter', arbBids.length)
+		}
 
 		// delete bids that have the same owner and price as another bid
 		arbBids.forEach((bid, i) => {
@@ -660,16 +693,25 @@ const subSalesGetBids = async () => {
 			});
 		});
 
+		if(db.TEST_MODE){
+			console.log('arbBids length after owner filter', arbBids)
+		}
+
 		// sort bids by highest (to sell) price
 		arbBids.sort((a, b) => { //need that, cuz string=>BigInt
 			const aPrice = BigInt(a.price);
 			const bPrice = BigInt(b.price);
-			if (aPrice < bPrice) return -1;
-			if (aPrice > bPrice) return 1;
+			if (aPrice < bPrice) return 1;
+			if (aPrice > bPrice) return -1;
 			return 0;
 		});
 
-		return arbBids;
+		if(db.TEST_MODE){
+			console.log('arbBids after price sort', arbBids)
+		}
+
+		//prevent potential spam by returning top 5 arb bids
+		return arbBids.slice(0, 5);
 	}
 
 	try {
@@ -678,12 +720,15 @@ const subSalesGetBids = async () => {
 
 			const sale = raw_sale.fullDocument
 			const bids = await _getArbBids(sale);
+			if(!bids || bids.length === 0) return
 
-			if(!bids.length) return
-			db.QUEUE.push({sale, bids})
+			//append to queue each pair of sale and bid
+			for(let i=0; i<bids.length; i++){
+				db.QUEUE.push({sale, bid: bids[i]})
 
-			if(db.QUEUE.length === 1) {
-				processQueue()
+				if(db.QUEUE.length === 1) {
+					processQueue(db.QUEUE[0])
+				}
 			}
 		})
 
@@ -815,7 +860,7 @@ const apiCall = async ({url, options}) => {
 	try {
 		await setup()
 		subBlocks()
-		// subSalesGetBids()
+		subSalesGetBids()
 		subBidsGetSales()
 	} catch (e) {
 		console.error('\nERR: root:', e)
