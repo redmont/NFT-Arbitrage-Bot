@@ -91,7 +91,7 @@ const getData = async (url, key) => {
 
     default:
       console.error('\nERR Unknown getData case:', data);
-      await new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+      await new Promise((resolve) => setTimeout(resolve, 61000 * 1000));
       return [null, ping];
   }
 }
@@ -285,9 +285,6 @@ const getBidsFor = async ({addr, ids}) => {
   } else if (!db.PROCESSED_FIRST_QUEUE){
     console.log('\n\n\nPROCESSED_FIRST_QUEUE, DB IS READY FOR BOT.');
     db.PROCESSED_FIRST_QUEUE = true
-    //await 2s
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    process.exit(0)
   }
 }
 
