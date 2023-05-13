@@ -42,6 +42,11 @@ sudo mongod --port 27017 --dbpath /var/lib/mongodb --replSet rs0 --bind_ip local
 robo3t
 ```
 
+View log with updates.
+```
+cat logs/getBidsOs.log && tail -f logs/getBidsOs.log
+```
+
 #### DB VPS commands:
 
 Enter mongo terminal

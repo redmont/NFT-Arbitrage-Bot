@@ -8,6 +8,7 @@ const mongoClient = new MongoClient(uri);
 const wallet = ethers.Wallet.createRandom();
 
 const db = {
+	AMT_TOTAL_SALES: 0,
 	CATCHING_UP: false,
 	PREV_SALES: new Set(),
 	TEST_MODE: false,
@@ -223,7 +224,6 @@ const subSalesBlur = async () => {
 				continue
 			}
 
-			process.stdout.write(`\r\x1b[38;5;12m New Blur Sales:\x1b[0m ${newBlurSales.length} `);
 
 			_addToDBs(newBlurSales);
 
@@ -250,6 +250,8 @@ const subSalesBlur = async () => {
 					}
 				}
 			}
+
+			process.stdout.write(`\r\x1b[38;5;202m AMT OF COLLECTED BLUR SALES:\x1b[0m ${db.AMT_TOTAL_SALES+=newBlurSales.length} `);
 
 			db.PREV_SALES = new Set([...db.PREV_SALES, ...newBlurSales.slice(0, 1000).map((order) => order.id)].slice(-1000));
 			await _waitBasedOn(newBlurSales.length);
@@ -298,19 +300,17 @@ const setup = async () => {
 	const prevSaleDate = new Date(latestSale.sale.createdAt)
 	const diffInSec = (currSaleDate - prevSaleDate)/1000;
 
-	if(diffInSec>1) {
-		console.log(`
-    Need to catch up missed Blur Sales from:
-    ${currSaleDate}
-    to:
-    ${prevSaleDate}
-    ~ ${(diffInSec / (60*60)).toFixed(2)} hours
-		`);
+	console.log(`
+	Need to catch up missed Blur Sales from:
+	${currSaleDate}
+	to:
+	${prevSaleDate}
+	~ ${(diffInSec / (60*60)).toFixed(2)} hours
+	`);
 
-		db.CATCHING_UP = true;
-		db.CATCHING_UP_START = Date.now();
-		db.CATCHING_UP_DATE = prevSaleDate;
-	}
+	db.CATCHING_UP = true;
+	db.CATCHING_UP_START = Date.now();
+	db.CATCHING_UP_DATE = prevSaleDate;
 };
 
 (async function root() {
