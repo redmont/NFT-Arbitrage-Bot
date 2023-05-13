@@ -5,7 +5,7 @@ const { MongoClient } = require('mongodb');
 const uri = 'mongodb://localhost:27017';
 const mongoClient = new MongoClient(uri);
 
-const OS_KEYS = [process.env.API_OS_1]
+const OS_KEYS = [process.env.API_OS_0, process.env.API_OS_1]
 
 const db = {
   TEST_MODE: false,
