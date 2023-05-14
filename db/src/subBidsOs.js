@@ -74,7 +74,7 @@ const addToBidsDB = async (bid) => {
     const addr_tkn = ethers.getAddress(bid.payload?.protocol_data?.parameters?.consideration[0]?.token);
     const id_tkn = bid.payload?.protocol_data?.parameters?.consideration[0]?.identifierOrCriteria;
 
-    if (addr_tkn === db.TEST_NFT || id_tkn === db.TEST_NFT_ID) {
+    if (db.TEST_MODE) {
       console.log(`DETECTED TEST NFT: ${db.TEST_NFT} @ ${db.TEST_NFT_ID}`);
     }
 
@@ -135,9 +135,12 @@ const addToBidsDB = async (bid) => {
 (async function root() {
   try {
     osClient.onEvents("*", db.OS_SUB_EVENTS, async event => {
-      if(db.TEST_MODE){
-        process.stdout.write(`\r\x1b[38;5;12mSUBSCRIBE OS BIDS\x1b[0m: ${++db.AMT_BIDS}`);
+      // if(db.TEST_MODE){
+      if(++db.AMT_BIDS%1000==0){
+        process.stdout.write(`\r\x1b[38;5;39mSUBSCRIBE OS BIDS\x1b[0m: ${db.AMT_BIDS}, date: ${new Date().toISOString()}`);
       }
+      // process.stdout.write(`\r\x1b[38;5;12mSUBSCRIBE OS BIDS\x1b[0m: ${++db.AMT_BIDS}`);
+      // }
 
       switch (event.event_type) {
         case EventType.ITEM_RECEIVED_BID:

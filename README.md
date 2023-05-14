@@ -42,6 +42,11 @@ sudo mongod --port 27017 --dbpath /var/lib/mongodb --replSet rs0 --bind_ip local
 robo3t
 ```
 
+View log with updates.
+```
+cat logs/getBidsOs.log && tail -f logs/getBidsOs.log
+```
+
 #### DB VPS commands:
 
 Enter mongo terminal
@@ -65,6 +70,39 @@ db.getCollectionNames().forEach(function(collName) {
 });
 ```
 
+DB VPS bashrc aliases:
+```
+alias logGetBid="cat ~/logs/getBidsOs.log && tail -f ~/logs/getBidsOs.log"
+alias logSubBid="cat ~/logs/subBidsOs.log && tail -f ~/logs/subBidsOs.log"
+alias logSubSale="cat ~/logs/subSalesBlur.log && tail -f ~/logs/subSalesBlur.log"
+
+alias logGetBidErr="cat ~/logs/getBidsOsErrorfile.log && tail -f ~/logs/getBidsOsErrorfile.log"
+alias logSubBidErr="cat ~/logs/subBidsOsErrorfile.log && tail -f ~/logs/subBidsOsErrorfile.log"
+alias logSubSaleErr="cat ~/logs/subSalesBlurErrorfile.log && tail -f ~/logs/subSalesBlurErrorfile.log"
+
+alias logGetBidClear="sudo truncate -s 0 ~/logs/getBidsOs.log"
+alias logSubBidClear="sudo truncate -s 0 ~/logs/subBidsOs.log"
+alias logSubSaleClear="sudo truncate -s 0 ~/logs/subSalesBlur.log"
+
+alias logGetBidErrClear="sudo truncate -s 0 ~/logs/getBidsOsErrorfile.log"
+alias logSubBidErrClear="sudo truncate -s 0 ~/logs/subBidsOsErrorfile.log"
+alias logSubSaleErrClear="sudo truncate -s 0 ~/logs/subSalesBlurErrorfile.log"
+```
+
+BOT VPS bashrc aliases:
+```
+alias logBot="cat ~/logs/bot.log && tail -f ~/logs/bot.log"
+alias logApiBlur="cat ~/logs/apiBlur.log && tail -f ~/logs/apiBlur.log"
+
+alias logBotErr="cat ~/logs/botErrors.log && tail -f ~/logs/botErrors.log"
+alias logApiBlurErr="cat ~/logs/apiBlurErrors.log && tail -f ~/logs/apiBlurErrors.log"
+
+alias logBotClear="sudo truncate -s 0 ~/logs/bot.log"
+alias logBotErrClear="sudo truncate -s 0 ~/logs/botErrors.log"
+
+alias logApiBlurErrClear="sudo truncate -s 0 ~/logs/apiBlur.log"
+alias logApiBlurErrClear="sudo truncate -s 0 ~/logs/apiBlurErrors.log"
+```
 
 ## Git Commit Types :construction_worker:
 

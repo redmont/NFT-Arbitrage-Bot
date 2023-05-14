@@ -53,7 +53,7 @@ const db = {
 
 		//fees
 		FEE: {},
-		VALIDATOR_FEE_BPS: 50n, //1bps = 0.01%
+		VALIDATOR_FEE_BPS: 1000n, //1bps = 0.01%
 		EST_GAS_SWAP: (10n**6n)/2n, //edit later
 		EST_GAS_APPROVE_NFT: 10n**5n,
 		EST_GAS_WITHDRAW_WETH: 50000n,
@@ -83,7 +83,7 @@ const db = {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
-						'X-API-KEY': process.env.API_OS_1,
+						'X-API-KEY': process.env.API_OS_0,
 					},
 					body: {},
 				},
@@ -158,7 +158,7 @@ const db = {
 	}
 }
 
-//6 buy low from blur sale, sell high to os bid
+//6: buy low from blur sale, sell high to os bid
 const execArb = async (buyFrom, sellTo) => {
 	// console.log('\n>>>execArb()\nbuyFrom', buyFrom, '\nsellTo', sellTo)
 	//(7/7)
@@ -366,7 +366,8 @@ const execArb = async (buyFrom, sellTo) => {
 
 	//(5/7)
 	const _validateArb = async (buyFrom, sellTo, buyBlurData, sellOsData) => {
-		console.log('\nbuyBlurData', buyBlurData)
+		console.log('\nin _validateArb')
+		// console.log('\nbuyBlurData', buyBlurData)
 		//recheck values based on returned data
 		const buyLowBlurPrice = BigInt(buyBlurData.buys[0].txnData.value.hex)
 
@@ -378,9 +379,10 @@ const execArb = async (buyFrom, sellTo) => {
 		}
 
 		const estProfitGross = sellToPrice - buyLowBlurPrice - db.var.MIN_PROFIT;
+		console.log('\nestProfitGross', estProfitGross)
 
 		if(!db.TEST_MODE && estProfitGross<=0n) {
-			console.log('\nERR _validateARb: profit 2small', ethers.formatEther(estProfitGross));
+			console.log('\n_validateArb Stop, profit 2small', ethers.formatEther(estProfitGross));
 			console.log('buyFrom', buyFrom);
 			console.log('sellTo', sellTo);
 			console.log('buyBlurData', buyBlurData);
@@ -388,6 +390,9 @@ const execArb = async (buyFrom, sellTo) => {
 			console.log('todo, add to queue')
 			return false
 		}
+
+		console.log('\nbuyFrom', buyFrom)
+		console.log('\nsellTo', sellTo)
 
 		//validate NFT addr
 		if(
@@ -449,7 +454,7 @@ const execArb = async (buyFrom, sellTo) => {
 
 	//(4/7)
 	const _getSellOsData = async (sellTo) => {
-		console.log('Getting sell data from OS...')
+		console.log('\nGetting sell data from OS...')
 
 		db.api.os.bidData.options.body = JSON.stringify({
 			offer: {
@@ -471,9 +476,17 @@ const execArb = async (buyFrom, sellTo) => {
 		})
 
 		console.time('sellOsData')
-		const sellOsData = (await apiCall(db.api.os.bidData))?.fulfillment_data ?? false;
+		const data = await apiCall(db.api.os.bidData)
 		console.timeEnd('sellOsData')
-		return sellOsData
+		console.log('\nos data', data)
+		if(data?.fulfillment_data) {
+			console.log('returning fulfillment_data')
+			return data.fulfillment_data
+		} else {
+			return false
+		}
+		// const sellOsData = (await apiCall(db.api.os.bidData))?.fulfillment_data ?? false;
+		// return sellOsData
 	}
 
 	//(3/7)
@@ -498,7 +511,17 @@ const execArb = async (buyFrom, sellTo) => {
 		console.time('buyFromBlurData')
 		const buyFromBlurData = await apiCall({url, options: db.api.blur.options.POST})
 		console.timeEnd('buyFromBlurData')
-		return buyFromBlurData
+		console.log('\nbuyFromBlurData', buyFromBlurData)
+
+		if(buyFromBlurData?.protocol_data){
+			console.log('\nbuyFromBlurData?.protocol_data', buyFromBlurData?.protocol_data)
+		}
+
+		if(buyFromBlurData.buys?.length>0){
+			return buyFromBlurData
+		}
+		
+		return false
 	}
 
 	//(1/7)
@@ -509,68 +532,79 @@ const execArb = async (buyFrom, sellTo) => {
 			console.log('db.var.CURR_WALLET_BALANCE', db.var.CURR_WALLET_BALANCE)
 			console.log('sellTo', sellTo)
 			console.log('buyFrom', buyFrom)
-			return //can't afford to buy
+			return false //can't afford to buy
 		}
 		return true
 	}
 
 	//(0/7)
-	if (!await _preValidate(buyFrom, sellTo)) return
+	try {
+		if (!await _preValidate(buyFrom, sellTo)) return
 
-	const buyBlurData = await _getBuyBlurData(buyFrom) ?? {};
-	if(!buyBlurData) return
-
-	const sellOsData = await _getSellOsData(sellTo) ?? {};
-	if(!sellOsData) return
-
-	const estProfitGross = await _validateArb(buyFrom, sellTo, buyBlurData, sellOsData)
-	if(!estProfitGross) return
-
-	const bundle = await _getBundle(buyBlurData, sellOsData, estProfitGross) ?? {};
-	if(!bundle) return
-
-	await _sendBundle(bundle)
+		const buyBlurData = await _getBuyBlurData(buyFrom) ?? {};
+		if(!buyBlurData) return
+	
+		const sellOsData = await _getSellOsData(sellTo) ?? {};
+		if(!sellOsData) return
+	
+		const estProfitGross = await _validateArb(buyFrom, sellTo, buyBlurData, sellOsData)
+		if(!estProfitGross) return
+	
+		const bundle = await _getBundle(buyBlurData, sellOsData, estProfitGross) ?? {};
+		if(!bundle) return
+	
+		await _sendBundle(bundle)
+	} catch (e) {
+		console.error('\nERR, execArb', e)
+	} finally {
+		return
+	}
 }
 
 //5
 const processQueue = async (orders) => {
-	execArb(orders.sale, orders.bid)
-	await new Promise(resolve => setTimeout(resolve, 500)); //prevent POST limit
-
-	const currQueueElem = db.QUEUE[0] //store to prevent potential re-execution
-	db.QUEUE.shift() //delete current
-
-	if (db.QUEUE.length > 1) {
-		// remove potential duplicates
-		db.QUEUE = Array.from(new Set(db.QUEUE.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
-
-		// prevent potential re-execution
-		if (currQueueElem in db.QUEUE) {
-			db.QUEUE = db.QUEUE.filter(item => JSON.stringify(item) !== JSON.stringify(currElem));
+	try {
+		execArb(orders.sale, orders.bid)
+		await new Promise(resolve => setTimeout(resolve, 500)); //prevent POST limit
+	
+		const currQueueElem = db.QUEUE[0] //store to prevent potential re-execution
+		db.QUEUE.shift() //delete current
+	
+		if (db.QUEUE.length > 1) {
+			// remove potential duplicates
+			db.QUEUE = Array.from(new Set(db.QUEUE.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
+	
+			// prevent potential re-execution
+			if (currQueueElem in db.QUEUE) {
+				db.QUEUE = db.QUEUE.filter(item => JSON.stringify(item) !== JSON.stringify(currElem));
+			}
+	
+			if(db.QUEUE.length === 0) return
+	
+			// sort by highest profit
+			if(db.QUEUE.length > 1) {
+				db.QUEUE.sort((a, b) => {
+					const profitA = BigInt(a.bid.price) - BigInt(a.sale.price);
+					const profitB = BigInt(b.bid.price) - BigInt(b.sale.price);
+					return profitA < profitB ? 1 : -1;
+				});
+			}
 		}
-
-		if(db.QUEUE.length === 0) return
-
-		// sort by highest profit
-		if(db.QUEUE.length > 1) {
-			db.QUEUE.sort((a, b) => {
-        const profitA = BigInt(a.bid.price) - BigInt(a.sale.price);
-        const profitB = BigInt(b.bid.price) - BigInt(b.sale.price);
-        return profitA < profitB ? 1 : -1;
-    	});
-		}
+	
+		if(db.QUEUE.length > 0) {
+			processQueue(db.QUEUE[0])
+		}	
+	} catch (e) {
+		console.error('\nERR, processQueue', e)
+	} finally {
+		return
 	}
 
-	if(db.QUEUE.length > 0) {
-		processQueue(db.QUEUE[0])
-	}
-
-	return
 }
 
 //4
 const subBidsGetSales = async () => {
-	const _getArbSales = async (bid) => {
+	const _getArbSale = async (bid) => {
 		// get all matching sales
 		const matchingSalesCursor = db.SALES.find({
 			addr_tkn: bid.addr_tkn,
@@ -589,6 +623,7 @@ const subBidsGetSales = async () => {
 			// return bidPrice < salePrice; //@todo 4test
 			return bidPrice > salePrice;
 		});
+
 
 		if(db.TEST_MODE){
 			console.log('arbSales after arb price filter', arbSales)
@@ -622,7 +657,7 @@ const subBidsGetSales = async () => {
 			console.log('arbSales after sort by price', arbSales)
 		}
 
-		return arbSales; //@only best, later more
+		return arbSales[0]; //@only best, later more
 	}
 
 	try {
@@ -630,15 +665,13 @@ const subBidsGetSales = async () => {
 			if (!raw_bid || raw_bid.operationType !== 'insert' || !raw_bid.fullDocument) return;
 
 			const bid = raw_bid.fullDocument;
-			const sales = await _getArbSales(bid);
-			if(!sales || sales.length === 0) return
+			const sale = await _getArbSale(bid); //only 1 valid
+			if(!sale || sale.length === 0) return
 
-			for(let i=0; i<sales.length; i++){
-				db.QUEUE.push({sale: sales[i], bid})
+			db.QUEUE.push({sale, bid})
 
-				if(db.QUEUE.length === 1) {
-					processQueue(db.QUEUE[0])
-				}
+			if(db.QUEUE.length === 1) {
+				processQueue(db.QUEUE[0])
 			}
 		});
 	} catch (err) {
@@ -737,7 +770,6 @@ const subSalesGetBids = async () => {
 		await new Promise(resolve => setTimeout(resolve, 1000));
 		await subSalesGetBids();
 	}
-
 }
 
 //2

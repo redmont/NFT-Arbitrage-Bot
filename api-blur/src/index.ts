@@ -53,7 +53,7 @@ export async function main(options: ApplicationConfig = {}) {
     ]
 
     let proxyURL = ''
-    proxyURL = await proxyChain.anonymizeProxy(proxies[0])
+    // proxyURL = await proxyChain.anonymizeProxy(proxies[0])
     // const proxyURL = await proxyChain.anonymizeProxy(url1)
 
     if(proxyURL.length==0) {
@@ -64,7 +64,7 @@ export async function main(options: ApplicationConfig = {}) {
       headless: true,
       devtools: true,
         args: [
-            `--proxy-server=${proxyURL}`, //can comment locally
+            // `--proxy-server=${proxyURL}`, //can comment locally
             "--disable-web-security",
             "--disable-features=IsolateOrigins",
             "--disable-site-isolation-trials",

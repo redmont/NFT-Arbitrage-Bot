@@ -60,16 +60,16 @@ const getData = async (url, key) => {
   db.AMT_CALLS==0 ? db.START = start : null;
   db.PING_TOTAL += ping;
 
-  if(!db.PROCESSED_FIRST_QUEUE || db.TEST_MODE) {
-    process.stdout.write(
-      `\r\x1b[38;5;12m AMT calls:\x1b[0m ${++db.AMT_CALLS} ` +
-      `\x1b[38;5;12m MIN ping:\x1b[0m ${(db.MIN_PING).toFixed(2)} ms ` +
-      `\x1b[38;5;12m AVG ping:\x1b[0m ${(db.PING_TOTAL / db.AMT_CALLS).toFixed(2)} ms ` +
-      `\x1b[38;5;12m AVG call/s:\x1b[0m ${((db.AMT_CALLS * 1000) / (((start + end) / 2) - db.START)).toFixed(2)} ` +
-      `\x1b[38;5;12m queue:\x1b[0m ${db.QUEUE.length} ` +
-      `\x1b[38;5;12m runtime:\x1b[0m ${((end - db.START) / 1000).toFixed(2)}s`
-    );
-  }
+  // if(!db.PROCESSED_FIRST_QUEUE || db.TEST_MODE) {
+  process.stdout.write(
+    `\r\x1b[38;5;12m AMT calls:\x1b[0m ${++db.AMT_CALLS} ` +
+    `\x1b[38;5;12m MIN ping:\x1b[0m ${(db.MIN_PING).toFixed(2)} ms ` +
+    `\x1b[38;5;12m AVG ping:\x1b[0m ${(db.PING_TOTAL / db.AMT_CALLS).toFixed(2)} ms ` +
+    `\x1b[38;5;12m AVG call/s:\x1b[0m ${((db.AMT_CALLS * 1000) / (((start + end) / 2) - db.START)).toFixed(2)} ` +
+    `\x1b[38;5;12m queue:\x1b[0m ${db.QUEUE.length} ` +
+    `\x1b[38;5;12m runtime:\x1b[0m ${((end - db.START) / 1000).toFixed(2)}s`
+  );
+  // }
 
   switch (true) {
     case !data || (data?.orders?.length === 0):

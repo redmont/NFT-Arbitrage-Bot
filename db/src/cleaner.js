@@ -5,7 +5,30 @@ const { MongoClient } = require('mongodb');
 const uri = 'mongodb://localhost:27017';
 const mongoClient = new MongoClient(uri);
 
-const wallet = ethers.Wallet.createRandom();
+const wallet = new ethers.Wallet(process.env.PK_0)
+
+/**
+ * @todo
+ * [ ] Remove Expired from:
+ * 		[ ] BIDs (remove if exp_time>now)
+ * 		[ ] SALES
+ * 		    [x] ensure how sales work
+ * 						!note
+ * 							 * if newSalePrice<oldSalePrice, VALID (or valid after older expired)
+ * 							 * if newSalePrice<oldSalePrice, INVALID
+ * 							 * blurData returns only the lowest sale price, if provide diff price, then it returns the lowest active
+ * 						!conclusion:
+ *							 * All sales with same addr:id, should be merged & remain only lowest price
+ * 							 * (todo later) if buyData returns ListingNotFound, then remove from SALES.
+ *
+ * 				////todo
+ * 			  [ ] merge addr:id sales, remain only one with lowest price
+ * 			  [ ] periodically get prices & update/remove in sales
+ * 						[ ] do 1k prices/call, (getEachNftId() is old version of that), then update/del SALES
+ * 		  	[ ] Prevention in subSalesBlur.js
+ * 						[ ] if new SALE in db & newPrice < oldPrice upsert db, else dismiss.
+ * 						[ ] listen to sold event (edit getData) & if sold, then remove from SALES
+ */
 
 const db = {
 	AMT_TOTAL_SALES: 0,
@@ -203,6 +226,7 @@ const subSalesBlur = async () => {
 
 	// (3/4)
 	const _addToDBs = async (newBlurSales) => {
+		return
 		addToSalesDB(newBlurSales);
 		addToSubsDB(newBlurSales);
 		return
@@ -223,7 +247,6 @@ const subSalesBlur = async () => {
 				await _waitBasedOn(0);
 				continue
 			}
-
 
 			_addToDBs(newBlurSales);
 
@@ -262,6 +285,137 @@ const subSalesBlur = async () => {
 	}
 };
 
+
+/////////////////////////
+
+const getCurrSale = async (addr, id) => {
+	// if (db.nft[addr]?.id[id]?.DEX) return db.nft[addr].id[id].DEX;
+	console.log('\nMaking a call to get marketplace...')
+	const url = `http://127.0.0.1:3000/v1/collections/${addr.toLowerCase()}/tokens/${id}`
+	const data = await apiCall({ url, options: db.api.blur.options.GET });
+	return data
+}
+
+const getBuyBlurData = async (addr, id, amt) => {
+	const url = `http://127.0.0.1:3000/v1/buy/${addr.toLowerCase()}?fulldata=true`;
+
+	db.api.blur.options.POST.body = JSON.stringify({
+		tokenPrices: [
+			{
+				isSuspicious: false, //tknIdBlurData.token.isSuspicious,
+				price: {
+					amount: amt, //tknIdBlurData.token.price.amount,
+					unit: "ETH", //sale.sale.price.unit
+				},
+				tokenId: id //tknIdBlurData.token.tokenId,
+			},
+		],
+		userAddress: wallet.address,
+	});
+
+	console.log('\nGetting buy data from Blur...')
+	console.log('db.api.blur.options.POST.body', db.api.blur.options.POST.body)
+	console.time('buyFromBlurData')
+	const buyFromBlurData = await apiCall({url, options: db.api.blur.options.POST})
+	console.timeEnd('buyFromBlurData')
+	return buyFromBlurData
+}
+
+const getEachNftId = async () => {
+	//↓↓↓ STARTS BELOW ↓↓↓
+	const _updateProgress = () => {
+		const percent = Math.round((++db.var.PROGRESS_GET_ID / Object.values(db.nft).length) * 100);
+		if(percent > 100) percent = 100
+		if(percent > db.var.PROGRESS_GET_ID_PERCENT){
+			console.log(`\ngetEachNftId completed in ${percent}%`);
+		}
+		db.var.PROGRESS_GET_ID_PERCENT = percent
+	}
+
+	//↓↓↓ STARTS BELOW ↓↓↓
+	const _updateDb = async _data => {
+		if(!_data.nftPrices) return
+		for (const { tokenId, price } of _data.nftPrices) {
+			if (price.unit != 'ETH' && price.unit != 'WETH') {
+				console.log('\nDetected non ETH/WETH price unit on BLUR!', price.unit)
+				console.log('\ndata:', _data)
+			}
+			const addr = ethers.getAddress(_data.contractAddress);
+			const nft = db.nft[addr]?.id?.[tokenId] ?? {DEX: ''}; //read or assign "{}"
+			nft.PRICE = ethers.parseEther(price.amount); //set price (reason for try, cuz inputs incorrect)
+			db.nft[addr].id[tokenId] = nft; //update or assign
+		}
+	}
+
+	//↓↓↓ STARTS BELOW ↓↓↓
+	const _setUrl = async (data, slug) => {
+		const hasAsksFilter = { hasAsks: true };
+		const nftPrices = data?.nftPrices || [];
+
+		const filters = nftPrices.length === 0 ? hasAsksFilter : {
+			cursor: {
+				tokenId: nftPrices[nftPrices.length - 1].tokenId,
+				price: { ...nftPrices[nftPrices.length - 1].price },
+			},
+			...hasAsksFilter
+		};
+
+		const url = `http://127.0.0.1:3000/v1/collections/${slug}/prices?filters=${encodeURIComponent(JSON.stringify(filters))}`;
+		return url;
+	};
+
+	const _validateSlug = async slug => {
+		if(!slug)  {
+			console.log('found undefined slug')
+			return false //cuz new collection was added via subSells that don't have Slug data
+		}
+
+		if(db.var.ERROR_SLUG){ //Prevent looping over all again if there is an error (quick fix)
+			if (db.var.ERROR_SLUG != slug) return false //loop until find error one
+			db.var.ERROR_SLUG = '' //reset
+			console.log('reseted slug')
+			return false //skip error one
+		}
+		return true
+	}
+
+	//→→→ STARTS HERE ←←←
+	console.time('getEachNftId')
+	console.log('\x1b[33m%s\x1b[0m', '\nSTARTED COLLECTING EACH NFT ID PRICE');
+
+	try {
+		for (const { SLUG } of Object.values(db.nft)) {
+			let toTest = 0
+			if(!await _validateSlug(SLUG)) continue
+
+			let data = {}
+			let countPages = 0 //for collections > 1k
+
+			do {
+				if(toTest++>=100) {
+					console.log('ERR: smth wrong with 2nd loop in get each id')
+					console.log('SLUG', SLUG)
+					break
+				}
+				const url = await _setUrl(data, SLUG)
+				data = await apiCall({ url, options: db.api.blur.options.GET })
+				await _updateDb(data)
+				countPages += data?.nftPrices?.length
+			} while (countPages <= data.totalCount)
+
+			_updateProgress()
+		}
+	} catch (e) {
+		console.error('\nERR: getEachNftId', e)
+		console.log('\nERROR_SLUG:', SLUG)
+		db.var.ERROR_SLUG = SLUG
+		await getEachNftId()
+	}
+
+	console.log('\x1b[33m%s\x1b[0m', '\nCOMPLETED COLLECTING EACH NFT ID PRICE');
+	console.timeEnd('getEachNftId')
+}
+
 const setup = async () => {
 	/// SETUP BLUR AUTH TKN ///
 	const dataToSign = await apiCall({
@@ -284,6 +438,17 @@ const setup = async () => {
 			"content-type": "application/json",
 		},
 	};
+
+	db.api.blur.options.POST = {
+    method: 'POST',
+    headers: {
+			redirect: 'follow',
+      authToken: db.BLUR_AUTH_TKN,
+      walletAddress: wallet.address,
+			"content-type": "application/json",
+			body: {}, //pass buy data
+    },
+  };
 
 	//1d of catching up: calls=938; len=60000; time=324.71s
 	let latestSale = await db.SALES.findOne(
@@ -314,9 +479,18 @@ const setup = async () => {
 };
 
 (async function root() {
+	console.log('wallet.address', wallet.address)
 	try {
 		await setup();
-		subSalesBlur();
+		//get recent sale for specific token
+		const data = await getCurrSale(db.TEST_NFT, '7');
+		console.log('\ndata', data)
+		const amt = '0.002'
+		const buyFromBlurData = await getBuyBlurData(db.TEST_NFT, '7', amt);
+		console.log('\nbuyFromBlurData', buyFromBlurData)
+		console.log('\nbuyFromBlurData', buyFromBlurData.buys[0])
+		console.log('\namt', BigInt(buyFromBlurData.buys[0].txnData.value.hex))
+		// subSalesBlur();
 	} catch (e) {
 		console.error("\nERR: root:", e);
 		await root();
