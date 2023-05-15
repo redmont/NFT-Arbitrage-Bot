@@ -18,6 +18,8 @@ types/
 yarn.lock
 package-lock.json
 pnpm-lock.yaml
+bot/pnpm-lock.yaml
+db/pnpm-lock.yaml
 
 # Ignore logs, backups, and environment files
 *.log

@@ -16,6 +16,9 @@ const osClient = new OpenSeaStreamClient({
   logLevel: 1,
 });
 
+//sql prompts
+
+
 const db = {
   TEST_MODE: false,
 

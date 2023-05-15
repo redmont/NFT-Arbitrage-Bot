@@ -8,7 +8,8 @@
 - [x] `getSalesBlur` (get & save to `SALES` & `SUBS`)
 - [x] `subBidsOs` (get, if in `SUBS`, save to `BIDS`)
 - [x] `getBidsOs` (listen `SUBS` stream, get & save to `BIDS`)
-- [ ] VPS setup
+- [x] VPS setup
+- [ ] OS collection & trait type of bids
 - [ ] Cleaner
 
 ## Project Diagram 🔧
@@ -20,11 +21,11 @@
 🚀 [App](https://app.diagrams.net/#G1Ks5DKz6f9DdRpffOGzYu5gjKxD21WbCk)
 
 ## To-do DB Initialization :floppy_disk:
-  - [ ] 1. `subSalesBlur`
-  - [ ] 2. `getSalesBlur`
+  - [x] 1. `subSalesBlur`
+  - [x] 2. `getSalesBlur`
   - (after getSalesBlur done)
-  - [ ] 3. `subBidsOs`
-  - [ ] 4. `getBidsOs`
+  - [x] 3. `subBidsOs`
+  - [x] 4. `getBidsOs`
 
 ## Commands :
 1st terminal inside bot-nft/api-blur:
