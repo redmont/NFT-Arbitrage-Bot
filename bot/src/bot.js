@@ -25,7 +25,6 @@ const mongoClient = new MongoClient(uri);
  *
  * @l0ngt3rm
  * [ ] multi tx block, nonce update (send all bundle with nonce +10 permutations for each pack of txs)
- * [ ] consider pre-validate in stream, not exec
  * [ ] support add to queue validate arb, so that i fees go lower, re-exec
  * [ ] todo function to log compressed data in validate
  * [ ] validate conduict
@@ -367,8 +366,6 @@ const execArb = async (buyFrom, sellTo) => {
 	//(5/7)
 	const _validateArb = async (buyFrom, sellTo, buyBlurData, sellOsData) => {
 		console.log('\nin _validateArb')
-		// console.log('\nbuyBlurData', buyBlurData)
-		//recheck values based on returned data
 		const buyLowBlurPrice = BigInt(buyBlurData.buys[0].txnData.value.hex)
 
 		//@todo (if buyLowBlurPrice > db.var.MAX_NOT_WHITELISTED) check if collection whitelisted
@@ -390,9 +387,6 @@ const execArb = async (buyFrom, sellTo) => {
 			console.log('todo, add to queue')
 			return false
 		}
-
-		console.log('\nbuyFrom', buyFrom)
-		console.log('\nsellTo', sellTo)
 
 		//validate NFT addr
 		if(
