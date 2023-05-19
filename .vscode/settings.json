@@ -1,4 +1,31 @@
 {
-	"editor.locale": "en",
-	"tab.size": 2,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "files.autoSaveDelay": 1000,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/yarn.lock": true,
+    "**/package-lock.json": true,
+    "**/gitignore": true,
+    "**/pnpm-lock.yaml": true,
+    "**/LICENSE": true,
+    "**/.devcontainer": true,
+    "**/.prettierc": true
+  },
+  "prettier.bracketSpacing": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.minimap.enabled": true,
+  "editor.lineNumbers": "on",
+  "editor.renderWhitespace": "none",
+  "editor.wordWrap": "off"
 }
