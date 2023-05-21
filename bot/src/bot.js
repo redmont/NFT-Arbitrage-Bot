@@ -26,25 +26,24 @@ const mongoClient = new MongoClient(uri);
  * 		 [x] subBidsGetSales
  * 		 	  [x] bid via subBidsOs (exec test via os app, matching sale must already exist in SALES)
  * 		 	  [x] bid via getBidsOs (after subSaleBlur add new element to SUBS, getBidsOs finds the bid and return it in subBidsGetSales stream)
- * [ ] update db BIDS on vps to basic
- * [ ] import abis to bot vps
+ * [x] import abis to bot vps
  * [x] Analytics
- * 		[x] add date to exec arb
- * 		[x] update logs buyFromBlurData ListingNotFound
- *    [x] update logs getOsData
- *    [x] add healthy check
- *    [x] err skip 2high
- *		[x] log in stringified format
- *		[x] ignore logs up to profit
- * [ ] ensure validate system is correct sellOSParams from sub & get, fro each order type, perhaps b4 add to db make universal
- * [ ] bribe system
- * 		[ ] get block time, arbTxs time, math it on that
- *		[ ] for next block include smaller bribe, for next higher
- * [ ] implement for collection & trait
- *    [ ] updated osFees based on elapsed time
- *    [ ] !validate id in _validateArb
+ * [x] ensure validate system is correct sellOSParams from sub & get, fro each order type, perhaps b4 add to db make universal
+ * [ ] implement 4criteria
+ *    [ ] db
+ *       [ ] subBidsOs
+ *          [ ] format, extract price for 2x & traits for TRAIT, & add to db
+ *       [ ] getBidsOs, run script to get all bids for all blur slugs (later)
+ *    [ ] bot
+ *       [ ] subBidsGetSales, each case for each criteria
+ *       [ ] exec arb based on provided values
+ *       [ ] if trait or collection, then do additional call to get id & payload via puppeteer
+ *       [ ] do parallel calls when possible
+ *       [ ] run tests
  *
  * @l0ngt3rm
+ * [ ] update db BIDS on vps to basic on vps
+ * [ ] bribe system, based on osBid & time to block
  * [ ] multi tx block, nonce update (send all bundle with nonce +10 permutations for each pack of txs)
  * [ ] support add to queue validate arb, so that i fees go lower, re-exec
  * [ ] todo function to log compressed data in validate
@@ -945,7 +944,6 @@ const apiCall = async ({ url, options }) => {
   try {
     await setup();
     subBlocks();
-    return;
     subSalesGetBids();
     subBidsGetSales();
   } catch (e) {

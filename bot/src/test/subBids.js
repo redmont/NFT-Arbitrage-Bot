@@ -30,7 +30,7 @@ const db = {
     EventType.ITEM_RECEIVED_BID,
     EventType.COLLECTION_OFFER,
     EventType.TRAIT_OFFER,
-    EventType.ITEM_LISTED,
+    // EventType.ITEM_LISTED,
   ],
   ADDR_SEAPORT: [
     "0x00000000006c3852cbEf3e08E8dF289169EdE581", //1.1
@@ -83,16 +83,37 @@ function logAndUpdate() {
           break;
       }
 
-      if (
-        event.event_type == EventType.TRAIT_OFFER &&
-        // event.payload.protocol_data.parameters.orderType <= 1 &&
-        // event.payload.protocol_data.parameters.zone ===
-        //   "0x000000e7ec00e7b300774b00001314b8610022b8" &&
-        // event.payload.protocol_data.parameters.consideration[0].itemType <= 3
-        true
-      ) {
-        console.log("\n GOT!", JSON.stringify(event, null, 2));
+      let price = BigInt(event?.payload?.base_price);
+      for (const osFeeData of event.payload?.protocol_data?.parameters
+        .consideration) {
+        if (osFeeData.itemType <= 1) {
+          //0: ETH, 1: ERC20, 2: ERC721...
+          if (osFeeData.startAmount !== osFeeData.endAmount) {
+            console.log(
+              "DETECTED start-end amount mismatch",
+              JSON.stringify(event, null, 2)
+            );
+          }
+          price -= BigInt(osFeeData.startAmount);
+        }
       }
+
+      // if (
+      //   // event.event_type === EventType.TRAIT_OFFER ||
+      //   // event.event_type === EventType.COLLECTION_OFFER &&
+      //   // event.payload.protocol_data.parameters.orderType <= 1 &&
+      //   // BigInt(event?.payload?.base_price) <= ethers.parseEther("0.02")
+      //   //   .lt(ethers.parseEther("0.02"))
+      //   // event.payload.protocol_data.parameters.zone ===
+      //   // "0x000000e7ec00e7b300774b00001314b8610022b8"
+      //   event.payload.protocol_data.parameters?.consideration[1]
+      //     ?.startAmount !==
+      //   event.payload.protocol_data.parameters?.consideration[1]?.endAmount
+      //   // true
+      // ) {
+      //   console.log("\n GOT!", JSON.stringify(event, null, 2));
+      //   process.exit();
+      // }
       // logAndUpdate();
     });
   } catch (e) {
