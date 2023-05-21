@@ -17,7 +17,7 @@ const osClient = new OpenSeaStreamClient({
 });
 
 const db = {
-  TEST_MODE: true,
+  TEST_MODE: false,
 
   SUBS: mongoClient.db("BOT_NFT").collection("SUBS"),
   BIDS: mongoClient.db("BOT_NFT").collection("BIDS"),
@@ -28,8 +28,8 @@ const db = {
   MIN_SELL_TO_PRICE: 10n ** 16n,
   OS_SUB_EVENTS: [
     EventType.ITEM_RECEIVED_BID,
-    EventType.COLLECTION_OFFER,
-    EventType.TRAIT_OFFER,
+    // EventType.COLLECTION_OFFER,
+    // EventType.TRAIT_OFFER,
     // EventType.ITEM_LISTED,
   ],
   ADDR_SEAPORT: [
@@ -80,73 +80,30 @@ const addToBidsDB = async (bid) => {
     const addr_tkn = ethers.getAddress(
       bid.payload?.protocol_data?.parameters?.consideration[0]?.token
     );
-
-    let id_tkn = null;
-
-    switch (bid.event_type) {
-      case EventType.ITEM_RECEIVED_BID:
-        id_tkn =
-          bid.payload?.protocol_data?.parameters?.consideration[0]
-            ?.identifierOrCriteria;
-        //validate
-        if (
-          !(await db.SUBS.findOne(
-            { _id: addr_tkn, id: { $elemMatch: { $eq: id_tkn } } },
-            { projection: { _id: 1 } }
-          ))
-        ) {
-          return;
-        }
-        break;
-
-      case EventType.COLLECTION_OFFER:
-        //@todo check if addr in subs
-        //validate
-        if (
-          !(await db.SUBS.findOne(
-            { _id: addr_tkn },
-            { projection: { _id: 1 } }
-          ))
-        ) {
-          return;
-        }
-        break;
-
-      case EventType.TRAIT_OFFER:
-        //@todo check if addr in subs
-        //@todo should also check if trait in subs?
-        //@todo SALES_BLUR_SUB does not have traits
-        //@todo SALES_BLUR_GET does have traits
-        //event.payload.trait_criteria
-        // "trait_criteria": {
-        //   "trait_name": "Deceiver Staff",
-        //   "trait_type": "Weapon"
-        // }
-
-        //then if there are sales with price < than this bid, send call to get by criteria & check if exists in db, if so exec
-
-        //will need to edit subSalesBlur, so that if new sale, make call to get criteria
-        //if old, then just check if db & lower price
-        break;
-    }
+    const id_tkn =
+      bid.payload?.protocol_data?.parameters?.consideration[0]
+        ?.identifierOrCriteria;
 
     if (db.TEST_MODE) {
       console.log(`DETECTED TEST NFT: ${db.TEST_NFT} @ ${db.TEST_NFT_ID}`);
     }
 
     //check if there's a matching blur sale
+    if (
+      !(await db.SUBS.findOne(
+        { _id: addr_tkn, id: { $elemMatch: { $eq: id_tkn } } },
+        { projection: { _id: 1 } }
+      ))
+    ) {
+      return;
+    }
+
     //check if potential profit higher than fees
     let price = BigInt(bid.payload.base_price);
     for (const osFeeData of bid.payload?.protocol_data?.parameters
       .consideration) {
       if (osFeeData.itemType <= 1) {
         //0: ETH, 1: ERC20, 2: ERC721...
-        if (osFeeData.startAmount !== osFeeData.endAmount) {
-          console.log(
-            "DETECTED start-end amount mismatch",
-            JSON.stringify(bid, null, 2)
-          );
-        }
         price -= BigInt(osFeeData.startAmount);
       }
     }
@@ -211,17 +168,15 @@ const addToBidsDB = async (bid) => {
         case EventType.ITEM_RECEIVED_BID:
           addToBidsDB(event);
           break;
-        case EventType.COLLECTION_OFFER:
-          return;
-          addToBidsDB(event); //perhaps initially use addCollectionToSalesDB
-          break;
-        case EventType.TRAIT_OFFER:
-          return;
-          addToBidsDB(event); //perhaps initially use addTraitToSalesDB
-          break;
+        // case EventType.COLLECTION_OFFER:
+        //     handleCollectionOffer(event);
+        //     break;
+        // case EventType.TRAIT_OFFER:
+        //     handleTraitOffer(event);
+        //     break;
         // case EventType.ITEM_LISTED:
-        //   handleItemListed(event);
-        //   break;
+        //     handleItemListed(event);
+        //     break;
       }
     });
   } catch (e) {

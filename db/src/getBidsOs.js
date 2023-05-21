@@ -76,7 +76,8 @@ const getData = async (url, key) => {
         ((start + end) / 2 - db.START)
       ).toFixed(2)} ` +
       `\x1b[38;5;12m queue:\x1b[0m ${db.QUEUE.length} ` +
-      `\x1b[38;5;12m runtime:\x1b[0m ${((end - db.START) / 1000).toFixed(2)}s`
+      `\x1b[38;5;12m Time:\x1b[0m ${new Date().toISOString()}`
+    // `\x1b[38;5;12m runtime:\x1b[0m ${((end - db.START) / 1000).toFixed(2)}s` +
   );
   // }
 

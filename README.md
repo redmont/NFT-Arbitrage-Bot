@@ -10,7 +10,22 @@
 - [x] `getBidsOs` (listen `SUBS` stream, get & save to `BIDS`)
 - [x] VPS setup
 - [ ] OS collection & trait type of bids
-- [ ] Cleaner
+-     [ ] get&setSalesBlur SALES & SUBS
+-         [ ] include traits for each new blur sale (new meaning addr:id not in SUBS)
+-     [ ] subBidsOs
+-         [ ] validate COLLECTION & TRAIT
+-         [ ] add formatted DB
+-     [ ] bot.js
+-         [ ] if subBid Collection, get from db cheapest collection blur sale
+-         [ ] if subBid Trait, get from db cheapest collection blur sale with specific trait/s
+-         [ ] if criteria bid, then use api-os to getOrderId & getPayload in execArb
+-
+-         (extract code from api-os/index.js)
+-         [ ] get&set api-os tkn (bot setup, like get&set for blur)
+-         [ ] getOrderId api-os (in execArb for received subBidOs criteria type)
+-         [ ] getPayload api-os (in execArb)
+-     [ ] getBidsOs
+-     [ ] cleaner
 
 ## Project Diagram 🔧
 
