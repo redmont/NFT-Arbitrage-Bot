@@ -21,29 +21,35 @@
 🚀 [App](https://app.diagrams.net/#G1Ks5DKz6f9DdRpffOGzYu5gjKxD21WbCk)
 
 ## To-do DB Initialization :floppy_disk:
-  - [x] 1. `subSalesBlur`
-  - [x] 2. `getSalesBlur`
-  - (after getSalesBlur done)
-  - [x] 3. `subBidsOs`
-  - [x] 4. `getBidsOs`
+
+- [x] 1. `subSalesBlur`
+- [x] 2. `getSalesBlur`
+- (after getSalesBlur done)
+- [x] 3. `subBidsOs`
+- [x] 4. `getBidsOs`
 
 ## Commands :
+
 1st terminal inside bot-nft/api-blur:
+
 ```
 yarn rebuild && node .
 ```
 
 2nd terminal, run Mongo (with stream support):
+
 ```
 sudo mongod --port 27017 --dbpath /var/lib/mongodb --replSet rs0 --bind_ip localhost
 ```
 
 3rd terminal, Mongodb UI:
+
 ```
 robo3t
 ```
 
 View log with updates.
+
 ```
 cat logs/getBidsOs.log && tail -f logs/getBidsOs.log
 ```
@@ -51,16 +57,19 @@ cat logs/getBidsOs.log && tail -f logs/getBidsOs.log
 #### DB VPS commands:
 
 Enter mongo terminal
+
 ```
 mongosh
 ```
 
 Connect to DB
+
 ```
 use BOT_NFT
 ```
 
 Print each collection name, count and size:
+
 ```
 db.getCollectionNames().forEach(function(collName) {
     var coll = db.getCollection(collName);
@@ -72,6 +81,7 @@ db.getCollectionNames().forEach(function(collName) {
 ```
 
 DB VPS bashrc aliases:
+
 ```
 alias logGetBid="cat ~/logs/getBidsOs.log && tail -f ~/logs/getBidsOs.log"
 alias logSubBid="cat ~/logs/subBidsOs.log && tail -f ~/logs/subBidsOs.log"
@@ -91,6 +101,7 @@ alias logSubSaleErrClear="sudo truncate -s 0 ~/logs/subSalesBlurErrorfile.log"
 ```
 
 BOT VPS bashrc aliases:
+
 ```
 alias logBot="cat ~/logs/bot.log && tail -f ~/logs/bot.log"
 alias logApiBlur="cat ~/logs/apiBlur.log && tail -f ~/logs/apiBlur.log"
@@ -119,15 +130,3 @@ alias logApiBlurErrClear="sudo truncate -s 0 ~/logs/apiBlurErrors.log"
 - :x: `revert`: Reverting a previous commit
 
 Let's go! :muscle:
-
-Provide command to collect all "addr_tkn" and "id_tkn" fields from "SALES" collection, and then add it to a new collection "SUBS1" in such format:
-{
-  _id: "addr_tkn":
-  id: [
-    "id_tkn",
-    ...
-  ]
-}
-
-if "SALES" will have same "addr_tkn" and same "id_tkn", take only first one and ignore rest.
-if "SALES" will have same "addr_tkn" and different "id_tkn", then merge id_tkn with existing addr_tkn.

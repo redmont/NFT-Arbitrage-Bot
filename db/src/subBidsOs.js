@@ -1,9 +1,9 @@
-const {OpenSeaStreamClient, EventType} = require("@opensea/stream-js");
-const {WebSocket} = require("ws");
+const { OpenSeaStreamClient, EventType } = require("@opensea/stream-js");
+const { WebSocket } = require("ws");
 const ethers = require("ethers");
 
-const { MongoClient } = require('mongodb');
-const uri = 'mongodb://localhost:27017';
+const { MongoClient } = require("mongodb");
+const uri = "mongodb://localhost:27017";
 const mongoClient = new MongoClient(uri);
 
 const osClient = new OpenSeaStreamClient({
@@ -16,19 +16,16 @@ const osClient = new OpenSeaStreamClient({
   logLevel: 1,
 });
 
-//sql prompts
-
-
 const db = {
   TEST_MODE: false,
 
-  SUBS: mongoClient.db('BOT_NFT').collection('SUBS'),
-  BIDS: mongoClient.db('BOT_NFT').collection('BIDS'),
+  SUBS: mongoClient.db("BOT_NFT").collection("SUBS"),
+  BIDS: mongoClient.db("BOT_NFT").collection("BIDS"),
 
   AMT_BIDS: 0,
-  TEST_NFT_ID: '877',
-  TEST_NFT: '0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0',
-  MIN_SELL_TO_PRICE: 10n**16n,
+  TEST_NFT_ID: "877",
+  TEST_NFT: "0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0",
+  MIN_SELL_TO_PRICE: 10n ** 16n,
   OS_SUB_EVENTS: [
     EventType.ITEM_RECEIVED_BID,
     // EventType.COLLECTION_OFFER,
@@ -36,20 +33,20 @@ const db = {
     // EventType.ITEM_LISTED,
   ],
   ADDR_SEAPORT: [
-    '0x00000000006c3852cbEf3e08E8dF289169EdE581', //1.1
-    '0x00000000000006c7676171937C444f6BDe3D6282', //1.2
-    '0x0000000000000aD24e80fd803C6ac37206a45f15', //1.3
-    '0x00000000000001ad428e4906aE43D8F9852d0dD6', //1.4
-    '0x00000000000000ADc04C56Bf30aC9d3c0aAF14dC', //1.5
-  ]
+    "0x00000000006c3852cbEf3e08E8dF289169EdE581", //1.1
+    "0x00000000000006c7676171937C444f6BDe3D6282", //1.2
+    "0x0000000000000aD24e80fd803C6ac37206a45f15", //1.3
+    "0x00000000000001ad428e4906aE43D8F9852d0dD6", //1.4
+    "0x00000000000000ADc04C56Bf30aC9d3c0aAF14dC", //1.5
+  ],
 };
 
 const addToBidsDB = async (bid) => {
   const _getFormattedBid = async (addr_tkn, id_tkn, price, bid) => {
     const order_hash = bid.payload.order_hash.toLowerCase();
-    const exp_time = bid.payload.protocol_data.parameters.endTime
-    const addr_buyer = ethers.getAddress(bid.payload.maker.address)
-    const type = "OS_BID_SUB"
+    const exp_time = bid.payload.protocol_data.parameters.endTime;
+    const addr_buyer = ethers.getAddress(bid.payload.maker.address);
+    const type = "OS_BID_SUB_BASIC";
 
     return {
       _id: order_hash,
@@ -61,7 +58,7 @@ const addToBidsDB = async (bid) => {
       type,
       bid,
     };
-  }
+  };
 
   const _validateBid = async (bid) => {
     //check chain
@@ -69,47 +66,66 @@ const addToBidsDB = async (bid) => {
 
     //chain if addr to approve
     const protocol_address = ethers.getAddress(bid.payload.protocol_address);
-    if(!db.ADDR_SEAPORT.includes(protocol_address)) { //to avoid surprises
-      console.log('ERR: protocol_address!=SEAPORT:', protocol_address, '\nbid:', bid);
-      return
+    if (!db.ADDR_SEAPORT.includes(protocol_address)) {
+      //to avoid surprises
+      console.log(
+        "ERR: protocol_address!=SEAPORT:",
+        protocol_address,
+        "\nbid:",
+        bid
+      );
+      return;
     }
 
-    const addr_tkn = ethers.getAddress(bid.payload?.protocol_data?.parameters?.consideration[0]?.token);
-    const id_tkn = bid.payload?.protocol_data?.parameters?.consideration[0]?.identifierOrCriteria;
+    const addr_tkn = ethers.getAddress(
+      bid.payload?.protocol_data?.parameters?.consideration[0]?.token
+    );
+    const id_tkn =
+      bid.payload?.protocol_data?.parameters?.consideration[0]
+        ?.identifierOrCriteria;
 
     if (db.TEST_MODE) {
       console.log(`DETECTED TEST NFT: ${db.TEST_NFT} @ ${db.TEST_NFT_ID}`);
     }
 
     //check if there's a matching blur sale
-    if (!await db.SUBS.findOne({_id: addr_tkn, id: {$elemMatch: {$eq: id_tkn}}}, {projection: {_id: 1}})) {
+    if (
+      !(await db.SUBS.findOne(
+        { _id: addr_tkn, id: { $elemMatch: { $eq: id_tkn } } },
+        { projection: { _id: 1 } }
+      ))
+    ) {
       return;
     }
 
     //check if potential profit higher than fees
     let price = BigInt(bid.payload.base_price);
-    for (const osFeeData of bid.payload?.protocol_data?.parameters.consideration) {
-      if (osFeeData.itemType <= 1) { //0: ETH, 1: ERC20, 2: ERC721...
+    for (const osFeeData of bid.payload?.protocol_data?.parameters
+      .consideration) {
+      if (osFeeData.itemType <= 1) {
+        //0: ETH, 1: ERC20, 2: ERC721...
         price -= BigInt(osFeeData.startAmount);
       }
     }
 
-    if (price <= db.MIN_SELL_TO_PRICE && (addr_tkn !== db.TEST_NFT && id_tkn !== db.TEST_NFT_ID)) return; //2small
+    if (
+      price <= db.MIN_SELL_TO_PRICE &&
+      addr_tkn !== db.TEST_NFT &&
+      id_tkn !== db.TEST_NFT_ID
+    )
+      return; //2small
     price = price.toString();
 
-    return [
-      addr_tkn,
-      id_tkn,
-      price,
-    ]
-  }
+    return [addr_tkn, id_tkn, price];
+  };
 
   try {
-    const [addr_tkn, id_tkn, price] = await _validateBid(bid) || [];
-    if(!addr_tkn) return;
+    const [addr_tkn, id_tkn, price] = (await _validateBid(bid)) || [];
+    if (!addr_tkn) return;
 
-    const formattedBid = await _getFormattedBid(addr_tkn, id_tkn, price, bid) || {};
-    if(!formattedBid._id) return;
+    const formattedBid =
+      (await _getFormattedBid(addr_tkn, id_tkn, price, bid)) || {};
+    if (!formattedBid._id) return;
 
     //// better in case of many duplicates
     // const existingBid = await db.BIDS.findOne({ _id: formattedBid._id });
@@ -119,28 +135,31 @@ const addToBidsDB = async (bid) => {
     //// usually it will be unique, so this is better
     try {
       await db.BIDS.insertOne(formattedBid);
-      if(db.TEST_MODE) console.log(`\nInserted BID`);
+      if (db.TEST_MODE) console.log(`\nInserted BID`);
     } catch (error) {
       if (error.code !== 11000) {
-        console.error('Error inserting document:', error);
+        console.error("Error inserting document:", error);
       }
     } finally {
-      return
+      return;
     }
-
   } catch (e) {
     console.error("\nERR: addToBidsDB:", e);
   } finally {
-    return
+    return;
   }
 };
 
 (async function root() {
   try {
-    osClient.onEvents("*", db.OS_SUB_EVENTS, async event => {
+    osClient.onEvents("*", db.OS_SUB_EVENTS, async (event) => {
       // if(db.TEST_MODE){
-      if(++db.AMT_BIDS%1000==0){
-        process.stdout.write(`\r\x1b[38;5;39mSUBSCRIBE OS BIDS\x1b[0m: ${db.AMT_BIDS}, date: ${new Date().toISOString()}`);
+      if (++db.AMT_BIDS % 1000 == 0) {
+        process.stdout.write(
+          `\r\x1b[38;5;39mSUBSCRIBE OS BIDS\x1b[0m: ${
+            db.AMT_BIDS
+          }, date: ${new Date().toISOString()}`
+        );
       }
       // process.stdout.write(`\r\x1b[38;5;12mSUBSCRIBE OS BIDS\x1b[0m: ${++db.AMT_BIDS}`);
       // }
