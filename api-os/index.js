@@ -132,10 +132,34 @@ const getCriteriaBids = async (slug, authTkn) => {
   return msg;
 };
 
+// const testApi1 = async () => {
+//   const options = {method: 'GET', headers: {'Content-Type': 'application/json'}};
+//   // const options = {method: 'GET', headers: {'X-API-KEY': process.env.API_OS_OLD, 'Content-Type': 'application/json'}};
+
+//   fetch('https://api.opensea.io/api/v1/asset/0xa7f551feab03d1f34138c900e7c08821f3c3d1d0/877/?include_orders=false', options)
+//     .then(response => response.text())
+//     .then(response => console.log(response))
+//     .catch(err => console.error(err));
+// }
+
+// const testApi2 = async () => {
+//   url = "https://api.opensea.io/api/v1/asset/0x34d85c9cdeb23fa97cb08333b511ac86e1c4e258/34316?format=json"
+//   const options = {method: 'GET', headers: {'Content-Type': 'application/json'}};
+//   fetch(url, options)
+//     .then(response => response.text())
+//     .then(response => console.log(response))
+//     .catch(err => console.error(err));
+// }
+
 (async () => {
-  // toDecode = "QXNzZXRFdmVudFR5cGU6MTE5MzI3NzE5NDM=";
+  // toDecode = "T3JkZXJWMlR5cGU6OTY3NDQ5OTA5Mg==";
+  // toDecode = "QXNzZXRUeXBlOjQxMDgzOTEyMg==";
   // decoded = Buffer.from(toDecode, "base64").toString("ascii");
   // console.log(decoded);
+
+  // toEncode = "AssetType:410839122";
+  // encoded = Buffer.from(toEncode).toString("base64");
+  // console.log("encoded", encoded);
   // return;
   const msgToSign = await getAuthTkn();
   const msg = msgToSign.data.auth.loginMessage;
@@ -147,9 +171,10 @@ const getCriteriaBids = async (slug, authTkn) => {
     "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiVlhObGNsUjVjR1U2TkRFME5EYzVORGs9IiwidXNlcm5hbWUiOiJfX09TX19weXhFcEJCc0c2ZVVrVmVJSkg0NUVuY3ZNVUFNMm1YNnd1TXZXUEs3cEpEZGxjNVJwS2FFWmVLQUFvOVdLVEhYIiwiYWRkcmVzcyI6IjB4MDAwMDBlOGM3OGU0NjE2NzhlNDU1YjFmNjg3OGJiMGNlNTBjZTU4NyIsImlzcyI6Ik9wZW5TZWEiLCJleHAiOjE2ODQ4MjYxNDUsIm9yaWdJYXQiOjE2ODQ3Mzk3NDUsImFwaUFjY2VzcyI6Im5vbmUifQ.HvBpQwXoQp37-rD3FdpquiGIpH7YNRxGVp9dvlCVK4o"; //tknRawData.data.auth.login.token;
   console.log("\nauthTkn", authTkn);
 
-  const slug = "bitcoin-miladys";
+  const slug = "sakura-park";
   const criteriaBids = await getCriteriaBids(slug, authTkn);
   console.log("\ncriteriaBids", JSON.stringify(criteriaBids, null, 2));
+  process.exit();
   // criteriaBids {
   // 	"data": {
   // 		"collection": {

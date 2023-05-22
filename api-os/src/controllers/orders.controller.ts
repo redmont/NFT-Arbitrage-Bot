@@ -82,11 +82,20 @@ export class OrdersController {
       });
 
       var xhr = new XMLHttpRequest();
-      xhr.withCredentials = true;
+      // xhr.withCredentials = true;
+
+      xhr.send(data);
+      return new Promise((resolve) => {
+        xhr.onload = () => {
+          resolve(JSON.parse(xhr.responseText));
+        };
+      });
+
+      return
 
       xhr.open("POST", "https://opensea.io/__api/graphql/");
       xhr.setRequestHeader("content-type", "application/json");
-      xhr.setRequestHeader("authorization", "JWT " + body.authtkn);
+      // xhr.setRequestHeader("authorization", "JWT " + body.authtkn);
       xhr.setRequestHeader(
         "x-signed-query",
         "811271738cb69acac9374881b66dbfb7743b667aeb4fdd8c24f148c75a11423b"
