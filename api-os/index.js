@@ -143,10 +143,11 @@ const getCriteriaBids = async (slug, authTkn) => {
   const sign = await wallet.signMessage(msg);
   const tknRawData = await setAuthTkn(msg, sign);
 
-  const authTkn = tknRawData.data.auth.login.token;
+  const authTkn =
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiVlhObGNsUjVjR1U2TkRFME5EYzVORGs9IiwidXNlcm5hbWUiOiJfX09TX19weXhFcEJCc0c2ZVVrVmVJSkg0NUVuY3ZNVUFNMm1YNnd1TXZXUEs3cEpEZGxjNVJwS2FFWmVLQUFvOVdLVEhYIiwiYWRkcmVzcyI6IjB4MDAwMDBlOGM3OGU0NjE2NzhlNDU1YjFmNjg3OGJiMGNlNTBjZTU4NyIsImlzcyI6Ik9wZW5TZWEiLCJleHAiOjE2ODQ4MjYxNDUsIm9yaWdJYXQiOjE2ODQ3Mzk3NDUsImFwaUFjY2VzcyI6Im5vbmUifQ.HvBpQwXoQp37-rD3FdpquiGIpH7YNRxGVp9dvlCVK4o"; //tknRawData.data.auth.login.token;
   console.log("\nauthTkn", authTkn);
 
-  const slug = "yes-ser";
+  const slug = "bitcoin-miladys";
   const criteriaBids = await getCriteriaBids(slug, authTkn);
   console.log("\ncriteriaBids", JSON.stringify(criteriaBids, null, 2));
   // criteriaBids {
@@ -174,12 +175,12 @@ const getCriteriaBids = async (slug, authTkn) => {
   // }
 
   const variables = {
-    orderId: "T3JkZXJWMlR5cGU6OTYzMTUyODQyOA==",
+    orderId: "T3JkZXJWMlR5cGU6OTY2OTc1OTMxMg==",
     // orderId: "T3JkZXJWMlR5cGU6OTYzMTU3MTQ4Mw==", //work
     itemFillAmount: "1",
     takerAssetsForCriteria: {
-      assetContractAddress: "0xa7f551feab03d1f34138c900e7c08821f3c3d1d0",
-      tokenId: "877",
+      assetContractAddress: "0x2fC722C1c77170A61F17962CC4D039692f033b43",
+      tokenId: "1261",
       // assetContractAddress: "0x4b570b636e4f744199ec82f52d69b08b394ab850",
       // tokenId: "9110",
       chain: "ETHEREUM",
