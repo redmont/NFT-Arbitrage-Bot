@@ -46,7 +46,22 @@ const addToBidsDB = async (bid) => {
     const order_hash = bid.payload.order_hash.toLowerCase();
     const exp_time = bid.payload.protocol_data.parameters.endTime;
     const addr_buyer = ethers.getAddress(bid.payload.maker.address);
-    const type = "OS_BID_SUB_BASIC";
+
+    let type;
+    switch (bid.event_type) {
+      case EventType.ITEM_RECEIVED_BID:
+        type = "OS_BID_SUB_BASIC";
+        break;
+      case EventType.COLLECTION_OFFER:
+        type = "OS_BID_SUB_COLLECTION";
+        break;
+      case EventType.TRAIT_OFFER:
+        type = "OS_BID_SUB_TRAIT";
+        break;
+      default:
+        console.log("\nbRR: bid.type not found", bid);
+        return;
+    }
 
     return {
       _id: order_hash,
@@ -61,9 +76,6 @@ const addToBidsDB = async (bid) => {
   };
 
   const _validateBid = async (bid) => {
-    //check chain
-    if (bid.payload?.item?.chain?.name !== "ethereum") return;
-
     //chain if addr to approve
     const protocol_address = ethers.getAddress(bid.payload.protocol_address);
     if (!db.ADDR_SEAPORT.includes(protocol_address)) {
@@ -85,6 +97,9 @@ const addToBidsDB = async (bid) => {
 
     switch (bid.event_type) {
       case EventType.ITEM_RECEIVED_BID:
+        //check chain only for non criteria bids
+        if (bid.payload?.item?.chain?.name !== "ethereum") return;
+
         id_tkn =
           bid.payload?.protocol_data?.parameters?.consideration[0]
             ?.identifierOrCriteria;
@@ -168,6 +183,7 @@ const addToBidsDB = async (bid) => {
 
     const formattedBid =
       (await _getFormattedBid(addr_tkn, id_tkn, price, bid)) || {};
+    console.log(formattedBid);
     if (!formattedBid._id) return;
 
     //// better in case of many duplicates
@@ -209,10 +225,9 @@ const addToBidsDB = async (bid) => {
 
       switch (event.event_type) {
         case EventType.ITEM_RECEIVED_BID:
-          addToBidsDB(event);
+          //addToBidsDB(event);
           break;
         case EventType.COLLECTION_OFFER:
-          return;
           addToBidsDB(event); //perhaps initially use addCollectionToSalesDB
           break;
         case EventType.TRAIT_OFFER:

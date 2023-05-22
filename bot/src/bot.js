@@ -63,6 +63,7 @@ const db = {
 
     STARTED: false,
     BLUR_AUTH_TKN: "",
+    GRAPHQL_AUTH_TKN: "",
 
     BLOCK_NUM: 0,
     INTERVAL_DB_DATA: 100,
@@ -96,6 +97,13 @@ const db = {
     ],
   },
   api: {
+    graphql: {
+      url: {
+        AUTH_GET: "http://127.0.0.1:3001/auth/getToken",
+        AUTH_SET: "http://127.0.0.1:3001/auth/setToken",
+        PAYLOAD: "http://127.0.0.1:3001/v1/getPayload",
+      },
+    },
     os: {
       bidData: {
         url: "https://api.opensea.io/v2/offers/fulfillment_data",
@@ -423,7 +431,7 @@ const execArb = async (buyFrom, sellTo) => {
   };
 
   //(3/6)
-  const _getSellOsData = async (sellTo) => {
+  const _getSellOsDataFromAPI = async (sellTo) => {
     // console.log("\nGetting sell data from OS...");
     db.api.os.bidData.options.body = JSON.stringify({
       offer: {
@@ -464,6 +472,98 @@ const execArb = async (buyFrom, sellTo) => {
     }
 
     return false;
+  };
+  const _getSellOsDataFromGraphql = async (sellTo) => {
+    const getCriteriaBids = async (slug, authTkn) => {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          slug: slug,
+          authtkn: authTkn,
+        }),
+      };
+
+      var url = `http://127.0.0.1:3001/v1/getCriteriaBids`;
+
+      const msg = await apiCall({ url: url, options: options });
+      return msg;
+    };
+
+    const getOfferPayload = async (
+      criteriaBid,
+      assetContractAddress,
+      tokenId
+    ) => {
+      const variables = {
+        orderId: criteriaBid.node?.id,
+        itemFillAmount: "1",
+        takerAssetsForCriteria: {
+          assetContractAddress: assetContractAddress,
+          tokenId: tokenId,
+          chain: "ETHEREUM",
+        },
+        giftRecipientAddress: null,
+        optionalCreatorFeeBasisPoints: 0,
+      };
+
+      const options = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authtkn: db.var.GRAPHQL_AUTH_TKN,
+          variables: JSON.stringify(variables),
+        },
+      };
+
+      var url = db.api.graphql.url.PAYLOAD;
+      const payload = await apiCall({ url: url, options: options });
+      return payload;
+    };
+    const slug = sellTo.bid.payload.collection.slug;
+    const authTkn = db.var.GRAPHQL_AUTH_TKN;
+    const criteriaBids = await getCriteriaBids(slug, authTkn);
+
+    // Only the best bid
+    const criteriaOffer =
+      criteriaBids?.data?.collection?.collectionOffers?.edges[0];
+
+    const payload = await getOfferPayload(
+      criteriaOffer,
+      sellTo.addr_tkn,
+      buyFrom.id_tkn
+    );
+    if (payload?.data?.order?.fulfill?.actions?.length > 0) {
+      return payload.data.order.fulfill.actions;
+    }
+    console.log(
+      "\nError while getting sell data from OS graphql",
+      JSON.stringify(payload, null, 2)
+    );
+    return false;
+  };
+  const _getSellOsData = async (sellTo) => {
+    let sellOsData = null;
+    switch (true) {
+      case sellTo.type === "OS_BID_SUB_BASIC" ||
+        sellTo.type === "OS_BID_GET_BASIC":
+        sellOsData = (await _getSellOsDataFromAPI(sellTo)) ?? {};
+        break;
+      case sellTo.type === "OS_BID_SUB_COLLECTION" ||
+        sellTo.type === "OS_BID_GET_COLLECTION":
+        sellOsData = (await _getSellOsDataFromGraphql(sellTo)) ?? {};
+        break;
+      case sellTo.type === "OS_BID_SUB_TRAIT" ||
+        sellTo.type === "OS_BID_GET_TRAIT":
+        sellOsData = (await _getSellOsDataFromGraphql(sellTo)) ?? {};
+        break;
+      default:
+        console.log("\nbRR: bid.type not found", bid);
+        return;
+    }
+    return sellOsData;
   };
 
   //(2/6)
@@ -525,15 +625,17 @@ const execArb = async (buyFrom, sellTo) => {
 
   //(0/6)
   try {
+    console.log("\nexecArb", buyFrom, sellTo);
     //(1/6)
-    if (!(await _preValidate(buyFrom, sellTo))) return;
+    //if (!(await _preValidate(buyFrom, sellTo))) return;
 
     //(2/6)
-    const buyBlurData = (await _getBuyBlurData(buyFrom)) ?? {};
-    if (!buyBlurData) return;
+    // const buyBlurData = (await _getBuyBlurData(buyFrom)) ?? {};
+    // if (!buyBlurData) return;
 
     //(3/6)
     const sellOsData = (await _getSellOsData(sellTo)) ?? {};
+    console.log("\nsellOsData", sellOsData);
     if (!sellOsData) return;
 
     //(4/6)
@@ -616,8 +718,12 @@ const subBidsGetSales = async () => {
 
     // @todo if ...TRAIT, then get all sales with specific trait
 
-    // Get all matching sales
-    const matchingSalesCursor = db.SALES.find(salesToFind);
+    // Get only one matching sales in ascending order of price
+    // todo: add index to price field
+
+    const matchingSalesCursor = db.SALES.find(salesToFind)
+      .sort({ price: 1 })
+      .limit(1);
     const matchingSales = await matchingSalesCursor.toArray();
     if (matchingSales.length === 0) return;
 
@@ -629,15 +735,6 @@ const subBidsGetSales = async () => {
     let lowestSale = matchingSales[0];
     let lowestPrice = BigInt(matchingSales[0].price);
 
-    for (let i = 1; i < matchingSales.length; i++) {
-      const currentPrice = BigInt(matchingSales[i].price);
-
-      if (currentPrice < lowestPrice) {
-        lowestPrice = currentPrice;
-        lowestSale = matchingSales[i];
-      }
-    }
-
     if (lowestPrice > BigInt(bid.price)) {
       return null;
     }
@@ -645,8 +742,29 @@ const subBidsGetSales = async () => {
     return lowestSale;
   };
 
-  const _getArbSaleCollection = async (bid) => {
+  const _getArbSalesCollection = async (bid) => {
     //@todo will to get multiple sales that salePrice < bidPrice
+
+    const salesToFind = {};
+
+    salesToFind["addr_tkn"] = bid.addr_tkn;
+
+    // Get all matching sales in increasing order of price
+    // todo: add index to price field
+    const matchingSalesCursor = db.SALES.find(salesToFind).sort({ price: 1 });
+    let matchingSales = await matchingSalesCursor.toArray();
+    if (matchingSales.length === 0) return;
+
+    if (db.TEST_MODE && bid.addr_tkn === db.var.TEST_NFT) {
+      console.log("\nDETECTED TEST bid");
+    }
+
+    // Filter out sales with price < bid.price
+    matchingSales = matchingSales.filter((sale) => {
+      return sale.price < BigInt(bid.price);
+    });
+
+    return matchingSales;
   };
 
   const _getArbSaleTrait = async (bid) => {
@@ -672,7 +790,7 @@ const subBidsGetSales = async () => {
           break;
         case bid.type === "OS_BID_SUB_COLLECTION" ||
           bid.type === "OS_BID_GET_COLLECTION":
-          sales = await _getArbSaleCollection(bid); //multi
+          sales = await _getArbSalesCollection(bid); //multi
           break;
         case bid.type === "OS_BID_SUB_TRAIT" || bid.type === "OS_BID_GET_TRAIT":
           sales = await _getArbSaleTrait(bid); //multi
@@ -884,6 +1002,52 @@ const setup = async () => {
     db.var.EST_GAS_FOR_ARB *
     (db.var.FEE.maxFeePerGas + db.var.FEE.maxPriorityFeePerGas);
 
+  /// SETUP OS GRAPHQL AUTH TKN ///
+  const getOSAuthTkn = async () => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        address: wallet.address,
+      }),
+    };
+
+    var url = db.api.graphql.url.AUTH_GET;
+
+    const msg = await apiCall({ url: url, options: options });
+    return msg;
+  };
+  const setOSAuthTkn = async (msg, sign) => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        address: wallet.address,
+        message: msg,
+        signature: sign,
+        chain: "ETHEREUM",
+      }),
+    };
+
+    var url = db.api.graphql.url.AUTH_SET;
+
+    const authTkn = await apiCall({ url: url, options: options });
+    return authTkn;
+  };
+  const msgToSign = await getOSAuthTkn();
+  const msg = msgToSign.data.auth.loginMessage;
+
+  const sign = await wallet.signMessage(msg);
+  const tknRawData = await setOSAuthTkn(msg, sign);
+
+  const authTkn = tknRawData.data.auth.login.token;
+
+  db.var.GRAPHQL_AUTH_TKN = authTkn;
+
   /// SETUP BLUR AUTH TKN ///
   const dataToSign = await apiCall({
     url: db.api.blur.url.AUTH_GET,
@@ -944,7 +1108,7 @@ const apiCall = async ({ url, options }) => {
   try {
     await setup();
     subBlocks();
-    subSalesGetBids();
+    //subSalesGetBids();
     subBidsGetSales();
   } catch (e) {
     console.error("\nERR: root:", e);
