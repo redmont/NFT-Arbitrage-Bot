@@ -103,6 +103,13 @@ const db = {
         AUTH_SET: "http://127.0.0.1:3001/auth/setToken",
         PAYLOAD: "http://127.0.0.1:3001/v1/getPayload",
       },
+      options: {
+        AUTH: {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ address: wallet.address }),
+        },
+      },
     },
     os: {
       bidData: {
@@ -473,6 +480,7 @@ const execArb = async (buyFrom, sellTo) => {
 
     return false;
   };
+
   const _getSellOsDataFromGraphql = async (sellTo) => {
     const getCriteriaBids = async (slug, authTkn) => {
       const options = {
@@ -544,6 +552,7 @@ const execArb = async (buyFrom, sellTo) => {
     );
     return false;
   };
+
   const _getSellOsData = async (sellTo) => {
     let sellOsData = null;
     switch (true) {
@@ -959,7 +968,51 @@ const subBlocks = async () => {
 
 //1
 const setup = async () => {
-  function _isValidDataToSign(dataToSign) {
+  const _validateOs = async (msgToSign) => {
+    // Checking if the required fields are present
+    if (
+      !msgToSign ||
+      !msgToSign.data ||
+      !msgToSign.data.auth ||
+      !msgToSign.data.auth.loginMessage
+    ) {
+      return false;
+    }
+
+    const loginMessage = msgToSign.data.auth.loginMessage;
+
+    // Checking the format of the loginMessage
+    const expectedMessageStart =
+      "Welcome to OpenSea!\n\nClick to sign in and accept the OpenSea Terms of Service (https://opensea.io/tos) and Privacy Policy (https://opensea.io/privacy).\n\nThis request will not trigger a blockchain transaction or cost any gas fees.\n\nYour authentication status will reset after 24 hours.\n\nWallet address:\n";
+    const expectedMessageEnd = "\n\nNonce:\n";
+
+    // Verifying the wallet address and nonce
+    const messageParts = loginMessage.split(expectedMessageEnd);
+    const messageStartAndAddress = messageParts[0].split(expectedMessageStart);
+    const walletAddress = ethers.getAddress(messageStartAndAddress[1]);
+    const nonce = messageParts[1];
+
+    // Validate the structure of the loginMessage
+    if (messageStartAndAddress[0] !== "" || messageParts.length !== 2) {
+      return false;
+    }
+
+    // Additional validation for nonce (UUID format)
+    const uuidRegex =
+      /^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}$/;
+
+    if (!uuidRegex.test(nonce)) {
+      return false;
+    }
+
+    if (walletAddress !== wallet.address) {
+      return false;
+    }
+
+    return loginMessage;
+  };
+
+  function _validateBlur(dataToSign) {
     // Check if dataToSign has all required properties
     if (
       !dataToSign.hasOwnProperty("message") ||
@@ -994,7 +1047,11 @@ const setup = async () => {
 
     return true;
   }
+
+  ////////////////////////
   /// SETUP BLOCK DATA ///
+  ////////////////////////
+
   db.var.BLOCK_NUM = await provider.getBlockNumber();
   db.var.FEE = await provider.getFeeData();
   db.var.CURR_WALLET_BALANCE = await provider.getBalance(wallet.address);
@@ -1002,61 +1059,50 @@ const setup = async () => {
     db.var.EST_GAS_FOR_ARB *
     (db.var.FEE.maxFeePerGas + db.var.FEE.maxPriorityFeePerGas);
 
+  /////////////////////////////////
   /// SETUP OS GRAPHQL AUTH TKN ///
-  const getOSAuthTkn = async () => {
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        address: wallet.address,
-      }),
-    };
+  /////////////////////////////////
 
-    var url = db.api.graphql.url.AUTH_GET;
+  const msgToSign = await apiCall({
+    url: db.api.graphql.url.AUTH_GET,
+    options: db.api.graphql.options.AUTH,
+  });
 
-    const msg = await apiCall({ url: url, options: options });
-    return msg;
-  };
-  const setOSAuthTkn = async (msg, sign) => {
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        address: wallet.address,
-        message: msg,
-        signature: sign,
-        chain: "ETHEREUM",
-      }),
-    };
+  const loginMsg = await _validateOs(msgToSign);
+  if (!loginMsg) {
+    console.error("\nERR: _validateOs", JSON.stringify(msgToSign, null, 2));
+    return;
+  }
 
-    var url = db.api.graphql.url.AUTH_SET;
+  const sign = await wallet.signMessage(loginMsg);
+  db.api.graphql.options.AUTH.body = JSON.stringify({
+    address: wallet.address,
+    message: loginMsg,
+    signature: sign,
+    chain: "ETHEREUM",
+  });
 
-    const authTkn = await apiCall({ url: url, options: options });
-    return authTkn;
-  };
-  const msgToSign = await getOSAuthTkn();
-  const msg = msgToSign.data.auth.loginMessage;
+  db.var.GRAPHQL_AUTH_TKN = (
+    await apiCall({
+      url: db.api.graphql.url.AUTH_SET,
+      options: db.api.graphql.options.AUTH, //can reuse
+    })
+  ).data.auth.login.token;
 
-  const sign = await wallet.signMessage(msg);
-  const tknRawData = await setOSAuthTkn(msg, sign);
+  console.log("\n\x1b[34mGRAPHQL_AUTH_TKN\x1b[0m", db.var.GRAPHQL_AUTH_TKN);
 
-  const authTkn = tknRawData.data.auth.login.token;
-
-  db.var.GRAPHQL_AUTH_TKN = authTkn;
-
+  ///////////////////////////
   /// SETUP BLUR AUTH TKN ///
+  ///////////////////////////
+
   const dataToSign = await apiCall({
     url: db.api.blur.url.AUTH_GET,
     options: db.api.blur.options.AUTH,
   });
 
-  if (!_isValidDataToSign(dataToSign)) {
+  if (!_validateBlur(dataToSign)) {
     //in case if proxy provider is malicious
-    console.error("\nERR: _isValidDataToSign", dataToSign);
+    console.error("\nERR: _validateBlur", dataToSign);
     process.exit();
   }
 
@@ -1069,7 +1115,12 @@ const setup = async () => {
     })
   ).accessToken;
 
+  console.log("\n\x1b[38;5;202mBLUR_AUTH_TKN\x1b[0m", db.var.BLUR_AUTH_TKN);
+
+  //////////////////////////////
   /// SETUP BLUR API OPTIONS ///
+  //////////////////////////////
+
   db.api.blur.options.GET = {
     method: "GET",
     headers: {
@@ -1090,6 +1141,7 @@ const setup = async () => {
     },
   };
 
+  //todo setup graphql options
   db.streamSALES = db.SALES.watch();
   db.streamBIDS = db.BIDS.watch();
 };

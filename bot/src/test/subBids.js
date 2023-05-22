@@ -98,22 +98,22 @@ function logAndUpdate() {
         }
       }
 
-      // if (
-      //   // event.event_type === EventType.TRAIT_OFFER ||
-      //   // event.event_type === EventType.COLLECTION_OFFER &&
-      //   // event.payload.protocol_data.parameters.orderType <= 1 &&
-      //   // BigInt(event?.payload?.base_price) <= ethers.parseEther("0.02")
-      //   //   .lt(ethers.parseEther("0.02"))
-      //   // event.payload.protocol_data.parameters.zone ===
-      //   // "0x000000e7ec00e7b300774b00001314b8610022b8"
-      //   event.payload.protocol_data.parameters?.consideration[1]
-      //     ?.startAmount !==
-      //   event.payload.protocol_data.parameters?.consideration[1]?.endAmount
-      //   // true
-      // ) {
-      //   console.log("\n GOT!", JSON.stringify(event, null, 2));
-      //   process.exit();
-      // }
+      if (
+        event.event_type === EventType.TRAIT_OFFER ||
+        event.event_type === EventType.COLLECTION_OFFER &&
+        event.payload.protocol_data.parameters.orderType <= 1
+        // BigInt(event?.payload?.base_price) <= ethers.parseEther("0.02")
+        //   .lt(ethers.parseEther("0.02"))
+        // event.payload.protocol_data.parameters.zone ===
+        // "0x000000e7ec00e7b300774b00001314b8610022b8"
+        // event.payload.protocol_data.parameters?.consideration[1]
+        //   ?.startAmount !==
+        // event.payload.protocol_data.parameters?.consideration[1]?.endAmount
+        // true
+      ) {
+        console.log("\n GOT!", JSON.stringify(event, null, 2));
+        process.exit();
+      }
       // logAndUpdate();
     });
   } catch (e) {

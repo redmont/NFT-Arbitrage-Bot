@@ -24,6 +24,7 @@
     - [ ] getPayload api-os (in execArb)
   - [ ] getBidsOs
   - [ ] cleaner
+  - [ ] Test if os sub errs exists on 2x diff continent vps
 
 ## Project Diagram 🔧
 
