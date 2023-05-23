@@ -120,13 +120,11 @@ export class OrdersController {
   async getAssetOrders(
     @param.query.string("chain") chain: string,
     @param.query.string("count") count: string,
-    @param.query.string("cursor") cursor: string,
     @param.path.string("tokenID") tokenID: string,
     @param.path.string("collection") collection: string
   ): Promise<any> {
-    console.log("\ngetAssetOrders ", collection, tokenID, chain, count, cursor);
-    chain = chain ? chain : "";
-    cursor = cursor ? cursor : "";
+    console.log("\ngetAssetOrders ", collection, tokenID, chain, count);
+    chain = chain ? chain : "ETHEREUM";
     count = count ? count : "16";
 
     const assetInfo = (await this.retrieveAsset(collection, tokenID)) || {
