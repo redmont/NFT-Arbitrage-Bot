@@ -483,19 +483,15 @@ const execArb = async (buyFrom, sellTo) => {
   };
 
   const _getSellOsDataFromGraphql = async (sellTo) => {
-    const getCriteriaBids = async (slug, authTkn) => {
+    const getCriteriaBids = async (addr_tkn, id_tkn) => {
       const options = {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          slug: slug,
-          authtkn: authTkn,
-        }),
       };
 
-      var url = `http://127.0.0.1:3001/v1/getCriteriaBids`;
+      var url = `http://127.0.0.1:3001/v1/${addr_tkn}/${id_tkn}/criteriaOrders?count=100`;
 
       const msg = await apiCall({ url: url, options: options });
       return msg;
@@ -531,19 +527,37 @@ const execArb = async (buyFrom, sellTo) => {
       const payload = await apiCall({ url: url, options: options });
       return payload;
     };
-    const slug = sellTo.bid.payload.collection.slug;
-    const authTkn = db.var.GRAPHQL_AUTH_TKN;
-    const criteriaBids = await getCriteriaBids(slug, authTkn);
+    const { addr_tkn, id_tkn } = buyFrom;
 
-    // Only the best bid
-    const criteriaOffer =
-      criteriaBids?.data?.collection?.collectionOffers?.edges[0];
+    const criteriaBids = await getCriteriaBids(addr_tkn, id_tkn);
 
-    const payload = await getOfferPayload(
-      criteriaOffer,
-      sellTo.addr_tkn,
-      buyFrom.id_tkn
-    );
+    // Filter out only corresponding bid from OS bid sub
+    const makerAddr = sellTo.addr_buyer;
+    console.log("makerAddr", makerAddr);
+    const priceInETH = ethers.formatEther(sellTo.bid.payload.base_price);
+    console.log("priceInETH", priceInETH);
+
+    const criteriaOffers = criteriaBids.data?.orders?.edges?.filter((order) => {
+      console.log(ethers.getAddress(order.node?.maker?.address));
+      console.log(order.node?.perUnitPriceType?.eth);
+      return (
+        ethers.getAddress(order.node?.maker?.address) === makerAddr &&
+        order.node?.perUnitPriceType?.eth == priceInETH
+      );
+    });
+
+    if (criteriaOffers.length == 0) {
+      console.log(
+        "\nNo matching bids found from OS graphql: ",
+        addr_tkn,
+        id_tkn,
+        makerAddr,
+        priceInETH
+      );
+      return false;
+    }
+
+    const payload = await getOfferPayload(criteriaOffers[0], addr_tkn, id_tkn);
     if (payload?.data?.order?.fulfill?.actions?.length > 0) {
       return payload.data.order.fulfill.actions;
     }
@@ -645,8 +659,10 @@ const execArb = async (buyFrom, sellTo) => {
 
     //(3/6)
     const sellOsData = (await _getSellOsData(sellTo)) ?? {};
-    console.log("\nsellOsData", sellOsData);
     if (!sellOsData) return;
+
+    console.log("\nsellOsData", sellOsData);
+    process.exit();
 
     //(4/6)
     const estProfitGross = await _validateArb(

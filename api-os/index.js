@@ -167,8 +167,7 @@ const getCriteriaBids = async (slug, authTkn) => {
   const sign = await wallet.signMessage(msg);
   const tknRawData = await setAuthTkn(msg, sign);
 
-  const authTkn =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiVlhObGNsUjVjR1U2TkRFME5EYzVORGs9IiwidXNlcm5hbWUiOiJfX09TX19weXhFcEJCc0c2ZVVrVmVJSkg0NUVuY3ZNVUFNMm1YNnd1TXZXUEs3cEpEZGxjNVJwS2FFWmVLQUFvOVdLVEhYIiwiYWRkcmVzcyI6IjB4MDAwMDBlOGM3OGU0NjE2NzhlNDU1YjFmNjg3OGJiMGNlNTBjZTU4NyIsImlzcyI6Ik9wZW5TZWEiLCJleHAiOjE2ODQ4MjYxNDUsIm9yaWdJYXQiOjE2ODQ3Mzk3NDUsImFwaUFjY2VzcyI6Im5vbmUifQ.HvBpQwXoQp37-rD3FdpquiGIpH7YNRxGVp9dvlCVK4o"; //tknRawData.data.auth.login.token;
+  const authTkn = tknRawData.data.auth.login.token;
   console.log("\nauthTkn", authTkn);
 
   const slug = "sakura-park";
