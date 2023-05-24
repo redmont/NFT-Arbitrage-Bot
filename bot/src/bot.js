@@ -308,6 +308,13 @@ const execArb = async (buyFrom, sellTo) => {
       return false;
     }
 
+    const osSellTxData = sellOsData?.transaction?.function
+      ? db.interface.SEAPORT.encodeFunctionData(
+          sellOsData?.transaction?.function,
+          [sellParams]
+        )
+      : sellOsData?.method?.data;
+
     const unsigned_txs = [
       {
         to: buyBlurData?.buys[0]?.txnData?.to,
@@ -328,10 +335,7 @@ const execArb = async (buyFrom, sellTo) => {
       },
       {
         to: sellOsData?.transaction?.to,
-        data: db.interface.SEAPORT.encodeFunctionData(
-          sellOsData?.transaction?.function,
-          [sellParams]
-        ),
+        data: osSellTxData,
         value: 0,
         gasLimit: db.var.EST_GAS_SWAP,
         nonce: nonce + 2,
@@ -374,6 +378,7 @@ const execArb = async (buyFrom, sellTo) => {
     const buyPrice = BigInt(buyBlurData.buys[0].txnData.value.hex);
     let sellPrice = BigInt(
       sellOsData.transaction.input_data.parameters.offerAmount
+      //sellOsData?.orders[0].parameters.offer[0].endAmount
     );
 
     sellPrice = sellOsData?.orders[0]?.parameters?.consideration.reduce(
@@ -385,6 +390,7 @@ const execArb = async (buyFrom, sellTo) => {
     const buyFromAddr = ethers.getAddress(buyFrom.addr_tkn);
     const sellOsAddr = ethers.getAddress(
       sellOsData?.transaction?.input_data.parameters.considerationToken
+      //sellOsData?.orders[0].parameters.consideration[0].token
     );
     const buyBlurAddr = ethers.getAddress(
       buyBlurData?.buys[0]?.includedTokens[0]?.contractAddress
@@ -392,6 +398,7 @@ const execArb = async (buyFrom, sellTo) => {
     const buyFromId = buyFrom.id_tkn;
     const sellOsId =
       sellOsData?.transaction?.input_data?.parameters?.considerationIdentifier;
+    //sellOsData?.orders[0].parameters.consideration[0].identifierOrCriteria;
     const buyBlurId = buyBlurData?.buys[0]?.includedTokens[0]?.tokenId;
     const target = ethers.getAddress(sellOsData?.transaction?.to);
 
@@ -530,23 +537,24 @@ const execArb = async (buyFrom, sellTo) => {
     const { addr_tkn, id_tkn } = buyFrom;
 
     const criteriaBids = await getCriteriaBids(addr_tkn, id_tkn);
+    //console.log("criteriaBids", criteriaBids);
 
     // Filter out only corresponding bid from OS bid sub
     const makerAddr = sellTo.addr_buyer;
-    console.log("makerAddr", makerAddr);
+    //console.log("makerAddr", makerAddr);
     const priceInETH = ethers.formatEther(sellTo.bid.payload.base_price);
-    console.log("priceInETH", priceInETH);
+    //console.log("priceInETH", priceInETH);
 
     const criteriaOffers = criteriaBids.data?.orders?.edges?.filter((order) => {
-      console.log(ethers.getAddress(order.node?.maker?.address));
-      console.log(order.node?.perUnitPriceType?.eth);
+      // console.log(ethers.getAddress(order.node?.maker?.address));
+      // console.log(order.node?.perUnitPriceType?.eth);
       return (
         ethers.getAddress(order.node?.maker?.address) === makerAddr &&
         order.node?.perUnitPriceType?.eth == priceInETH
       );
     });
 
-    if (criteriaOffers.length == 0) {
+    if (!criteriaOffers || criteriaOffers.length == 0) {
       console.log(
         "\nNo matching bids found from OS graphql: ",
         addr_tkn,
@@ -647,22 +655,104 @@ const execArb = async (buyFrom, sellTo) => {
     return true;
   };
 
+  const _formatGraphqlDataToAPI = (ordersData) => {
+    return ordersData.map(
+      ([parameters, numerator, denominator, signature, extraData]) => ({
+        parameters: {
+          offerer: parameters[0],
+          zone: parameters[1],
+          offer: parameters[2].map(
+            ([
+              itemType,
+              token,
+              identifierOrCriteria,
+              startAmount,
+              endAmount,
+            ]) => ({
+              itemType: Number(itemType),
+              token,
+              identifierOrCriteria: BigInt(identifierOrCriteria),
+              startAmount: BigInt(startAmount),
+              endAmount: BigInt(endAmount),
+            })
+          ),
+          consideration: parameters[3].map(
+            ([
+              itemType,
+              token,
+              identifierOrCriteria,
+              startAmount,
+              endAmount,
+              recipient,
+            ]) => ({
+              itemType: Number(itemType),
+              token,
+              identifierOrCriteria: BigInt(identifierOrCriteria),
+              startAmount: BigInt(startAmount),
+              endAmount: BigInt(endAmount),
+              recipient,
+            })
+          ),
+          orderType: Number(parameters[4]),
+          startTime: BigInt(parameters[5]),
+          endTime: BigInt(parameters[6]),
+          zoneHash: parameters[7],
+          salt: BigInt(parameters[8]),
+          conduitKey: parameters[9],
+          totalOriginalConsiderationItems: BigInt(parameters[10]),
+        },
+        numerator: BigInt(numerator),
+        denominator: BigInt(denominator),
+        signature,
+        extraData,
+      })
+    );
+  };
   //(0/6)
   try {
     console.log("\nexecArb", buyFrom, sellTo);
     //(1/6)
-    //if (!(await _preValidate(buyFrom, sellTo))) return;
+    if (!(await _preValidate(buyFrom, sellTo))) return;
 
     //(2/6)
-    // const buyBlurData = (await _getBuyBlurData(buyFrom)) ?? {};
-    // if (!buyBlurData) return;
+    const buyBlurData = (await _getBuyBlurData(buyFrom)) ?? {};
+    if (!buyBlurData) return;
 
     //(3/6)
-    const sellOsData = (await _getSellOsData(sellTo)) ?? {};
+    let sellOsData = (await _getSellOsData(sellTo)) ?? {};
     if (!sellOsData) return;
 
-    console.log("\nsellOsData", sellOsData);
-    process.exit();
+    if (Array.isArray(sellOsData) && sellOsData.length > 0) {
+      // data is from graphql
+      sellOsData = sellOsData[sellOsData.length - 1];
+
+      //decode sellOsData tx data based on abi
+      const iface = db.interface.SEAPORT;
+      let decodedData = iface.parseTransaction({
+        data: sellOsData.method.data,
+        value: sellOsData.method.value,
+      });
+
+      const ordersData = decodedData.args[0];
+      sellOsData.orders = _formatGraphqlDataToAPI(ordersData);
+
+      // console.log("\nSELL OS DATA", sellOsData.orders[0].parameters);
+      // console.log("\nSELL OS DATA", sellOsData.orders[1].parameters);
+
+      sellOsData.transaction = {
+        to: sellOsData.method.destination.value,
+        input_data: {
+          parameters: {
+            offererConduitKey: sellOsData?.orders[0].parameters.conduitKey,
+            offerAmount: sellOsData?.orders[0].parameters.offer[0].endAmount,
+            considerationToken: sellOsData?.orders[1].parameters.offer[0].token,
+            considerationIdentifier:
+              sellOsData?.orders[1].parameters.offer[0].identifierOrCriteria,
+          },
+        },
+      };
+      // console.log("\nSELL OS DATA", sellOsData.transaction.input_data);
+    }
 
     //(4/6)
     const estProfitGross = await _validateArb(
@@ -851,7 +941,7 @@ const subSalesGetBids = async () => {
     const matchingBidsCursor = db.BIDS.find({
       addr_tkn: sale.addr_tkn,
       id_tkn: sale.id_tkn,
-    }); //can't price cuz string=>BigInt
+    }).sort({ price }); //can't price cuz string=>BigInt
 
     // console.log('\nGOT matchingBidsCursor', matchingBidsCursor)
     if (sale.addr_tkn == db.var.TEST_NFT && sale.id_tkn == db.var.TEST_NFT_ID) {
@@ -1179,7 +1269,7 @@ const apiCall = async ({ url, options }) => {
   try {
     await setup();
     subBlocks();
-    //subSalesGetBids();
+    subSalesGetBids();
     subBidsGetSales();
   } catch (e) {
     console.error("\nERR: root:", e);

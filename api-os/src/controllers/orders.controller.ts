@@ -146,7 +146,7 @@ export class OrdersController {
         tokenID: string,
         chain: string,
         count: any,
-        criteriaTakerAssetId: string
+        criteriaTakerAssetId: any
       ) => {
         // WARNING: For POST requests, body is set to null by browsers.
         var data = JSON.stringify({
