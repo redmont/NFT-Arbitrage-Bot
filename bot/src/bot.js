@@ -656,8 +656,8 @@ const execArb = async (buyFrom, sellTo) => {
   };
 
   // todo: There is probably a better way to do this via ABI
-  const _formatGraphqlDataToAPI = (ordersData) => {
-    return ordersData.map(
+  const _formatGraphqlDataToAPI = (ordersData, sellOsData) => {
+    sellOsData.orders = ordersData.map(
       ([parameters, numerator, denominator, signature, extraData]) => ({
         parameters: {
           offerer: parameters[0],
@@ -708,6 +708,18 @@ const execArb = async (buyFrom, sellTo) => {
         extraData,
       })
     );
+    sellOsData.transaction = {
+      to: sellOsData.method.destination.value,
+      input_data: {
+        parameters: {
+          offererConduitKey: sellOsData.orders[0].parameters.conduitKey,
+          offerAmount: sellOsData.orders[0].parameters.offer[0].endAmount,
+          considerationToken: sellOsData.orders[1].parameters.offer[0].token,
+          considerationIdentifier:
+            sellOsData.orders[1].parameters.offer[0].identifierOrCriteria,
+        },
+      },
+    };
   };
   //(0/6)
   try {
@@ -723,8 +735,8 @@ const execArb = async (buyFrom, sellTo) => {
     let sellOsData = (await _getSellOsData(sellTo)) ?? {};
     if (!sellOsData) return;
 
+    // format sellOsData if the bid data is from graphql
     if (Array.isArray(sellOsData) && sellOsData.length > 0) {
-      // data is from graphql
       sellOsData = sellOsData[sellOsData.length - 1];
 
       //decode sellOsData tx data based on abi
@@ -735,24 +747,7 @@ const execArb = async (buyFrom, sellTo) => {
       });
 
       const ordersData = decodedData.args[0];
-      sellOsData.orders = _formatGraphqlDataToAPI(ordersData);
-
-      // console.log("\nSELL OS DATA", sellOsData.orders[0].parameters);
-      // console.log("\nSELL OS DATA", sellOsData.orders[1].parameters);
-
-      sellOsData.transaction = {
-        to: sellOsData.method.destination.value,
-        input_data: {
-          parameters: {
-            offererConduitKey: sellOsData?.orders[0].parameters.conduitKey,
-            offerAmount: sellOsData?.orders[0].parameters.offer[0].endAmount,
-            considerationToken: sellOsData?.orders[1].parameters.offer[0].token,
-            considerationIdentifier:
-              sellOsData?.orders[1].parameters.offer[0].identifierOrCriteria,
-          },
-        },
-      };
-      // console.log("\nSELL OS DATA", sellOsData.transaction.input_data);
+      _formatGraphqlDataToAPI(ordersData, sellOsData);
     }
 
     //(4/6)
