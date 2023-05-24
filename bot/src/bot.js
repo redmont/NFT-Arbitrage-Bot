@@ -655,6 +655,7 @@ const execArb = async (buyFrom, sellTo) => {
     return true;
   };
 
+  // todo: There is probably a better way to do this via ABI
   const _formatGraphqlDataToAPI = (ordersData) => {
     return ordersData.map(
       ([parameters, numerator, denominator, signature, extraData]) => ({
