@@ -942,7 +942,7 @@ const subSalesGetBids = async () => {
     const matchingBidsCursor = db.BIDS.find({
       addr_tkn: sale.addr_tkn,
       id_tkn: sale.id_tkn,
-    }).sort({ price }); //can't price cuz string=>BigInt
+    }); //can't price cuz string=>BigInt
 
     // console.log('\nGOT matchingBidsCursor', matchingBidsCursor)
     if (sale.addr_tkn == db.var.TEST_NFT && sale.id_tkn == db.var.TEST_NFT_ID) {
