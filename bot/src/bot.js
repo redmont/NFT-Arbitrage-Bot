@@ -539,23 +539,48 @@ const execArb = async (buyFrom, sellTo) => {
       console.log(addr_tkn, id_tkn, "criteriaBids error", criteriaBids.error);
       return false;
     }
+    if (criteriaBids.data?.orders?.edges?.length === 0) {
+      console.log(addr_tkn, id_tkn, "criteriaBids empty");
+      return false;
+    }
 
     // Filter out only corresponding bid from OS bid sub
     const makerAddr = sellTo.addr_buyer;
-    //console.log("\n\nmakerAddr", makerAddr);
     const priceInETH = ethers.formatEther(sellTo.bid.payload.base_price);
-    //console.log("priceInETH", priceInETH);
+    const bidPriceOS = ethers.parseEther(priceInETH);
 
-    const criteriaOffers = criteriaBids.data?.orders?.edges?.filter((order) => {
-      // console.log(ethers.getAddress(order.node?.maker?.address));
-      // console.log(order.node?.perUnitPriceType?.eth);
-      return (
-        ethers.getAddress(order.node?.maker?.address) === makerAddr &&
-        order.node?.perUnitPriceType?.eth == priceInETH
+    let criteriaOffer;
+    criteriaBids.data?.orders?.edges?.every((order) => {
+      const currentBidMakerAddr = ethers.getAddress(order.node?.maker?.address);
+      // console.log("\n\nmakerAddr", makerAddr);
+      // console.log("currentBidMakerAddr", currentBidMakerAddr);
+      // console.log(currentBidMakerAddr === makerAddr);
+
+      const currentBidPriceGraphQL = ethers.parseEther(
+        order.node?.perUnitPriceType?.eth
       );
+      // console.log("bidPriceOS", bidPriceOS);
+      // console.log("currentBidPriceGraphQL", currentBidPriceGraphQL);
+      // console.log(currentBidPriceGraphQL == bidPriceOS);
+
+      if (
+        currentBidMakerAddr === makerAddr &&
+        currentBidPriceGraphQL == bidPriceOS
+      ) {
+        criteriaOffer = order;
+        return false;
+      }
+
+      if (currentBidPriceGraphQL < bidPriceOS) {
+        return false;
+      }
+
+      return true;
     });
 
-    if (!criteriaOffers || criteriaOffers.length == 0) {
+    //console.log("criteriaOffer", criteriaOffer);
+
+    if (!criteriaOffer) {
       console.log(
         "\nNo matching bids found from OS graphql: ",
         addr_tkn,
@@ -566,7 +591,7 @@ const execArb = async (buyFrom, sellTo) => {
       return false;
     }
 
-    const payload = await getOfferPayload(criteriaOffers[0], addr_tkn, id_tkn);
+    const payload = await getOfferPayload(criteriaOffer, addr_tkn, id_tkn);
     if (payload?.data?.order?.fulfill?.actions?.length > 0) {
       return payload.data.order.fulfill.actions;
     }
@@ -574,7 +599,7 @@ const execArb = async (buyFrom, sellTo) => {
       "\nError while getting sell data from OS graphql",
       addr_tkn,
       id_tkn,
-      criteriaOffers[0]?.node?.id,
+      criteriaOffer?.node?.id,
       JSON.stringify(payload, null, 2)
     );
     return false;
@@ -742,11 +767,11 @@ const execArb = async (buyFrom, sellTo) => {
   try {
     console.log("\nexecArb", buyFrom, sellTo);
     //(1/6)
-    //if (!(await _preValidate(buyFrom, sellTo))) return;
+    if (!(await _preValidate(buyFrom, sellTo))) return;
 
     //(2/6)
-    // const buyBlurData = (await _getBuyBlurData(buyFrom)) ?? {};
-    // if (!buyBlurData) return;
+    const buyBlurData = (await _getBuyBlurData(buyFrom)) ?? {};
+    if (!buyBlurData) return;
 
     //(3/6)
     let sellOsData = (await _getSellOsData(sellTo)) ?? {};
@@ -907,14 +932,14 @@ const subBidsGetSales = async () => {
 
       switch (true) {
         case bid.type === "OS_BID_SUB_BASIC" || bid.type === "OS_BID_GET_BASIC":
-          //sales = await _getArbSaleBasic(bid); //1x only
+          sales = await _getArbSaleBasic(bid); //1x only
           break;
         case bid.type === "OS_BID_SUB_COLLECTION" ||
           bid.type === "OS_BID_GET_COLLECTION":
           sales = await _getArbSalesCollection(bid); //multi
           break;
         case bid.type === "OS_BID_SUB_TRAIT" || bid.type === "OS_BID_GET_TRAIT":
-          //sales = await _getArbSaleTrait(bid); //multi
+          sales = await _getArbSaleTrait(bid); //multi
           break;
         default:
           console.log("\nbRR: bid.type not found", bid);
