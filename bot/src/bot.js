@@ -869,6 +869,7 @@ const subBidsGetSales = async () => {
 
     const matchingSalesCursor = db.SALES.find(salesToFind)
       .sort({ price: 1 })
+      .collation({ locale: "en_US", numericOrdering: true })
       .limit(1);
     const matchingSales = await matchingSalesCursor.toArray();
     if (matchingSales.length === 0) return;
@@ -897,7 +898,9 @@ const subBidsGetSales = async () => {
 
     // Get all matching sales in increasing order of price
     // todo: add index to price field
-    const matchingSalesCursor = db.SALES.find(salesToFind).sort({ price: 1 });
+    const matchingSalesCursor = db.SALES.find(salesToFind)
+      .sort({ price: 1 })
+      .collation({ locale: "en_US", numericOrdering: true });
     let matchingSales = await matchingSalesCursor.toArray();
     if (matchingSales.length === 0) return;
 
