@@ -378,7 +378,6 @@ const execArb = async (buyFrom, sellTo) => {
     const buyPrice = BigInt(buyBlurData.buys[0].txnData.value.hex);
     let sellPrice = BigInt(
       sellOsData.transaction.input_data.parameters.offerAmount
-      //sellOsData?.orders[0].parameters.offer[0].endAmount
     );
 
     sellPrice = sellOsData?.orders[0]?.parameters?.consideration.reduce(
@@ -390,7 +389,6 @@ const execArb = async (buyFrom, sellTo) => {
     const buyFromAddr = ethers.getAddress(buyFrom.addr_tkn);
     const sellOsAddr = ethers.getAddress(
       sellOsData?.transaction?.input_data.parameters.considerationToken
-      //sellOsData?.orders[0].parameters.consideration[0].token
     );
     const buyBlurAddr = ethers.getAddress(
       buyBlurData?.buys[0]?.includedTokens[0]?.contractAddress
@@ -398,7 +396,6 @@ const execArb = async (buyFrom, sellTo) => {
     const buyFromId = buyFrom.id_tkn;
     const sellOsId =
       sellOsData?.transaction?.input_data?.parameters?.considerationIdentifier;
-    //sellOsData?.orders[0].parameters.consideration[0].identifierOrCriteria;
     const buyBlurId = buyBlurData?.buys[0]?.includedTokens[0]?.tokenId;
     const target = ethers.getAddress(sellOsData?.transaction?.to);
 
@@ -537,11 +534,15 @@ const execArb = async (buyFrom, sellTo) => {
     const { addr_tkn, id_tkn } = buyFrom;
 
     const criteriaBids = await getCriteriaBids(addr_tkn, id_tkn);
-    //console.log("criteriaBids", criteriaBids);
+
+    if (criteriaBids.error) {
+      console.log(addr_tkn, id_tkn, "criteriaBids error", criteriaBids.error);
+      return false;
+    }
 
     // Filter out only corresponding bid from OS bid sub
     const makerAddr = sellTo.addr_buyer;
-    //console.log("makerAddr", makerAddr);
+    //console.log("\n\nmakerAddr", makerAddr);
     const priceInETH = ethers.formatEther(sellTo.bid.payload.base_price);
     //console.log("priceInETH", priceInETH);
 
@@ -571,6 +572,9 @@ const execArb = async (buyFrom, sellTo) => {
     }
     console.log(
       "\nError while getting sell data from OS graphql",
+      addr_tkn,
+      id_tkn,
+      criteriaOffers[0]?.node?.id,
       JSON.stringify(payload, null, 2)
     );
     return false;
@@ -623,7 +627,6 @@ const execArb = async (buyFrom, sellTo) => {
       options: db.api.blur.options.POST,
     });
     // console.timeEnd("buyFromBlurData");
-    // console.log("\nbuyFromBlurData", buyFromBlurData);
 
     //ignore if listing not found, log new, unknown, others
     switch (true) {
@@ -636,7 +639,12 @@ const execArb = async (buyFrom, sellTo) => {
       //todo, should delete from db
 
       default:
-        console.log("\nUNKNOWN buyFromBlurData", buyFromBlurData);
+        console.log(
+          "\nnUNKNOWN buyFromBlurData",
+          url,
+          buyFrom.id_tkn,
+          buyFromBlurData
+        );
         return false;
     }
   };
@@ -656,7 +664,16 @@ const execArb = async (buyFrom, sellTo) => {
   };
 
   // todo: There is probably a better way to do this via ABI
-  const _formatGraphqlDataToAPI = (ordersData, sellOsData) => {
+  const _formatGraphqlDataToAPI = (sellOsData) => {
+    //decode sellOsData tx data based on abi
+    const iface = db.interface.SEAPORT;
+    let decodedData = iface.parseTransaction({
+      data: sellOsData.method.data,
+      value: sellOsData.method.value,
+    });
+
+    const ordersData = decodedData.args[0];
+
     sellOsData.orders = ordersData.map(
       ([parameters, numerator, denominator, signature, extraData]) => ({
         parameters: {
@@ -725,11 +742,11 @@ const execArb = async (buyFrom, sellTo) => {
   try {
     console.log("\nexecArb", buyFrom, sellTo);
     //(1/6)
-    if (!(await _preValidate(buyFrom, sellTo))) return;
+    //if (!(await _preValidate(buyFrom, sellTo))) return;
 
     //(2/6)
-    const buyBlurData = (await _getBuyBlurData(buyFrom)) ?? {};
-    if (!buyBlurData) return;
+    // const buyBlurData = (await _getBuyBlurData(buyFrom)) ?? {};
+    // if (!buyBlurData) return;
 
     //(3/6)
     let sellOsData = (await _getSellOsData(sellTo)) ?? {};
@@ -739,15 +756,7 @@ const execArb = async (buyFrom, sellTo) => {
     if (Array.isArray(sellOsData) && sellOsData.length > 0) {
       sellOsData = sellOsData[sellOsData.length - 1];
 
-      //decode sellOsData tx data based on abi
-      const iface = db.interface.SEAPORT;
-      let decodedData = iface.parseTransaction({
-        data: sellOsData.method.data,
-        value: sellOsData.method.value,
-      });
-
-      const ordersData = decodedData.args[0];
-      _formatGraphqlDataToAPI(ordersData, sellOsData);
+      _formatGraphqlDataToAPI(sellOsData);
     }
 
     //(4/6)
@@ -898,14 +907,14 @@ const subBidsGetSales = async () => {
 
       switch (true) {
         case bid.type === "OS_BID_SUB_BASIC" || bid.type === "OS_BID_GET_BASIC":
-          sales = await _getArbSaleBasic(bid); //1x only
+          //sales = await _getArbSaleBasic(bid); //1x only
           break;
         case bid.type === "OS_BID_SUB_COLLECTION" ||
           bid.type === "OS_BID_GET_COLLECTION":
           sales = await _getArbSalesCollection(bid); //multi
           break;
         case bid.type === "OS_BID_SUB_TRAIT" || bid.type === "OS_BID_GET_TRAIT":
-          sales = await _getArbSaleTrait(bid); //multi
+          //sales = await _getArbSaleTrait(bid); //multi
           break;
         default:
           console.log("\nbRR: bid.type not found", bid);
