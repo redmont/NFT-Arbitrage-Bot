@@ -487,7 +487,7 @@ const execArb = async (buyFrom, sellTo) => {
   };
 
   const _getSellOsDataFromGraphql = async (sellTo) => {
-    const getCriteriaBids = async (addr_tkn, id_tkn) => {
+    const getCriteriaBids = async (addr_tkn, id_tkn, cursor, count) => {
       const options = {
         method: "GET",
         headers: {
@@ -495,7 +495,9 @@ const execArb = async (buyFrom, sellTo) => {
         },
       };
 
-      var url = `http://127.0.0.1:3001/v1/${addr_tkn}/${id_tkn}/criteriaOrders?count=100`;
+      var url = `http://127.0.0.1:3001/v1/${addr_tkn}/${id_tkn}/criteriaOrders?`;
+      cursor && (url += `&cursor=${cursor}`);
+      count && (url += `&count=${count}`);
 
       const msg = await apiCall({ url: url, options: options });
       return msg;
@@ -533,52 +535,65 @@ const execArb = async (buyFrom, sellTo) => {
     };
     const { addr_tkn, id_tkn } = buyFrom;
 
-    const criteriaBids = await getCriteriaBids(addr_tkn, id_tkn);
-
-    if (criteriaBids.error) {
-      console.log(addr_tkn, id_tkn, "criteriaBids error", criteriaBids.error);
-      return false;
-    }
-    if (criteriaBids.data?.orders?.edges?.length === 0) {
-      console.log(addr_tkn, id_tkn, "criteriaBids empty");
-      return false;
-    }
+    let exitLoop = false;
+    let cursor = null;
+    let criteriaOffer;
 
     // Filter out only corresponding bid from OS bid sub
     const makerAddr = sellTo.addr_buyer;
     const priceInETH = ethers.formatEther(sellTo.bid.payload.base_price);
     const bidPriceOS = ethers.parseEther(priceInETH);
 
-    let criteriaOffer;
-    criteriaBids.data?.orders?.edges?.every((order) => {
-      const currentBidMakerAddr = ethers.getAddress(order.node?.maker?.address);
-      // console.log("\n\nmakerAddr", makerAddr);
-      // console.log("currentBidMakerAddr", currentBidMakerAddr);
-      // console.log(currentBidMakerAddr === makerAddr);
+    while (!exitLoop) {
+      const criteriaBids = await getCriteriaBids(addr_tkn, id_tkn, cursor, 32);
 
-      const currentBidPriceGraphQL = ethers.parseEther(
-        order.node?.perUnitPriceType?.eth
-      );
-      // console.log("bidPriceOS", bidPriceOS);
-      // console.log("currentBidPriceGraphQL", currentBidPriceGraphQL);
-      // console.log(currentBidPriceGraphQL == bidPriceOS);
-
-      if (
-        currentBidMakerAddr === makerAddr &&
-        currentBidPriceGraphQL == bidPriceOS
-      ) {
-        criteriaOffer = order;
+      if (criteriaBids.error) {
+        console.log(addr_tkn, id_tkn, "criteriaBids error", criteriaBids.error);
+        return false;
+      }
+      if (criteriaBids.data?.orders?.edges?.length === 0) {
+        console.log(addr_tkn, id_tkn, "criteriaBids empty");
         return false;
       }
 
-      if (currentBidPriceGraphQL < bidPriceOS) {
-        return false;
+      criteriaBids.data?.orders?.edges?.every((order) => {
+        const currentBidMakerAddr = ethers.getAddress(
+          order.node?.maker?.address
+        );
+        // console.log("\n\nmakerAddr", makerAddr);
+        // console.log("currentBidMakerAddr", currentBidMakerAddr);
+        // console.log(currentBidMakerAddr === makerAddr);
+
+        const currentBidPriceGraphQL = ethers.parseEther(
+          order.node?.perUnitPriceType?.eth
+        );
+        // console.log("bidPriceOS", bidPriceOS);
+        // console.log("currentBidPriceGraphQL", currentBidPriceGraphQL);
+        // console.log(currentBidPriceGraphQL == bidPriceOS);
+
+        if (
+          currentBidMakerAddr === makerAddr &&
+          currentBidPriceGraphQL == bidPriceOS
+        ) {
+          exitLoop = true;
+          criteriaOffer = order;
+          return false;
+        }
+
+        if (currentBidPriceGraphQL < bidPriceOS) {
+          exitLoop = true;
+          return false;
+        }
+        return true;
+      });
+
+      if (criteriaBids.data?.orders?.pageInfo?.hasNextPage) {
+        cursor = criteriaBids.data?.orders?.pageInfo?.endCursor;
       }
-
-      return true;
-    });
-
-    //console.log("criteriaOffer", criteriaOffer);
+      if (!cursor) {
+        exitLoop = true;
+      }
+    }
 
     if (!criteriaOffer) {
       console.log(
@@ -590,6 +605,7 @@ const execArb = async (buyFrom, sellTo) => {
       );
       return false;
     }
+    //    console.log("criteriaOffer", criteriaOffer);
 
     const payload = await getOfferPayload(criteriaOffer, addr_tkn, id_tkn);
     if (payload?.data?.order?.fulfill?.actions?.length > 0) {
