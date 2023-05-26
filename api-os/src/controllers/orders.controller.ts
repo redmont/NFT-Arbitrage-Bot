@@ -245,7 +245,7 @@ export class OrdersController {
             chains: null,
             eventTypes: ["AUCTION_SUCCESSFUL", "ASSET_TRANSFER"],
             cursor: null,
-            count: 16,
+            count: 1,
             showAll: true,
             identity: null,
             stringTraits: null,
@@ -275,8 +275,6 @@ export class OrdersController {
       chain,
       tokenID,
       collection
-      //authtoken,
-      //walletaddress
     );
     const assetID = data?.data?.eventActivity?.edges[0]?.node?.item?.relayId;
     return assetID;
