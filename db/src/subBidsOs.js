@@ -5,6 +5,7 @@ const ethers = require("ethers");
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
 const mongoClient = new MongoClient(uri);
+const { ensureIndexes } = require("../../utils/mongoIndexes");
 
 const osClient = new OpenSeaStreamClient({
   token: process.env.API_OS_0,
@@ -210,6 +211,7 @@ const addToBidsDB = async (bid) => {
 };
 
 (async function root() {
+  await ensureIndexes(mongoClient);
   try {
     osClient.onEvents("*", db.OS_SUB_EVENTS, async (event) => {
       // if(db.TEST_MODE){

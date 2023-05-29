@@ -4,6 +4,7 @@ const ethers = require("ethers");
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
 const mongoClient = new MongoClient(uri);
+const { ensureIndexes } = require("../../utils/mongoIndexes");
 
 const wallet = ethers.Wallet.createRandom();
 
@@ -321,6 +322,8 @@ const setup = async () => {
       projection: { sale: 1, _id: 0 },
     }
   );
+
+  await ensureIndexes(mongoClient);
 
   db.PREV_SALES = new Set([latestSale.sale.id]);
 

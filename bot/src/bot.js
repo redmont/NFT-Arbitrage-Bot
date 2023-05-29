@@ -11,6 +11,7 @@ const wallet = new ethers.Wallet(process.env.PK_0, provider);
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
 const mongoClient = new MongoClient(uri);
+const { ensureIndexes } = require("../../utils/mongoIndexes");
 
 /**
  * @todo
@@ -1144,6 +1145,8 @@ const setup = async () => {
   //todo setup graphql options
   db.streamSALES = db.SALES.watch();
   db.streamBIDS = db.BIDS.watch();
+
+  await ensureIndexes(mongoClient);
 };
 
 //0
