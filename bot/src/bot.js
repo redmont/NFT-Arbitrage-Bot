@@ -487,7 +487,13 @@ const execArb = async (buyFrom, sellTo) => {
   };
 
   const _getSellOsDataFromGraphql = async (sellTo) => {
-    const getCriteriaBids = async (addr_tkn, id_tkn, cursor, count) => {
+    const getCriteriaBids = async (
+      addr_tkn,
+      id_tkn,
+      cursor,
+      count,
+      makerAddr
+    ) => {
       const options = {
         method: "GET",
         headers: {
@@ -498,6 +504,7 @@ const execArb = async (buyFrom, sellTo) => {
       var url = `http://127.0.0.1:3001/v1/${addr_tkn}/${id_tkn}/criteriaOrders?`;
       cursor && (url += `&cursor=${cursor}`);
       count && (url += `&count=${count}`);
+      makerAddr && (url += `&maker=${makerAddr}`);
 
       const msg = await apiCall({ url: url, options: options });
       return msg;
@@ -545,7 +552,13 @@ const execArb = async (buyFrom, sellTo) => {
     const bidPriceOS = ethers.parseEther(priceInETH);
 
     while (!exitLoop) {
-      const criteriaBids = await getCriteriaBids(addr_tkn, id_tkn, cursor, 32);
+      const criteriaBids = await getCriteriaBids(
+        addr_tkn,
+        id_tkn,
+        cursor,
+        32,
+        makerAddr
+      );
 
       if (criteriaBids.error) {
         console.log(addr_tkn, id_tkn, "criteriaBids error", criteriaBids.error);
@@ -557,13 +570,6 @@ const execArb = async (buyFrom, sellTo) => {
       }
 
       criteriaBids.data?.orders?.edges?.every((order) => {
-        const currentBidMakerAddr = ethers.getAddress(
-          order.node?.maker?.address
-        );
-        // console.log("\n\nmakerAddr", makerAddr);
-        // console.log("currentBidMakerAddr", currentBidMakerAddr);
-        // console.log(currentBidMakerAddr === makerAddr);
-
         const currentBidPriceGraphQL = ethers.parseEther(
           order.node?.perUnitPriceType?.eth
         );
@@ -571,10 +577,7 @@ const execArb = async (buyFrom, sellTo) => {
         // console.log("currentBidPriceGraphQL", currentBidPriceGraphQL);
         // console.log(currentBidPriceGraphQL == bidPriceOS);
 
-        if (
-          currentBidMakerAddr === makerAddr &&
-          currentBidPriceGraphQL == bidPriceOS
-        ) {
+        if (currentBidPriceGraphQL == bidPriceOS) {
           exitLoop = true;
           criteriaOffer = order;
           return false;

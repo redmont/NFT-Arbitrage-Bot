@@ -120,10 +120,11 @@ export class OrdersController {
   async getAssetOrders(
     @param.query.string("chain") chain: string,
     @param.query.string("count") count: string,
+    @param.query.string("maker") maker: string,
     @param.path.string("tokenID") tokenID: string,
     @param.path.string("collection") collection: string
   ): Promise<any> {
-    console.log("\ngetAssetOrders ", collection, tokenID, chain, count);
+    console.log("\ngetAssetOrders ", collection, tokenID, chain, count, maker);
     chain = chain ? chain : "ETHEREUM";
     count = count ? count : "16";
 
@@ -154,7 +155,8 @@ export class OrdersController {
         tokenID: string,
         chain: string,
         count: any,
-        criteriaTakerAssetId: any
+        criteriaTakerAssetId: any,
+        maker: string
       ) => {
         // WARNING: For POST requests, body is set to null by browsers.
         var data = JSON.stringify({
@@ -169,7 +171,7 @@ export class OrdersController {
             isValid: true,
             includeInvalidBids: null,
             isInactive: null,
-            maker: null,
+            maker: maker ? { address: maker } : null,
             makerArchetype: null,
             makerAssetIsPayment: true,
             takerArchetype: {
@@ -215,7 +217,8 @@ export class OrdersController {
       tokenID,
       chain,
       count,
-      criteriaTakerAssetId
+      criteriaTakerAssetId,
+      maker
     );
 
     return response;
