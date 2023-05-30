@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "@metamask/detect-provider": "^2.0.0",
     "@opensea/stream-js": "^0.0.26",
     "ethers": "6.3.0",
     "mongodb": "^5.3.0",
