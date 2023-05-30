@@ -123,9 +123,8 @@ const _getBlurNFTs = async () => {
       options: {
         headers: {
           "Content-Type": "application/json",
-          walletAddress: "0x00000E8C78e461678E455b1f6878Bb0ce50ce587",
-          authToken:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3YWxsZXRBZGRyZXNzIjoiMHgwMDAwMGU4Yzc4ZTQ2MTY3OGU0NTViMWY2ODc4YmIwY2U1MGNlNTg3Iiwic2lnbmF0dXJlIjoiMHhjYWYzMmZkOWM1NTYxMzc3YzRiOGIzNWUzMmJkNGIzY2FlOGU4NWQ0NGNiMTY5OWI5MGUxNDRlMTc3MzhmZjk5NmViY2MwZjVhNzc5MjQyNWUzZDljYThlOTIzYjYxN2MzOTlmM2I0OTJlNjhhODlmMzI0MDk1YjgyNTY4MDIzYjFjIiwiaWF0IjoxNjg1NDI3MTM1LCJleHAiOjE2ODgwMTkxMzV9.0j-7dgUby4eVE1ki_X4bng9REMczhWW4FNmQ9rn2yeI",
+          walletAddress: testData.walletAddress,
+          authToken: testData.blurToken,
         },
       },
     });
