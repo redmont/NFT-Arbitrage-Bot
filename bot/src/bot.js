@@ -2,6 +2,8 @@ const fetch = require("node-fetch");
 const ethers = require("ethers");
 const abi = require("./data/abi.json");
 
+require("dotenv").config();
+
 const provider = new ethers.AlchemyProvider(
   "homestead",
   process.env.API_ALCHEMY
@@ -52,7 +54,7 @@ const { ensureIndexes } = require("../../utils/mongoIndexes");
  */
 
 const db = {
-  TEST_MODE: true,
+  TEST_MODE: process.env.TEST_MODE || false,
 
   QUEUE: [],
   SALES: mongoClient.db("BOT_NFT").collection("SALES"),
@@ -60,7 +62,8 @@ const db = {
 
   var: {
     TEST_NFT: "0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0",
-    TEST_NFT_ID: "877",
+    TEST_NFT_ID: "4171",
+    TEST_BUYER: "0x00000E8C78e461678E455b1f6878Bb0ce50ce587",
 
     STARTED: false,
     BLUR_AUTH_TKN: "",
@@ -404,31 +407,25 @@ const execArb = async (buyFrom, sellTo) => {
       return false;
     }
 
-    console.log(
-      JSON.stringify(
-        {
-          info: "POTENTIAL ARB",
-          date: new Date().toLocaleString(),
-          block: db.var.BLOCK_NUM,
-          estProfitGross: ethers.formatEther(estProfitGross),
-          buyFrom,
-          sellTo,
-          buyBlurData,
-          sellOsData,
-        },
-        null,
-        2
-      )
-    );
+    console.log({
+      info: "POTENTIAL ARB",
+      date: new Date().toLocaleString(),
+      block: db.var.BLOCK_NUM,
+      estProfitGross: ethers.formatEther(estProfitGross),
+      buyFrom,
+      sellTo,
+      buyBlurData,
+      sellOsData,
+    });
 
     // Validate NFT addr
-    if (buyFromAddr !== sellOsAddr || sellOsAddr !== buyBlurAddr) {
+    if (buyFromAddr != sellOsAddr || sellOsAddr != buyBlurAddr) {
       console.error("NFT ADDR not same");
       return false;
     }
 
     // Validate NFT id
-    if (buyFromId !== sellOsId || sellOsId !== buyBlurId) {
+    if (buyFromId != sellOsId || sellOsId != buyBlurId) {
       console.error("NFT ID not same");
       return false;
     }
@@ -608,7 +605,7 @@ const execArb = async (buyFrom, sellTo) => {
       );
       return false;
     }
-    //    console.log("criteriaOffer", criteriaOffer);
+    //console.log("criteriaOffer", criteriaOffer);
 
     const payload = await getOfferPayload(criteriaOffer, addr_tkn, id_tkn);
     if (payload?.data?.order?.fulfill?.actions?.length > 0) {
@@ -803,6 +800,10 @@ const execArb = async (buyFrom, sellTo) => {
       _formatGraphqlDataToAPI(sellOsData);
     }
 
+    if (db.TEST_MODE) {
+      console.log("sellOsData:", sellOsData);
+    }
+
     //(4/6)
     const estProfitGross = await _validateArb(
       buyFrom,
@@ -816,6 +817,10 @@ const execArb = async (buyFrom, sellTo) => {
     const bundle =
       (await _getBundle(buyBlurData, sellOsData, estProfitGross)) ?? {};
     if (!bundle) return;
+
+    if (db.TEST_MODE) {
+      console.log("\nBundle:", bundle);
+    }
 
     //(6/6)
     await _sendBundle(bundle);
@@ -893,10 +898,6 @@ const subBidsGetSales = async () => {
     const matchingSales = await matchingSalesCursor.toArray();
     if (matchingSales.length === 0) return;
 
-    if (db.TEST_MODE && bid.addr_tkn === db.var.TEST_NFT) {
-      console.log("\nDETECTED TEST bid");
-    }
-
     // Get sale with lowest price
     let lowestSale = matchingSales[0];
     let lowestPrice = BigInt(matchingSales[0].price);
@@ -923,10 +924,6 @@ const subBidsGetSales = async () => {
     let matchingSales = await matchingSalesCursor.toArray();
     if (matchingSales.length === 0) return;
 
-    if (db.TEST_MODE && bid.addr_tkn === db.var.TEST_NFT) {
-      console.log("\nDETECTED TEST bid");
-    }
-
     // Filter out sales with price < bid.price
     matchingSales = matchingSales.filter((sale) => {
       return sale.price < BigInt(bid.price);
@@ -949,6 +946,16 @@ const subBidsGetSales = async () => {
         return;
 
       const bid = raw_bid.fullDocument;
+
+      if (db.TEST_MODE) {
+        if (
+          bid.addr_tkn !== db.var.TEST_NFT ||
+          bid.addr_buyer !== db.var.TEST_BUYER
+        ) {
+          return;
+        }
+        console.log("\nDETECTED TEST bid");
+      }
 
       let sales = null;
 
@@ -1127,6 +1134,9 @@ const subBlocks = async () => {
 
 //1
 const setup = async () => {
+  if (db.TEST_MODE) {
+    console.log("Running in TEST MODE");
+  }
   const _validateOs = async (msgToSign) => {
     // Checking if the required fields are present
     if (

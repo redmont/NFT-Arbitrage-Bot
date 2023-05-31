@@ -18,7 +18,7 @@ const osClient = new OpenSeaStreamClient({
 });
 
 const db = {
-  TEST_MODE: true,
+  TEST_MODE: false,
 
   SUBS: mongoClient.db("BOT_NFT").collection("SUBS"),
   BIDS: mongoClient.db("BOT_NFT").collection("BIDS"),
