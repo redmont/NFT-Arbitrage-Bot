@@ -609,7 +609,13 @@ const execArb = async (buyFrom, sellTo) => {
 
     const payload = await getOfferPayload(criteriaOffer, addr_tkn, id_tkn);
     if (payload?.data?.order?.fulfill?.actions?.length > 0) {
-      return payload.data.order.fulfill.actions;
+      let data = payload.data.order.fulfill.actions;
+
+      if (Array.isArray(data) && data.length > 0) {
+        data = data[data.length - 1];
+        _formatGraphqlDataToAPI(data);
+        return data;
+      }
     }
     console.log(
       "\nError while getting sell data from OS graphql",
@@ -792,13 +798,6 @@ const execArb = async (buyFrom, sellTo) => {
     //(3/6)
     let sellOsData = (await _getSellOsData(sellTo)) ?? {};
     if (!sellOsData) return;
-
-    // format sellOsData if the bid data is from graphql
-    if (Array.isArray(sellOsData) && sellOsData.length > 0) {
-      sellOsData = sellOsData[sellOsData.length - 1];
-
-      _formatGraphqlDataToAPI(sellOsData);
-    }
 
     if (db.TEST_MODE) {
       console.log("sellOsData:", sellOsData);
