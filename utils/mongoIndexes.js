@@ -36,6 +36,16 @@ const INDEX = {
       },
       {
         key: {
+          addr_tkn: 1,
+          id_tkn: 1,
+          type: 1,
+          exp_time: 1,
+          price: 1,
+        },
+        name: "addr_tkn_1_id_tkn_1_type_1_exp_time_1_price_1",
+      },
+      {
+        key: {
           price: 1.0,
         },
         name: "price_1",
@@ -53,11 +63,26 @@ const INDEX = {
         },
       },
       {
-        v: 2,
         key: {
-          type: 1.0,
+          type: 1,
         },
         name: "type_1",
+      },
+      {
+        name: "exp_time_1",
+        key: { exp_time: 1.0 },
+        collation: {
+          locale: "en_US",
+          caseLevel: false,
+          caseFirst: "off",
+          strength: 3,
+          numericOrdering: true,
+          alternate: "non-ignorable",
+          maxVariable: "punct",
+          normalization: false,
+          backwards: false,
+          version: "57.1",
+        },
       },
     ],
   },

@@ -996,37 +996,30 @@ const subBidsGetSales = async () => {
 //3
 const subSalesGetBids = async () => {
   const _getArbBids = async (sale) => {
+    const currentTime = Math.floor(Date.now() / 1000).toString();
+
+    const queryBasicBid = { addr_tkn: sale.addr_tkn, id_tkn: sale.id_tkn };
+    const queryCollectionBid = {
+      addr_tkn: sale.addr_tkn,
+      type: "OS_BID_SUB_COLLECTION",
+    };
     // get all matching bids
     const matchingBidsCursor = db.BIDS.find({
-      addr_tkn: sale.addr_tkn,
-      id_tkn: sale.id_tkn,
-    }); //can't price cuz string=>BigInt
+      $and: [
+        // find basic or collection bids
+        { $or: [queryBasicBid, queryCollectionBid] },
+        // filter out expired bids
+        // filter bids that are lower than sale price
+        { exp_time: { $gt: currentTime }, price: { $gt: sale.price } },
+      ],
+    }).collation({ locale: "en_US", numericOrdering: true });
 
     // console.log('\nGOT matchingBidsCursor', matchingBidsCursor)
     if (sale.addr_tkn == db.var.TEST_NFT && sale.id_tkn == db.var.TEST_NFT_ID) {
       console.log("\nDETECTED TEST arb sale:", sale);
     }
 
-    // filter bids that are lower than sale price
-    let arbBids = (await matchingBidsCursor.toArray()).filter((bid) => {
-      const bidPrice = BigInt(bid.price);
-      const salePrice = BigInt(sale.price);
-
-      return bidPrice > salePrice;
-    });
-
-    if (db.TEST_MODE) {
-      console.log("\n\narbBids length after price filter", arbBids.length);
-    }
-
-    //filter expires
-    arbBids = arbBids.filter((bid) => {
-      return bid.exp_time > Math.floor(Date.now() / 1000);
-    });
-
-    if (db.TEST_MODE) {
-      console.log("arbBids length after expires filter", arbBids.length);
-    }
+    let arbBids = await matchingBidsCursor.toArray();
 
     // delete bids that have the same owner and price as another bid
     arbBids.forEach((bid, i) => {
