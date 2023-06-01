@@ -6,7 +6,24 @@ const INDEX = {
       { key: { type: 1 }, name: "type_1" },
       { key: { "sale.createdAt": -1 }, name: "sale.createdAt_-1" },
       { key: { addr_tkn: 1, id_tkn: 1 }, name: "addr_tkn_1_id_tkn_1" },
-      { key: { price: 1 }, name: "price_1" },
+      {
+        key: {
+          price: 1.0,
+        },
+        name: "price_1",
+        collation: {
+          locale: "en_US",
+          caseLevel: false,
+          caseFirst: "off",
+          strength: 3,
+          numericOrdering: true,
+          alternate: "non-ignorable",
+          maxVariable: "punct",
+          normalization: false,
+          backwards: false,
+          version: "57.1",
+        },
+      },
     ],
     BIDS: [
       {
@@ -17,7 +34,31 @@ const INDEX = {
         name: "addr_tkn_1_id_tkn_1",
         key: { addr_tkn: 1, id_tkn: 1 },
       },
-      { key: { price: 1 }, name: "price_1" },
+      {
+        key: {
+          price: 1.0,
+        },
+        name: "price_1",
+        collation: {
+          locale: "en_US",
+          caseLevel: false,
+          caseFirst: "off",
+          strength: 3,
+          numericOrdering: true,
+          alternate: "non-ignorable",
+          maxVariable: "punct",
+          normalization: false,
+          backwards: false,
+          version: "57.1",
+        },
+      },
+      {
+        v: 2,
+        key: {
+          type: 1.0,
+        },
+        name: "type_1",
+      },
     ],
   },
 };
