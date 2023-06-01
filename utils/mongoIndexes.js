@@ -52,6 +52,13 @@ const INDEX = {
           version: "57.1",
         },
       },
+      {
+        v: 2,
+        key: {
+          type: 1.0,
+        },
+        name: "type_1",
+      },
     ],
   },
 };
