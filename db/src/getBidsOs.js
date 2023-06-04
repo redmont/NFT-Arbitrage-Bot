@@ -4,6 +4,7 @@ const ethers = require("ethers");
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
 const mongoClient = new MongoClient(uri);
+const { ensureIndexes } = require("../../utils/mongoIndexes");
 
 const OS_KEYS = [process.env.API_OS_0, process.env.API_OS_1];
 
@@ -357,8 +358,7 @@ const test = async () => {
 };
 
 (async function root() {
-  await test();
-  return;
+  await ensureIndexes(mongoClient);
   try {
     if (!db.INITIATED) {
       const subsArray = await db.SUBS.find().toArray();

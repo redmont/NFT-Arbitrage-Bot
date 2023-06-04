@@ -2,6 +2,8 @@ const fetch = require("node-fetch");
 const ethers = require("ethers");
 const abi = require("./data/abi.json");
 
+require("dotenv").config();
+
 const provider = new ethers.AlchemyProvider(
   "homestead",
   process.env.API_ALCHEMY
@@ -11,6 +13,7 @@ const wallet = new ethers.Wallet(process.env.PK_0, provider);
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
 const mongoClient = new MongoClient(uri);
+const { ensureIndexes } = require("../../utils/mongoIndexes");
 
 /**
  * @todo
@@ -51,7 +54,7 @@ const mongoClient = new MongoClient(uri);
  */
 
 const db = {
-  TEST_MODE: true,
+  TEST_MODE: process.env.TEST_MODE || false,
 
   QUEUE: [],
   SALES: mongoClient.db("BOT_NFT").collection("SALES"),
@@ -59,7 +62,8 @@ const db = {
 
   var: {
     TEST_NFT: "0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0",
-    TEST_NFT_ID: "877",
+    TEST_NFT_ID: "4171",
+    TEST_BUYER: "0x00000E8C78e461678E455b1f6878Bb0ce50ce587",
 
     STARTED: false,
     BLUR_AUTH_TKN: "",
@@ -307,6 +311,13 @@ const execArb = async (buyFrom, sellTo) => {
       return false;
     }
 
+    const osSellTxData = sellOsData?.transaction?.function
+      ? db.interface.SEAPORT.encodeFunctionData(
+          sellOsData?.transaction?.function,
+          [sellParams]
+        )
+      : sellOsData?.method?.data;
+
     const unsigned_txs = [
       {
         to: buyBlurData?.buys[0]?.txnData?.to,
@@ -327,10 +338,7 @@ const execArb = async (buyFrom, sellTo) => {
       },
       {
         to: sellOsData?.transaction?.to,
-        data: db.interface.SEAPORT.encodeFunctionData(
-          sellOsData?.transaction?.function,
-          [sellParams]
-        ),
+        data: osSellTxData,
         value: 0,
         gasLimit: db.var.EST_GAS_SWAP,
         nonce: nonce + 2,
@@ -399,31 +407,25 @@ const execArb = async (buyFrom, sellTo) => {
       return false;
     }
 
-    console.log(
-      JSON.stringify(
-        {
-          info: "POTENTIAL ARB",
-          date: new Date().toLocaleString(),
-          block: db.var.BLOCK_NUM,
-          estProfitGross: ethers.formatEther(estProfitGross),
-          buyFrom,
-          sellTo,
-          buyBlurData,
-          sellOsData,
-        },
-        null,
-        2
-      )
-    );
+    console.log({
+      info: "POTENTIAL ARB",
+      date: new Date().toLocaleString(),
+      block: db.var.BLOCK_NUM,
+      estProfitGross: ethers.formatEther(estProfitGross),
+      buyFrom,
+      sellTo,
+      buyBlurData,
+      sellOsData,
+    });
 
     // Validate NFT addr
-    if (buyFromAddr !== sellOsAddr || sellOsAddr !== buyBlurAddr) {
+    if (buyFromAddr != sellOsAddr || sellOsAddr != buyBlurAddr) {
       console.error("NFT ADDR not same");
       return false;
     }
 
     // Validate NFT id
-    if (buyFromId !== sellOsId || sellOsId !== buyBlurId) {
+    if (buyFromId != sellOsId || sellOsId != buyBlurId) {
       console.error("NFT ID not same");
       return false;
     }
@@ -482,19 +484,24 @@ const execArb = async (buyFrom, sellTo) => {
   };
 
   const _getSellOsDataFromGraphql = async (sellTo) => {
-    const getCriteriaBids = async (slug, authTkn) => {
+    const getCriteriaBids = async (
+      addr_tkn,
+      id_tkn,
+      cursor,
+      count,
+      makerAddr
+    ) => {
       const options = {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          slug: slug,
-          authtkn: authTkn,
-        }),
       };
 
-      var url = `http://127.0.0.1:3001/v1/getCriteriaBids`;
+      var url = `http://127.0.0.1:3001/v1/${addr_tkn}/${id_tkn}/criteriaOrders?`;
+      cursor && (url += `&cursor=${cursor}`);
+      count && (url += `&count=${count}`);
+      makerAddr && (url += `&maker=${makerAddr}`);
 
       const msg = await apiCall({ url: url, options: options });
       return msg;
@@ -530,24 +537,91 @@ const execArb = async (buyFrom, sellTo) => {
       const payload = await apiCall({ url: url, options: options });
       return payload;
     };
-    const slug = sellTo.bid.payload.collection.slug;
-    const authTkn = db.var.GRAPHQL_AUTH_TKN;
-    const criteriaBids = await getCriteriaBids(slug, authTkn);
+    const { addr_tkn, id_tkn } = buyFrom;
 
-    // Only the best bid
-    const criteriaOffer =
-      criteriaBids?.data?.collection?.collectionOffers?.edges[0];
+    let exitLoop = false;
+    let cursor = null;
+    let criteriaOffer;
 
-    const payload = await getOfferPayload(
-      criteriaOffer,
-      sellTo.addr_tkn,
-      buyFrom.id_tkn
-    );
+    // Filter out only corresponding bid from OS bid sub
+    const makerAddr = sellTo.addr_buyer;
+    const priceInETH = ethers.formatEther(sellTo.bid.payload.base_price);
+    const bidPriceOS = ethers.parseEther(priceInETH);
+
+    while (!exitLoop) {
+      const criteriaBids = await getCriteriaBids(
+        addr_tkn,
+        id_tkn,
+        cursor,
+        32,
+        makerAddr
+      );
+
+      if (criteriaBids.error) {
+        console.log(addr_tkn, id_tkn, "criteriaBids error", criteriaBids.error);
+        return false;
+      }
+      if (criteriaBids.data?.orders?.edges?.length === 0) {
+        console.log(addr_tkn, id_tkn, "criteriaBids empty");
+        return false;
+      }
+
+      criteriaBids.data?.orders?.edges?.every((order) => {
+        const currentBidPriceGraphQL = ethers.parseEther(
+          order.node?.perUnitPriceType?.eth
+        );
+        // console.log("bidPriceOS", bidPriceOS);
+        // console.log("currentBidPriceGraphQL", currentBidPriceGraphQL);
+        // console.log(currentBidPriceGraphQL == bidPriceOS);
+
+        if (currentBidPriceGraphQL == bidPriceOS) {
+          exitLoop = true;
+          criteriaOffer = order;
+          return false;
+        }
+
+        if (currentBidPriceGraphQL < bidPriceOS) {
+          exitLoop = true;
+          return false;
+        }
+        return true;
+      });
+
+      if (criteriaBids.data?.orders?.pageInfo?.hasNextPage) {
+        cursor = criteriaBids.data?.orders?.pageInfo?.endCursor;
+      }
+      if (!cursor) {
+        exitLoop = true;
+      }
+    }
+
+    if (!criteriaOffer) {
+      console.log(
+        "\nNo matching bids found from OS graphql: ",
+        addr_tkn,
+        id_tkn,
+        makerAddr,
+        priceInETH
+      );
+      return false;
+    }
+    //console.log("criteriaOffer", criteriaOffer);
+
+    const payload = await getOfferPayload(criteriaOffer, addr_tkn, id_tkn);
     if (payload?.data?.order?.fulfill?.actions?.length > 0) {
-      return payload.data.order.fulfill.actions;
+      let data = payload.data.order.fulfill.actions;
+
+      if (Array.isArray(data) && data.length > 0) {
+        data = data[data.length - 1];
+        _formatGraphqlDataToAPI(data);
+        return data;
+      }
     }
     console.log(
       "\nError while getting sell data from OS graphql",
+      addr_tkn,
+      id_tkn,
+      criteriaOffer?.node?.id,
       JSON.stringify(payload, null, 2)
     );
     return false;
@@ -600,7 +674,6 @@ const execArb = async (buyFrom, sellTo) => {
       options: db.api.blur.options.POST,
     });
     // console.timeEnd("buyFromBlurData");
-    // console.log("\nbuyFromBlurData", buyFromBlurData);
 
     //ignore if listing not found, log new, unknown, others
     switch (true) {
@@ -613,7 +686,12 @@ const execArb = async (buyFrom, sellTo) => {
       //todo, should delete from db
 
       default:
-        console.log("\nUNKNOWN buyFromBlurData", buyFromBlurData);
+        console.log(
+          "\nnUNKNOWN buyFromBlurData",
+          url,
+          buyFrom.id_tkn,
+          buyFromBlurData
+        );
         return false;
     }
   };
@@ -632,20 +710,98 @@ const execArb = async (buyFrom, sellTo) => {
     return true;
   };
 
+  // todo: There is probably a better way to do this via ABI
+  const _formatGraphqlDataToAPI = (sellOsData) => {
+    //decode sellOsData tx data based on abi
+    const iface = db.interface.SEAPORT;
+    let decodedData = iface.parseTransaction({
+      data: sellOsData.method.data,
+      value: sellOsData.method.value,
+    });
+
+    const ordersData = decodedData.args[0];
+
+    sellOsData.orders = ordersData.map(
+      ([parameters, numerator, denominator, signature, extraData]) => ({
+        parameters: {
+          offerer: parameters[0],
+          zone: parameters[1],
+          offer: parameters[2].map(
+            ([
+              itemType,
+              token,
+              identifierOrCriteria,
+              startAmount,
+              endAmount,
+            ]) => ({
+              itemType: Number(itemType),
+              token,
+              identifierOrCriteria: BigInt(identifierOrCriteria),
+              startAmount: BigInt(startAmount),
+              endAmount: BigInt(endAmount),
+            })
+          ),
+          consideration: parameters[3].map(
+            ([
+              itemType,
+              token,
+              identifierOrCriteria,
+              startAmount,
+              endAmount,
+              recipient,
+            ]) => ({
+              itemType: Number(itemType),
+              token,
+              identifierOrCriteria: BigInt(identifierOrCriteria),
+              startAmount: BigInt(startAmount),
+              endAmount: BigInt(endAmount),
+              recipient,
+            })
+          ),
+          orderType: Number(parameters[4]),
+          startTime: BigInt(parameters[5]),
+          endTime: BigInt(parameters[6]),
+          zoneHash: parameters[7],
+          salt: BigInt(parameters[8]),
+          conduitKey: parameters[9],
+          totalOriginalConsiderationItems: BigInt(parameters[10]),
+        },
+        numerator: BigInt(numerator),
+        denominator: BigInt(denominator),
+        signature,
+        extraData,
+      })
+    );
+    sellOsData.transaction = {
+      to: sellOsData.method.destination.value,
+      input_data: {
+        parameters: {
+          offererConduitKey: sellOsData.orders[0].parameters.conduitKey,
+          offerAmount: sellOsData.orders[0].parameters.offer[0].endAmount,
+          considerationToken: sellOsData.orders[1].parameters.offer[0].token,
+          considerationIdentifier:
+            sellOsData.orders[1].parameters.offer[0].identifierOrCriteria,
+        },
+      },
+    };
+  };
   //(0/6)
   try {
     console.log("\nexecArb", buyFrom, sellTo);
     //(1/6)
-    //if (!(await _preValidate(buyFrom, sellTo))) return;
+    if (!(await _preValidate(buyFrom, sellTo))) return;
 
     //(2/6)
-    // const buyBlurData = (await _getBuyBlurData(buyFrom)) ?? {};
-    // if (!buyBlurData) return;
+    const buyBlurData = (await _getBuyBlurData(buyFrom)) ?? {};
+    if (!buyBlurData) return;
 
     //(3/6)
-    const sellOsData = (await _getSellOsData(sellTo)) ?? {};
-    console.log("\nsellOsData", sellOsData);
+    let sellOsData = (await _getSellOsData(sellTo)) ?? {};
     if (!sellOsData) return;
+
+    if (db.TEST_MODE) {
+      console.log("sellOsData:", sellOsData);
+    }
 
     //(4/6)
     const estProfitGross = await _validateArb(
@@ -660,6 +816,10 @@ const execArb = async (buyFrom, sellTo) => {
     const bundle =
       (await _getBundle(buyBlurData, sellOsData, estProfitGross)) ?? {};
     if (!bundle) return;
+
+    if (db.TEST_MODE) {
+      console.log("\nBundle:", bundle);
+    }
 
     //(6/6)
     await _sendBundle(bundle);
@@ -732,13 +892,10 @@ const subBidsGetSales = async () => {
 
     const matchingSalesCursor = db.SALES.find(salesToFind)
       .sort({ price: 1 })
+      .collation({ locale: "en_US", numericOrdering: true })
       .limit(1);
     const matchingSales = await matchingSalesCursor.toArray();
     if (matchingSales.length === 0) return;
-
-    if (db.TEST_MODE && bid.addr_tkn === db.var.TEST_NFT) {
-      console.log("\nDETECTED TEST bid");
-    }
 
     // Get sale with lowest price
     let lowestSale = matchingSales[0];
@@ -760,13 +917,11 @@ const subBidsGetSales = async () => {
 
     // Get all matching sales in increasing order of price
     // todo: add index to price field
-    const matchingSalesCursor = db.SALES.find(salesToFind).sort({ price: 1 });
+    const matchingSalesCursor = db.SALES.find(salesToFind)
+      .sort({ price: 1 })
+      .collation({ locale: "en_US", numericOrdering: true });
     let matchingSales = await matchingSalesCursor.toArray();
     if (matchingSales.length === 0) return;
-
-    if (db.TEST_MODE && bid.addr_tkn === db.var.TEST_NFT) {
-      console.log("\nDETECTED TEST bid");
-    }
 
     // Filter out sales with price < bid.price
     matchingSales = matchingSales.filter((sale) => {
@@ -790,6 +945,16 @@ const subBidsGetSales = async () => {
         return;
 
       const bid = raw_bid.fullDocument;
+
+      if (db.TEST_MODE) {
+        if (
+          bid.addr_tkn !== db.var.TEST_NFT ||
+          bid.addr_buyer !== db.var.TEST_BUYER
+        ) {
+          return;
+        }
+        console.log("\nDETECTED TEST bid");
+      }
 
       let sales = null;
 
@@ -830,37 +995,30 @@ const subBidsGetSales = async () => {
 //3
 const subSalesGetBids = async () => {
   const _getArbBids = async (sale) => {
+    const currentTime = Math.floor(Date.now() / 1000).toString();
+
+    const queryBasicBid = { addr_tkn: sale.addr_tkn, id_tkn: sale.id_tkn };
+    const queryCollectionBid = {
+      addr_tkn: sale.addr_tkn,
+      type: "OS_BID_SUB_COLLECTION",
+    };
     // get all matching bids
     const matchingBidsCursor = db.BIDS.find({
-      addr_tkn: sale.addr_tkn,
-      id_tkn: sale.id_tkn,
-    }); //can't price cuz string=>BigInt
+      $and: [
+        // find basic or collection bids
+        { $or: [queryBasicBid, queryCollectionBid] },
+        // filter out expired bids
+        // filter bids that are lower than sale price
+        { exp_time: { $gt: currentTime }, price: { $gt: sale.price } },
+      ],
+    }).collation({ locale: "en_US", numericOrdering: true });
 
     // console.log('\nGOT matchingBidsCursor', matchingBidsCursor)
     if (sale.addr_tkn == db.var.TEST_NFT && sale.id_tkn == db.var.TEST_NFT_ID) {
       console.log("\nDETECTED TEST arb sale:", sale);
     }
 
-    // filter bids that are lower than sale price
-    let arbBids = (await matchingBidsCursor.toArray()).filter((bid) => {
-      const bidPrice = BigInt(bid.price);
-      const salePrice = BigInt(sale.price);
-
-      return bidPrice > salePrice;
-    });
-
-    if (db.TEST_MODE) {
-      console.log("\n\narbBids length after price filter", arbBids.length);
-    }
-
-    //filter expires
-    arbBids = arbBids.filter((bid) => {
-      return bid.exp_time > Math.floor(Date.now() / 1000);
-    });
-
-    if (db.TEST_MODE) {
-      console.log("arbBids length after expires filter", arbBids.length);
-    }
+    let arbBids = await matchingBidsCursor.toArray();
 
     // delete bids that have the same owner and price as another bid
     arbBids.forEach((bid, i) => {
@@ -968,6 +1126,9 @@ const subBlocks = async () => {
 
 //1
 const setup = async () => {
+  if (db.TEST_MODE) {
+    console.log("Running in TEST MODE");
+  }
   const _validateOs = async (msgToSign) => {
     // Checking if the required fields are present
     if (
@@ -1144,6 +1305,8 @@ const setup = async () => {
   //todo setup graphql options
   db.streamSALES = db.SALES.watch();
   db.streamBIDS = db.BIDS.watch();
+
+  await ensureIndexes(mongoClient);
 };
 
 //0
@@ -1160,7 +1323,7 @@ const apiCall = async ({ url, options }) => {
   try {
     await setup();
     subBlocks();
-    //subSalesGetBids();
+    subSalesGetBids();
     subBidsGetSales();
   } catch (e) {
     console.error("\nERR: root:", e);

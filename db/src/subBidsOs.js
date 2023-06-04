@@ -5,7 +5,7 @@ const ethers = require("ethers");}
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
 const mongoClient = new MongoClient(uri);
-// const { ensureIndexes } = require("../../utils/mongoIndexes");
+const { ensureIndexes } = require("../../utils/mongoIndexes");
 
 // const osClient = new OpenSeaStreamClient({
 //   token: process.env.API_OS_0,
@@ -18,7 +18,7 @@ const mongoClient = new MongoClient(uri);
 // });
 
 const db = {
-  TEST_MODE: true,
+  TEST_MODE: false,
 
   SUBS: mongoClient.db("BOT_NFT").collection("SUBS"),
   BIDS: mongoClient.db("BOT_NFT").collection("BIDS"),
@@ -226,8 +226,6 @@ const test = async () => {
 };
 
 (async function root() {
-  await test();
-  return;
   await ensureIndexes(mongoClient);
   try {
     osClient.onEvents("*", db.OS_SUB_EVENTS, async (event) => {

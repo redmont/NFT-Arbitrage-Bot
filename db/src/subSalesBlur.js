@@ -4,6 +4,7 @@ const ethers = require("ethers");
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
 const mongoClient = new MongoClient(uri);
+const { ensureIndexes } = require("../../utils/mongoIndexes");
 
 const wallet = ethers.Wallet.createRandom();
 // const wallet = new ethers.Wallet(process.env.PK_7);
