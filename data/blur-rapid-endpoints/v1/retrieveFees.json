@@ -1,0 +1,15 @@
+{
+	"url": "https://gyazo.com/b342ab4e05ac1fc67c0db5cedf1ccc6f",
+  "success": true,
+  "fees": [
+    {
+      "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d": {
+        "LOOKSRARE": 200,
+        "OPENSEA": 250,
+        "X2Y2": null,
+        "areRoyaltiesMandatory": false,
+        "blockedMarketplaces": []
+      }
+    }
+  ]
+}

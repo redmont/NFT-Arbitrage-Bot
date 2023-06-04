@@ -6,25 +6,12 @@
 
 - [x] `subSalesBlur` (get & save to `SALES` & `SUBS`)
 - [x] `getSalesBlur` (get & save to `SALES` & `SUBS`)
-- [x] `subBidsOs` (get, if in `SUBS`, save to `BIDS`)
-- [x] `getBidsOs` (listen `SUBS` stream, get & save to `BIDS`)
-- [x] VPS setup
-- [ ] OS collection & trait type of bids
-  - [ ] get&setSalesBlur SALES & SUBS
-    - [ ] include traits for each new blur sale (new meaning addr:id not in SUBS)
-  - [ ] subBidsOs
-    - [ ] validate COLLECTION & TRAIT
-    - [ ] add formatted DB
-  - [ ] bot.js
-    - [ ] if subBid Collection, get from db cheapest collection blur sale
-    - [ ] if subBid Trait, get from db cheapest collection blur sale with specific trait/s
-    - [ ] if criteria bid, then use api-os to getOrderId & getPayload in execArb
-    - [ ] get&set api-os tkn (bot setup, like get&set for blur, code in api-blur.index)
-    - [ ] getOrderId api-os (in execArb for received subBidOs criteria type)
-    - [ ] getPayload api-os (in execArb)
-  - [ ] getBidsOs
-  - [ ] cleaner
-  - [ ] Test if os sub errs exists on 2x diff continent vps
+- [ ] `subBidsOs`
+- [ ] `getBidsOs`
+- [ ] VPS setup
+- [ ] Test if OS stream sub exists on 2x diff continent vps
+- [ ] if bid has trait starting with "$" delete (get/sub sales blur already have implemented it)
+- [ ] create a whitelist for getBuyBlurData
 
 ## Project Diagram 🔧
 
@@ -36,11 +23,11 @@
 
 ## To-do DB Initialization :floppy_disk:
 
-- [x] 1. `subSalesBlur`
-- [x] 2. `getSalesBlur`
-- (after getSalesBlur done)
-- [x] 3. `subBidsOs`
-- [x] 4. `getBidsOs`
+- [x] 1. `getSubsBlur` (1-time, local, then send to VPS)
+- [x] 2. `getSalesBlur` (same)
+- [x] 3. `subSalesBlur`
+- [x] 4. `subBidsOs`
+- [x] 5. `getBidsOs`
 
 ## Commands :
 

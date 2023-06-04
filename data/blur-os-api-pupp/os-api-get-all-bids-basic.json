@@ -1,0 +1,52 @@
+{
+  "offers": [
+    {
+      "order_hash": "0xf9d2e5b6de37aaeb85d4f59e70c978f0aede69760d9f4210bd525fc867b0ae16",
+      "chain": "ethereum",
+      "criteria": null,
+      "protocol_data": {
+        "parameters": {
+          "offerer": "0x00000e8c78e461678e455b1f6878bb0ce50ce587",
+          "offer": [
+            {
+              "itemType": 1,
+              "token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "identifierOrCriteria": "0",
+              "startAmount": "2800000000000000",
+              "endAmount": "2800000000000000"
+            }
+          ],
+          "consideration": [
+            {
+              "itemType": 2,
+              "token": "0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0",
+              "identifierOrCriteria": "877",
+              "startAmount": "1",
+              "endAmount": "1",
+              "recipient": "0x00000E8C78e461678E455b1f6878Bb0ce50ce587"
+            },
+            {
+              "itemType": 1,
+              "token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "identifierOrCriteria": "0",
+              "startAmount": "70000000000000",
+              "endAmount": "70000000000000",
+              "recipient": "0x0000a26b00c1F0DF003000390027140000fAa719"
+            }
+          ],
+          "startTime": "1684924456",
+          "endTime": "1685183648",
+          "orderType": 0,
+          "zone": "0x004C00500000aD104D7DBd00e3ae0A5C00560C00",
+          "zoneHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "salt": "0x360c6ebe0000000000000000000000000000000000000000ffd7f61cd0fc054c",
+          "conduitKey": "0x0000007b02230091a7ed01230072f7006a004d60a8d4e71d599b8104250f0000",
+          "totalOriginalConsiderationItems": 2,
+          "counter": 0
+        },
+        "signature": null
+      },
+      "protocol_address": "0x00000000000000adc04c56bf30ac9d3c0aaf14dc"
+    }
+  ]
+}

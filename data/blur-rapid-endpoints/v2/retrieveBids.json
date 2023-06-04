@@ -1,0 +1,1121 @@
+{
+  "total": 99,
+	"url": "https://gyazo.com/251742dd62aa48dbd25063f46f0dba51",
+  "bids": [
+    {
+      "id": 91408047,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 1.03,
+      "bidderAddressesSample": [],
+      "numberBidders": 7,
+      "executableSize": 15,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408051,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 1.02,
+      "bidderAddressesSample": [],
+      "numberBidders": 16,
+      "executableSize": 39,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408053,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 1.01,
+      "bidderAddressesSample": [],
+      "numberBidders": 26,
+      "executableSize": 160,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408056,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 1,
+      "bidderAddressesSample": [],
+      "numberBidders": 18,
+      "executableSize": 187,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408058,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.99,
+      "bidderAddressesSample": [],
+      "numberBidders": 5,
+      "executableSize": 6,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408061,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.98,
+      "bidderAddressesSample": [],
+      "numberBidders": 10,
+      "executableSize": 27,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408063,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.97,
+      "bidderAddressesSample": [],
+      "numberBidders": 4,
+      "executableSize": 5,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408065,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.96,
+      "bidderAddressesSample": [
+        "0x57e9d52c0fd2936ccfd071a8aa67e3e3b69bd447"
+      ],
+      "numberBidders": 1,
+      "executableSize": 1,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408068,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.95,
+      "bidderAddressesSample": [],
+      "numberBidders": 4,
+      "executableSize": 103,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408070,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.94,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 2,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408071,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.93,
+      "bidderAddressesSample": [],
+      "numberBidders": 3,
+      "executableSize": 3,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408073,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.92,
+      "bidderAddressesSample": [],
+      "numberBidders": 6,
+      "executableSize": 783,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408074,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.91,
+      "bidderAddressesSample": [],
+      "numberBidders": 7,
+      "executableSize": 11,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408076,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.9,
+      "bidderAddressesSample": [],
+      "numberBidders": 10,
+      "executableSize": 13,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408077,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.89,
+      "bidderAddressesSample": [],
+      "numberBidders": 5,
+      "executableSize": 5,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408079,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.88,
+      "bidderAddressesSample": [],
+      "numberBidders": 4,
+      "executableSize": 4,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408080,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.87,
+      "bidderAddressesSample": [],
+      "numberBidders": 3,
+      "executableSize": 5,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408082,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.85,
+      "bidderAddressesSample": [],
+      "numberBidders": 5,
+      "executableSize": 42,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408084,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.84,
+      "bidderAddressesSample": [
+        "0x35ee3adc121a05d5f7b05d343f1c21fc80518aec"
+      ],
+      "numberBidders": 1,
+      "executableSize": 1,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408085,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.83,
+      "bidderAddressesSample": [],
+      "numberBidders": 3,
+      "executableSize": 7,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408087,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.82,
+      "bidderAddressesSample": [],
+      "numberBidders": 3,
+      "executableSize": 4,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408088,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.81,
+      "bidderAddressesSample": [],
+      "numberBidders": 5,
+      "executableSize": 7,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408090,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.8,
+      "bidderAddressesSample": [],
+      "numberBidders": 12,
+      "executableSize": 27,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408092,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.79,
+      "bidderAddressesSample": [],
+      "numberBidders": 5,
+      "executableSize": 7,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408093,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.78,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 2,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408095,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.76,
+      "bidderAddressesSample": [],
+      "numberBidders": 6,
+      "executableSize": 7,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408097,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.75,
+      "bidderAddressesSample": [],
+      "numberBidders": 17,
+      "executableSize": 122,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408099,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.74,
+      "bidderAddressesSample": [
+        "0x8637d538488513e3f71b5399fa04d2fb6ec19a4c"
+      ],
+      "numberBidders": 1,
+      "executableSize": 1,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408101,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.73,
+      "bidderAddressesSample": [],
+      "numberBidders": 4,
+      "executableSize": 4,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408102,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.72,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 39,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408104,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.71,
+      "bidderAddressesSample": [],
+      "numberBidders": 1,
+      "executableSize": 1,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408106,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.7,
+      "bidderAddressesSample": [],
+      "numberBidders": 24,
+      "executableSize": 47,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408108,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.69,
+      "bidderAddressesSample": [],
+      "numberBidders": 7,
+      "executableSize": 23,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408109,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.68,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 4,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408110,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.67,
+      "bidderAddressesSample": [],
+      "numberBidders": 3,
+      "executableSize": 60,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408111,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.66,
+      "bidderAddressesSample": [],
+      "numberBidders": 4,
+      "executableSize": 14,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408112,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.65,
+      "bidderAddressesSample": [],
+      "numberBidders": 4,
+      "executableSize": 105,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408113,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.64,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 7,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408114,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.63,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 7,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408115,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.62,
+      "bidderAddressesSample": [],
+      "numberBidders": 6,
+      "executableSize": 9,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408116,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.61,
+      "bidderAddressesSample": [
+        "0x96dc89dbe84970ee42a2f0b35fb50599e6745ff8"
+      ],
+      "numberBidders": 1,
+      "executableSize": 50,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408117,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.6,
+      "bidderAddressesSample": [],
+      "numberBidders": 9,
+      "executableSize": 104,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408118,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.59,
+      "bidderAddressesSample": [
+        "0xfa22dad74050e6085e96dfb89a0443324c3cde8b"
+      ],
+      "numberBidders": 1,
+      "executableSize": 4,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408119,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.58,
+      "bidderAddressesSample": [],
+      "numberBidders": 7,
+      "executableSize": 159,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408120,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.57,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 3,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408121,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.55,
+      "bidderAddressesSample": [],
+      "numberBidders": 6,
+      "executableSize": 66,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408122,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.54,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 28,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408123,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.53,
+      "bidderAddressesSample": [
+        "0x0ae3d5949202165584a270cbac7a733b0307a766"
+      ],
+      "numberBidders": 1,
+      "executableSize": 38,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408124,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.52,
+      "bidderAddressesSample": [],
+      "numberBidders": 4,
+      "executableSize": 14,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408125,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.51,
+      "bidderAddressesSample": [],
+      "numberBidders": 9,
+      "executableSize": 9,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408126,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.5,
+      "bidderAddressesSample": [],
+      "numberBidders": 39,
+      "executableSize": 290,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408127,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.49,
+      "bidderAddressesSample": [],
+      "numberBidders": 5,
+      "executableSize": 5,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408128,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.48,
+      "bidderAddressesSample": [],
+      "numberBidders": 3,
+      "executableSize": 3,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408129,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.47,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 4,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408130,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.46,
+      "bidderAddressesSample": [
+        "0xb776fd4b00939037d27a0ce20ffcb2813c38fd1d"
+      ],
+      "numberBidders": 1,
+      "executableSize": 4,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408131,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.45,
+      "bidderAddressesSample": [],
+      "numberBidders": 10,
+      "executableSize": 85,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408132,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.44,
+      "bidderAddressesSample": [],
+      "numberBidders": 3,
+      "executableSize": 3,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408133,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.43,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 5,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408134,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.42,
+      "bidderAddressesSample": [],
+      "numberBidders": 3,
+      "executableSize": 25,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408135,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.41,
+      "bidderAddressesSample": [
+        "0x6851cd72aa4a9219efe2016aa2d46a785f5e14f4"
+      ],
+      "numberBidders": 1,
+      "executableSize": 1,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408136,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.4,
+      "bidderAddressesSample": [],
+      "numberBidders": 7,
+      "executableSize": 22,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408137,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.39,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 11,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408138,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.38,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 2,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408139,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.36,
+      "bidderAddressesSample": [
+        "0xb1e7f3cf59b5961311add10ce7547285f803129d"
+      ],
+      "numberBidders": 1,
+      "executableSize": 19,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408140,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.35,
+      "bidderAddressesSample": [],
+      "numberBidders": 6,
+      "executableSize": 78,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408141,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.34,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 3,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408142,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.33,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 2,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408143,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.32,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 13,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408144,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.31,
+      "bidderAddressesSample": [],
+      "numberBidders": 3,
+      "executableSize": 66,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408145,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.3,
+      "bidderAddressesSample": [],
+      "numberBidders": 30,
+      "executableSize": 428,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408146,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.29,
+      "bidderAddressesSample": [],
+      "numberBidders": 3,
+      "executableSize": 3,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408147,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.28,
+      "bidderAddressesSample": [
+        "0x4d4e433d06623c891b1e04438b6fe9bc06f73704"
+      ],
+      "numberBidders": 1,
+      "executableSize": 1,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408148,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.27,
+      "bidderAddressesSample": [],
+      "numberBidders": 4,
+      "executableSize": 4,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408149,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.26,
+      "bidderAddressesSample": [
+        "0x561dc58b70e9e1524af8214ce5f03cda915cba43"
+      ],
+      "numberBidders": 1,
+      "executableSize": 1,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408150,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.25,
+      "bidderAddressesSample": [],
+      "numberBidders": 12,
+      "executableSize": 186,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408151,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.24,
+      "bidderAddressesSample": [
+        "0x1f8c5147ac0ed687d002aafab2f7be5008d06bc5"
+      ],
+      "numberBidders": 1,
+      "executableSize": 10,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408152,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.23,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 2,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408153,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.22,
+      "bidderAddressesSample": [
+        "0x1711bc52bf7e0494325799717fe640f1924617b7"
+      ],
+      "numberBidders": 1,
+      "executableSize": 100,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408154,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.21,
+      "bidderAddressesSample": [],
+      "numberBidders": 3,
+      "executableSize": 89,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408155,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.2,
+      "bidderAddressesSample": [],
+      "numberBidders": 22,
+      "executableSize": 183,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408156,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.19,
+      "bidderAddressesSample": [],
+      "numberBidders": 2,
+      "executableSize": 120,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408157,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.18,
+      "bidderAddressesSample": [],
+      "numberBidders": 4,
+      "executableSize": 103,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408158,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.17,
+      "bidderAddressesSample": [],
+      "numberBidders": 4,
+      "executableSize": 107,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408159,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.16,
+      "bidderAddressesSample": [],
+      "numberBidders": 4,
+      "executableSize": 210,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408160,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.15,
+      "bidderAddressesSample": [],
+      "numberBidders": 6,
+      "executableSize": 149,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408161,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.14,
+      "bidderAddressesSample": [],
+      "numberBidders": 8,
+      "executableSize": 159,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408162,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.13,
+      "bidderAddressesSample": [],
+      "numberBidders": 7,
+      "executableSize": 118,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408163,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.12,
+      "bidderAddressesSample": [],
+      "numberBidders": 7,
+      "executableSize": 297,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408164,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.11,
+      "bidderAddressesSample": [],
+      "numberBidders": 6,
+      "executableSize": 246,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408165,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.1,
+      "bidderAddressesSample": [],
+      "numberBidders": 45,
+      "executableSize": 938,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408166,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.09,
+      "bidderAddressesSample": [],
+      "numberBidders": 4,
+      "executableSize": 205,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408167,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.08,
+      "bidderAddressesSample": [],
+      "numberBidders": 6,
+      "executableSize": 105,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408168,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.07,
+      "bidderAddressesSample": [],
+      "numberBidders": 8,
+      "executableSize": 255,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408169,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.06,
+      "bidderAddressesSample": [],
+      "numberBidders": 8,
+      "executableSize": 322,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408170,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.05,
+      "bidderAddressesSample": [],
+      "numberBidders": 48,
+      "executableSize": 2598,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408171,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.04,
+      "bidderAddressesSample": [],
+      "numberBidders": 13,
+      "executableSize": 4543,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408172,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.03,
+      "bidderAddressesSample": [],
+      "numberBidders": 32,
+      "executableSize": 7082,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408173,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.02,
+      "bidderAddressesSample": [],
+      "numberBidders": 53,
+      "executableSize": 4153,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    },
+    {
+      "id": 91408174,
+      "slug": "valhalla",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "price": 0.01,
+      "bidderAddressesSample": [],
+      "numberBidders": 100,
+      "executableSize": 6024,
+      "updatedAt": "2023-02-25T17:00:48.777Z",
+      "createdAt": "2023-02-25T17:00:48.777Z"
+    }
+  ]
+}

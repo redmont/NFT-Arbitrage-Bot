@@ -340,6 +340,23 @@ const extractData = async (next) => {
   }
 };
 
+const test = async () => {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      "X-API-KEY": "aa276a19b6914dfa8cbe504901f3d8ed",
+    },
+  };
+
+  const url = "https://api.opensea.io/api/v1/events?collection_slug=yes-ser";
+
+  fetch(url, options)
+    .then((response) => response.json())
+    .then((response) => console.log(response))
+    .catch((err) => console.error(err));
+};
+
 (async function root() {
   await ensureIndexes(mongoClient);
   try {

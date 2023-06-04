@@ -13,7 +13,6 @@ import {
 } from "@loopback/rest";
 
 const { XMLHttpRequest } = require("xmlhttprequest");
-require("dotenv").config();
 
 const RESPONSE: ResponseObject = {
   description: "Response",
@@ -206,13 +205,60 @@ export class CollectionsController {
       },
     ];
 
+    // https://core-api.prod.blur.io/v1/collections/0x60e4d786628fea6478f785a6d7e704777c86a7c6/tokens/24212
+
     await page.setCookie(...cookies);
     const apiURL =
       "https://core-api.prod.blur.io/v1/collections/" +
       collection +
       "/tokens/" +
       id;
-    // console.log(`GET price for: ${apiURL}`)
+    console.log(`GET price for: ${apiURL}`);
+
+    const timeStart = Date.now();
+    const response = await globalThis.page.evaluate(async (apiURL: string) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", apiURL);
+      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+      xhr.send(JSON.stringify({ filters: {} }));
+
+      return new Promise((resolve) => {
+        xhr.onload = () => {
+          resolve(JSON.parse(xhr.responseText));
+        };
+      });
+    }, apiURL);
+
+    const timeEnd = Date.now();
+    const timeDiff = timeEnd - timeStart;
+    console.log("timeDiff", timeDiff);
+    return response;
+  }
+
+  // Map to `GET /v1/collections/{collection}/tokens/{id}`
+  @get("/v1/asset/{collection}/{id}")
+  @response(200, RESPONSE)
+  async asset(
+    @param.path.string("collection") collection: string,
+    @param.path.string("id") id: string
+  ): Promise<any> {
+    console.log(`GET ID for: https://blur.io/asset/${collection}/${id}`);
+    const { authtoken, walletaddress } = this.req.headers;
+    const cookies = [
+      {
+        name: "authToken",
+        value: authtoken,
+      },
+      {
+        name: "walletAddress",
+        value: walletaddress,
+      },
+    ];
+
+    await page.setCookie(...cookies);
+    const apiURL =
+      "https://core-api.prod.blur.io/v1/asset/" + collection + "/" + id;
+    console.log(`GET asset data for: ${apiURL}`);
 
     const response = await globalThis.page.evaluate(async (apiURL: string) => {
       const xhr = new XMLHttpRequest();
@@ -255,6 +301,45 @@ export class CollectionsController {
     const apiURL = `https://core-api.prod.blur.io/v1/collections/?filters=${encodeURIComponent(
       filtersString
     )}`;
+
+    console.log();
+
+    const response = await globalThis.page.evaluate(async (apiURL: string) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", apiURL);
+      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+      xhr.send(JSON.stringify({ filters: {} }));
+
+      return new Promise((resolve) => {
+        xhr.onload = () => {
+          resolve(JSON.parse(xhr.responseText));
+        };
+      });
+    }, apiURL);
+
+    return response;
+  }
+
+  // Map to `GET /v1/collections/{collection}/{addr}`
+  @get("/v1/collections/{addr}")
+  @response(200, RESPONSE)
+  async collection(@param.path.string("addr") addr: string): Promise<any> {
+    console.log(`GET ID for: https://blur.io/collections/${addr}`);
+    const { authtoken, walletaddress } = this.req.headers;
+    const cookies = [
+      {
+        name: "authToken",
+        value: authtoken,
+      },
+      {
+        name: "walletAddress",
+        value: walletaddress,
+      },
+    ];
+
+    await page.setCookie(...cookies);
+    const apiURL = "https://core-api.prod.blur.io/v1/collections/" + addr;
+    console.log(`GET collection: ${apiURL}`);
 
     const response = await globalThis.page.evaluate(async (apiURL: string) => {
       const xhr = new XMLHttpRequest();

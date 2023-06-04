@@ -1,0 +1,96 @@
+{
+	"url": "https://gyazo.com/4c16ca895d617b3ce4b9b8a99c92bf24",
+  "success": true,
+  "collections": [
+    {
+      "contractAddress": "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e",
+      "collectionSlug": "doodles-official",
+      "name": "Doodles",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x8a90cab2b38dba80c64b7734e58ee1db38b8992e/7522-a0e3ae3f8d77961e",
+      "totalSupply": 10000,
+      "volumeOneDay": 759.0523732368025,
+      "volumeOneWeek": 12522.63900692314
+    },
+    {
+      "contractAddress": "0x0cceccfcbae53db3e68cda8ed6e44e14cd4cf50f",
+      "collectionSlug": "doodles2",
+      "name": "Doodles2",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x0cceccfcbae53db3e68cda8ed6e44e14cd4cf50f/145-eae8c7e8f13816eb",
+      "totalSupply": 1025,
+      "volumeOneDay": 0,
+      "volumeOneWeek": 0
+    },
+    {
+      "contractAddress": "0x4a3426bc031da0800347becc7b35b53b26d7e964",
+      "collectionSlug": "doodles2-2",
+      "name": "DOODLES2",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x4a3426bc031da0800347becc7b35b53b26d7e964/105-f911698a0aa229af",
+      "totalSupply": 857,
+      "volumeOneDay": 0,
+      "volumeOneWeek": 0
+    },
+    {
+      "contractAddress": "0x2bbcef307d931344ff002720d41379112d41e242",
+      "collectionSlug": "doodles-2",
+      "name": "DOODLES 2",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x2bbcef307d931344ff002720d41379112d41e242/1347-b60b5875b3e4b5a1",
+      "totalSupply": 2302,
+      "volumeOneDay": 0,
+      "volumeOneWeek": 0
+    },
+    {
+      "contractAddress": "0xfdb3e529814afc5df5a5faf126989683b17daef9",
+      "collectionSlug": "doodlesaursworld",
+      "name": "Doodlesaurs World",
+      "imageUrl": null,
+      "totalSupply": 7756,
+      "volumeOneDay": 0,
+      "volumeOneWeek": 0
+    },
+    {
+      "contractAddress": "0x36584bc5b6c84db27f4b0c858c0229a690ef3e0d",
+      "collectionSlug": "doodles-2-0",
+      "name": "Doodles 2.0",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x36584bc5b6c84db27f4b0c858c0229a690ef3e0d/1121-7993a6e06c83140e",
+      "totalSupply": 2628,
+      "volumeOneDay": 0,
+      "volumeOneWeek": 0
+    },
+    {
+      "contractAddress": "0x151aa8dcde43408a6b68af8c054729ac74182018",
+      "collectionSlug": "doodles-bucket-auction",
+      "name": "Doodles Bucket Auction",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x151aa8dcde43408a6b68af8c054729ac74182018/191-acae88c611166aeb",
+      "totalSupply": 1663,
+      "volumeOneDay": 0,
+      "volumeOneWeek": 0
+    },
+    {
+      "contractAddress": "0x5617dae0e28d7062e9986738bec00407ca4de83a",
+      "collectionSlug": "doodles2-free-mint",
+      "name": "Doodles2 Free Mint",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x5617dae0e28d7062e9986738bec00407ca4de83a/1006-a45e5bc48a44ee33",
+      "totalSupply": 1306,
+      "volumeOneDay": 0,
+      "volumeOneWeek": 0
+    },
+    {
+      "contractAddress": "0xd70e6d867f1c2b2118f8aaa787d9e2cbe46df467",
+      "collectionSlug": "doodles-2-mint-party",
+      "name": "DOODLES 2 MINT PARTY",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xd70e6d867f1c2b2118f8aaa787d9e2cbe46df467/366-54257a858c64f26e",
+      "totalSupply": 639,
+      "volumeOneDay": 0,
+      "volumeOneWeek": 0
+    },
+    {
+      "contractAddress": "0xa64211f8e42c899f713aaaf5dfff2bffc6e58a95",
+      "collectionSlug": "doodles-2-free-collection",
+      "name": "DOODLES 2 FREE COLLECTION",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xa64211f8e42c899f713aaaf5dfff2bffc6e58a95/161-16aa4da804d5832c",
+      "totalSupply": 3652,
+      "volumeOneDay": 0,
+      "volumeOneWeek": 0
+    }
+  ]
+}

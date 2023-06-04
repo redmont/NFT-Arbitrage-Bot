@@ -1,0 +1,491 @@
+{
+  "success": true,
+	"url": "https://gyazo.com/3a721fa12f08a407feecbd7ac7b23115",
+  "activityItems": [
+    {
+      "id": "174678160",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "4817",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/4817-ecca910131e4e26b",
+      "eventType": "SALE",
+      "price": {
+        "amount": "63",
+        "unit": "WETH"
+      },
+      "fromTrader": {
+        "address": "0x7e3d18bb9c2fee46c9855db9192bd2987f6e09d8",
+        "username": null
+      },
+      "toTrader": {
+        "address": "0xed2ab4948ba6a909a7751dec4f34f303eb8c7236",
+        "username": null
+      },
+      "createdAt": "2023-02-24T17:35:59.000Z",
+      "transactionHash": "0x16eb181485f747869fcd650aca468a2e05859040cf60eebe5adec56c5ab86354",
+      "marketplace": "LOOKSRARE"
+    },
+    {
+      "id": "174676840",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "6079",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/6079-f911912498aa89e5",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "70",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0xf1432756ed9fce5630e32484003195c48ac4cd23",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T17:32:19.000Z",
+      "transactionHash": null,
+      "marketplace": "BLUR"
+    },
+    {
+      "id": "174675242",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "4675",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/4675-3ae931a1a8e398d1",
+      "eventType": "SALE",
+      "price": {
+        "amount": "69",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0xed2ab4948ba6a909a7751dec4f34f303eb8c7236",
+        "username": null
+      },
+      "toTrader": {
+        "address": "0xe2bc85306d471754c82758fc7df05dd1e8d50927",
+        "username": null
+      },
+      "createdAt": "2023-02-24T17:28:11.000Z",
+      "transactionHash": "0xa1023e8605ab2d883e29adc4d41e42a102cbc700d6a68c6637581a021e5f96a4",
+      "marketplace": "OPENSEA"
+    },
+    {
+      "id": "174674129",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "3271",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/3271-9efd6f1f78a2f7cc",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "70.99",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0xebd79cd26481c1824acfd6e043c5a3b013734105",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T17:25:31.671Z",
+      "transactionHash": null,
+      "marketplace": "X2Y2"
+    },
+    {
+      "id": "174672161",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "3434",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/3434-b8ab7239cec0597d",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "76.99",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0xecefa37b7e7cfb267ed9ce134aa6e40c6fc6b7af",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T17:20:28.000Z",
+      "transactionHash": null,
+      "marketplace": "BLUR"
+    },
+    {
+      "id": "174670343",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "6079",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/6079-f911912498aa89e5",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "72.4",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0xf1432756ed9fce5630e32484003195c48ac4cd23",
+        "username": "BAYC6079"
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T17:17:27.773Z",
+      "transactionHash": null,
+      "marketplace": "OPENSEA"
+    },
+    {
+      "id": "174633337",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "6079",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/6079-f911912498aa89e5",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "72.3618",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0xf1432756ed9fce5630e32484003195c48ac4cd23",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T17:14:39.000Z",
+      "transactionHash": null,
+      "marketplace": "BLUR"
+    },
+    {
+      "id": "174619782",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "9425",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/9425-d67dd12256927ce5",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "68.8442",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0x17554b593f89d5c8c7b447d21176d977a516ae45",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:50:47.000Z",
+      "transactionHash": null,
+      "marketplace": "BLUR"
+    },
+    {
+      "id": "174619781",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "4429",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/4429-7b148d149f25b43a",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "68.8442",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0x17554b593f89d5c8c7b447d21176d977a516ae45",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:50:47.000Z",
+      "transactionHash": null,
+      "marketplace": "BLUR"
+    },
+    {
+      "id": "174619396",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "3271",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/3271-9efd6f1f78a2f7cc",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "68.99",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0xebd79cd26481c1824acfd6e043c5a3b013734105",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:49:51.846Z",
+      "transactionHash": null,
+      "marketplace": "OPENSEA"
+    },
+    {
+      "id": "174619242",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "3271",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/3271-9efd6f1f78a2f7cc",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "68.99",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0xebd79cd26481c1824acfd6e043c5a3b013734105",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:49:19.000Z",
+      "transactionHash": null,
+      "marketplace": "BLUR"
+    },
+    {
+      "id": "174619041",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "2340",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2340-76a51a5a4ab8e54e",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "80",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0xd941e78637427cbf13527abcbb846e6a81cc59fd",
+        "username": "SnipesNFT"
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:48:28.084Z",
+      "transactionHash": null,
+      "marketplace": "OPENSEA"
+    },
+    {
+      "id": "174618836",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "5955",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/5955-c407b3919f359b48",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "70.19",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0xcdd60e7b7ade44053a67349a6e856c0ae33d2b91",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:47:41.000Z",
+      "transactionHash": null,
+      "marketplace": "BLUR"
+    },
+    {
+      "id": "174614555",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "4675",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/4675-3ae931a1a8e398d1",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "69",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0xed2ab4948ba6a909a7751dec4f34f303eb8c7236",
+        "username": "franklinisbored"
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:36:45.106Z",
+      "transactionHash": null,
+      "marketplace": "OPENSEA"
+    },
+    {
+      "id": "174613868",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "4675",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/4675-3ae931a1a8e398d1",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "69",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0xed2ab4948ba6a909a7751dec4f34f303eb8c7236",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:36:06.000Z",
+      "transactionHash": null,
+      "marketplace": "BLUR"
+    },
+    {
+      "id": "174613675",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "1353",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/1353-b925fbfcf784ea5d",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "75",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0x65249532663d15a76007688a8bfa1b109973ad41",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:35:01.000Z",
+      "transactionHash": null,
+      "marketplace": "BLUR"
+    },
+    {
+      "id": "174613551",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "1353",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/1353-b925fbfcf784ea5d",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "75",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0x65249532663d15a76007688a8bfa1b109973ad41",
+        "username": "NotYouLOL"
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:34:27.024Z",
+      "transactionHash": null,
+      "marketplace": "OPENSEA"
+    },
+    {
+      "id": "174613310",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "4675",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/4675-3ae931a1a8e398d1",
+      "eventType": "SALE",
+      "price": {
+        "amount": "68",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0x5705b71c9581208fbab754562447185b6895f3ac",
+        "username": null
+      },
+      "toTrader": {
+        "address": "0xed2ab4948ba6a909a7751dec4f34f303eb8c7236",
+        "username": null
+      },
+      "createdAt": "2023-02-24T16:33:35.000Z",
+      "transactionHash": "0x19a2f3a9ae69d505739e2080d43b54701c0bb18e54013cc2a201190d5d186302",
+      "marketplace": "BLUR"
+    },
+    {
+      "id": "174613159",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "7039",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/7039-1f1b46f3a875d513",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "185",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0x4e9389a3e9b8bbe82cb4e0dafa67e99b771f89a4",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:33:05.832Z",
+      "transactionHash": null,
+      "marketplace": "OPENSEA"
+    },
+    {
+      "id": "174612921",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "4675",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/4675-3ae931a1a8e398d1",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "68",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0x5705b71c9581208fbab754562447185b6895f3ac",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:31:59.000Z",
+      "transactionHash": null,
+      "marketplace": "BLUR"
+    },
+    {
+      "id": "174612109",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "3271",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/3271-9efd6f1f78a2f7cc",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "69.83",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0xebd79cd26481c1824acfd6e043c5a3b013734105",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:29:40.000Z",
+      "transactionHash": null,
+      "marketplace": "BLUR"
+    },
+    {
+      "id": "174612019",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "3271",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/3271-9efd6f1f78a2f7cc",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "69.89",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0xebd79cd26481c1824acfd6e043c5a3b013734105",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:29:12.000Z",
+      "transactionHash": null,
+      "marketplace": "BLUR"
+    },
+    {
+      "id": "174611921",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "4675",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/4675-3ae931a1a8e398d1",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "69.96",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0x5705b71c9581208fbab754562447185b6895f3ac",
+        "username": null
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:28:38.000Z",
+      "transactionHash": null,
+      "marketplace": "BLUR"
+    },
+    {
+      "id": "174610726",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "6317",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/6317-28c4cc3f1274274e",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "369",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0x6ac423f08109094af754eb733433cad2033d80d1",
+        "username": "sup_metaverse"
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:24:34.530Z",
+      "transactionHash": null,
+      "marketplace": "OPENSEA"
+    },
+    {
+      "id": "174609506",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "tokenId": "9803",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/9803-1eee5bb41d396379",
+      "eventType": "ORDER_CREATED",
+      "price": {
+        "amount": "73.9897",
+        "unit": "ETH"
+      },
+      "fromTrader": {
+        "address": "0x0beda5116cd204c428379b5d852dadc04f3bc384",
+        "username": "BHNFTs"
+      },
+      "toTrader": null,
+      "createdAt": "2023-02-24T16:21:17.318Z",
+      "transactionHash": null,
+      "marketplace": "OPENSEA"
+    }
+  ],
+  "cursor": "eyJiZWZvcmVEYXRlIjoiMjAyMy0wMi0yNFQxNjoyMToxNy4zMThaIiwiaWQiOiIxNzQ2MDk1MDYifQ=="
+}

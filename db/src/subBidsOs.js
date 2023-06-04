@@ -1,21 +1,21 @@
 const { OpenSeaStreamClient, EventType } = require("@opensea/stream-js");
 const { WebSocket } = require("ws");
-const ethers = require("ethers");
+const ethers = require("ethers");}
 
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
 const mongoClient = new MongoClient(uri);
 const { ensureIndexes } = require("../../utils/mongoIndexes");
 
-const osClient = new OpenSeaStreamClient({
-  token: process.env.API_OS_0,
-  networkName: "mainnet",
-  connectOptions: {
-    transport: WebSocket,
-  },
-  onError: (error) => console.error("ERR: osClient", error),
-  logLevel: 1,
-});
+// const osClient = new OpenSeaStreamClient({
+//   token: process.env.API_OS_0,
+//   networkName: "mainnet",
+//   connectOptions: {
+//     transport: WebSocket,
+//   },
+//   onError: (error) => console.error("ERR: osClient", error),
+//   logLevel: 1,
+// });
 
 const db = {
   TEST_MODE: false,
@@ -208,6 +208,21 @@ const addToBidsDB = async (bid) => {
   } finally {
     return;
   }
+};
+
+const test = async () => {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      "X-API-KEY": "aa276a19b6914dfa8cbe504901f3d8ed",
+    },
+  };
+
+  fetch("https://api.opensea.io/api/v1/events?collection_slug=yes-ser", options)
+    .then((response) => response.json())
+    .then((response) => console.log(response))
+    .catch((err) => console.error(err));
 };
 
 (async function root() {

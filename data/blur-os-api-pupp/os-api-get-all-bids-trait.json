@@ -1,0 +1,64 @@
+{
+  "offers": [
+    {
+      "order_hash": "0xef5c9bc382ed8e7a91d644755c0870b311b69cdb51a4def711528767648aa2ca",
+      "chain": "ethereum",
+      "criteria": {
+        "collection": {
+          "slug": "thewalkingdeadofficial"
+        },
+        "contract": {
+          "address": "0xabf66ca534f8a5081303e3873f0f4771c67b7b45"
+        },
+        "trait": {
+          "type": "Rarity",
+          "value": "Legendary"
+        }
+      },
+      "protocol_data": {
+        "parameters": {
+          "offerer": "0xcd4c2f99336596c3c57508135268e39bd07cd6f4",
+          "offer": [
+            {
+              "itemType": 1,
+              "token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "identifierOrCriteria": "0",
+              "startAmount": "942400000000000000",
+              "endAmount": "942400000000000000"
+            }
+          ],
+          "consideration": [
+            {
+              "itemType": 4,
+              "token": "0xABF66CA534f8A5081303E3873F0f4771c67B7b45",
+              "identifierOrCriteria": "79148358382766552852635350592352798376112920688799951266785950131390512748165",
+              "startAmount": "1",
+              "endAmount": "1",
+              "recipient": "0xcd4C2f99336596C3C57508135268E39Bd07CD6F4"
+            },
+            {
+              "itemType": 1,
+              "token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+              "identifierOrCriteria": "0",
+              "startAmount": "23560000000000000",
+              "endAmount": "23560000000000000",
+              "recipient": "0x0000a26b00c1F0DF003000390027140000fAa719"
+            }
+          ],
+          "startTime": "1684923742",
+          "endTime": "1684925227",
+          "orderType": 1,
+          "zone": "0x0000000000000000000000000000000000000000",
+          "zoneHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "salt": "0x4edded94ee98995e",
+          "conduitKey": "0x0000007b02230091a7ed01230072f7006a004d60a8d4e71d599b8104250f0000",
+          "totalOriginalConsiderationItems": 2,
+          "counter": 0
+        },
+        "signature": null
+      },
+      "protocol_address": "0x00000000000000adc04c56bf30ac9d3c0aaf14dc"
+    }
+  ],
+  "next": "cGs9OTgwODE0NTY1NSZjcmVhdGVkX2RhdGU9MjAyMy0wNS0yNCsxMCUzQTIyJTNBMjMuNzMwMTkz"
+}

@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "url": "https://gyazo.com/8ea0252e2e5ad457b810b23b6e1a2270",
+  "priceLevels": [
+    {
+      "price": "1.03",
+      "contractAddress": "0x231d3559aa848bf10366fb9868590f01d34bf240",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "0.4",
+      "contractAddress": "0x524cab2ec69124574082676e6f654a18df49a048",
+      "executableSize": 1,
+      "openSize": 1
+    }
+  ]
+}

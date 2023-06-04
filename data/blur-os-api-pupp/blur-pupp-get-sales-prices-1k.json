@@ -1,0 +1,29 @@
+//(1k results) get each nft id: https://core-api.prod.blur.io/v1/collections/otherdeed/prices?filters={"traits":[],"hasAsks":true}
+{
+  data {
+  success: true,
+  contractAddress: '0xb7f7f6c52f2e2fdb1963eab30438024864c313f6',
+  totalCount: 124,
+  nftPrices: [
+    {
+      tokenId: '5919',
+      price: {
+        amount: '58.397',
+        unit: 'ETH',
+        listedAt: '2023-04-05T13:17:45.000Z'
+      }
+    },
+
+    ...
+
+    {
+      tokenId: '6286',
+      price: {
+        amount: '58.3979',
+        unit: 'ETH',
+        listedAt: '2023-04-05T13:22:17.000Z'
+      }
+    },
+  ]
+}
+}

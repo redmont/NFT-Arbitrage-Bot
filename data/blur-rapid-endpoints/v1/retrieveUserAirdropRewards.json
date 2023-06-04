@@ -1,0 +1,22 @@
+{
+	"url": "https://gyazo.com/b3f831fb59d2026e52f7c07fc7a5e0ee",
+  "success": true,
+  "wallet": {
+    "blur": 0,
+    "listedTotal": 0,
+    "listedBlur": 0,
+    "claimedBoxes": 0,
+    "unclaimedBoxes": 0,
+    "unclaimedBoxesAirdrop2": 0,
+    "avgLoyalty": 0,
+    "hasListed": false,
+    "hasBid": false,
+    "metadata": null,
+    "rank": null,
+    "bid24hrXp": 0,
+    "bidTotalXp": 0,
+    "unclaimedBoxesAirdrop3": 0,
+    "bidSeason1Xp": 0
+  },
+  "groupedBoxes": []
+}
