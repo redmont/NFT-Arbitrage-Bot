@@ -1,0 +1,38 @@
+{
+	"url": "https://gyazo.com/83b6824476d28e22fb531715c89dcc73",
+  "success": true,
+  "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "token": {
+    "tokenId": "541",
+    "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+    "name": null,
+    "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/541-125d316ab626a896",
+    "traits": {
+      "Fur": "M1 Blue",
+      "Eyes": "M1 Angry",
+      "Mouth": "M1 Discomfort",
+      "Clothes": "M1 Sleeveless T",
+      "Background": "M1 Aquamarine"
+    },
+    "rarityScore": 80.11147,
+    "rarityRank": 13343,
+    "price": null,
+    "highestBid": null,
+    "lastSale": {
+      "amount": "14.333",
+      "unit": "ETH",
+      "listedAt": "2023-02-25T02:59:59.000Z"
+    },
+    "lastCostBasis": {
+      "amount": "14.333",
+      "unit": "ETH",
+      "listedAt": "2023-02-25T02:59:59.000Z"
+    },
+    "owner": {
+      "address": "0x9aa3f11c4b6b1085e77a267691ad4f5f0596f6cb",
+      "username": null
+    },
+    "numberOwnedByOwner": 1,
+    "isSuspicious": false
+  }
+}

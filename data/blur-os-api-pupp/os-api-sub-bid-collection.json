@@ -1,0 +1,80 @@
+{
+  "payload": {
+    "asset_contract_criteria": {
+      "address": "0x64ad353bc90a04361c4810ae7b3701f3beb48d7e"
+    },
+    "base_price": "809420200000000000",
+    "collection": { "slug": "renga-black-box" },
+    "collection_criteria": { "slug": "renga-black-box" },
+    "created_date": "2023-04-07T11:01:35.000000+00:00",
+    "event_timestamp": "2023-04-07T11:01:36.123856+00:00",
+    "expiration_date": "2023-04-07T11:16:35.000000+00:00",
+    "item": {},
+    "maker": { "address": "0xace27c92406820ecc845673d6828a8ef881fc103" },
+    "order_hash": "0xcf7d4ebd0b56d82ecacdcfedb33c16a5a7e1c8215fd27fba063b5bf4e8d8f1eb",
+    "payment_token": {
+      "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "decimals": 18,
+      "eth_price": "1.000000000000000",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "usd_price": "1858.640000000000100000"
+    },
+    "protocol_address": "0x00000000000001ad428e4906ae43d8f9852d0dd6",
+    "protocol_data": {
+      "parameters": [
+        {
+          "conduitKey": "0x0000007b02230091a7ed01230072f7006a004d60a8d4e71d599b8104250f0000",
+          "consideration": [
+            {
+              "endAmount": "1",
+              "identifierOrCriteria": "13090772612108551426806458388890710548530625733711264278984312473906756507516",
+              "itemType": 4,
+              "recipient": "0xace27c92406820ecc845673D6828A8EF881fC103",
+              "startAmount": "1",
+              "token": "0x64Ad353BC90A04361c4810Ae7b3701f3bEb48D7e"
+            },
+            {
+              "endAmount": "4047101000000000",
+              "identifierOrCriteria": "0",
+              "itemType": 1,
+              "recipient": "0x60D190772500FaCa6a32e2b88fF0cFE5D9D75142",
+              "startAmount": "4047101000000000",
+              "token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+            },
+            {
+              "endAmount": "20235505000000000",
+              "identifierOrCriteria": "0",
+              "itemType": 1,
+              "recipient": "0x0000a26b00c1F0DF003000390027140000fAa719",
+              "startAmount": "20235505000000000",
+              "token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+            }
+          ],
+          "counter": 0,
+          "endTime": "1680866195",
+          "offer": [
+            {
+              "endAmount": "809420200000000000",
+              "identifierOrCriteria": "0",
+              "itemType": 1,
+              "startAmount": "809420200000000000",
+              "token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+            }
+          ],
+          "offerer": "0xace27c92406820ecc845673d6828a8ef881fc103",
+          "orderType": 0,
+          "salt": "0x2cc00c9e99b14420",
+          "startTime": "1680865295",
+          "totalOriginalConsiderationItems": 3,
+          "zone": "0x004C00500000aD104D7DBd00e3ae0A5C00560C00",
+          "zoneHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "signature": null
+    },
+    "quantity": 1,
+    "taker": null,
+    "sent_at": "2023-04-07T11:01:36.182903+00:00"
+  }
+}

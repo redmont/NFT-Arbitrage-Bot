@@ -1,0 +1,81 @@
+{
+  "event_type": "trait_offer",
+  "payload": {
+    "asset_contract_criteria": {
+      "address": "0xabf66ca534f8a5081303e3873f0f4771c67b7b45"
+    },
+    "base_price": "943900000000000000",
+    "collection": {
+      "slug": "thewalkingdeadofficial"
+    },
+    "collection_criteria": {
+      "slug": "thewalkingdeadofficial"
+    },
+    "created_date": "2023-05-24T10:28:54.000000+00:00",
+    "event_timestamp": "2023-05-24T10:29:02.974348+00:00",
+    "expiration_date": "2023-05-24T10:53:48.000000+00:00",
+    "item": {},
+    "maker": {
+      "address": "0xcd4c2f99336596c3c57508135268e39bd07cd6f4"
+    },
+    "order_hash": "0x35778480daab43592b00783c1c95c491ffb972e6f362c0838d54da2cd81ab490",
+    "payment_token": {
+      "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "decimals": 18,
+      "eth_price": "1.000000000000000",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "usd_price": "1817.880000000000109000"
+    },
+    "protocol_address": "0x00000000000000adc04c56bf30ac9d3c0aaf14dc",
+    "protocol_data": {
+      "parameters": {
+        "conduitKey": "0x0000007b02230091a7ed01230072f7006a004d60a8d4e71d599b8104250f0000",
+        "consideration": [
+          {
+            "endAmount": "1",
+            "identifierOrCriteria": "79148358382766552852635350592352798376112920688799951266785950131390512748165",
+            "itemType": 4,
+            "recipient": "0xcd4C2f99336596C3C57508135268E39Bd07CD6F4",
+            "startAmount": "1",
+            "token": "0xABF66CA534f8A5081303E3873F0f4771c67B7b45"
+          },
+          {
+            "endAmount": "23597500000000000",
+            "identifierOrCriteria": "0",
+            "itemType": 1,
+            "recipient": "0x0000a26b00c1F0DF003000390027140000fAa719",
+            "startAmount": "23597500000000000",
+            "token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+          }
+        ],
+        "counter": 0,
+        "endTime": "1684925628",
+        "offer": [
+          {
+            "endAmount": "943900000000000000",
+            "identifierOrCriteria": "0",
+            "itemType": 1,
+            "startAmount": "943900000000000000",
+            "token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+          }
+        ],
+        "offerer": "0xcd4c2f99336596c3c57508135268e39bd07cd6f4",
+        "orderType": 1,
+        "salt": "0x7c1063a4ddf793ff",
+        "startTime": "1684924134",
+        "totalOriginalConsiderationItems": 2,
+        "zone": "0x0000000000000000000000000000000000000000",
+        "zoneHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "signature": null
+    },
+    "quantity": 1,
+    "taker": null,
+    "trait_criteria": {
+      "trait_name": "Legendary",
+      "trait_type": "Rarity"
+    }
+  },
+  "sent_at": "2023-05-24T10:29:03.031979+00:00"
+}

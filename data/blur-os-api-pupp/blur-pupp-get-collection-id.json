@@ -1,0 +1,46 @@
+{
+  "success": true,
+  "contractAddress": "0x7bd29408f11d2bfc23c34f18275bbf23bb716bc7",
+  "token": {
+    "tokenId": "8549",
+    "contractAddress": "0x7bd29408f11d2bfc23c34f18275bbf23bb716bc7",
+    "name": "Meebit #8549",
+    "imageUrl": "https://images.blur.io/_blur-prod/0x7bd29408f11d2bfc23c34f18275bbf23bb716bc7/8549-3bff4b90736675d9",
+    "traits": {
+      "Hat": "Headphones",
+      "Type": "Elephant",
+      "Pants": "Cargo Pants",
+      "Shirt": "Skull Tee",
+      "Shoes": "Canvas",
+      "Hat Color": "Black",
+      "Hair Style": "Bald",
+      "Pants Color": "Denim",
+      "Shoes Color": "Black"
+    },
+    "rarityScore": 123.59615,
+    "rarityRank": 7175,
+    "price": {
+      "amount": "16",
+      "unit": "ETH",
+      "listedAt": "2023-05-27T18:44:30.000Z",
+      "marketplace": "BLUR"
+    },
+    "highestBid": null,
+    "lastSale": {
+      "amount": "27",
+      "unit": "ETH",
+      "listedAt": "2021-11-18T00:05:51.760Z"
+    },
+    "lastCostBasis": {
+      "amount": "0",
+      "unit": "ETH",
+      "listedAt": "2023-05-26T18:56:23.000Z"
+    },
+    "owner": {
+      "address": "0x1599575eceec056872a4f19baa4e5d86e1756ab7",
+      "username": null
+    },
+    "numberOwnedByOwner": 4,
+    "isSuspicious": false
+  }
+}

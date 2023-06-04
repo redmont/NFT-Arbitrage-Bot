@@ -1,0 +1,97 @@
+{
+	data {
+		protocol: 'seaport1.4',
+		fulfillment_data: {
+			transaction: {
+				function: 'fulfillBasicOrder_efficient_6GL6yc((address,uint256,uint256,address,address,address,uint256,uint256,uint8,uint256,uint256,bytes32,uint256,bytes32,bytes32,uint256,(uint256,address)[],bytes))',
+				chain: 1,
+				to: '0x00000000000001ad428e4906ae43d8f9852d0dd6',
+				value: 0,
+				input_data: {
+					parameters: {
+						considerationToken: '0x932F97A8Fd6536d868f209B14E66d0d984fE1606',
+						considerationIdentifier: '5675',
+						considerationAmount: '1',
+						offerer: '0x08C2da7c0d1F512AE5626c952fF43222936a030D',
+						zone: '0x004c00500000ad104d7dbd00e3ae0a5c00560c00',
+						offerToken: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+						offerIdentifier: '0',
+						offerAmount: '458400000000000000',
+						basicOrderType: 16,
+						startTime: '1680805942',
+						endTime: '1680807742',
+						zoneHash: '0x0000000000000000000000000000000000000000000000000000000000000000',
+						salt: '13501753273157770782',
+						offererConduitKey: '0x0000007b02230091a7ed01230072f7006a004d60a8d4e71d599b8104250f0000',
+						fulfillerConduitKey: '0x0000007b02230091a7ed01230072f7006a004d60a8d4e71d599b8104250f0000',
+						totalOriginalAdditionalRecipients: '2',
+						additionalRecipients: [
+							[
+								{
+									amount: '2430155000000000',
+									recipient: '0x9841755ce6fa2c179178eb0d4fa0fa2dcc063d93'
+								},
+								{
+									amount: '12150775000000000',
+									recipient: '0x0000a26b00c1f0df003000390027140000faa719'
+								}
+							],
+						signature: '0x5a2384a6e38948e705b170b28f0f79e9fcd616c3e844a7886cfb589fb2735b197c62284fac8e2c9f8c5c81ecc0d59bb84e4f6505cbc9ccea31578cfc012d6278'
+					}
+				}
+			},
+			orders: [
+				{
+					parameters: {
+						offerer: '0xd488728a45ab34e12ff8dba3cac6c6a25d9d5bb5',
+						offer: [
+							{
+								itemType: 1,
+								token: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+								identifierOrCriteria: '0',
+								startAmount: '486031000000000000',
+								endAmount: '486031000000000000'
+							}
+						],
+						consideration: [
+							{
+								itemType: 2,
+								token: '0x932F97A8Fd6536d868f209B14E66d0d984fE1606',
+								identifierOrCriteria: '5675',
+								startAmount: '1',
+								endAmount: '1',
+								recipient: '0x08C2da7c0d1F512AE5626c952fF43222936a030D'
+							},
+							{
+								itemType: 1,
+								token: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+								identifierOrCriteria: '0',
+								startAmount: '2430155000000000',
+								endAmount: '2430155000000000',
+								recipient: '0x9841755Ce6fa2C179178eB0d4FA0fA2dCc063D93'
+							},
+							{
+								itemType: 1,
+								token: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+								identifierOrCriteria: '0',
+								startAmount: '12150775000000000',
+								endAmount: '12150775000000000',
+								recipient: '0x0000a26b00c1F0DF003000390027140000fAa719'
+							}
+						],
+						startTime: '1680805942',
+						endTime: '1680807742',
+						orderType: 0,
+						zone: '0x004C00500000aD104D7DBd00e3ae0A5C00560C00',
+						zoneHash: '0x0000000000000000000000000000000000000000000000000000000000000000',
+						salt: '0xbb5fdd110b895e1e',
+						conduitKey: '0x0000007b02230091a7ed01230072f7006a004d60a8d4e71d599b8104250f0000',
+						totalOriginalConsiderationItems: 3,
+						counter: 0
+					},
+					signature: '0x5a2384a6e38948e705b170b28f0f79e9fcd616c3e844a7886cfb589fb2735b197c62284fac8e2c9f8c5c81ecc0d59bb84e4f6505cbc9ccea31578cfc012d6278'
+				}
+		  ]
+		}
+	}
+}

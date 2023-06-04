@@ -1,0 +1,92 @@
+//(100 results) GET https://core-api.prod.blur.io/v1/collections/otherdeed/tokens?filters={"traits":[],"hasAsks":true}
+{
+  "success": true,
+  "contractAddress": "0x34d85c9cdeb23fa97cb08333b511ac86e1c4e258",
+  "totalCount": 2801,
+  "tokens": [
+    {
+      "tokenId": "56360",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x34d85c9cdeb23fa97cb08333b511ac86e1c4e258/56360-8658cdfc9d6c910e",
+      "traits": {
+        "Plot": "56360",
+        "Koda?": "No",
+        "Category": "Volcanic",
+        "Sediment": "Infinite Expanse",
+        "Artifact?": "No",
+        "Environment": "Crimson",
+        "Sediment Tier": "1",
+        "Environment Tier": "3",
+        "Southern Resource": "Luster",
+        "Southern Resource Tier": "1"
+      },
+      "rarityScore": 71.08525,
+      "rarityRank": 92154,
+      "price": {
+        "amount": "1.185",
+        "unit": "ETH",
+        "listedAt": "2023-04-24T23:34:23.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "2.7",
+        "unit": "WETH",
+        "listedAt": "2022-06-27T06:28:08.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "2.7",
+        "unit": "WETH",
+        "listedAt": "2022-06-27T06:28:08.000Z"
+      },
+      "owner": {
+        "address": "0x5d23b4ea39e274b23fdea9bfdb57b032aced47d4",
+        "username": null
+      },
+      "numberOwnedByOwner": 4,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "58875",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x34d85c9cdeb23fa97cb08333b511ac86e1c4e258/58875-f1e217121f1d87cb",
+      "traits": {
+        "Plot": "58875",
+        "Koda?": "No",
+        "Category": "Harsh",
+        "Sediment": "Infinite Expanse",
+        "Artifact?": "No",
+        "Environment": "Glacia",
+        "Sediment Tier": "1",
+        "Environment Tier": "1",
+        "Western Resource": "Runa",
+        "Western Resource Tier": "2"
+      },
+      "rarityScore": 69.58317,
+      "rarityRank": 94074,
+      "price": {
+        "amount": "1.185",
+        "unit": "ETH",
+        "listedAt": "2023-04-24T23:34:23.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "3.79",
+        "unit": "ETH",
+        "listedAt": "2022-05-05T15:54:21.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "3.79",
+        "unit": "ETH",
+        "listedAt": "2022-05-05T15:54:21.000Z"
+      },
+      "owner": {
+        "address": "0x5d23b4ea39e274b23fdea9bfdb57b032aced47d4",
+        "username": null
+      },
+      "numberOwnedByOwner": 4,
+      "isSuspicious": false
+    }
+  ]
+}

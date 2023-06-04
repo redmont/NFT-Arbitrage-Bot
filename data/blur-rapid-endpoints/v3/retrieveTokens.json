@@ -1,0 +1,4241 @@
+{
+  "success": true,
+	"url": "https://gyazo.com/3a27c69fa05f54ca2d598683d950a18c",
+  "contractAddress": "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769",
+  "totalCount": 2957,
+  "tokens": [
+    {
+      "tokenId": "2346",
+      "name": "Art Gobbler 1648 – Woobop-Zap Twerkschmunt",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2346-ebfe9349a2dd06e7",
+      "traits": {
+        "Hat": "Dromedary",
+        "Eyes": "Wired",
+        "Mouth": "Two Teeth",
+        "Torso": "Torso",
+        "Palette": "Corniestflower",
+        "Left arm": "Base Left Arm",
+        "Left leg": "Dick",
+        "Random Id": "1648",
+        "Right arm": "Robot",
+        "Background": "Monoburst",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 162.2299,
+      "rarityRank": 360,
+      "price": {
+        "amount": "0.9769",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T10:13:48.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.94",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T10:11:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.94",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T10:11:23.000Z"
+      },
+      "owner": {
+        "address": "0x6cab818daaf4040476e2489a7ed29ca685ad0623",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2566",
+      "name": "Art Gobbler 47 – Funt Snork-Oopsieskrumple",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2566-32b163fe8d207577",
+      "traits": {
+        "Hat": "Base Head",
+        "Eyes": "Robo Visor",
+        "Mouth": "Petite",
+        "Torso": "Torso",
+        "Palette": "Poltergeist",
+        "Left arm": "Muscle",
+        "Left foot": "Base Left Leg",
+        "Random Id": "47",
+        "Right arm": "Base Right Arm",
+        "Right leg": "Teeth",
+        "Background": "Sandstone Alleyway",
+        "Multiplier": "6"
+      },
+      "rarityScore": 75.83476,
+      "rarityRank": 2264,
+      "price": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T12:29:20.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.94",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T11:19:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.94",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T11:19:35.000Z"
+      },
+      "owner": {
+        "address": "0xaf65293711b6cc4955dc9bda98f2605e0221a386",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2897",
+      "name": "???",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2897-b795512e4206869c",
+      "traits": {},
+      "rarityScore": null,
+      "rarityRank": null,
+      "price": {
+        "amount": "0.988",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T11:15:08.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.96",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T14:45:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.96",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T14:45:23.000Z"
+      },
+      "owner": {
+        "address": "0xe0747064fa58ab6aee1ef23f04c15301fa3b06d4",
+        "username": null
+      },
+      "numberOwnedByOwner": 3,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1695",
+      "name": "Art Gobbler 3777 – Blarg Yank",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1695-b36f3cb26eade264",
+      "traits": {
+        "Head": "Teeth",
+        "Torso": "Torso",
+        "Palette": "Turquoise",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Sneaker",
+        "Random Id": "3777",
+        "Right arm": "Teeth",
+        "Right leg": "Teeth",
+        "Background": "Bates",
+        "Multiplier": "7"
+      },
+      "rarityScore": 130.83966,
+      "rarityRank": 703,
+      "price": {
+        "amount": "0.998",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T09:07:08.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.8141",
+        "unit": "ETH",
+        "listedAt": "2023-02-15T15:39:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T07:41:47.000Z"
+      },
+      "owner": {
+        "address": "0x2b2336c0748162cf92f6f433c58e0892017bbb67",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "345",
+      "name": "Art Gobbler 2797 – Doof Flap-Thwumple",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/345-ffbebecf6690df02",
+      "traits": {
+        "Hat": "Curl",
+        "Eyes": "Bulging",
+        "Mouth": "Monster",
+        "Torso": "Torso",
+        "Palette": "Orange",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Base Left Leg",
+        "Random Id": "2797",
+        "Right arm": "Mechanical Claw",
+        "Background": "Plum Retro Shapes",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 83.5841,
+      "rarityRank": 1976,
+      "price": {
+        "amount": "0.999",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T00:50:15.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.99",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T03:33:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.99",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T03:33:23.000Z"
+      },
+      "owner": {
+        "address": "0xce04acc015e92cbbe40f7b172bb71efeacef71ea",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2105",
+      "name": "Art Gobbler 360 – Flunt Bippity",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2105-1b7482e632fb7e5c",
+      "traits": {
+        "Hat": "Base Head",
+        "Eyes": "Flutter",
+        "Mouth": "Snob",
+        "Torso": "Torso",
+        "Palette": "Sea Foam",
+        "Left foot": "Sock",
+        "Left hand": "Claw Glove",
+        "Random Id": "360",
+        "Right arm": "Base Right Arm",
+        "Background": "Park",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 90.15129,
+      "rarityRank": 1725,
+      "price": {
+        "amount": "1",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T15:38:21.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T13:18:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T13:18:47.000Z"
+      },
+      "owner": {
+        "address": "0xc4bbdf12129c56c752db3d1e14019718c059a1e8",
+        "username": null
+      },
+      "numberOwnedByOwner": 9,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "220",
+      "name": "Art Gobbler 985 – Heeheedwankin Gooncrunchergreeble-Bumple",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/220-c6b7931dd7b74d49",
+      "traits": {
+        "Hat": "Cat",
+        "Eyes": "Tadpole",
+        "Mouth": "Two Teeth",
+        "Torso": "Torso",
+        "Palette": "Grape",
+        "Left foot": "Poopy",
+        "Left hand": "Pencil",
+        "Random Id": "985",
+        "Background": "Other Bolts",
+        "Multiplier": "6",
+        "Right foot": "Sexy Heel",
+        "Right hand": "Peanut Butter Jar"
+      },
+      "rarityScore": 108.161804,
+      "rarityRank": 1174,
+      "price": {
+        "amount": "1",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T15:38:21.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T13:18:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T13:18:47.000Z"
+      },
+      "owner": {
+        "address": "0xc4bbdf12129c56c752db3d1e14019718c059a1e8",
+        "username": null
+      },
+      "numberOwnedByOwner": 9,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "320",
+      "name": "Art Gobbler 790 – Snog Gadork",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/320-5cf79b61c726cc75",
+      "traits": {
+        "Hat": "Goo Hat",
+        "Eyes": "Big Small",
+        "Mouth": "Two Teeth",
+        "Torso": "Torso",
+        "Palette": "Toxic Waste",
+        "Left arm": "Base Left Arm",
+        "Left leg": "Peg Leg",
+        "Random Id": "790",
+        "Background": "Purple Haze",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Hoof"
+      },
+      "rarityScore": 122.62544,
+      "rarityRank": 852,
+      "price": {
+        "amount": "1.005",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T16:28:31.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T13:18:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T13:18:47.000Z"
+      },
+      "owner": {
+        "address": "0x16224283be3f7c0245d9d259ea82ead7fcb8343d",
+        "username": null
+      },
+      "numberOwnedByOwner": 10,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "639",
+      "name": "Art Gobbler 65 – Stank Schwant",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/639-d37ad8547673925a",
+      "traits": {
+        "Hat": "Dromedary",
+        "Eyes": "Stoned",
+        "Mouth": "Petite",
+        "Torso": "Torso",
+        "Palette": "Banana Cream",
+        "Left arm": "Tentacle",
+        "Left foot": "Sneaker",
+        "Random Id": "65",
+        "Right arm": "Base Right Arm",
+        "Background": "Huts",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 67.28723,
+      "rarityRank": 2538,
+      "price": {
+        "amount": "1.005",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T12:02:38.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "3",
+        "unit": "ETH",
+        "listedAt": "2022-11-19T10:18:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2022-12-06T11:28:11.000Z"
+      },
+      "owner": {
+        "address": "0xcf324e853ece80824185f8e4c1c1698ef96d423c",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1710",
+      "name": "Art Gobbler 1424 – Snarg Frim",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1710-f22cd0cc8cc36ad4",
+      "traits": {
+        "Hat": "Lopsided",
+        "Eyes": "Big Small",
+        "Mouth": "Droopy",
+        "Torso": "Torso",
+        "Bottom": "Towel",
+        "Palette": "Coral",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Poopy",
+        "Random Id": "1424",
+        "Background": "Red Flesh Ropes",
+        "Multiplier": "6",
+        "Right foot": "Sneaker",
+        "Right hand": "Watch"
+      },
+      "rarityScore": 134.28133,
+      "rarityRank": 647,
+      "price": {
+        "amount": "1.006",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T14:50:38.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.96",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T11:05:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.96",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T11:05:59.000Z"
+      },
+      "owner": {
+        "address": "0x6ad244466777fb941917deab621e922b1feadd85",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2438",
+      "name": "Art Gobbler 1515 – Skortschmint Doopgleepin-Warblebrunch",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2438-f5fb7dc43b0e27d5",
+      "traits": {
+        "Hat": "Curl",
+        "Eyes": "Circle",
+        "Mouth": "Buck Teeth",
+        "Torso": "Torso",
+        "Palette": "Cornflower",
+        "Left foot": "Base Left Leg",
+        "Left hand": "Surgical Glove",
+        "Random Id": "1515",
+        "Right arm": "Bones",
+        "Background": "Red Flesh Ropes",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 90.27485,
+      "rarityRank": 1719,
+      "price": {
+        "amount": "1.028",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T18:49:16.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.9",
+        "unit": "ETH",
+        "listedAt": "2023-01-09T19:25:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.9",
+        "unit": "ETH",
+        "listedAt": "2023-01-09T19:25:11.000Z"
+      },
+      "owner": {
+        "address": "0x54f1f5f5dd7c42da8d9ec6cef817ae7f6c2d0713",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2153",
+      "name": "Art Gobbler 2880 – Yoyo Yak",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2153-463ddfe923ea853c",
+      "traits": {
+        "Hat": "Fez",
+        "Eyes": "Ghost",
+        "Mouth": "Snob",
+        "Torso": "Torso",
+        "Palette": "Cornflower",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Sneaker",
+        "Random Id": "2880",
+        "Right arm": "Base Right Arm",
+        "Background": "Overlook",
+        "Multiplier": "6",
+        "Right foot": "Sneaker"
+      },
+      "rarityScore": 74.7794,
+      "rarityRank": 2299,
+      "price": {
+        "amount": "1.029",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T11:35:32.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.96",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T02:05:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.96",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T02:05:35.000Z"
+      },
+      "owner": {
+        "address": "0x04af78ad4d68ac32bde6ad79849e4356e5308791",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2690",
+      "name": "Art Gobbler 1285 – Snorty Snoggrunt",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2690-5914cb278d0ef0bd",
+      "traits": {
+        "Hat": "Clown",
+        "Eyes": "Circle",
+        "Mouth": "Two Teeth",
+        "Torso": "Torso",
+        "Palette": "Mint",
+        "Left arm": "Elephant",
+        "Left foot": "Poopy",
+        "Random Id": "1285",
+        "Background": "Egypt Night",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Cartoon"
+      },
+      "rarityScore": 104.82072,
+      "rarityRank": 1278,
+      "price": {
+        "amount": "1.0388",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T08:38:19.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:55:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:55:23.000Z"
+      },
+      "owner": {
+        "address": "0xabf05235523ceecb5a5b9a155657af0ffcfec944",
+        "username": null
+      },
+      "numberOwnedByOwner": 7,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2567",
+      "name": "Art Gobbler 4911 – Shunt Snelpschwirt",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2567-b7df8bff8d91fa96",
+      "traits": {
+        "Hat": "Base Head",
+        "Eyes": "Glasses",
+        "Mouth": "Beak",
+        "Torso": "Torso",
+        "Palette": "Mint",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Claw",
+        "Random Id": "4911",
+        "Right arm": "Mechanical Claw",
+        "Background": "Purple Haze",
+        "Multiplier": "7",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 79.69097,
+      "rarityRank": 2099,
+      "price": {
+        "amount": "1.0398",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T08:38:19.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.08",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T11:36:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.08",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T11:36:47.000Z"
+      },
+      "owner": {
+        "address": "0xabf05235523ceecb5a5b9a155657af0ffcfec944",
+        "username": null
+      },
+      "numberOwnedByOwner": 7,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "975",
+      "name": "Art Gobbler 624 – Yap Gleepin",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/975-4218cde4465d9f27",
+      "traits": {
+        "Hat": "Conehead",
+        "Eyes": "Stitches",
+        "Mouth": "Petite",
+        "Torso": "Torso",
+        "Palette": "Baby Blue",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Base Left Leg",
+        "Random Id": "624",
+        "Background": "Sandstone Alleyway",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Tree"
+      },
+      "rarityScore": 92.35377,
+      "rarityRank": 1644,
+      "price": {
+        "amount": "1.0399",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T07:07:49.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "2.9",
+        "unit": "ETH",
+        "listedAt": "2022-11-11T13:36:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2022-12-14T07:55:11.000Z"
+      },
+      "owner": {
+        "address": "0x223432facfe3a091db5b1e25016295eebf9bfdf0",
+        "username": null
+      },
+      "numberOwnedByOwner": 6,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "307",
+      "name": "Art Gobbler 964 – Noid Flim-Dinchsnuggletonko",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/307-d1f5c0da4ff56b03",
+      "traits": {
+        "Hat": "Clown",
+        "Eyes": "Glasses",
+        "Mouth": "Droopy",
+        "Torso": "Torso",
+        "Palette": "Orange",
+        "Left arm": "Tentacle",
+        "Left leg": "Teeth",
+        "Random Id": "964",
+        "Right arm": "Base Right Arm",
+        "Background": "Bolts",
+        "Multiplier": "6",
+        "Right foot": "Claw"
+      },
+      "rarityScore": 105.11042,
+      "rarityRank": 1261,
+      "price": {
+        "amount": "1.045",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T23:39:19.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.08",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T16:50:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.08",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T16:50:47.000Z"
+      },
+      "owner": {
+        "address": "0xabf05235523ceecb5a5b9a155657af0ffcfec944",
+        "username": null
+      },
+      "numberOwnedByOwner": 7,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2367",
+      "name": "Art Gobbler 1473 – Schmunt Poopsiejob",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2367-bde2538bda5851aa",
+      "traits": {
+        "Hat": "Clown",
+        "Eyes": "Scribble",
+        "Mouth": "Two Teeth",
+        "Torso": "Torso",
+        "Palette": "Slate",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Dino",
+        "Random Id": "1473",
+        "Right arm": "Bones",
+        "Right leg": "Shin Guard",
+        "Background": "Other Bolts",
+        "Multiplier": "6"
+      },
+      "rarityScore": 167.10043,
+      "rarityRank": 332,
+      "price": {
+        "amount": "1.05",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T15:43:35.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.03",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T20:29:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.03",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T20:29:47.000Z"
+      },
+      "owner": {
+        "address": "0xc4bbdf12129c56c752db3d1e14019718c059a1e8",
+        "username": null
+      },
+      "numberOwnedByOwner": 9,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2714",
+      "name": "Art Gobbler 1727 – Yap Gwantschlark",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2714-3ff4013de0b82aba",
+      "traits": {
+        "Hat": "Dromedary",
+        "Eyes": "Tadpole",
+        "Mouth": "Cigar",
+        "Torso": "Torso",
+        "Palette": "Turquoise",
+        "Left arm": "Teeth",
+        "Left foot": "Base Left Leg",
+        "Random Id": "1727",
+        "Right arm": "Tattoos",
+        "Background": "Egypt Day",
+        "Multiplier": "6",
+        "Right foot": "Sneaker"
+      },
+      "rarityScore": 75.62527,
+      "rarityRank": 2273,
+      "price": {
+        "amount": "1.05",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T02:46:00.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.08",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T16:50:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.08",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T16:50:47.000Z"
+      },
+      "owner": {
+        "address": "0xabf05235523ceecb5a5b9a155657af0ffcfec944",
+        "username": null
+      },
+      "numberOwnedByOwner": 7,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2092",
+      "name": "Art Gobbler 5608 – Norkle Guntblech",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2092-5bc29e6d4252b53f",
+      "traits": {
+        "Hat": "Top Hat",
+        "Eyes": "Scribble",
+        "Mouth": "Snake",
+        "Torso": "Torso",
+        "Palette": "Slate",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Base Left Leg",
+        "Random Id": "5608",
+        "Right arm": "Base Right Arm",
+        "Right leg": "Thumb",
+        "Background": "Park",
+        "Multiplier": "7"
+      },
+      "rarityScore": 67.273026,
+      "rarityRank": 2539,
+      "price": {
+        "amount": "1.064",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T21:04:38.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "owner": {
+        "address": "0xc21201247427e9fa68868e75f7581b770f07129b",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2009",
+      "name": "Art Gobbler 5094 – Snortymunt Tonchy",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2009-4384155d6c9fcae6",
+      "traits": {
+        "Hat": "Antlers",
+        "Eyes": "Balls",
+        "Mouth": "Duck",
+        "Torso": "Torso",
+        "Palette": "Ocean",
+        "Left arm": "Boob",
+        "Left foot": "Base Left Leg",
+        "Random Id": "5094",
+        "Background": "Egypt Night",
+        "Multiplier": "7",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Bandages"
+      },
+      "rarityScore": 154.81854,
+      "rarityRank": 414,
+      "price": {
+        "amount": "1.07",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T14:10:02.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.03",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T22:41:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.03",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T22:41:35.000Z"
+      },
+      "owner": {
+        "address": "0xce04acc015e92cbbe40f7b172bb71efeacef71ea",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2324",
+      "name": "Art Gobbler 3615 – Sneezen Bippitywarble",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2324-c8c7a2af66541c88",
+      "traits": {
+        "Hat": "Candle",
+        "Eyes": "Metal Visor",
+        "Mouth": "Buck Teeth",
+        "Torso": "Torso",
+        "Palette": "Berry Blast",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Claw",
+        "Random Id": "3615",
+        "Right arm": "Base Right Arm",
+        "Background": "Lazy-O",
+        "Multiplier": "7",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 81.21658,
+      "rarityRank": 2053,
+      "price": {
+        "amount": "1.07",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T14:10:02.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.07",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T14:15:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.07",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T14:15:59.000Z"
+      },
+      "owner": {
+        "address": "0xce04acc015e92cbbe40f7b172bb71efeacef71ea",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2915",
+      "name": "???",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2914-2cd9988658dc4f85",
+      "traits": {},
+      "rarityScore": null,
+      "rarityRank": null,
+      "price": {
+        "amount": "1.07",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T14:10:02.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.06",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T15:35:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.06",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T15:35:35.000Z"
+      },
+      "owner": {
+        "address": "0xce04acc015e92cbbe40f7b172bb71efeacef71ea",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2718",
+      "name": "Art Gobbler 3062 – Dilf Bippity",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2718-7add20794289033c",
+      "traits": {
+        "Hat": "Goo Hat",
+        "Eyes": "Circle",
+        "Mouth": "Drool",
+        "Torso": "Torso",
+        "Palette": "Orange",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Base Left Leg",
+        "Random Id": "3062",
+        "Right arm": "Base Right Arm",
+        "Right leg": "Teeth",
+        "Background": "Red Flesh Ropes",
+        "Multiplier": "7"
+      },
+      "rarityScore": 62.53055,
+      "rarityRank": 2652,
+      "price": {
+        "amount": "1.0704",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T17:43:44.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.95",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:55:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.95",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:55:23.000Z"
+      },
+      "owner": {
+        "address": "0xd3abc5d986a2d99bfad902cdb4b01bd2bcf1576e",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2031",
+      "name": "Art Gobbler 1394 – Gilfchubbly Blargheehee",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2031-16537932586fb99e",
+      "traits": {
+        "Hat": "Helm",
+        "Eyes": "Stoned",
+        "Mouth": "Mask",
+        "Torso": "Torso",
+        "Palette": "Banana Cream",
+        "Left foot": "Sock",
+        "Left hand": "Baseball Glove",
+        "Random Id": "1394",
+        "Background": "Plasmaburst",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Tree"
+      },
+      "rarityScore": 125.13937,
+      "rarityRank": 798,
+      "price": {
+        "amount": "1.0853",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T15:05:06.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.07",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T14:50:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.07",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T14:50:47.000Z"
+      },
+      "owner": {
+        "address": "0x66e4fd1e403833f8275245258365453e261b2d71",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2022",
+      "name": "Art Gobbler 1861 – Bamfklortch Cruncher-Schwant",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2022-f5f006b99e564c7d",
+      "traits": {
+        "Hat": "Goo Hat",
+        "Eyes": "Big Small",
+        "Mouth": "Duck",
+        "Torso": "Torso",
+        "Palette": "Poltergeist",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Base Left Leg",
+        "Random Id": "1861",
+        "Right arm": "Base Right Arm",
+        "Background": "Huts",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 45.71809,
+      "rarityRank": 2819,
+      "price": {
+        "amount": "1.0944",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T12:36:56.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.08",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T11:59:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.08",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T11:59:23.000Z"
+      },
+      "owner": {
+        "address": "0x66e4fd1e403833f8275245258365453e261b2d71",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2627",
+      "name": "Art Gobbler 1834 – Gak Bunchbrunchdoop-Blah",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2627-ba79842a4473be19",
+      "traits": {
+        "Hat": "Curl",
+        "Eyes": "Stitches",
+        "Mouth": "Catfish",
+        "Torso": "Torso",
+        "Bottom": "Cutoffs",
+        "Palette": "Mint",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Base Left Leg",
+        "Random Id": "1834",
+        "Right arm": "Base Right Arm",
+        "Background": "Bolts",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 106.73833,
+      "rarityRank": 1209,
+      "price": {
+        "amount": "1.099",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T06:05:27.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.86",
+        "unit": "ETH",
+        "listedAt": "2023-02-16T18:27:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T16:06:35.000Z"
+      },
+      "owner": {
+        "address": "0x03d8c0ad8b77f486115e46a16d7cf22067ea7fc0",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2055",
+      "name": "Art Gobbler 2827 – Yowza Blargyank",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2055-f15f5f8b4171ce03",
+      "traits": {
+        "Hat": "Bactrian",
+        "Eyes": "Balls",
+        "Mouth": "Two Teeth",
+        "Torso": "Torso",
+        "Palette": "Heather",
+        "Left foot": "Sneaker",
+        "Left hand": "Power Glove",
+        "Random Id": "2827",
+        "Right arm": "Base Right Arm",
+        "Background": "Cobblestone Alleyway",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 64.48976,
+      "rarityRank": 2605,
+      "price": {
+        "amount": "1.12",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T08:27:47.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.71",
+        "unit": "ETH",
+        "listedAt": "2023-02-12T13:54:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-12T14:01:59.000Z"
+      },
+      "owner": {
+        "address": "0x628a64e1f3e578442dc4db2ceb4da1a904d5fb17",
+        "username": null
+      },
+      "numberOwnedByOwner": 3,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2571",
+      "name": "Art Gobbler 5239 – Tubergobble-Frump Ronchittonso",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2571-58159573279387e3",
+      "traits": {
+        "Hat": "Can",
+        "Eyes": "Stoned",
+        "Mouth": "Closed",
+        "Torso": "Torso",
+        "Palette": "Grape",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Poopy",
+        "Random Id": "5239",
+        "Right arm": "Robot",
+        "Right leg": "Shin Guard",
+        "Background": "Fleshy Flesh Ropes",
+        "Multiplier": "7"
+      },
+      "rarityScore": 165.19136,
+      "rarityRank": 344,
+      "price": {
+        "amount": "1.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T23:22:10.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T01:28:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T01:28:11.000Z"
+      },
+      "owner": {
+        "address": "0xc21201247427e9fa68868e75f7581b770f07129b",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2898",
+      "name": "???",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2898-34821a67250fe985",
+      "traits": {},
+      "rarityScore": null,
+      "rarityRank": null,
+      "price": {
+        "amount": "1.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T03:37:22.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T02:57:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T02:57:59.000Z"
+      },
+      "owner": {
+        "address": "0xaf65293711b6cc4955dc9bda98f2605e0221a386",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2937",
+      "name": "???",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2937-ac97bbc266ad7b52",
+      "traits": {},
+      "rarityScore": null,
+      "rarityRank": null,
+      "price": {
+        "amount": "1.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T04:27:53.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": null,
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T03:40:11.000Z"
+      },
+      "owner": {
+        "address": "0x6f9bb7e454f5b3eb2310343f0e99269dc2bb8a1d",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2941",
+      "name": "???",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2941-21b6c5deb6c1fee0",
+      "traits": {},
+      "rarityScore": null,
+      "rarityRank": null,
+      "price": {
+        "amount": "1.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T17:31:56.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.95",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T01:10:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.95",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T01:10:35.000Z"
+      },
+      "owner": {
+        "address": "0xe4dd816702b9c0b63beb1363dfbdf7cd8c1cdb51",
+        "username": null
+      },
+      "numberOwnedByOwner": 9,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1587",
+      "name": "Art Gobbler 2321 – Blech Schmint",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1587-3a1d9a9007bd70a4",
+      "traits": {
+        "Head": "Half Face",
+        "Torso": "Torso",
+        "Palette": "Whiteout",
+        "Left leg": "Thumb",
+        "Left hand": "Villain",
+        "Random Id": "2321",
+        "Right arm": "Base Right Arm",
+        "Background": "Fairy Tale",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 156.37395,
+      "rarityRank": 402,
+      "price": {
+        "amount": "1.1558",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T17:46:38.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.37",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.37",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "owner": {
+        "address": "0xd3abc5d986a2d99bfad902cdb4b01bd2bcf1576e",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2186",
+      "name": "Art Gobbler 1597 – Fap Fwisty",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2186-7db198f080f5dd62",
+      "traits": {
+        "Head": "Half Face",
+        "Torso": "Torso",
+        "Palette": "Turquoise",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Sexy Heel",
+        "Random Id": "1597",
+        "Right arm": "Base Right Arm",
+        "Background": "Park",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 105.60303,
+      "rarityRank": 1245,
+      "price": {
+        "amount": "1.18",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T18:42:04.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.03",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T17:30:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.03",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T17:30:35.000Z"
+      },
+      "owner": {
+        "address": "0xf2734e404095d0e490908e389c5ea738ea717bf7",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2874",
+      "name": "???",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2874-8e59faac904ed868",
+      "traits": {},
+      "rarityScore": null,
+      "rarityRank": null,
+      "price": {
+        "amount": "1.1859",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T19:23:34.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": null,
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-14T10:39:47.000Z"
+      },
+      "owner": {
+        "address": "0xd18c96b6cd70987189b95e02b27d98e681bba100",
+        "username": null
+      },
+      "numberOwnedByOwner": 4,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2584",
+      "name": "Art Gobbler 1067 – Guntflumple-Gleepin Blimpkwoop",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2584-f58dbc411e76aacc",
+      "traits": {
+        "Hat": "Bactrian",
+        "Eyes": "Tadpole",
+        "Mouth": "Droopy",
+        "Torso": "Torso",
+        "Palette": "Blush",
+        "Left foot": "Sneaker",
+        "Left hand": "Claw Glove",
+        "Random Id": "1067",
+        "Right arm": "Base Right Arm",
+        "Background": "Cobblestone Alleyway",
+        "Multiplier": "6",
+        "Right foot": "Tentacle"
+      },
+      "rarityScore": 129.47702,
+      "rarityRank": 722,
+      "price": {
+        "amount": "1.19",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T19:47:29.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.989",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T19:03:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T19:46:23.000Z"
+      },
+      "owner": {
+        "address": "0xe4dd816702b9c0b63beb1363dfbdf7cd8c1cdb51",
+        "username": null
+      },
+      "numberOwnedByOwner": 9,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2644",
+      "name": "Art Gobbler 867 – Schweesh Flunt-Snork",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2644-62fa0b77fe31ed7a",
+      "traits": {
+        "Hat": "Antlers",
+        "Eyes": "80's",
+        "Mouth": "Mask",
+        "Torso": "Torso",
+        "Palette": "Ocean",
+        "Left arm": "Beast",
+        "Left leg": "Teeth",
+        "Random Id": "867",
+        "Right arm": "Worms",
+        "Background": "Purple Haze",
+        "Multiplier": "6",
+        "Right foot": "Sexy Heel"
+      },
+      "rarityScore": 143.69133,
+      "rarityRank": 533,
+      "price": {
+        "amount": "1.19",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:33:36.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.1",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.1",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "owner": {
+        "address": "0x3ab7fcd5798713a03887661dc495b5f82092feab",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2743",
+      "name": "Art Gobbler 6824 – Gleepin Randodoloof",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2743-d10c161957367c09",
+      "traits": {
+        "Hat": "Clown",
+        "Eyes": "Circle",
+        "Mouth": "Petite",
+        "Torso": "Torso",
+        "Bottom": "Viking",
+        "Palette": "Orange",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Sock",
+        "Random Id": "6824",
+        "Right arm": "Base Right Arm",
+        "Background": "Egypt Day",
+        "Multiplier": "8",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 136.40962,
+      "rarityRank": 620,
+      "price": {
+        "amount": "1.196",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T00:30:52.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": null,
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-01-27T19:12:47.000Z"
+      },
+      "owner": {
+        "address": "0x16224283be3f7c0245d9d259ea82ead7fcb8343d",
+        "username": null
+      },
+      "numberOwnedByOwner": 10,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "711",
+      "name": "Art Gobbler 7740 – Greeb-Gwantfunt Limpronk",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/711-f0d49c3a1bfb11f0",
+      "traits": {
+        "Hat": "Goo Hat",
+        "Eyes": "Tiny",
+        "Mouth": "Big",
+        "Torso": "Torso",
+        "Palette": "Sea Foam",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Base Left Leg",
+        "Random Id": "7740",
+        "Right arm": "Thumb",
+        "Right leg": "Chicken",
+        "Background": "Damson Retro Shapes",
+        "Multiplier": "8"
+      },
+      "rarityScore": 106.04876,
+      "rarityRank": 1231,
+      "price": {
+        "amount": "1.196",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T21:53:24.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.1658",
+        "unit": "ETH",
+        "listedAt": "2023-02-03T04:16:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.1658",
+        "unit": "ETH",
+        "listedAt": "2023-02-03T04:16:59.000Z"
+      },
+      "owner": {
+        "address": "0x16224283be3f7c0245d9d259ea82ead7fcb8343d",
+        "username": null
+      },
+      "numberOwnedByOwner": 10,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1969",
+      "name": "Art Gobbler 690 – Fnord Fwisty-Belly",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1969-ff7c78d6a45eb013",
+      "traits": {
+        "Hat": "Base Head",
+        "Eyes": "Tiny",
+        "Mouth": "Closed",
+        "Torso": "Torso",
+        "Palette": "Coral",
+        "Left arm": "Base Left Arm",
+        "Left leg": "Teeth",
+        "Random Id": "690",
+        "Right arm": "Hydraulic Glove",
+        "Background": "Egypt Day",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 101.03287,
+      "rarityRank": 1382,
+      "price": {
+        "amount": "1.2",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T15:41:08.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T03:33:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T03:33:23.000Z"
+      },
+      "owner": {
+        "address": "0xc4bbdf12129c56c752db3d1e14019718c059a1e8",
+        "username": null
+      },
+      "numberOwnedByOwner": 9,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "283",
+      "name": "Art Gobbler 730 – Dorksnelp Schruntflubbel",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/283-2ac6df765bb445e3",
+      "traits": {
+        "Hat": "Conehead",
+        "Eyes": "Circle",
+        "Mouth": "Closed",
+        "Torso": "Torso",
+        "Palette": "Bubblegum",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Base Left Leg",
+        "Random Id": "730",
+        "Right arm": "Base Right Arm",
+        "Background": "Light Space Rocks",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 44.626904,
+      "rarityRank": 2821,
+      "price": {
+        "amount": "1.2",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T11:51:32.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T05:54:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T05:54:59.000Z"
+      },
+      "owner": {
+        "address": "0xc4bbdf12129c56c752db3d1e14019718c059a1e8",
+        "username": null
+      },
+      "numberOwnedByOwner": 9,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1857",
+      "name": "Art Gobbler 763 – Skortboople Fwip",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1857-b0668505eeae702a",
+      "traits": {
+        "Hat": "Curl",
+        "Eyes": "Close",
+        "Mouth": "Snob",
+        "Torso": "Torso",
+        "Palette": "Berry Blast",
+        "Left foot": "Flip Flop",
+        "Left hand": "Power Glove",
+        "Random Id": "763",
+        "Right leg": "Teeth",
+        "Background": "Purple Haze",
+        "Multiplier": "6",
+        "Right hand": "Circular Saw"
+      },
+      "rarityScore": 123.854965,
+      "rarityRank": 822,
+      "price": {
+        "amount": "1.2462",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T13:22:54.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.07",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T12:53:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.07",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T12:53:59.000Z"
+      },
+      "owner": {
+        "address": "0x74a611163e4197d97c3fb71a84ea5164783396e8",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1222",
+      "name": "Art Gobbler 7687 – Chubbly Loofadank",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1222-0c5ea00d00dbf8d9",
+      "traits": {
+        "Hat": "Conehead",
+        "Eyes": "Cutie",
+        "Mouth": "Drool",
+        "Torso": "Torso",
+        "Bottom": "Towel",
+        "Palette": "Heather",
+        "Left foot": "Base Left Leg",
+        "Left hand": "Oven Mitt",
+        "Random Id": "7687",
+        "Right arm": "Thumb",
+        "Background": "Wormhole",
+        "Multiplier": "8",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 127.25852,
+      "rarityRank": 754,
+      "price": {
+        "amount": "1.25",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T23:25:21.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "2.6",
+        "unit": "ETH",
+        "listedAt": "2022-12-20T12:39:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T12:26:47.000Z"
+      },
+      "owner": {
+        "address": "0xc21201247427e9fa68868e75f7581b770f07129b",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2403",
+      "name": "Art Gobbler 5458 – Thrombo Greepcrinch",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2403-fded3d7459323a5f",
+      "traits": {
+        "Hat": "Goo Hat",
+        "Eyes": "Tadpole",
+        "Mouth": "Chatty",
+        "Torso": "Torso",
+        "Palette": "Blood",
+        "Left foot": "Flip Flop",
+        "Left hand": "Oven Mitt",
+        "Random Id": "5458",
+        "Right arm": "Base Right Arm",
+        "Background": "Lazy-O",
+        "Multiplier": "7",
+        "Right foot": "Sneaker"
+      },
+      "rarityScore": 77.192154,
+      "rarityRank": 2202,
+      "price": {
+        "amount": "1.25",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T13:52:26.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T06:35:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T10:41:59.000Z"
+      },
+      "owner": {
+        "address": "0xe1212178b2b9540a7e7c465fd9c2a35998d20e3c",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2178",
+      "name": "Art Gobbler 5783 – Nagrunt Tonso",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2178-5ed1ddad4f14052e",
+      "traits": {
+        "Hat": "Fez",
+        "Eyes": "Cutie",
+        "Mouth": "Stache and Fangs",
+        "Torso": "Torso",
+        "Palette": "Ocean",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Base Left Leg",
+        "Random Id": "5783",
+        "Right arm": "Robot",
+        "Background": "Purple Haze",
+        "Multiplier": "8",
+        "Right foot": "Sneaker"
+      },
+      "rarityScore": 84.27935,
+      "rarityRank": 1950,
+      "price": {
+        "amount": "1.27",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T21:36:36.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.11",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.11",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "owner": {
+        "address": "0x3240f75e36d6843a281c66bb929765f1b351b7ab",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2376",
+      "name": "Art Gobbler 7441 – Loonslap Jortbopposnog-Boop",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2376-ea86243d1ae62d46",
+      "traits": {
+        "Hat": "Fez",
+        "Eyes": "Ghost",
+        "Mouth": "Woah",
+        "Torso": "Torso",
+        "Palette": "Aqua",
+        "Left foot": "Sock",
+        "Left hand": "Surgical Glove",
+        "Random Id": "7441",
+        "Right arm": "Robot",
+        "Background": "Sandstone Alleyway",
+        "Multiplier": "8",
+        "Right foot": "Sneaker"
+      },
+      "rarityScore": 97.69659,
+      "rarityRank": 1479,
+      "price": {
+        "amount": "1.27",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T21:36:36.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.11",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.11",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "owner": {
+        "address": "0x3240f75e36d6843a281c66bb929765f1b351b7ab",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2549",
+      "name": "Art Gobbler 7775 – Crunkloofa Brunch",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2549-c81e5b5aa7c9ed22",
+      "traits": {
+        "Hat": "Goo Hat",
+        "Eyes": "Tadpole",
+        "Mouth": "Drool",
+        "Torso": "Torso",
+        "Palette": "Orange",
+        "Left arm": "Base Left Arm",
+        "Left leg": "Teeth",
+        "Random Id": "7775",
+        "Right arm": "Base Right Arm",
+        "Background": "Red Flesh Ropes",
+        "Multiplier": "8",
+        "Right foot": "Sexy Heel"
+      },
+      "rarityScore": 71.90511,
+      "rarityRank": 2403,
+      "price": {
+        "amount": "1.27",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T21:36:36.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.11",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.11",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "owner": {
+        "address": "0x3240f75e36d6843a281c66bb929765f1b351b7ab",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2129",
+      "name": "Art Gobbler 2748 – Flumple Tuber",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2129-8d40d8ca3bb9a1b2",
+      "traits": {
+        "Hat": "Clown",
+        "Eyes": "Old Man",
+        "Mouth": "Kodomo",
+        "Torso": "Torso",
+        "Palette": "Banana Cream",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Sexy Heel",
+        "Random Id": "2748",
+        "Background": "Brown Flesh Ropes",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Circular Saw"
+      },
+      "rarityScore": 96.8555,
+      "rarityRank": 1505,
+      "price": {
+        "amount": "1.28",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:18:59.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.08",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T16:50:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.08",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T16:50:35.000Z"
+      },
+      "owner": {
+        "address": "0xabf05235523ceecb5a5b9a155657af0ffcfec944",
+        "username": null
+      },
+      "numberOwnedByOwner": 7,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2601",
+      "name": "Art Gobbler 6756 – Schmint Sneezen",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2601-057ea1a180b37b94",
+      "traits": {
+        "Hat": "Goo Hat",
+        "Eyes": "Eye Mouths",
+        "Mouth": "Dog",
+        "Torso": "Torso",
+        "Palette": "Honeydew",
+        "Left foot": "Base Left Leg",
+        "Left hand": "Surgical Glove",
+        "Random Id": "6756",
+        "Right arm": "Bones",
+        "Background": "Bates",
+        "Multiplier": "8",
+        "Right foot": "Elf"
+      },
+      "rarityScore": 119.52874,
+      "rarityRank": 909,
+      "price": {
+        "amount": "1.2889",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T18:29:01.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.1",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.1",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "owner": {
+        "address": "0xd9fa0b8012635ca75490852081c3873b0c65cf8f",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1214",
+      "name": "Art Gobbler 5086 – Tonkokwanko Flam",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1214-f8a2bf994f662407",
+      "traits": {
+        "Hat": "Head Mirror",
+        "Eyes": "Big Small",
+        "Mouth": "Beak",
+        "Torso": "Torso",
+        "Palette": "Lemon",
+        "Left arm": "Muscle",
+        "Left foot": "Sexy Heel",
+        "Random Id": "5086",
+        "Background": "Bates",
+        "Multiplier": "7",
+        "Right foot": "Elf",
+        "Right hand": "Plunger"
+      },
+      "rarityScore": 113.41148,
+      "rarityRank": 1039,
+      "price": {
+        "amount": "1.3",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T06:00:44.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.09",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T15:04:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.09",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T15:04:11.000Z"
+      },
+      "owner": {
+        "address": "0x3c2573b002cf51e64ab6d051814648eb3a305363",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "156",
+      "name": "Art Gobbler 2930 – Poopsiefnart Fap",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/156-08b29ea972a7b5b0",
+      "traits": {
+        "Hat": "Base Head",
+        "Eyes": "Eye Mouths",
+        "Mouth": "Woah",
+        "Torso": "Torso",
+        "Palette": "Bubblegum",
+        "Left foot": "Base Left Leg",
+        "Left hand": "Coin",
+        "Random Id": "2930",
+        "Right arm": "Base Right Arm",
+        "Right leg": "Thumb",
+        "Background": "Phosphorescent Space Rocks",
+        "Multiplier": "6"
+      },
+      "rarityScore": 90.18772,
+      "rarityRank": 1723,
+      "price": {
+        "amount": "1.3",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T11:51:32.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T08:34:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T08:34:35.000Z"
+      },
+      "owner": {
+        "address": "0xc4bbdf12129c56c752db3d1e14019718c059a1e8",
+        "username": null
+      },
+      "numberOwnedByOwner": 9,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1591",
+      "name": "Art Gobbler 3318 – Crunchklortch Floot",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1591-9758316732814c40",
+      "traits": {
+        "Hat": "Bactrian",
+        "Eyes": "Tadpole",
+        "Mouth": "Woah",
+        "Torso": "Torso",
+        "Palette": "Banana Cream",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Base Left Leg",
+        "Random Id": "3318",
+        "Right arm": "Robot",
+        "Background": "Slate Alleyway",
+        "Multiplier": "7",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 66.74218,
+      "rarityRank": 2552,
+      "price": {
+        "amount": "1.3",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T09:36:20.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.07",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T12:42:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T09:31:11.000Z"
+      },
+      "owner": {
+        "address": "0x00273a1793b986826e258fd88669812c052c76e6",
+        "username": null
+      },
+      "numberOwnedByOwner": 84,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2027",
+      "name": "Art Gobbler 7834 – Dinch Kwankotrunks",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2027-98d7f314aef12105",
+      "traits": {
+        "Hat": "Bactrian",
+        "Eyes": "Stoned",
+        "Mouth": "Beak",
+        "Torso": "Torso",
+        "Palette": "Lemon",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Dino",
+        "Random Id": "7834",
+        "Right leg": "Shin Guard",
+        "Background": "Rainbow Haze",
+        "Multiplier": "8",
+        "Right hand": "Peanut Butter Jar"
+      },
+      "rarityScore": 160.95549,
+      "rarityRank": 367,
+      "price": {
+        "amount": "1.3",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T06:04:46.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.88",
+        "unit": "ETH",
+        "listedAt": "2023-02-08T22:50:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.88",
+        "unit": "ETH",
+        "listedAt": "2023-02-08T22:50:35.000Z"
+      },
+      "owner": {
+        "address": "0x902c618b2495ac9591d780d0637ec92d06be3e2c",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2918",
+      "name": "???",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2918-b7b6ca82a802a2c2",
+      "traits": {},
+      "rarityScore": null,
+      "rarityRank": null,
+      "price": {
+        "amount": "1.3",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T09:36:20.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": null,
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T15:10:47.000Z"
+      },
+      "owner": {
+        "address": "0x00273a1793b986826e258fd88669812c052c76e6",
+        "username": null
+      },
+      "numberOwnedByOwner": 84,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "82",
+      "name": "Art Gobbler 7251 – Bunch Gleepinschmunt",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/82-026159fee519ed89",
+      "traits": {
+        "Head": "TV",
+        "Torso": "Torso",
+        "Palette": "Blood",
+        "Left foot": "Sneaker",
+        "Left hand": "Reptile",
+        "Random Id": "7251",
+        "Background": "Other Bolts",
+        "Multiplier": "8",
+        "Right foot": "Sneaker",
+        "Right hand": "Bandages"
+      },
+      "rarityScore": 183.02396,
+      "rarityRank": 241,
+      "price": {
+        "amount": "1.3",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T13:52:26.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.1666",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T06:38:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T10:55:47.000Z"
+      },
+      "owner": {
+        "address": "0xe1212178b2b9540a7e7c465fd9c2a35998d20e3c",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2474",
+      "name": "Art Gobbler 974 – Zoidflam Ronk",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2474-b8c249b4d6efa8ef",
+      "traits": {
+        "Hat": "Phone",
+        "Eyes": "Old Man",
+        "Mouth": "Monster",
+        "Torso": "Torso",
+        "Palette": "Orange",
+        "Left arm": "Thumb",
+        "Left foot": "Sock",
+        "Random Id": "974",
+        "Background": "Bates",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Sailor"
+      },
+      "rarityScore": 99.82854,
+      "rarityRank": 1418,
+      "price": {
+        "amount": "1.38",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:18:59.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.08",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T16:50:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.08",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T16:50:35.000Z"
+      },
+      "owner": {
+        "address": "0xabf05235523ceecb5a5b9a155657af0ffcfec944",
+        "username": null
+      },
+      "numberOwnedByOwner": 7,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "316",
+      "name": "Art Gobbler 7395 – Goon Bellygobblewubbly-Tonchy",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/316-ebc2a8fc200ca025",
+      "traits": {
+        "Head": "Two Face",
+        "Torso": "Torso",
+        "Palette": "Sea Foam",
+        "Left arm": "Muscle",
+        "Left foot": "Sock",
+        "Random Id": "7395",
+        "Right arm": "Bones",
+        "Background": "Egypt Day",
+        "Multiplier": "8",
+        "Right foot": "Sneaker"
+      },
+      "rarityScore": 195.12123,
+      "rarityRank": 188,
+      "price": {
+        "amount": "1.39",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:46:00.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": null,
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2022-10-31T21:30:11.000Z"
+      },
+      "owner": {
+        "address": "0x1384ca97e377967e3ad1df46558cd0922f62cccd",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "116",
+      "name": "Art Gobbler 8704 – Slop-Fwip Fap",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/116-1eefa99b988861f7",
+      "traits": {
+        "Hat": "Base Head",
+        "Eyes": "Stoned",
+        "Mouth": "Mask",
+        "Torso": "Torso",
+        "Palette": "Orange",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Sneaker",
+        "Random Id": "8704",
+        "Right arm": "Thumb",
+        "Right leg": "Hoof",
+        "Background": "Boobtown",
+        "Multiplier": "9"
+      },
+      "rarityScore": 100.111145,
+      "rarityRank": 1407,
+      "price": {
+        "amount": "1.4",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T10:31:46.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "4.66",
+        "unit": "ETH",
+        "listedAt": "2022-11-17T01:11:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2022-12-17T00:01:35.000Z"
+      },
+      "owner": {
+        "address": "0xc21201247427e9fa68868e75f7581b770f07129b",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1262",
+      "name": "Art Gobbler 8270 – Thrunkdinch Goober",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1262-08462eae7640201b",
+      "traits": {
+        "Hat": "Newscaster",
+        "Eyes": "Cyborg",
+        "Mouth": "Two Teeth",
+        "Torso": "Torso",
+        "Palette": "Slate",
+        "Left arm": "Muscle",
+        "Left leg": "Teeth",
+        "Random Id": "8270",
+        "Right arm": "Base Right Arm",
+        "Background": "Phosphorescent Space Rocks",
+        "Multiplier": "9",
+        "Right foot": "Sexy Heel"
+      },
+      "rarityScore": 99.78012,
+      "rarityRank": 1420,
+      "price": {
+        "amount": "1.4",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T00:38:16.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.99",
+        "unit": "ETH",
+        "listedAt": "2023-01-13T01:09:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.99",
+        "unit": "ETH",
+        "listedAt": "2023-01-13T01:09:23.000Z"
+      },
+      "owner": {
+        "address": "0xc21201247427e9fa68868e75f7581b770f07129b",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2059",
+      "name": "Art Gobbler 7523 – Hoobiepwapsie Plinch",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2059-bedb5a47b6b2ec75",
+      "traits": {
+        "Hat": "Head Friend",
+        "Eyes": "Blindfold",
+        "Mouth": "Big",
+        "Torso": "Torso",
+        "Palette": "Banana Cream",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Sock",
+        "Random Id": "7523",
+        "Background": "Boobtown",
+        "Multiplier": "8",
+        "Right foot": "Sneaker",
+        "Right hand": "Bandages"
+      },
+      "rarityScore": 121.999374,
+      "rarityRank": 862,
+      "price": {
+        "amount": "1.4",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:59:49.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.3",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.3",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "owner": {
+        "address": "0x4059e94f431b2c48373c3cf962b257b7a4b1dc63",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2896",
+      "name": "???",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2896-7e105bafaf07d540",
+      "traits": {},
+      "rarityScore": null,
+      "rarityRank": null,
+      "price": {
+        "amount": "1.4271",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T09:00:14.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.033",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T14:15:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.033",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T14:15:35.000Z"
+      },
+      "owner": {
+        "address": "0x2e0406b4fd09fa101800f43833039e50d5a0ad1e",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2907",
+      "name": "???",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2907-09070b25df3954cc",
+      "traits": {},
+      "rarityScore": null,
+      "rarityRank": null,
+      "price": {
+        "amount": "1.45",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T23:25:21.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": null,
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T12:22:11.000Z"
+      },
+      "owner": {
+        "address": "0xc21201247427e9fa68868e75f7581b770f07129b",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "426",
+      "name": "Art Gobbler 7970 – Flubbelo Froinkboo",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/426-f7d5ac09d3884abd",
+      "traits": {
+        "Hat": "Cat",
+        "Eyes": "Ghost",
+        "Mouth": "Petite",
+        "Torso": "Torso",
+        "Palette": "Berry Blast",
+        "Left arm": "Muscle",
+        "Left foot": "Base Left Leg",
+        "Random Id": "7970",
+        "Right arm": "Base Right Arm",
+        "Background": "Roiland 3",
+        "Multiplier": "9",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 80.774086,
+      "rarityRank": 2071,
+      "price": {
+        "amount": "1.4563",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T23:14:41.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15",
+        "unit": "ETH",
+        "listedAt": "2022-11-03T17:34:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T23:13:47.000Z"
+      },
+      "owner": {
+        "address": "0x36273803306a3c22bc848f8db761e974697ece0d",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2383",
+      "name": "Art Gobbler 492 – Fnartschmunt Gleepingilf",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2383-c1f31e0743f0bba2",
+      "traits": {
+        "Hat": "Can",
+        "Eyes": "Stoned",
+        "Mouth": "Drool",
+        "Torso": "Torso",
+        "Palette": "Cornflower",
+        "Left arm": "Robot",
+        "Left foot": "Base Left Leg",
+        "Random Id": "492",
+        "Right arm": "Base Right Arm",
+        "Background": "Sunburst",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 65.58729,
+      "rarityRank": 2580,
+      "price": {
+        "amount": "1.4573",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T18:55:56.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.96",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T17:50:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.96",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T17:50:59.000Z"
+      },
+      "owner": {
+        "address": "0x3be72ac749568be994eaf623613a1bdabc3cc633",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "921",
+      "name": "Art Gobbler 1786 – Trunksblorg Flinch-Fleepzoid",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/921-bd8eae4f0416ef44",
+      "traits": {
+        "Hat": "Dromedary",
+        "Eyes": "Close",
+        "Mouth": "Braces",
+        "Torso": "Torso",
+        "Bottom": "Swim Trunks",
+        "Palette": "Honeydew",
+        "Left foot": "Flip Flop",
+        "Left hand": "Hook",
+        "Random Id": "1786",
+        "Right arm": "Crab",
+        "Background": "Fairy Tale",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 143.8316,
+      "rarityRank": 530,
+      "price": {
+        "amount": "1.49",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T19:47:53.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.988",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T19:03:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T19:46:23.000Z"
+      },
+      "owner": {
+        "address": "0xe4dd816702b9c0b63beb1363dfbdf7cd8c1cdb51",
+        "username": null
+      },
+      "numberOwnedByOwner": 9,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "113",
+      "name": "Art Gobbler 9476 – Rumple Noidflubbel",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/113-acb058785bc5e80c",
+      "traits": {
+        "Hat": "Dromedary",
+        "Eyes": "Scribble",
+        "Mouth": "Snake",
+        "Torso": "Torso",
+        "Bottom": "Swim Trunks",
+        "Palette": "Toxic Waste",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Sneaker",
+        "Random Id": "9476",
+        "Right arm": "Teeth",
+        "Background": "Other Bolts",
+        "Multiplier": "9",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 102.88558,
+      "rarityRank": 1338,
+      "price": {
+        "amount": "1.5",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T00:38:16.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "2.36",
+        "unit": "ETH",
+        "listedAt": "2022-12-18T23:27:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "2.36",
+        "unit": "ETH",
+        "listedAt": "2022-12-18T23:27:59.000Z"
+      },
+      "owner": {
+        "address": "0xc21201247427e9fa68868e75f7581b770f07129b",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2018",
+      "name": "Art Gobbler 6795 – Schweeshgoober Gwoopotfnord",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2018-4f8c0d7c3b07245b",
+      "traits": {
+        "Hat": "Base Head",
+        "Eyes": "Wired",
+        "Mouth": "Drool",
+        "Torso": "Torso",
+        "Palette": "Mint",
+        "Left arm": "Base Left Arm",
+        "Left leg": "Teeth",
+        "Random Id": "6795",
+        "Right arm": "Base Right Arm",
+        "Background": "Rainbow Haze",
+        "Multiplier": "8",
+        "Right foot": "Claw"
+      },
+      "rarityScore": 79.78137,
+      "rarityRank": 2096,
+      "price": {
+        "amount": "1.5",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T01:18:18.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": null,
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2022-11-10T22:11:11.000Z"
+      },
+      "owner": {
+        "address": "0x72d487508ec66d13f8d49e7115576c16a00a2f05",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2706",
+      "name": "Art Gobbler 8047 – Fooble Hubbaflim",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2706-e4109f270e80c851",
+      "traits": {
+        "Hat": "Bow",
+        "Eyes": "Close",
+        "Mouth": "Drool",
+        "Torso": "Torso",
+        "Palette": "Banana Cream",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Dino",
+        "Random Id": "8047",
+        "Background": "Lazy-O",
+        "Multiplier": "9",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Peanut Butter Jar"
+      },
+      "rarityScore": 75.597496,
+      "rarityRank": 2274,
+      "price": {
+        "amount": "1.5",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T07:24:45.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.07",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T12:51:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.07",
+        "unit": "ETH",
+        "listedAt": "2023-02-19T12:51:47.000Z"
+      },
+      "owner": {
+        "address": "0xabf05235523ceecb5a5b9a155657af0ffcfec944",
+        "username": null
+      },
+      "numberOwnedByOwner": 7,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "670",
+      "name": "Art Gobbler 427 – Gargle Schrunt",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/670-c12531ef00c51878",
+      "traits": {
+        "Hat": "Dromedary",
+        "Eyes": "Stoned",
+        "Mouth": "Duck",
+        "Torso": "Torso",
+        "Palette": "Ocean",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Poopy",
+        "Random Id": "427",
+        "Background": "Monoburst",
+        "Multiplier": "6",
+        "Right foot": "Bucket",
+        "Right hand": "Hoof"
+      },
+      "rarityScore": 110.151855,
+      "rarityRank": 1119,
+      "price": {
+        "amount": "1.5",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T15:41:08.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.03",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T19:27:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.03",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T19:27:59.000Z"
+      },
+      "owner": {
+        "address": "0xc4bbdf12129c56c752db3d1e14019718c059a1e8",
+        "username": null
+      },
+      "numberOwnedByOwner": 9,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1358",
+      "name": "Art Gobbler 2244 – Schwant Flubbelfnord",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1358-b18daf23f047d203",
+      "traits": {
+        "Hat": "Can",
+        "Eyes": "Circle",
+        "Mouth": "Petite",
+        "Torso": "Torso",
+        "Palette": "Mint",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Poopy",
+        "Random Id": "2244",
+        "Background": "Light Space Rocks",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Sailor"
+      },
+      "rarityScore": 78.65701,
+      "rarityRank": 2142,
+      "price": {
+        "amount": "1.6",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T00:44:10.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "highestBid": null,
+      "lastSale": null,
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2022-11-02T17:22:47.000Z"
+      },
+      "owner": {
+        "address": "0x70eff2b19ff8ece57c6ee73c6a8009f4e9aefac7",
+        "username": null
+      },
+      "numberOwnedByOwner": 14,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2746",
+      "name": "Art Gobbler 5971 – Slam Shmork",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2746-c8154d07beac338e",
+      "traits": {
+        "Hat": "Goo Hat",
+        "Eyes": "Close",
+        "Mouth": "Snake",
+        "Torso": "Torso",
+        "Palette": "Poltergeist",
+        "Left arm": "Thumb",
+        "Left foot": "Sneaker",
+        "Random Id": "5971",
+        "Right arm": "Base Right Arm",
+        "Background": "Peach Retro Shapes",
+        "Multiplier": "8",
+        "Right foot": "Bunny Slipper"
+      },
+      "rarityScore": 74.0885,
+      "rarityRank": 2324,
+      "price": {
+        "amount": "1.6",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T18:17:03.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "highestBid": null,
+      "lastSale": null,
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-01-27T23:42:23.000Z"
+      },
+      "owner": {
+        "address": "0x70eff2b19ff8ece57c6ee73c6a8009f4e9aefac7",
+        "username": null
+      },
+      "numberOwnedByOwner": 14,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "438",
+      "name": "Art Gobbler 1211 – Slop Doof",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/438-1cc3921b50fa701c",
+      "traits": {
+        "Hat": "Base Head",
+        "Eyes": "Circle",
+        "Mouth": "Closed",
+        "Torso": "Torso",
+        "Palette": "Sea Foam",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Claw",
+        "Random Id": "1211",
+        "Right arm": "Base Right Arm",
+        "Background": "Sandstone Alleyway",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 56.501133,
+      "rarityRank": 2755,
+      "price": {
+        "amount": "1.6203",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T01:48:15.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T08:54:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T08:54:47.000Z"
+      },
+      "owner": {
+        "address": "0x286a2103ddf789b5414c684a055bce98847f776e",
+        "username": null
+      },
+      "numberOwnedByOwner": 24,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "474",
+      "name": "Art Gobbler 237 – Bambo Tank",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/474-869f2bd485b94f7c",
+      "traits": {
+        "Hat": "Lopsided",
+        "Eyes": "Scribble",
+        "Mouth": "Petite",
+        "Torso": "Torso",
+        "Palette": "Lemon",
+        "Left foot": "Flip Flop",
+        "Left hand": "Hook",
+        "Random Id": "237",
+        "Right arm": "Worms",
+        "Background": "Plasmaburst",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 102.92716,
+      "rarityRank": 1336,
+      "price": {
+        "amount": "1.6203",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T01:48:15.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T08:56:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T08:56:23.000Z"
+      },
+      "owner": {
+        "address": "0x286a2103ddf789b5414c684a055bce98847f776e",
+        "username": null
+      },
+      "numberOwnedByOwner": 24,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "71",
+      "name": "Art Gobbler 41 – Gleepin-Grunt Blimp",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/71-d1f5ef5618e5e9c0",
+      "traits": {
+        "Hat": "Lopsided",
+        "Eyes": "Blindfold",
+        "Mouth": "Buck Teeth",
+        "Torso": "Torso",
+        "Palette": "Cornflower",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Base Left Leg",
+        "Random Id": "41",
+        "Right arm": "Base Right Arm",
+        "Right leg": "Teeth",
+        "Background": "Rainbow Haze",
+        "Multiplier": "6"
+      },
+      "rarityScore": 63.383865,
+      "rarityRank": 2633,
+      "price": {
+        "amount": "1.6203",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T01:48:15.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T08:54:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T08:54:47.000Z"
+      },
+      "owner": {
+        "address": "0x286a2103ddf789b5414c684a055bce98847f776e",
+        "username": null
+      },
+      "numberOwnedByOwner": 24,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "999",
+      "name": "Art Gobbler 2084 – Loon Gilfloon",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/999-7489ed1803e36cc3",
+      "traits": {
+        "Hat": "Cat",
+        "Eyes": "Ghost",
+        "Mouth": "Mask",
+        "Torso": "Torso",
+        "Palette": "Honeydew",
+        "Left foot": "Base Left Leg",
+        "Left hand": "Reptile",
+        "Random Id": "2084",
+        "Right arm": "Base Right Arm",
+        "Background": "Lazy-O",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 77.33806,
+      "rarityRank": 2199,
+      "price": {
+        "amount": "1.6203",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T01:48:15.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T08:56:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T08:56:23.000Z"
+      },
+      "owner": {
+        "address": "0x286a2103ddf789b5414c684a055bce98847f776e",
+        "username": null
+      },
+      "numberOwnedByOwner": 24,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2217",
+      "name": "Art Gobbler 5807 – Fluntschit Boo",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2217-a1a251f5eb2c4c71",
+      "traits": {
+        "Head": "Shark",
+        "Torso": "Torso",
+        "Palette": "Toxic Waste",
+        "Left foot": "Base Left Leg",
+        "Left hand": "Power Glove",
+        "Random Id": "5807",
+        "Background": "Egypt Twilight",
+        "Multiplier": "8",
+        "Right foot": "Sexy Heel",
+        "Right hand": "Peanut Butter Jar"
+      },
+      "rarityScore": 204.41121,
+      "rarityRank": 144,
+      "price": {
+        "amount": "1.65",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T23:25:21.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "4.6",
+        "unit": "ETH",
+        "listedAt": "2022-12-11T01:45:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T13:42:59.000Z"
+      },
+      "owner": {
+        "address": "0xc21201247427e9fa68868e75f7581b770f07129b",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1110",
+      "name": "Art Gobbler 833 – Fapflim Twerk",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1110-f2b08a95aee9aad0",
+      "traits": {
+        "Hat": "Goo Hat",
+        "Eyes": "Circle",
+        "Mouth": "Drool",
+        "Torso": "Torso",
+        "Palette": "Turquoise",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Base Left Leg",
+        "Random Id": "833",
+        "Right arm": "Base Right Arm",
+        "Background": "Bates",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 43.236534,
+      "rarityRank": 2824,
+      "price": {
+        "amount": "1.686",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T04:02:24.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.51",
+        "unit": "ETH",
+        "listedAt": "2023-01-15T20:40:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.51",
+        "unit": "ETH",
+        "listedAt": "2023-01-15T20:40:59.000Z"
+      },
+      "owner": {
+        "address": "0x6b62909ad3f315833a5e5062b670034a3016910b",
+        "username": null
+      },
+      "numberOwnedByOwner": 3,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1565",
+      "name": "Art Gobbler 7707 – Tootdilf-Goober Skrumple",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1565-3c4fa643e8ae6a1e",
+      "traits": {
+        "Hat": "Lopsided",
+        "Eyes": "Stitches",
+        "Mouth": "Woah",
+        "Torso": "Torso",
+        "Palette": "Aqua",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Base Left Leg",
+        "Random Id": "7707",
+        "Right arm": "Crab",
+        "Background": "Cobblestone Alleyway",
+        "Multiplier": "8",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 93.263504,
+      "rarityRank": 1616,
+      "price": {
+        "amount": "1.69",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T22:13:03.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.1",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T05:45:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.1",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T05:45:35.000Z"
+      },
+      "owner": {
+        "address": "0x548057cc8910351d30438ea9a91f1f9116cc534a",
+        "username": null
+      },
+      "numberOwnedByOwner": 17,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2702",
+      "name": "Art Gobbler 9753 – Loopwubbly-Kreep Dinch",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2702-0e053f4a834f60b0",
+      "traits": {
+        "Head": "Teeth",
+        "Torso": "Torso",
+        "Palette": "Baby Blue",
+        "Left foot": "Base Left Leg",
+        "Left hand": "Surgical Glove",
+        "Random Id": "9753",
+        "Right arm": "Base Right Arm",
+        "Background": "Wormhole",
+        "Multiplier": "9",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 121.32873,
+      "rarityRank": 875,
+      "price": {
+        "amount": "1.69",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T16:45:45.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.69",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T12:37:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.69",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T12:37:59.000Z"
+      },
+      "owner": {
+        "address": "0x3240f75e36d6843a281c66bb929765f1b351b7ab",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2790",
+      "name": "Art Gobbler 2936 – Bamfooza Crinchmilf",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2790-128b18a34b53477d",
+      "traits": {
+        "Hat": "Goo Hat",
+        "Eyes": "Goggles",
+        "Mouth": "Petite",
+        "Torso": "Torso",
+        "Palette": "Honeydew",
+        "Left arm": "Robot",
+        "Left leg": "Teeth",
+        "Random Id": "2936",
+        "Right arm": "Base Right Arm",
+        "Right leg": "Robot",
+        "Background": "Park",
+        "Multiplier": "6"
+      },
+      "rarityScore": 107.994736,
+      "rarityRank": 1180,
+      "price": {
+        "amount": "1.69",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T08:29:57.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T01:32:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T01:32:59.000Z"
+      },
+      "owner": {
+        "address": "0x9085e44952c42a3596444e1acbb8a052376aa80f",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "593",
+      "name": "Art Gobbler 9542 – Fnord-Yoyo Lafnord",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/593-035481663d780536",
+      "traits": {
+        "Hat": "Curl",
+        "Eyes": "Big Small",
+        "Mouth": "Catfish",
+        "Torso": "Torso",
+        "Palette": "Toxic Waste",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Hand",
+        "Random Id": "9542",
+        "Right arm": "Base Right Arm",
+        "Background": "Dark Space Rocks",
+        "Multiplier": "9",
+        "Right foot": "Sneaker"
+      },
+      "rarityScore": 101.31179,
+      "rarityRank": 1376,
+      "price": {
+        "amount": "1.69",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T16:45:45.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.35",
+        "unit": "ETH",
+        "listedAt": "2023-01-21T17:24:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.35",
+        "unit": "ETH",
+        "listedAt": "2023-01-21T17:24:47.000Z"
+      },
+      "owner": {
+        "address": "0x3240f75e36d6843a281c66bb929765f1b351b7ab",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "140",
+      "name": "Art Gobbler 1002 – Grinch-Boopson Fapronk",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/140-496912bfab3b7999",
+      "traits": {
+        "Hat": "Clown",
+        "Eyes": "Glasses",
+        "Mouth": "Cigar",
+        "Torso": "Torso",
+        "Bottom": "Towel",
+        "Palette": "Coral",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Sneaker",
+        "Random Id": "1002",
+        "Right arm": "Base Right Arm",
+        "Background": "Sandstone Alleyway",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 110.03486,
+      "rarityRank": 1124,
+      "price": {
+        "amount": "1.6985",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T02:30:16.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "3.55",
+        "unit": "ETH",
+        "listedAt": "2022-12-11T08:38:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "3.55",
+        "unit": "ETH",
+        "listedAt": "2022-12-11T08:38:59.000Z"
+      },
+      "owner": {
+        "address": "0xcf2b7c6bc98bfe0d6138a25a3b6162b51f75e05d",
+        "username": null
+      },
+      "numberOwnedByOwner": 43,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "402",
+      "name": "Art Gobbler 455 – Scrumpetblork Loopflubbel",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/402-5de08d8678470993",
+      "traits": {
+        "Hat": "Bow",
+        "Eyes": "Scribble",
+        "Mouth": "Woah",
+        "Torso": "Torso",
+        "Palette": "Turquoise",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Dino",
+        "Random Id": "455",
+        "Right arm": "Base Right Arm",
+        "Right leg": "Robot",
+        "Background": "Bates",
+        "Multiplier": "6"
+      },
+      "rarityScore": 86.64312,
+      "rarityRank": 1865,
+      "price": {
+        "amount": "1.6985",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T01:48:15.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T09:08:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T09:08:59.000Z"
+      },
+      "owner": {
+        "address": "0x286a2103ddf789b5414c684a055bce98847f776e",
+        "username": null
+      },
+      "numberOwnedByOwner": 24,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2603",
+      "name": "Art Gobbler 8788 – Flunt Dilfronchit-Fluntbunch",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2603-8bc9a266dedac00d",
+      "traits": {
+        "Hat": "Cat",
+        "Eyes": "Scribble",
+        "Mouth": "Chatty",
+        "Torso": "Torso",
+        "Palette": "Heather",
+        "Left arm": "Beast",
+        "Left foot": "Flip Flop",
+        "Random Id": "8788",
+        "Background": "Bolts",
+        "Multiplier": "9",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Circular Saw"
+      },
+      "rarityScore": 111.27235,
+      "rarityRank": 1095,
+      "price": {
+        "amount": "1.7",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T00:38:16.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": null,
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-01-09T20:19:23.000Z"
+      },
+      "owner": {
+        "address": "0xc21201247427e9fa68868e75f7581b770f07129b",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "691",
+      "name": "Art Gobbler 2421 – Kwoopcringe Dork",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/691-e26ba50351e3ee96",
+      "traits": {
+        "Hat": "Lopsided",
+        "Eyes": "Cyborg",
+        "Mouth": "Two Teeth",
+        "Torso": "Torso",
+        "Palette": "Toxic Waste",
+        "Left arm": "Elephant",
+        "Left foot": "Base Left Leg",
+        "Random Id": "2421",
+        "Right arm": "Base Right Arm",
+        "Background": "Plum Retro Shapes",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 81.01533,
+      "rarityRank": 2060,
+      "price": {
+        "amount": "1.706",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T04:03:01.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "2.5",
+        "unit": "ETH",
+        "listedAt": "2022-12-15T22:37:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "2.5",
+        "unit": "ETH",
+        "listedAt": "2022-12-15T22:37:59.000Z"
+      },
+      "owner": {
+        "address": "0x6b62909ad3f315833a5e5062b670034a3016910b",
+        "username": null
+      },
+      "numberOwnedByOwner": 3,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "40",
+      "name": "Art Gobbler 9950 – Snorkelcrinch-Slop Yaptonsil-Snorkzorch",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/40-8f855590e628d2e5",
+      "traits": {
+        "Head": "Melt",
+        "Torso": "Torso",
+        "Palette": "Iceberg",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Sock",
+        "Random Id": "9950",
+        "Background": "Slate Alleyway",
+        "Multiplier": "9",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Peanut Butter Jar"
+      },
+      "rarityScore": 146.94264,
+      "rarityRank": 499,
+      "price": {
+        "amount": "1.71",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T11:10:32.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.029",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T11:04:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.029",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T11:04:35.000Z"
+      },
+      "owner": {
+        "address": "0xc984e1f0c91bf40ce023c385a823d7fbd6a043ff",
+        "username": null
+      },
+      "numberOwnedByOwner": 4,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1851",
+      "name": "Art Gobbler 4696 – Gleep-Bambo Chubbly",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1851-ad3c23587ce8a395",
+      "traits": {
+        "Hat": "Conehead",
+        "Eyes": "Cyborg",
+        "Mouth": "Catfish",
+        "Torso": "Torso",
+        "Palette": "Whiteout",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Sneaker",
+        "Random Id": "4696",
+        "Background": "Huts",
+        "Multiplier": "7",
+        "Right foot": "Sneaker",
+        "Right hand": "Plunger"
+      },
+      "rarityScore": 85.14428,
+      "rarityRank": 1921,
+      "price": {
+        "amount": "1.75",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T18:11:51.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.86",
+        "unit": "ETH",
+        "listedAt": "2023-01-12T21:50:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.86",
+        "unit": "ETH",
+        "listedAt": "2023-01-12T21:50:59.000Z"
+      },
+      "owner": {
+        "address": "0xe4dd816702b9c0b63beb1363dfbdf7cd8c1cdb51",
+        "username": null
+      },
+      "numberOwnedByOwner": 9,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1425",
+      "name": "Art Gobbler 917 – Gobble Schit-Bumple",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1425-5c345afe3596dacb",
+      "traits": {
+        "Hat": "Bactrian",
+        "Eyes": "Circle",
+        "Mouth": "Droopy",
+        "Torso": "Torso",
+        "Palette": "Blush",
+        "Left arm": "Muscle",
+        "Left leg": "Thumb",
+        "Random Id": "917",
+        "Background": "Boobtown",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Plunger"
+      },
+      "rarityScore": 89.62059,
+      "rarityRank": 1749,
+      "price": {
+        "amount": "1.7588",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T01:48:15.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T09:38:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T09:38:11.000Z"
+      },
+      "owner": {
+        "address": "0x286a2103ddf789b5414c684a055bce98847f776e",
+        "username": null
+      },
+      "numberOwnedByOwner": 24,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2295",
+      "name": "Art Gobbler 1830 – Fwempyflim Fwiphutgrunt-Fleepin",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2295-3b62b502dc496487",
+      "traits": {
+        "Hat": "Dromedary",
+        "Eyes": "Eye Mouths",
+        "Mouth": "Drool",
+        "Torso": "Torso",
+        "Bottom": "Towel",
+        "Palette": "Coral",
+        "Left arm": "Thumb",
+        "Left foot": "Base Left Leg",
+        "Random Id": "1830",
+        "Right arm": "Base Right Arm",
+        "Background": "Egypt Night",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 120.00162,
+      "rarityRank": 898,
+      "price": {
+        "amount": "1.7789",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T02:30:16.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "3.55",
+        "unit": "ETH",
+        "listedAt": "2022-12-11T08:38:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "3.55",
+        "unit": "ETH",
+        "listedAt": "2022-12-11T08:38:59.000Z"
+      },
+      "owner": {
+        "address": "0xcf2b7c6bc98bfe0d6138a25a3b6162b51f75e05d",
+        "username": null
+      },
+      "numberOwnedByOwner": 43,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1023",
+      "name": "Art Gobbler 8352 – Blah Boopsie-Zapgreeble",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1023-c25a27b3544e3795",
+      "traits": {
+        "Hat": "Fez",
+        "Eyes": "Old Man",
+        "Mouth": "Mask",
+        "Torso": "Torso",
+        "Palette": "Poltergeist",
+        "Left arm": "Teeth",
+        "Left leg": "Elephant",
+        "Random Id": "8352",
+        "Background": "Egypt Night",
+        "Multiplier": "9",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Watch"
+      },
+      "rarityScore": 126.762535,
+      "rarityRank": 767,
+      "price": {
+        "amount": "1.79",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T12:02:26.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "2.8",
+        "unit": "ETH",
+        "listedAt": "2022-12-16T19:43:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "2.8",
+        "unit": "ETH",
+        "listedAt": "2022-12-16T19:43:23.000Z"
+      },
+      "owner": {
+        "address": "0xc984e1f0c91bf40ce023c385a823d7fbd6a043ff",
+        "username": null
+      },
+      "numberOwnedByOwner": 4,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "849",
+      "name": "Art Gobbler 8700 – Norkleshunt Hubba",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/849-129385bc6204bcd1",
+      "traits": {
+        "Hat": "Newscaster",
+        "Eyes": "Blindfold",
+        "Mouth": "Woah",
+        "Torso": "Torso",
+        "Palette": "Mint",
+        "Left arm": "Teeth",
+        "Left leg": "Teeth",
+        "Random Id": "8700",
+        "Right arm": "Thumb",
+        "Right leg": "Robot",
+        "Background": "Seaburst",
+        "Multiplier": "9"
+      },
+      "rarityScore": 116.26554,
+      "rarityRank": 972,
+      "price": {
+        "amount": "1.79",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T12:02:26.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "2.7",
+        "unit": "ETH",
+        "listedAt": "2022-12-16T19:42:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "2.7",
+        "unit": "ETH",
+        "listedAt": "2022-12-16T19:42:23.000Z"
+      },
+      "owner": {
+        "address": "0xc984e1f0c91bf40ce023c385a823d7fbd6a043ff",
+        "username": null
+      },
+      "numberOwnedByOwner": 4,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1841",
+      "name": "Art Gobbler 991 – Brunchfleepin Shart",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1841-e3b445b0ba2d9642",
+      "traits": {
+        "Hat": "Dromedary",
+        "Eyes": "Close",
+        "Mouth": "Braces",
+        "Torso": "Torso",
+        "Palette": "Honeydew",
+        "Left leg": "Chicken",
+        "Left hand": "Oven Mitt",
+        "Random Id": "991",
+        "Right arm": "Thumb",
+        "Background": "Bolts",
+        "Multiplier": "6",
+        "Right foot": "Bucket"
+      },
+      "rarityScore": 153.64929,
+      "rarityRank": 428,
+      "price": {
+        "amount": "1.799",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T02:30:16.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "3.55",
+        "unit": "ETH",
+        "listedAt": "2022-12-11T08:38:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "3.55",
+        "unit": "ETH",
+        "listedAt": "2022-12-11T08:38:59.000Z"
+      },
+      "owner": {
+        "address": "0xcf2b7c6bc98bfe0d6138a25a3b6162b51f75e05d",
+        "username": null
+      },
+      "numberOwnedByOwner": 43,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1552",
+      "name": "Art Gobbler 1302 – Fwipflam Fleep",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1552-9bf06e4e0a45c9d9",
+      "traits": {
+        "Hat": "Pirate",
+        "Eyes": "Cyclops",
+        "Mouth": "Two Teeth",
+        "Torso": "Torso",
+        "Palette": "Grape",
+        "Left arm": "Robot",
+        "Left leg": "Elephant",
+        "Random Id": "1302",
+        "Right arm": "Base Right Arm",
+        "Background": "Egypt Night",
+        "Multiplier": "6",
+        "Right foot": "Sexy Heel"
+      },
+      "rarityScore": 135.70699,
+      "rarityRank": 625,
+      "price": {
+        "amount": "1.8",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T15:41:08.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.04",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T19:28:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.04",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T19:28:47.000Z"
+      },
+      "owner": {
+        "address": "0xc4bbdf12129c56c752db3d1e14019718c059a1e8",
+        "username": null
+      },
+      "numberOwnedByOwner": 9,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2539",
+      "name": "Art Gobbler 9225 – Waflam Fap",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2539-8262dc854f63d77c",
+      "traits": {
+        "Hat": "Clown",
+        "Eyes": "Bulging",
+        "Mouth": "Duck",
+        "Torso": "Torso",
+        "Palette": "Toxic Waste",
+        "Left leg": "Robot",
+        "Left hand": "Hook",
+        "Random Id": "9225",
+        "Right arm": "Base Right Arm",
+        "Background": "Light Space Rocks",
+        "Multiplier": "9",
+        "Right foot": "Bucket"
+      },
+      "rarityScore": 117.93766,
+      "rarityRank": 922,
+      "price": {
+        "amount": "1.8",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T00:38:16.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": null,
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-01-01T17:32:35.000Z"
+      },
+      "owner": {
+        "address": "0xc21201247427e9fa68868e75f7581b770f07129b",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2664",
+      "name": "Art Gobbler 9739 – Gwantklortch Blorg",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2664-b78a462a81c05383",
+      "traits": {
+        "Hat": "Top Hat",
+        "Eyes": "Cyclops",
+        "Mouth": "Droopy",
+        "Torso": "Torso",
+        "Bottom": "Swim Trunks",
+        "Palette": "Honeydew",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Sneaker",
+        "Random Id": "9739",
+        "Background": "Light Space Rocks",
+        "Multiplier": "9",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Cartoon"
+      },
+      "rarityScore": 116.548416,
+      "rarityRank": 966,
+      "price": {
+        "amount": "1.8",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T00:38:16.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.34",
+        "unit": "ETH",
+        "listedAt": "2023-01-22T23:10:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.34",
+        "unit": "ETH",
+        "listedAt": "2023-01-22T23:10:11.000Z"
+      },
+      "owner": {
+        "address": "0xc21201247427e9fa68868e75f7581b770f07129b",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2602",
+      "name": "Art Gobbler 2602 – Gwoopot Fwempynorkle",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2602-2d134148eb674d7f",
+      "traits": {
+        "Hat": "Bow",
+        "Eyes": "Eye Mouths",
+        "Mouth": "Duck",
+        "Torso": "Torso",
+        "Palette": "Heather",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Sexy Heel",
+        "Random Id": "2602",
+        "Right arm": "Robot",
+        "Background": "Egypt Day",
+        "Multiplier": "6",
+        "Right foot": "Claw"
+      },
+      "rarityScore": 104.11624,
+      "rarityRank": 1308,
+      "price": {
+        "amount": "1.807",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T14:28:09.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.1",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:22:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T15:29:35.000Z"
+      },
+      "owner": {
+        "address": "0xfd069c781fd7ba271d4f1f0c5bc5e36909be02bd",
+        "username": null
+      },
+      "numberOwnedByOwner": 9,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2269",
+      "name": "Art Gobbler 1005 – Croncher Loofa",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2269-eb984f8ab7ea4c71",
+      "traits": {
+        "Hat": "Newscaster",
+        "Eyes": "Hypnotist",
+        "Mouth": "Snake",
+        "Torso": "Torso",
+        "Palette": "Berry Blast",
+        "Left foot": "Sneaker",
+        "Left hand": "Power Glove",
+        "Random Id": "1005",
+        "Right arm": "Monster",
+        "Background": "Seaburst",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 140.5223,
+      "rarityRank": 570,
+      "price": {
+        "amount": "1.809",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T19:23:34.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "4",
+        "unit": "ETH",
+        "listedAt": "2022-12-03T19:15:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "4",
+        "unit": "ETH",
+        "listedAt": "2022-12-03T19:15:23.000Z"
+      },
+      "owner": {
+        "address": "0xd18c96b6cd70987189b95e02b27d98e681bba100",
+        "username": null
+      },
+      "numberOwnedByOwner": 4,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2568",
+      "name": "Art Gobbler 5388 – Snogbamf Fwempy",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/2568-0212eb2dc1959711",
+      "traits": {
+        "Hat": "Conehead",
+        "Eyes": "Tadpole",
+        "Mouth": "Chatty",
+        "Torso": "Torso",
+        "Palette": "Aqua",
+        "Left arm": "Base Left Arm",
+        "Left leg": "Kneeling",
+        "Random Id": "5388",
+        "Right arm": "Base Right Arm",
+        "Background": "Monoburst",
+        "Multiplier": "7",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 98.0107,
+      "rarityRank": 1469,
+      "price": {
+        "amount": "1.809",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T14:06:36.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "1.64",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T14:03:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "1.64",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T14:03:11.000Z"
+      },
+      "owner": {
+        "address": "0xc0bc7bbc9afa9b0577d10bd3eb636c8d3ab841d3",
+        "username": null
+      },
+      "numberOwnedByOwner": 9,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "317",
+      "name": "Art Gobbler 408 – Stankhoobie Warble-Gwansie",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/317-8101d4ae5e103055",
+      "traits": {
+        "Hat": "Conehead",
+        "Eyes": "Bulging",
+        "Mouth": "Buck Teeth",
+        "Torso": "Torso",
+        "Palette": "Cornflower",
+        "Left arm": "Base Left Arm",
+        "Left leg": "Teeth",
+        "Random Id": "408",
+        "Background": "Fairy Tale",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg",
+        "Right hand": "Plunger"
+      },
+      "rarityScore": 77.54146,
+      "rarityRank": 2190,
+      "price": {
+        "amount": "1.809",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T01:48:15.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T09:09:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T09:09:47.000Z"
+      },
+      "owner": {
+        "address": "0x286a2103ddf789b5414c684a055bce98847f776e",
+        "username": null
+      },
+      "numberOwnedByOwner": 24,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "596",
+      "name": "Art Gobbler 2437 – Bambo Yank",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/596-16c8da5e8fd36530",
+      "traits": {
+        "Hat": "Dromedary",
+        "Eyes": "Blindfold",
+        "Mouth": "Two Teeth",
+        "Torso": "Torso",
+        "Palette": "Sea Foam",
+        "Left arm": "Base Left Arm",
+        "Left leg": "Robot",
+        "Random Id": "2437",
+        "Right arm": "Base Right Arm",
+        "Background": "Cobblestone Alleyway",
+        "Multiplier": "6",
+        "Right foot": "Base Right Leg"
+      },
+      "rarityScore": 73.26774,
+      "rarityRank": 2357,
+      "price": {
+        "amount": "1.809",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T01:48:15.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T08:54:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T08:54:47.000Z"
+      },
+      "owner": {
+        "address": "0x286a2103ddf789b5414c684a055bce98847f776e",
+        "username": null
+      },
+      "numberOwnedByOwner": 24,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1135",
+      "name": "Art Gobbler 1387 – Slap Rando",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60bb1e2aa1c9acafb4d34f71585d7e959f387769/1135-4efb530a091c53c1",
+      "traits": {
+        "Hat": "Conehead",
+        "Eyes": "Hypnotist",
+        "Mouth": "Braces",
+        "Torso": "Torso",
+        "Bottom": "Swim Trunks",
+        "Palette": "Whiteout",
+        "Left arm": "Base Left Arm",
+        "Left foot": "Sock",
+        "Random Id": "1387",
+        "Right arm": "Base Right Arm",
+        "Background": "Red Flesh Ropes",
+        "Multiplier": "6",
+        "Right foot": "Elf"
+      },
+      "rarityScore": 124.87275,
+      "rarityRank": 805,
+      "price": {
+        "amount": "1.8181",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T01:48:15.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T09:08:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "3.4",
+        "unit": "ETH",
+        "listedAt": "2022-12-13T09:08:59.000Z"
+      },
+      "owner": {
+        "address": "0x286a2103ddf789b5414c684a055bce98847f776e",
+        "username": null
+      },
+      "numberOwnedByOwner": 24,
+      "isSuspicious": false
+    }
+  ]
+}

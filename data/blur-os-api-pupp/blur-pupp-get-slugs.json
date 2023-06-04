@@ -1,0 +1,68 @@
+{
+  "success": true,
+  "totalCount": 12923,
+  "collections": [
+    {
+      "contractAddress": "0x54542f910162aaa75663b3da276289639c677aac",
+      "name": "Brachio Buddies",
+      "collectionSlug": "brachio-buddies",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x54542f910162aaa75663b3da276289639c677aac/1755-efaffa3df39d3b7f",
+      "totalSupply": 1999,
+      "numberOwners": 1860,
+      "floorPrice": {
+        "amount": "5735",
+        "unit": "ETH"
+      },
+      "floorPriceOneDay": {
+        "amount": "4689.35",
+        "unit": "ETH"
+      },
+      "floorPriceOneWeek": {
+        "amount": "5735",
+        "unit": "ETH"
+      },
+      "volumeFifteenMinutes": null,
+      "volumeOneDay": {
+        "amount": "0",
+        "unit": "ETH"
+      },
+      "volumeOneWeek": {
+        "amount": "0",
+        "unit": "ETH"
+      },
+      "bestCollectionBid": null,
+      "totalCollectionBidValue": null,
+      "traitFrequencies": null,
+      "bestCollectionLoanOffer": null
+    },
+    {
+      "contractAddress": "0x4511d796937fd5b238911bd560d85ccc650d9b34",
+      "name": "Cute Pets",
+      "collectionSlug": "cute-pets-pflfj7byvf",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x4511d796937fd5b238911bd560d85ccc650d9b34/136-8c63b52414a0a757",
+      "totalSupply": 888,
+      "numberOwners": 376,
+      "floorPrice": {
+        "amount": "4000",
+        "unit": "ETH"
+      },
+      "floorPriceOneDay": null,
+      "floorPriceOneWeek": {
+        "amount": "0.001",
+        "unit": "ETH"
+      },
+      "volumeFifteenMinutes": null,
+      "volumeOneDay": {
+        "amount": "0",
+        "unit": "ETH"
+      },
+      "volumeOneWeek": {
+        "amount": "0",
+        "unit": "ETH"
+      },
+      "bestCollectionBid": null,
+      "totalCollectionBidValue": null,
+      "traitFrequencies": null,
+      "bestCollectionLoanOffer": null
+    }
+  }

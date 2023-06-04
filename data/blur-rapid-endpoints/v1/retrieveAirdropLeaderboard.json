@@ -1,0 +1,4506 @@
+{
+  "url": "https://gyazo.com/9a8be8bc88da2f0a53a372201c47bca5",
+	"traders": [
+    {
+      "walletAddress": "0x020ca66c30bec2c4fe3861a94e4db4a498a35872",
+      "bid24hrXp": 6480.40334516711,
+      "bidTotalXp": 47419.437871868446,
+      "username": "machibigbrother.eth",
+      "rank": "1",
+      "blurListings": 145,
+      "numberListings": 145
+    },
+    {
+      "walletAddress": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+      "bid24hrXp": 6131.653075318866,
+      "bidTotalXp": 39479.869853743614,
+      "username": null,
+      "rank": "2",
+      "blurListings": 67,
+      "numberListings": 67
+    },
+    {
+      "walletAddress": "0xcbb0fe555f61d23427740984325b4583a4a34c82",
+      "bid24hrXp": 4802.353601120396,
+      "bidTotalXp": 34072.34109066271,
+      "username": null,
+      "rank": "3",
+      "blurListings": 19,
+      "numberListings": 19
+    },
+    {
+      "walletAddress": "0x5e1416e0ec35b47a6b7687c5e783e9b98a83dd45",
+      "bid24hrXp": 2083.6434383056567,
+      "bidTotalXp": 29893.94824031753,
+      "username": null,
+      "rank": "4",
+      "blurListings": 197,
+      "numberListings": 197
+    },
+    {
+      "walletAddress": "0xed2ab4948ba6a909a7751dec4f34f303eb8c7236",
+      "bid24hrXp": 2073.569557058105,
+      "bidTotalXp": 7001.219271925487,
+      "username": "franklinisbored.eth",
+      "rank": "5",
+      "blurListings": 12,
+      "numberListings": 12
+    },
+    {
+      "walletAddress": "0x3cb3661411a5679b852e89d57132849d474e234c",
+      "bid24hrXp": 1876.1755273513968,
+      "bidTotalXp": 9198.941281313659,
+      "username": null,
+      "rank": "6",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0xc2b46c60afe93cda3855f67fcda6d6844723ddb8",
+      "bid24hrXp": 1670.0139754112529,
+      "bidTotalXp": 6413.068916975609,
+      "username": null,
+      "rank": "7",
+      "blurListings": 1436,
+      "numberListings": 1436
+    },
+    {
+      "walletAddress": "0x9c81522976f5eebba38c60d36c63facb5e9e9f23",
+      "bid24hrXp": 1624.1562876235248,
+      "bidTotalXp": 32161.676812107136,
+      "username": null,
+      "rank": "8",
+      "blurListings": 101,
+      "numberListings": 101
+    },
+    {
+      "walletAddress": "0x4d417dfe10a8ebe24bed38c3861e9acd0d9ef717",
+      "bid24hrXp": 1348.4692220026561,
+      "bidTotalXp": 17572.05208957746,
+      "username": null,
+      "rank": "9",
+      "blurListings": 55,
+      "numberListings": 55
+    },
+    {
+      "walletAddress": "0xa7078ddf23d29e9d6e54e34909cd2ac1b33a67c5",
+      "bid24hrXp": 1205.7644636194664,
+      "bidTotalXp": 13882.069523033657,
+      "username": "mrghostmintfun.eth",
+      "rank": "10",
+      "blurListings": 146,
+      "numberListings": 146
+    },
+    {
+      "walletAddress": "0x9a68cb9c15a24da0c3d9852950aa6da0e3bf5622",
+      "bid24hrXp": 1201.0526292134214,
+      "bidTotalXp": 24870.743210254022,
+      "username": null,
+      "rank": "11",
+      "blurListings": 82,
+      "numberListings": 82
+    },
+    {
+      "walletAddress": "0xe715a9cfa31cd79d8846d79059deec4a36bab05e",
+      "bid24hrXp": 1176.0826411656358,
+      "bidTotalXp": 4343.131146181121,
+      "username": null,
+      "rank": "12",
+      "blurListings": 67,
+      "numberListings": 67
+    },
+    {
+      "walletAddress": "0x97c7d94d01bcbc41b80ef7cc8c5bebc3d11c6a20",
+      "bid24hrXp": 1146.302375199658,
+      "bidTotalXp": 14477.106460484323,
+      "username": null,
+      "rank": "13",
+      "blurListings": 160,
+      "numberListings": 160
+    },
+    {
+      "walletAddress": "0xb70c67d6da9db6ffe565c20339e18edb69140cb8",
+      "bid24hrXp": 1052.8478496786715,
+      "bidTotalXp": 2624.5212395312155,
+      "username": null,
+      "rank": "14",
+      "blurListings": 20,
+      "numberListings": 20
+    },
+    {
+      "walletAddress": "0x5df52e6b70f25919ad29add390efe2614f91b2c6",
+      "bid24hrXp": 1034.6817436628787,
+      "bidTotalXp": 5428.207596516626,
+      "username": null,
+      "rank": "15",
+      "blurListings": 9,
+      "numberListings": 9
+    },
+    {
+      "walletAddress": "0x300d65b82c39ca315cbd8c26c9e20d2267f8edee",
+      "bid24hrXp": 911.4767809538847,
+      "bidTotalXp": 2950.8868434505016,
+      "username": null,
+      "rank": "16",
+      "blurListings": 29,
+      "numberListings": 29
+    },
+    {
+      "walletAddress": "0x36355c0ed52a9aa0aa018dd00a48d13952096a65",
+      "bid24hrXp": 908.8661623140443,
+      "bidTotalXp": 8163.348699180267,
+      "username": null,
+      "rank": "17",
+      "blurListings": 42,
+      "numberListings": 42
+    },
+    {
+      "walletAddress": "0xb32229a67fdb69a1c3b46ba76368c460d5a35d41",
+      "bid24hrXp": 872.1659362138337,
+      "bidTotalXp": 5786.444499487799,
+      "username": null,
+      "rank": "18",
+      "blurListings": 11,
+      "numberListings": 11
+    },
+    {
+      "walletAddress": "0xb31119f1074bccaf7f863cbe8d571efb5cdcfa26",
+      "bid24hrXp": 854.8519275242351,
+      "bidTotalXp": 5711.944672202929,
+      "username": null,
+      "rank": "19",
+      "blurListings": 14,
+      "numberListings": 14
+    },
+    {
+      "walletAddress": "0xb8983d041f4e752032f2964b8e095c1f1c61956b",
+      "bid24hrXp": 853.8900984363004,
+      "bidTotalXp": 8879.1808327543,
+      "username": null,
+      "rank": "20",
+      "blurListings": 73,
+      "numberListings": 73
+    },
+    {
+      "walletAddress": "0xe53c07d063f4d9ab3d6687e887bf6ccdaca6f70a",
+      "bid24hrXp": 818.9404087865752,
+      "bidTotalXp": 4622.057662402993,
+      "username": null,
+      "rank": "21",
+      "blurListings": 43,
+      "numberListings": 43
+    },
+    {
+      "walletAddress": "0x09adfab2635dcb681fada41ceb0bfa6f52effd97",
+      "bid24hrXp": 794.4951991525054,
+      "bidTotalXp": 3602.663074233012,
+      "username": "qq347121.eth",
+      "rank": "22",
+      "blurListings": 9,
+      "numberListings": 9
+    },
+    {
+      "walletAddress": "0x5884412e63fa904137345ed22a7745759954969c",
+      "bid24hrXp": 766.8826295526975,
+      "bidTotalXp": 1912.1228331976947,
+      "username": null,
+      "rank": "23",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x77e3e957082ca648c1c5b0f3e6aec00ab1245186",
+      "bid24hrXp": 660.433351225436,
+      "bidTotalXp": 26100.16615888799,
+      "username": null,
+      "rank": "24",
+      "blurListings": 16,
+      "numberListings": 16
+    },
+    {
+      "walletAddress": "0x2ca212af7e65631d46a1cf406427f257d2976a71",
+      "bid24hrXp": 643.5357968440587,
+      "bidTotalXp": 4428.365877359479,
+      "username": null,
+      "rank": "25",
+      "blurListings": 206,
+      "numberListings": 206
+    },
+    {
+      "walletAddress": "0x63aa47ccdddfd927e8bf22db86ce557403494a7d",
+      "bid24hrXp": 629.0797016538219,
+      "bidTotalXp": 1866.360135630065,
+      "username": null,
+      "rank": "26",
+      "blurListings": 33,
+      "numberListings": 33
+    },
+    {
+      "walletAddress": "0x9c6fe744be395305aaa558aa433de56f83b1e364",
+      "bid24hrXp": 563.4701367830876,
+      "bidTotalXp": 3278.46115934918,
+      "username": null,
+      "rank": "27",
+      "blurListings": 45,
+      "numberListings": 45
+    },
+    {
+      "walletAddress": "0xe723e20d84a68a46f9ce8410453f59a3105b90b6",
+      "bid24hrXp": 499.5399643373055,
+      "bidTotalXp": 3226.220492728483,
+      "username": null,
+      "rank": "28",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x0000006f43b26ba724ae3ddb0c55536d64e5f985",
+      "bid24hrXp": 494.9875522384395,
+      "bidTotalXp": 2849.2201786504747,
+      "username": null,
+      "rank": "29",
+      "blurListings": 100,
+      "numberListings": 100
+    },
+    {
+      "walletAddress": "0x4bdb2280eae404780dfec4b163161e30820f126d",
+      "bid24hrXp": 413.28566029244286,
+      "bidTotalXp": 891.0234571912098,
+      "username": null,
+      "rank": "30",
+      "blurListings": 80,
+      "numberListings": 80
+    },
+    {
+      "walletAddress": "0x2de373887b9742162c9a5885ddb5debea8e4486d",
+      "bid24hrXp": 402.68549978732545,
+      "bidTotalXp": 512.2598876978902,
+      "username": null,
+      "rank": "31",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x0d01ffcd7c1a17eb87718470ca2f227097234cd5",
+      "bid24hrXp": 389.04903868878756,
+      "bidTotalXp": 3758.3620521102002,
+      "username": null,
+      "rank": "32",
+      "blurListings": 44,
+      "numberListings": 44
+    },
+    {
+      "walletAddress": "0xa4fb0e1f6ad0a87a3ec2427ca3a944c42d19d1ca",
+      "bid24hrXp": 374.29760768451155,
+      "bidTotalXp": 1654.8682734818228,
+      "username": "jahoda.eth",
+      "rank": "33",
+      "blurListings": 12,
+      "numberListings": 12
+    },
+    {
+      "walletAddress": "0x63e0605491bda6e4c1c37cf818a45b836faf46ee",
+      "bid24hrXp": 366.30804457507065,
+      "bidTotalXp": 2996.539388228903,
+      "username": null,
+      "rank": "34",
+      "blurListings": 1826,
+      "numberListings": 1826
+    },
+    {
+      "walletAddress": "0x6c7db6c2412a5e30ef424da2f68a23a3c1830bde",
+      "bid24hrXp": 364.42190786125997,
+      "bidTotalXp": 2001.8466469696803,
+      "username": null,
+      "rank": "35",
+      "blurListings": 9,
+      "numberListings": 9
+    },
+    {
+      "walletAddress": "0x4dcbb1fe5983ad5b44dc661273a4f11ca812f8b8",
+      "bid24hrXp": 358.766699429752,
+      "bidTotalXp": 1689.2017000905998,
+      "username": null,
+      "rank": "36",
+      "blurListings": 16,
+      "numberListings": 16
+    },
+    {
+      "walletAddress": "0x3b00d73a541a834380e3234936d069556c810e69",
+      "bid24hrXp": 340.84552446790894,
+      "bidTotalXp": 1427.845027364252,
+      "username": null,
+      "rank": "37",
+      "blurListings": 44,
+      "numberListings": 44
+    },
+    {
+      "walletAddress": "0xbb6101475240234e13e815fa4a7f1238ca2fefdf",
+      "bid24hrXp": 334.0070045342556,
+      "bidTotalXp": 9846.311295781825,
+      "username": null,
+      "rank": "38",
+      "blurListings": 216,
+      "numberListings": 216
+    },
+    {
+      "walletAddress": "0xc4bbdf12129c56c752db3d1e14019718c059a1e8",
+      "bid24hrXp": 319.726549983166,
+      "bidTotalXp": 1926.7149390344853,
+      "username": null,
+      "rank": "39",
+      "blurListings": 33,
+      "numberListings": 33
+    },
+    {
+      "walletAddress": "0x7c4547b8d986c05b2268c89699954c60032fe7b1",
+      "bid24hrXp": 298.44595242422787,
+      "bidTotalXp": 2420.900143514862,
+      "username": null,
+      "rank": "40",
+      "blurListings": 78,
+      "numberListings": 78
+    },
+    {
+      "walletAddress": "0xa6f95ffa23ca53d33390f3ad6d1da06f8a456ccf",
+      "bid24hrXp": 292.7613756423399,
+      "bidTotalXp": 1002.2025978793796,
+      "username": "boredrobot.eth",
+      "rank": "41",
+      "blurListings": 7,
+      "numberListings": 7
+    },
+    {
+      "walletAddress": "0x515a6c0e816f1096a5eaaf2b0516b9738c137c8c",
+      "bid24hrXp": 292.38939267035926,
+      "bidTotalXp": 710.1434319584746,
+      "username": null,
+      "rank": "42",
+      "blurListings": 4,
+      "numberListings": 4
+    },
+    {
+      "walletAddress": "0xda18f44d240de81838e42bf7636232ccee3baf56",
+      "bid24hrXp": 291.4712209356935,
+      "bidTotalXp": 2535.9036874967824,
+      "username": null,
+      "rank": "43",
+      "blurListings": 68,
+      "numberListings": 74
+    },
+    {
+      "walletAddress": "0x68fb8be9256ff1d7259a67333188c1a96a56adec",
+      "bid24hrXp": 287.55016971457195,
+      "bidTotalXp": 832.487453925927,
+      "username": null,
+      "rank": "44",
+      "blurListings": 39,
+      "numberListings": 39
+    },
+    {
+      "walletAddress": "0xedb29a9811a6018b6c60e2f338fc5b46b57af5aa",
+      "bid24hrXp": 283.671340238136,
+      "bidTotalXp": 1949.8182973583423,
+      "username": null,
+      "rank": "45",
+      "blurListings": 19,
+      "numberListings": 19
+    },
+    {
+      "walletAddress": "0xc4e1b6e36cba182ef5a8a083d6b50511cb9ffa96",
+      "bid24hrXp": 273.39419778311765,
+      "bidTotalXp": 321.5857055663776,
+      "username": null,
+      "rank": "46",
+      "blurListings": 18,
+      "numberListings": 18
+    },
+    {
+      "walletAddress": "0x59fd7a97d593608a5017795cdf2ef50c5e04deff",
+      "bid24hrXp": 266.11075206543075,
+      "bidTotalXp": 790.6423893830089,
+      "username": null,
+      "rank": "47",
+      "blurListings": 17,
+      "numberListings": 17
+    },
+    {
+      "walletAddress": "0x2b7ad4d651e330a4c6e32416c35d40aa3779f495",
+      "bid24hrXp": 264.8641962039766,
+      "bidTotalXp": 3989.466548023243,
+      "username": null,
+      "rank": "48",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x3232a47967f92ee3588adecc95272231ddc54bb6",
+      "bid24hrXp": 257.5923202272307,
+      "bidTotalXp": 1137.0558877380893,
+      "username": null,
+      "rank": "49",
+      "blurListings": 29,
+      "numberListings": 29
+    },
+    {
+      "walletAddress": "0x5fbfebad82d89d6ac7bc5708aad1cfa121d71730",
+      "bid24hrXp": 243.28494974889784,
+      "bidTotalXp": 3349.932060246414,
+      "username": null,
+      "rank": "50",
+      "blurListings": 92,
+      "numberListings": 92
+    },
+    {
+      "walletAddress": "0xabd7d582137c43e0a90ca09f2a536ae8d666791c",
+      "bid24hrXp": 239.83648784761428,
+      "bidTotalXp": 1617.2065282493286,
+      "username": null,
+      "rank": "51",
+      "blurListings": 43,
+      "numberListings": 43
+    },
+    {
+      "walletAddress": "0x6861698b928562e396b9b6db2c0abb17c4c729cd",
+      "bid24hrXp": 230.48891794675706,
+      "bidTotalXp": 1813.3755741730185,
+      "username": null,
+      "rank": "52",
+      "blurListings": 29,
+      "numberListings": 29
+    },
+    {
+      "walletAddress": "0xde5469f19ba75b0778aee9aa65775c807e25d80a",
+      "bid24hrXp": 216.82869184382096,
+      "bidTotalXp": 1986.2965269035942,
+      "username": null,
+      "rank": "53",
+      "blurListings": 3,
+      "numberListings": 3
+    },
+    {
+      "walletAddress": "0x73d30ba3dc4ffd17c28cc2d75d12e50df98f29cf",
+      "bid24hrXp": 215.25935484578721,
+      "bidTotalXp": 1337.2757522202178,
+      "username": "nakiri.eth",
+      "rank": "54",
+      "blurListings": 334,
+      "numberListings": 336
+    },
+    {
+      "walletAddress": "0xd71a41ec000089ae99873afb4d15cc7d54dd95bc",
+      "bid24hrXp": 209.5706061988707,
+      "bidTotalXp": 1435.055923954748,
+      "username": null,
+      "rank": "55",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0xaa5ffa9da216cc34e9714a7f224723cfd63fe90b",
+      "bid24hrXp": 204.17799557877933,
+      "bidTotalXp": 231.0949574250958,
+      "username": null,
+      "rank": "56",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x10d50282f5bfceebf59e35ce1dabd0f8f7b68269",
+      "bid24hrXp": 201.1220492562602,
+      "bidTotalXp": 492.2277823866612,
+      "username": null,
+      "rank": "57",
+      "blurListings": 21,
+      "numberListings": 21
+    },
+    {
+      "walletAddress": "0xd71c38ea1a5305a99219f863ce60b0b3d1f8351b",
+      "bid24hrXp": 199.592259815285,
+      "bidTotalXp": 574.8609347416897,
+      "username": null,
+      "rank": "58",
+      "blurListings": 7,
+      "numberListings": 7
+    },
+    {
+      "walletAddress": "0x0f4bc970e348a061b69d05b7e2e5c13eb687e5e3",
+      "bid24hrXp": 191.01182146085554,
+      "bidTotalXp": 1126.3477870922927,
+      "username": "brazy.eth",
+      "rank": "59",
+      "blurListings": 678,
+      "numberListings": 678
+    },
+    {
+      "walletAddress": "0xd2e720559fc5bd9ea07526a1465b71f894d708b2",
+      "bid24hrXp": 188.82038701075857,
+      "bidTotalXp": 616.6502375442328,
+      "username": null,
+      "rank": "60",
+      "blurListings": 29,
+      "numberListings": 29
+    },
+    {
+      "walletAddress": "0x477a7a10f6a34b0e4fa12e5741d59343cdaf04b2",
+      "bid24hrXp": 185.29026643509994,
+      "bidTotalXp": 388.800255391485,
+      "username": null,
+      "rank": "61",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x886cf70bab66becc693417c79c40e4d5e67f9252",
+      "bid24hrXp": 185.2419492152848,
+      "bidTotalXp": 1422.2900244347686,
+      "username": null,
+      "rank": "62",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x490ba9a1054d1adbb121b2120612a4ac3a8897d7",
+      "bid24hrXp": 183.9845795763008,
+      "bidTotalXp": 248.54814600370563,
+      "username": null,
+      "rank": "63",
+      "blurListings": 7,
+      "numberListings": 7
+    },
+    {
+      "walletAddress": "0x0ad100536bd9e8ee6e1aadfde74ec33f80d9bfa0",
+      "bid24hrXp": 177.09005343026678,
+      "bidTotalXp": 184.65229456104237,
+      "username": null,
+      "rank": "64",
+      "blurListings": 204,
+      "numberListings": 204
+    },
+    {
+      "walletAddress": "0xc68cbe2cdbc9ef2a982a75ece6a8d6bbb7f63863",
+      "bid24hrXp": 171.295572805755,
+      "bidTotalXp": 700.3394728400839,
+      "username": null,
+      "rank": "65",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x8e0788650afeedfb26f26bee874aed02688b2108",
+      "bid24hrXp": 162.78726362925877,
+      "bidTotalXp": 4512.974645507686,
+      "username": null,
+      "rank": "66",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xaae8c50d76c76fb8947c9a203103d28b55862977",
+      "bid24hrXp": 162.6929711606469,
+      "bidTotalXp": 734.3835400676118,
+      "username": null,
+      "rank": "67",
+      "blurListings": 252,
+      "numberListings": 252
+    },
+    {
+      "walletAddress": "0x4bde92d8b59806eccae4b5de1617cd01f3167c3d",
+      "bid24hrXp": 162.30382580413033,
+      "bidTotalXp": 907.5533655293335,
+      "username": null,
+      "rank": "68",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xe5e83b6b6bc73335dc34bf6807ddc8479f4b2549",
+      "bid24hrXp": 161.32444732021537,
+      "bidTotalXp": 399.30793499285033,
+      "username": null,
+      "rank": "69",
+      "blurListings": 47,
+      "numberListings": 47
+    },
+    {
+      "walletAddress": "0xab2b6c264bee88b72a35719e18dbefa5e78f0bf1",
+      "bid24hrXp": 161.23295665745766,
+      "bidTotalXp": 830.5090677027904,
+      "username": null,
+      "rank": "70",
+      "blurListings": 41,
+      "numberListings": 41
+    },
+    {
+      "walletAddress": "0x4a4a82d5956c864b70d7d8ee7c21591a56fd5a77",
+      "bid24hrXp": 161.13406529286124,
+      "bidTotalXp": 533.9612489067641,
+      "username": null,
+      "rank": "71",
+      "blurListings": 13,
+      "numberListings": 13
+    },
+    {
+      "walletAddress": "0x706349ff952528b42bac6494e38bc19be1ef8cce",
+      "bid24hrXp": 158.8079594965308,
+      "bidTotalXp": 463.2153953460839,
+      "username": null,
+      "rank": "72",
+      "blurListings": 24,
+      "numberListings": 57
+    },
+    {
+      "walletAddress": "0x18169bbfb40bfc3896b28697b174bcb2a5b7581c",
+      "bid24hrXp": 158.64374122427714,
+      "bidTotalXp": 522.0802292370635,
+      "username": null,
+      "rank": "73",
+      "blurListings": 11,
+      "numberListings": 11
+    },
+    {
+      "walletAddress": "0x2d2f63570384c10acff9e2bf8ee251383595c2e8",
+      "bid24hrXp": 158.5133886673632,
+      "bidTotalXp": 472.3217135137805,
+      "username": null,
+      "rank": "74",
+      "blurListings": 36,
+      "numberListings": 36
+    },
+    {
+      "walletAddress": "0x0ccf123c8cdc23dd022c1a25d45e4f54d5399ac1",
+      "bid24hrXp": 157.00058232907443,
+      "bidTotalXp": 182.06499386077368,
+      "username": null,
+      "rank": "75",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x386c1ed28df54bd0be40d2d43f16380e62b03b34",
+      "bid24hrXp": 155.6339618446946,
+      "bidTotalXp": 2720.8554927920272,
+      "username": null,
+      "rank": "76",
+      "blurListings": 28,
+      "numberListings": 28
+    },
+    {
+      "walletAddress": "0x5606b493c51316a9e65c9b2a00bbf7ff92515a3e",
+      "bid24hrXp": 155.06977908192067,
+      "bidTotalXp": 761.1893718641408,
+      "username": null,
+      "rank": "77",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xb94a8cb66b9797c8aeae390edcecfc8a69fdbf3d",
+      "bid24hrXp": 150.88934777365625,
+      "bidTotalXp": 493.74343735530476,
+      "username": null,
+      "rank": "78",
+      "blurListings": 12,
+      "numberListings": 12
+    },
+    {
+      "walletAddress": "0x1c844dffc0bb01bdb203206adea192a33e76988b",
+      "bid24hrXp": 145.6002573313691,
+      "bidTotalXp": 2494.9335694866627,
+      "username": null,
+      "rank": "79",
+      "blurListings": 30,
+      "numberListings": 30
+    },
+    {
+      "walletAddress": "0x30281e75f812c9afb0e701d1acddaa8999999999",
+      "bid24hrXp": 145.07790506425096,
+      "bidTotalXp": 171.99169242455739,
+      "username": null,
+      "rank": "80",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xba1ba61ff159422bcb07f78017186624e94e6936",
+      "bid24hrXp": 145.04403309554343,
+      "bidTotalXp": 718.8483621494461,
+      "username": null,
+      "rank": "81",
+      "blurListings": 29,
+      "numberListings": 29
+    },
+    {
+      "walletAddress": "0x6cab818daaf4040476e2489a7ed29ca685ad0623",
+      "bid24hrXp": 144.57128863467568,
+      "bidTotalXp": 609.153039272343,
+      "username": "09633.eth",
+      "rank": "82",
+      "blurListings": 295,
+      "numberListings": 295
+    },
+    {
+      "walletAddress": "0x83b823425d088d7005e9866e90ec77cfd3e2ba94",
+      "bid24hrXp": 142.64056138900273,
+      "bidTotalXp": 501.7194438478788,
+      "username": null,
+      "rank": "83",
+      "blurListings": 4,
+      "numberListings": 97
+    },
+    {
+      "walletAddress": "0x4e73199cec5d87faf869f7736694fb8f076f9bc7",
+      "bid24hrXp": 142.23439000757566,
+      "bidTotalXp": 730.9998270372796,
+      "username": "woodbro.eth",
+      "rank": "84",
+      "blurListings": 11,
+      "numberListings": 11
+    },
+    {
+      "walletAddress": "0xc28d30dd716a40b0c19215b732ce7be0e80a5098",
+      "bid24hrXp": 140.48392839346326,
+      "bidTotalXp": 267.753003511987,
+      "username": "djohnson1.eth",
+      "rank": "85",
+      "blurListings": 3,
+      "numberListings": 3
+    },
+    {
+      "walletAddress": "0xe5adeb0a710822f1a1efe670775c96f0c639ba70",
+      "bid24hrXp": 140.00476994823728,
+      "bidTotalXp": 715.1625932813822,
+      "username": null,
+      "rank": "86",
+      "blurListings": 15,
+      "numberListings": 15
+    },
+    {
+      "walletAddress": "0xa8bc90aec1c948ea9a4d551e74474d8cb827e112",
+      "bid24hrXp": 139.7466725344295,
+      "bidTotalXp": 139.72953675247942,
+      "username": null,
+      "rank": "87",
+      "blurListings": 26,
+      "numberListings": 26
+    },
+    {
+      "walletAddress": "0xbf71dbb7179087a76a22cb9b30ca41ea635de41f",
+      "bid24hrXp": 137.9501044696275,
+      "bidTotalXp": 912.04138437966,
+      "username": "roylee.eth",
+      "rank": "88",
+      "blurListings": 32,
+      "numberListings": 32
+    },
+    {
+      "walletAddress": "0xd7f4e01b66bedde8aa85300130cc6c7b9823942c",
+      "bid24hrXp": 136.786966653765,
+      "bidTotalXp": 1165.1889712257905,
+      "username": "0xace.eth",
+      "rank": "89",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0xbff79922fcbf93f9c30abb22322b271460c6bebb",
+      "bid24hrXp": 134.89968464776678,
+      "bidTotalXp": 387.120098495776,
+      "username": "avarice.eth",
+      "rank": "90",
+      "blurListings": 15,
+      "numberListings": 15
+    },
+    {
+      "walletAddress": "0x2334fd2c0010fb428724e31d8cfb0de030b3045c",
+      "bid24hrXp": 129.58697202544505,
+      "bidTotalXp": 360.5822286064306,
+      "username": "madamrosey.eth",
+      "rank": "91",
+      "blurListings": 22,
+      "numberListings": 22
+    },
+    {
+      "walletAddress": "0xf14e7f0c9f02cd587f28c0c4148e943714a3f137",
+      "bid24hrXp": 126.77077465450473,
+      "bidTotalXp": 387.4243721798921,
+      "username": null,
+      "rank": "92",
+      "blurListings": 207,
+      "numberListings": 207
+    },
+    {
+      "walletAddress": "0xdeabc423d1fde2298f68b9bb4fe87e1631367436",
+      "bid24hrXp": 125.60305969191397,
+      "bidTotalXp": 692.2597566202494,
+      "username": null,
+      "rank": "93",
+      "blurListings": 46,
+      "numberListings": 46
+    },
+    {
+      "walletAddress": "0xaf7d77174ba0bf6a3cc3e66272440fb72de2989f",
+      "bid24hrXp": 125.16749534048118,
+      "bidTotalXp": 3283.952141453854,
+      "username": null,
+      "rank": "94",
+      "blurListings": 196,
+      "numberListings": 196
+    },
+    {
+      "walletAddress": "0xb09d08065c5685126f7628cd8888670f5e7afc41",
+      "bid24hrXp": 120.46634010202,
+      "bidTotalXp": 2423.7199255405335,
+      "username": null,
+      "rank": "95",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x948a4dbdaccb4d10b9395b4c863d34e335e3eb21",
+      "bid24hrXp": 120.33466687024554,
+      "bidTotalXp": 703.5466938505012,
+      "username": "fallasleep.eth",
+      "rank": "96",
+      "blurListings": 20,
+      "numberListings": 20
+    },
+    {
+      "walletAddress": "0x50d36f27872f637ec9ecb4eedff300df44a608ab",
+      "bid24hrXp": 117.95838933939507,
+      "bidTotalXp": 4896.1897354641715,
+      "username": null,
+      "rank": "97",
+      "blurListings": 89,
+      "numberListings": 89
+    },
+    {
+      "walletAddress": "0x1329d762e5e34e53a6c5e24bd15fa032482eb0f9",
+      "bid24hrXp": 117.60579115360426,
+      "bidTotalXp": 117.53600117186443,
+      "username": null,
+      "rank": "98",
+      "blurListings": 20,
+      "numberListings": 20
+    },
+    {
+      "walletAddress": "0x4d2d5a63cf34668919818d23c75c558a104641e1",
+      "bid24hrXp": 114.60286775400354,
+      "bidTotalXp": 1352.5515627577254,
+      "username": null,
+      "rank": "99",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x1a71709c62ad2013ea377f11602099a2b411a93c",
+      "bid24hrXp": 113.15302153696629,
+      "bidTotalXp": 788.0845140731883,
+      "username": null,
+      "rank": "100",
+      "blurListings": 186,
+      "numberListings": 186
+    },
+    {
+      "walletAddress": "0x0273b3440386d8d01d33e75d662122d710907ba4",
+      "bid24hrXp": 111.34400497694632,
+      "bidTotalXp": 398.6464679968286,
+      "username": null,
+      "rank": "101",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x728b3de78c3bd3e9c970524ca6aae1f8d6a61996",
+      "bid24hrXp": 110.55805325944472,
+      "bidTotalXp": 369.8718820379661,
+      "username": "dumbass.eth",
+      "rank": "102",
+      "blurListings": 6,
+      "numberListings": 6
+    },
+    {
+      "walletAddress": "0x2e6ab09ac27240dc9760d1e51d57ac72d501c918",
+      "bid24hrXp": 109.26143574334036,
+      "bidTotalXp": 109.83882925443821,
+      "username": null,
+      "rank": "103",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x2e8124649a560469ea44267e10c585fb1a914a60",
+      "bid24hrXp": 107.93482521792586,
+      "bidTotalXp": 297.2013695021172,
+      "username": null,
+      "rank": "104",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x0afc1a3f10a803ac13adc12adf00774aefc3fd6d",
+      "bid24hrXp": 106.00194488429955,
+      "bidTotalXp": 151.05577902962668,
+      "username": null,
+      "rank": "105",
+      "blurListings": 68,
+      "numberListings": 68
+    },
+    {
+      "walletAddress": "0xdf4db131999a911921b1b5f0422aa39030eb4b92",
+      "bid24hrXp": 101.79361539326834,
+      "bidTotalXp": 103.17387308476005,
+      "username": null,
+      "rank": "106",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x9163b103e9da19acc01545f98ddded3dd0f77bf4",
+      "bid24hrXp": 100.90518335548987,
+      "bidTotalXp": 2278.2313884046903,
+      "username": null,
+      "rank": "107",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xca1c4c25c81b23cb1b0a45d6b741e3475d4486a6",
+      "bid24hrXp": 98.9525470771648,
+      "bidTotalXp": 684.5835367160382,
+      "username": null,
+      "rank": "108",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x67b78c209d6342256e595c951f54b9a46a574f2a",
+      "bid24hrXp": 98.33876362146572,
+      "bidTotalXp": 173.81824283108918,
+      "username": null,
+      "rank": "109",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x54db0bbd3e41124882264a4dc3d034eab255e1e6",
+      "bid24hrXp": 97.71157444268037,
+      "bidTotalXp": 227.4804561842112,
+      "username": null,
+      "rank": "110",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x07f70642cb786277cc568b359b2d8f3222a4b018",
+      "bid24hrXp": 97.44817256440824,
+      "bidTotalXp": 552.047418442202,
+      "username": null,
+      "rank": "111",
+      "blurListings": 42,
+      "numberListings": 42
+    },
+    {
+      "walletAddress": "0xf916719c7251e109cf3d1a977b6cad198b630c32",
+      "bid24hrXp": 96.5266150378025,
+      "bidTotalXp": 469.060012851138,
+      "username": null,
+      "rank": "112",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x5090f354229279f5b67c715516f6fd0bad528bd2",
+      "bid24hrXp": 96.03909328222538,
+      "bidTotalXp": 285.58363702731356,
+      "username": null,
+      "rank": "113",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x9cc4871a8fad4c53d0c0be7d224e3aed32e583da",
+      "bid24hrXp": 95.86079490321421,
+      "bidTotalXp": 101.48075968510013,
+      "username": null,
+      "rank": "114",
+      "blurListings": 7,
+      "numberListings": 7
+    },
+    {
+      "walletAddress": "0x60a207e5b8babbed0528475094e585bbfe57c828",
+      "bid24hrXp": 94.96025730904695,
+      "bidTotalXp": 508.1679622400299,
+      "username": "0xtbb.eth",
+      "rank": "115",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x818416501838d66d1b55e88b3620797cfde53474",
+      "bid24hrXp": 94.74989176327168,
+      "bidTotalXp": 223.57693626985264,
+      "username": null,
+      "rank": "116",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x68663fb06b6e718e7026aa1c2ddbc4e97ccd6c5c",
+      "bid24hrXp": 94.64730498755512,
+      "bidTotalXp": 298.14573754046523,
+      "username": null,
+      "rank": "117",
+      "blurListings": 43,
+      "numberListings": 43
+    },
+    {
+      "walletAddress": "0x31109265a787ef9fbf997242e36e9d78e8a61999",
+      "bid24hrXp": 94.19454055424364,
+      "bidTotalXp": 249.34600753958892,
+      "username": "lyon1.eth",
+      "rank": "118",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x6d3a5fee898f583be3191a8d4f2c75bd8e363b78",
+      "bid24hrXp": 94.15401074414062,
+      "bidTotalXp": 524.5967588197883,
+      "username": "czruabick.eth",
+      "rank": "119",
+      "blurListings": 23,
+      "numberListings": 23
+    },
+    {
+      "walletAddress": "0x04bb6384793bf1970b0c1b3a4fe48e0c4dc8ee4e",
+      "bid24hrXp": 93.55141399665737,
+      "bidTotalXp": 123.69260027069588,
+      "username": null,
+      "rank": "120",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x72fc26fb38acb4ce3ede228dfc963560c2b33827",
+      "bid24hrXp": 92.06338184686744,
+      "bidTotalXp": 693.2002212535416,
+      "username": null,
+      "rank": "121",
+      "blurListings": 15,
+      "numberListings": 15
+    },
+    {
+      "walletAddress": "0x29b79ad1730dc87b5923d47554436501b5d05b84",
+      "bid24hrXp": 91.88710996768235,
+      "bidTotalXp": 188.77590114815212,
+      "username": "goldbridge.eth",
+      "rank": "122",
+      "blurListings": 24,
+      "numberListings": 25
+    },
+    {
+      "walletAddress": "0x7a1ab9c6dcb3b7f6fbcbfeaf7314c545becbefa5",
+      "bid24hrXp": 91.81231429358503,
+      "bidTotalXp": 331.9580198976132,
+      "username": null,
+      "rank": "123",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0xf8a11e7bc7c9306e821f07b60b5e6d2075d82ff4",
+      "bid24hrXp": 91.52272357900968,
+      "bidTotalXp": 312.21747169316353,
+      "username": null,
+      "rank": "124",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0xc15add7eb1ba708bc7189cef6a4c47200b77a52b",
+      "bid24hrXp": 90.54968462121067,
+      "bidTotalXp": 579.9071252090076,
+      "username": "confusedcollector.eth",
+      "rank": "125",
+      "blurListings": 15,
+      "numberListings": 15
+    },
+    {
+      "walletAddress": "0x05063421b914020dbac2bc004c9f2111fff937ba",
+      "bid24hrXp": 90.41962526595209,
+      "bidTotalXp": 160.49676329540574,
+      "username": null,
+      "rank": "126",
+      "blurListings": 0,
+      "numberListings": 22
+    },
+    {
+      "walletAddress": "0xb593937ba687bb931f8697a12ff47bc5d383c1ff",
+      "bid24hrXp": 89.41370456309437,
+      "bidTotalXp": 101.83033437915422,
+      "username": null,
+      "rank": "127",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xff73818b628091dbe3e5a1aa266aad89e08e51ff",
+      "bid24hrXp": 89.40803717574184,
+      "bidTotalXp": 101.82387709479944,
+      "username": null,
+      "rank": "128",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xabf05235523ceecb5a5b9a155657af0ffcfec944",
+      "bid24hrXp": 88.99777437374375,
+      "bidTotalXp": 719.8826985322473,
+      "username": null,
+      "rank": "129",
+      "blurListings": 8,
+      "numberListings": 14
+    },
+    {
+      "walletAddress": "0xc252d005967235ffc91b9d1dff9e1c3ba1f435c2",
+      "bid24hrXp": 87.73285058179313,
+      "bidTotalXp": 237.15565019063777,
+      "username": null,
+      "rank": "130",
+      "blurListings": 13,
+      "numberListings": 13
+    },
+    {
+      "walletAddress": "0x385ce35599ae5e6f0eaf0f69841fffa9f41acdd5",
+      "bid24hrXp": 87.72128137211621,
+      "bidTotalXp": 176.17925520710537,
+      "username": null,
+      "rank": "131",
+      "blurListings": 30,
+      "numberListings": 30
+    },
+    {
+      "walletAddress": "0xb9a2462d9cdfc6ea2a6e0f609a61634b71e601d0",
+      "bid24hrXp": 86.9835166479158,
+      "bidTotalXp": 1474.1094654343347,
+      "username": null,
+      "rank": "132",
+      "blurListings": 6,
+      "numberListings": 6
+    },
+    {
+      "walletAddress": "0x5cbffebdf2f12a8984b9eff74a85acab24730fff",
+      "bid24hrXp": 86.69824066691406,
+      "bidTotalXp": 644.6722877807246,
+      "username": null,
+      "rank": "133",
+      "blurListings": 146,
+      "numberListings": 146
+    },
+    {
+      "walletAddress": "0xd4f5162a20a3ec2770e66ba45f6d9edf2a4bd96a",
+      "bid24hrXp": 86.05868093733056,
+      "bidTotalXp": 198.43519623269273,
+      "username": null,
+      "rank": "134",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x6a4c2adbb2fbd4b14d54121efa61c316078727a6",
+      "bid24hrXp": 85.70808864129039,
+      "bidTotalXp": 205.8669188272656,
+      "username": null,
+      "rank": "135",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0xfab559fa4838e17fdf6748def6e3d5fd0d6cd4f3",
+      "bid24hrXp": 85.30064298351779,
+      "bidTotalXp": 165.55930827508675,
+      "username": null,
+      "rank": "136",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xe4e1adf905e8ca0cf2d7fcd5852ac074ec0da9da",
+      "bid24hrXp": 84.52243201453224,
+      "bidTotalXp": 85.2228856532663,
+      "username": null,
+      "rank": "137",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x2a999ded1d6d9ae533be2bbb1c81161d130d326d",
+      "bid24hrXp": 83.7349688735919,
+      "bidTotalXp": 188.46916576863833,
+      "username": null,
+      "rank": "138",
+      "blurListings": 88,
+      "numberListings": 88
+    },
+    {
+      "walletAddress": "0x6ae73a69536bf213d70625312624b880a3f1efaf",
+      "bid24hrXp": 82.78497187590625,
+      "bidTotalXp": 1121.37595029604,
+      "username": null,
+      "rank": "139",
+      "blurListings": 57,
+      "numberListings": 57
+    },
+    {
+      "walletAddress": "0xc0bc7bbc9afa9b0577d10bd3eb636c8d3ab841d3",
+      "bid24hrXp": 82.77768347383346,
+      "bidTotalXp": 240.14184525627306,
+      "username": null,
+      "rank": "140",
+      "blurListings": 43,
+      "numberListings": 43
+    },
+    {
+      "walletAddress": "0x84e40a13b42b1a24f031459d48b45d90b46297a1",
+      "bid24hrXp": 80.79876442463093,
+      "bidTotalXp": 471.3033168888046,
+      "username": "chibro.eth",
+      "rank": "141",
+      "blurListings": 22,
+      "numberListings": 22
+    },
+    {
+      "walletAddress": "0x189690bb65b110da6948ca75ed612f3fc24823a3",
+      "bid24hrXp": 80.5999956286333,
+      "bidTotalXp": 839.0084524134771,
+      "username": null,
+      "rank": "142",
+      "blurListings": 20,
+      "numberListings": 20
+    },
+    {
+      "walletAddress": "0xb230f737a713b9111c25deb4817761ca23163887",
+      "bid24hrXp": 80.26622992359718,
+      "bidTotalXp": 274.63198804174823,
+      "username": null,
+      "rank": "143",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xeb83e695adcac2e83f290d2d2815fc58e6491d7a",
+      "bid24hrXp": 79.76504947560692,
+      "bidTotalXp": 721.6382055641609,
+      "username": "a-raving-ape.eth",
+      "rank": "144",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0xc4da1707a7a16cf4ac15d75d6a49a684b23ee1e4",
+      "bid24hrXp": 79.32117768644694,
+      "bidTotalXp": 1070.4354018678766,
+      "username": "0xtrung.eth",
+      "rank": "145",
+      "blurListings": 79,
+      "numberListings": 104
+    },
+    {
+      "walletAddress": "0xfa4fc4ec2f81a4897743c5b4f45907c02ce06199",
+      "bid24hrXp": 77.78538524736459,
+      "bidTotalXp": 634.1300370336638,
+      "username": null,
+      "rank": "146",
+      "blurListings": 18,
+      "numberListings": 18
+    },
+    {
+      "walletAddress": "0x6cfdad0772edc2ea15076a9706ec7c1f0a791ac1",
+      "bid24hrXp": 77.63899631511002,
+      "bidTotalXp": 186.87834599992456,
+      "username": null,
+      "rank": "147",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xfa0e027fcb7ce300879f3729432cd505826eaabc",
+      "bid24hrXp": 77.35371051416237,
+      "bidTotalXp": 1241.0335449730455,
+      "username": null,
+      "rank": "148",
+      "blurListings": 9,
+      "numberListings": 9
+    },
+    {
+      "walletAddress": "0x9a344e7efc955cc244285e9cf4f67f01925a9093",
+      "bid24hrXp": 76.8448517259242,
+      "bidTotalXp": 397.091239761401,
+      "username": null,
+      "rank": "149",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0xb328af2d168ffb549da9533d8ff407d427c4c31e",
+      "bid24hrXp": 75.96873830465493,
+      "bidTotalXp": 84.72919293004021,
+      "username": null,
+      "rank": "150",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xf89dc311f1e0ce66e6417c76db27c2cfdefd623e",
+      "bid24hrXp": 75.32845293054085,
+      "bidTotalXp": 158.30159863756063,
+      "username": null,
+      "rank": "151",
+      "blurListings": 1,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x4780e56ecce447c2a21df182d48e259c3f5f7666",
+      "bid24hrXp": 74.59251350509423,
+      "bidTotalXp": 192.09443860584955,
+      "username": null,
+      "rank": "152",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x9b2db27ebe329af67eecf07e1ad78650f1c2eee9",
+      "bid24hrXp": 74.34061856069685,
+      "bidTotalXp": 75.29781807038599,
+      "username": null,
+      "rank": "153",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xdcec138a6cb56a666d2bf7055887b37e6e9385c2",
+      "bid24hrXp": 73.96794403619808,
+      "bidTotalXp": 74.92514354588722,
+      "username": null,
+      "rank": "154",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xdad19177128fc63b9de5aac7c9afb08ede8830dd",
+      "bid24hrXp": 73.75258127945398,
+      "bidTotalXp": 181.12360893425395,
+      "username": null,
+      "rank": "155",
+      "blurListings": 67,
+      "numberListings": 67
+    },
+    {
+      "walletAddress": "0x2d5ff508a430b4ae45cacb7c85754042cd8b97f7",
+      "bid24hrXp": 73.26689364361674,
+      "bidTotalXp": 72.73023625782864,
+      "username": null,
+      "rank": "156",
+      "blurListings": 4,
+      "numberListings": 4
+    },
+    {
+      "walletAddress": "0x2b3a68f08058c8ada93c6acc18d06d1836d7c8c5",
+      "bid24hrXp": 73.13299636742691,
+      "bidTotalXp": 1024.9358459065993,
+      "username": "tianbin.eth",
+      "rank": "157",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x2c492138498165c3f6ff94ab7d0b7ab6dd546ada",
+      "bid24hrXp": 72.75746696645994,
+      "bidTotalXp": 128.75580999491396,
+      "username": null,
+      "rank": "158",
+      "blurListings": 3,
+      "numberListings": 3
+    },
+    {
+      "walletAddress": "0x50a8abc19fdfa6385f83bf3cc9c39016fe9b3ab5",
+      "bid24hrXp": 72.19216250331766,
+      "bidTotalXp": 772.3967986914631,
+      "username": null,
+      "rank": "159",
+      "blurListings": 22,
+      "numberListings": 22
+    },
+    {
+      "walletAddress": "0xd595710aedaba1d2e18bfdbab46ab796664c6d89",
+      "bid24hrXp": 71.40051685497707,
+      "bidTotalXp": 428.33623243507657,
+      "username": null,
+      "rank": "160",
+      "blurListings": 9,
+      "numberListings": 9
+    },
+    {
+      "walletAddress": "0x1711bc52bf7e0494325799717fe640f1924617b7",
+      "bid24hrXp": 71.16643193842562,
+      "bidTotalXp": 483.7718715880283,
+      "username": null,
+      "rank": "161",
+      "blurListings": 63,
+      "numberListings": 63
+    },
+    {
+      "walletAddress": "0x63ae99f260320d39fac72458388f8a1dc9641f71",
+      "bid24hrXp": 69.79660854813505,
+      "bidTotalXp": 482.59342769352645,
+      "username": null,
+      "rank": "162",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x60c3c666d55aab499f3f59b2c323f6b8eb79f68c",
+      "bid24hrXp": 69.05959099696065,
+      "bidTotalXp": 294.1150472469631,
+      "username": null,
+      "rank": "163",
+      "blurListings": 16,
+      "numberListings": 16
+    },
+    {
+      "walletAddress": "0x1b27f965071ac1c84cce03aa93f7089d00a4d449",
+      "bid24hrXp": 68.95515962704094,
+      "bidTotalXp": 176.69773001413967,
+      "username": "0xsteakhouse.eth",
+      "rank": "164",
+      "blurListings": 6,
+      "numberListings": 7
+    },
+    {
+      "walletAddress": "0x6693926302a1ba98c8d503dc9b3029141bb22079",
+      "bid24hrXp": 67.71339683787123,
+      "bidTotalXp": 102.47762398375939,
+      "username": null,
+      "rank": "165",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x0222c3aafec0fd7b7710ef91f70ffe757e4dbd4b",
+      "bid24hrXp": 66.86598740528333,
+      "bidTotalXp": 148.64239975607654,
+      "username": null,
+      "rank": "166",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x6d0694424e75683a6fabc27dd92fd9dace12bbb2",
+      "bid24hrXp": 65.83880946327221,
+      "bidTotalXp": 65.53470184979435,
+      "username": null,
+      "rank": "167",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x6afcd8142100b4d1a95408f00fabb49a93a75010",
+      "bid24hrXp": 64.91036459717232,
+      "bidTotalXp": 203.63306479390252,
+      "username": null,
+      "rank": "168",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x677f828b252e02e7050e7ddb43655caea1cb1f7e",
+      "bid24hrXp": 64.65636713446263,
+      "bidTotalXp": 97.53760930877377,
+      "username": null,
+      "rank": "169",
+      "blurListings": 5,
+      "numberListings": 13
+    },
+    {
+      "walletAddress": "0xbb41dd49254e8b9d631b835062392a460081734d",
+      "bid24hrXp": 64.1353612978207,
+      "bidTotalXp": 760.8469032883016,
+      "username": "tacticman.eth",
+      "rank": "170",
+      "blurListings": 25,
+      "numberListings": 47
+    },
+    {
+      "walletAddress": "0xda2a6295a6223e15d2e1bb3f03539be74c376580",
+      "bid24hrXp": 64.08772837449703,
+      "bidTotalXp": 345.7625650646473,
+      "username": "madkittyeth.eth",
+      "rank": "171",
+      "blurListings": 0,
+      "numberListings": 4
+    },
+    {
+      "walletAddress": "0x51ce2507f56bc46c8c31979b8724fb084de3a686",
+      "bid24hrXp": 64.06818323513598,
+      "bidTotalXp": 504.82262634414997,
+      "username": null,
+      "rank": "172",
+      "blurListings": 31,
+      "numberListings": 31
+    },
+    {
+      "walletAddress": "0x9670c5130250188244fc572acf0e589fd3bbc5ae",
+      "bid24hrXp": 63.548772732784485,
+      "bidTotalXp": 1078.3459666653166,
+      "username": null,
+      "rank": "173",
+      "blurListings": 11,
+      "numberListings": 14
+    },
+    {
+      "walletAddress": "0x6fcd9164e59c27cb9503aec60ba3aa47578ba0cb",
+      "bid24hrXp": 62.964660537400235,
+      "bidTotalXp": 89.5255048185143,
+      "username": null,
+      "rank": "174",
+      "blurListings": 31,
+      "numberListings": 31
+    },
+    {
+      "walletAddress": "0xc56b13306fc85a1e6a7fa9d0d03b0dfa36de8a02",
+      "bid24hrXp": 62.94625277378184,
+      "bidTotalXp": 121.72145878019612,
+      "username": null,
+      "rank": "175",
+      "blurListings": 3,
+      "numberListings": 3
+    },
+    {
+      "walletAddress": "0x9ab6d45c2c220e55f7585f268a71982caf775210",
+      "bid24hrXp": 62.73436236852941,
+      "bidTotalXp": 533.2559762591259,
+      "username": null,
+      "rank": "176",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xae47363f1065a91958a554f8328e47b2dbd057ae",
+      "bid24hrXp": 62.723355767295,
+      "bidTotalXp": 112.49693994114976,
+      "username": null,
+      "rank": "177",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x2cb896e583a792baaf0a227c06a187591ef7d698",
+      "bid24hrXp": 62.67299910604356,
+      "bidTotalXp": 88.52348674182728,
+      "username": null,
+      "rank": "178",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xb610bcc876650528c83f931727d625dc91905fbd",
+      "bid24hrXp": 62.66614538369484,
+      "bidTotalXp": 413.7578059163854,
+      "username": null,
+      "rank": "179",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xe66e39343d48af67fb1679697fca58b08b638459",
+      "bid24hrXp": 62.44813080663378,
+      "bidTotalXp": 330.00585571600647,
+      "username": "meatyninjapants.eth",
+      "rank": "180",
+      "blurListings": 3,
+      "numberListings": 3
+    },
+    {
+      "walletAddress": "0x1a49fce89d020dc189979c0d5a52b59a35742fcf",
+      "bid24hrXp": 61.65477622136768,
+      "bidTotalXp": 229.98632583019258,
+      "username": "custardhands.eth",
+      "rank": "181",
+      "blurListings": 10,
+      "numberListings": 10
+    },
+    {
+      "walletAddress": "0xa244312a1c313bd79f75dcfedcda850997fd356f",
+      "bid24hrXp": 60.428833634494524,
+      "bidTotalXp": 163.36737882384259,
+      "username": null,
+      "rank": "182",
+      "blurListings": 22,
+      "numberListings": 22
+    },
+    {
+      "walletAddress": "0xc6fc07eb943b86d1972a3bdeda119d04fe8c7c12",
+      "bid24hrXp": 60.027711948575615,
+      "bidTotalXp": 63.06461966948564,
+      "username": null,
+      "rank": "183",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x4f59ce7bb4777b536f09116b66c95a5d1ea8a8e6",
+      "bid24hrXp": 59.13112330757495,
+      "bidTotalXp": 156.73914047883846,
+      "username": null,
+      "rank": "184",
+      "blurListings": 6,
+      "numberListings": 16
+    },
+    {
+      "walletAddress": "0x944fdea9d4956ce673c7545862cefccad6ee1b04",
+      "bid24hrXp": 59.128368012906385,
+      "bidTotalXp": 955.0034913371131,
+      "username": "💰🦍💰.eth",
+      "rank": "185",
+      "blurListings": 226,
+      "numberListings": 226
+    },
+    {
+      "walletAddress": "0xcd76c8774a21cb1137422a0cffd2fe2a6390bdea",
+      "bid24hrXp": 58.31216122093367,
+      "bidTotalXp": 306.84263606589167,
+      "username": null,
+      "rank": "186",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x9dc56d9153b0c89bc8eb4937f39a5daa6a7721d7",
+      "bid24hrXp": 58.04456075391064,
+      "bidTotalXp": 1675.2056547747668,
+      "username": null,
+      "rank": "187",
+      "blurListings": 463,
+      "numberListings": 464
+    },
+    {
+      "walletAddress": "0x75351934ff71178916e2d3b7bd2ab7d86d8a3bc4",
+      "bid24hrXp": 57.95105849837126,
+      "bidTotalXp": 734.3971808833941,
+      "username": null,
+      "rank": "188",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xb5e14dcf2520d154606254094f32c8d32d509115",
+      "bid24hrXp": 57.74245228831358,
+      "bidTotalXp": 250.792150427353,
+      "username": null,
+      "rank": "189",
+      "blurListings": 26,
+      "numberListings": 26
+    },
+    {
+      "walletAddress": "0xf54657504ec23f9bcf91f8e82bdfa77db8425e27",
+      "bid24hrXp": 57.417410348010854,
+      "bidTotalXp": 75.63042705398078,
+      "username": null,
+      "rank": "190",
+      "blurListings": 13,
+      "numberListings": 13
+    },
+    {
+      "walletAddress": "0xa441bacd25f364d6f9c8d8800865af7a40b62b18",
+      "bid24hrXp": 57.213081796543655,
+      "bidTotalXp": 125.09101992151415,
+      "username": null,
+      "rank": "191",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x15ff47b488e379309c0d210814a6554f9e28b520",
+      "bid24hrXp": 57.14980685430053,
+      "bidTotalXp": 124.99664793689459,
+      "username": null,
+      "rank": "192",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x0097b9cfe64455eed479292671a1121f502bc954",
+      "bid24hrXp": 57.13862713980841,
+      "bidTotalXp": 110.91436126205966,
+      "username": null,
+      "rank": "193",
+      "blurListings": 5,
+      "numberListings": 10
+    },
+    {
+      "walletAddress": "0xe958dde9dd7f7655ce51cc13d35b7ca9cba7243f",
+      "bid24hrXp": 57.08763566924384,
+      "bidTotalXp": 56.40787517109883,
+      "username": null,
+      "rank": "194",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x6a01af210dce01f44b5067fc688641384a8bce5b",
+      "bid24hrXp": 56.78670856484651,
+      "bidTotalXp": 56.786708564846506,
+      "username": "ethhasbottomed.eth",
+      "rank": "195",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xcf82579cab223cc1e467c17e371f8027c1767667",
+      "bid24hrXp": 56.111910384359,
+      "bidTotalXp": 460.3895270170994,
+      "username": null,
+      "rank": "196",
+      "blurListings": 39,
+      "numberListings": 39
+    },
+    {
+      "walletAddress": "0xc19b11e2540dc903ea59f9b5ead590e548a0f06a",
+      "bid24hrXp": 56.08482270824517,
+      "bidTotalXp": 259.14726167202474,
+      "username": null,
+      "rank": "197",
+      "blurListings": 57,
+      "numberListings": 57
+    },
+    {
+      "walletAddress": "0x8629396e39997886cf31fc77a2761c5a58247268",
+      "bid24hrXp": 55.746714473292684,
+      "bidTotalXp": 1065.0845377676008,
+      "username": null,
+      "rank": "198",
+      "blurListings": 63,
+      "numberListings": 63
+    },
+    {
+      "walletAddress": "0xe953863a6f5317b8d226ab07cbae97f6b63a0373",
+      "bid24hrXp": 55.49170592805282,
+      "bidTotalXp": 324.7544933905315,
+      "username": null,
+      "rank": "199",
+      "blurListings": 114,
+      "numberListings": 114
+    },
+    {
+      "walletAddress": "0x6d3a717ef9854cdba44f033710aa4a627e3e0703",
+      "bid24hrXp": 55.422031636916564,
+      "bidTotalXp": 185.65517383694765,
+      "username": null,
+      "rank": "200",
+      "blurListings": 4,
+      "numberListings": 4
+    },
+    {
+      "walletAddress": "0x4c9f7207be28278b9dca129f2e211acfff48fb01",
+      "bid24hrXp": 55.24577921746066,
+      "bidTotalXp": 108.74498377632656,
+      "username": null,
+      "rank": "201",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xc175f8d59766aa1cc3993ccd969463d26d36ae50",
+      "bid24hrXp": 55.103139636609114,
+      "bidTotalXp": 410.48161096741586,
+      "username": null,
+      "rank": "202",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xd1d02520e44b31f44561511a811c3dc9b1246969",
+      "bid24hrXp": 54.899218333418915,
+      "bidTotalXp": 108.92593808825576,
+      "username": null,
+      "rank": "203",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xb52a3da3d4e8fe52f93679a65f4d84161d67007e",
+      "bid24hrXp": 54.546848781779694,
+      "bidTotalXp": 189.1237438082213,
+      "username": "thenftshark.eth",
+      "rank": "204",
+      "blurListings": 10,
+      "numberListings": 10
+    },
+    {
+      "walletAddress": "0x5988de3c12936d2613a7732a408f7b6cbd3a588f",
+      "bid24hrXp": 54.284151870907486,
+      "bidTotalXp": 147.16967504229038,
+      "username": null,
+      "rank": "205",
+      "blurListings": 101,
+      "numberListings": 101
+    },
+    {
+      "walletAddress": "0x9be5f836ceddcba4c160d172fea62fcdd3cb8bd3",
+      "bid24hrXp": 53.89412602431885,
+      "bidTotalXp": 190.57311366229933,
+      "username": null,
+      "rank": "206",
+      "blurListings": 22,
+      "numberListings": 22
+    },
+    {
+      "walletAddress": "0xa4925774f100e8a8d4496a86a039b36f0ee7ba46",
+      "bid24hrXp": 53.659597233053184,
+      "bidTotalXp": 296.85783054467896,
+      "username": null,
+      "rank": "207",
+      "blurListings": 37,
+      "numberListings": 37
+    },
+    {
+      "walletAddress": "0x072243673c4cb5effee47b2b25329d6aea5ed3ac",
+      "bid24hrXp": 53.65254886607604,
+      "bidTotalXp": 800.5328036850199,
+      "username": null,
+      "rank": "208",
+      "blurListings": 55,
+      "numberListings": 55
+    },
+    {
+      "walletAddress": "0x81a4aa7601843492affac01f5f533d51ac5b257b",
+      "bid24hrXp": 53.297932032761764,
+      "bidTotalXp": 98.69085081741954,
+      "username": null,
+      "rank": "209",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x1e3685ee600983bac782b182f245efd3bbb26455",
+      "bid24hrXp": 53.01631496126157,
+      "bidTotalXp": 2240.9053029686506,
+      "username": null,
+      "rank": "210",
+      "blurListings": 93,
+      "numberListings": 93
+    },
+    {
+      "walletAddress": "0x53a60ac4f0f3758731d41e5a13ae38db48b7bb40",
+      "bid24hrXp": 52.48552553198309,
+      "bidTotalXp": 105.2223822020192,
+      "username": null,
+      "rank": "211",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x70f5d1620c738f25eececc3473272d18e2a29fa9",
+      "bid24hrXp": 52.465435281078626,
+      "bidTotalXp": 105.2021626383905,
+      "username": null,
+      "rank": "212",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x39d0792ad8a277af90b91c32eabc2aef37f8c151",
+      "bid24hrXp": 52.39929518314558,
+      "bidTotalXp": 253.30373249825698,
+      "username": null,
+      "rank": "213",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x4fe05f97110851053606c60a0ace8be02229be23",
+      "bid24hrXp": 52.31751827052216,
+      "bidTotalXp": 83.89638601083453,
+      "username": null,
+      "rank": "214",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xa9c501101c7b165090abb56e95efe1129df9deac",
+      "bid24hrXp": 51.93072523154096,
+      "bidTotalXp": 847.5651705531452,
+      "username": "johnnyfpv.eth",
+      "rank": "215",
+      "blurListings": 166,
+      "numberListings": 166
+    },
+    {
+      "walletAddress": "0xaf184b4cbc73a9ca2f51c4a4d80ed67a2578e9f4",
+      "bid24hrXp": 51.92118151917822,
+      "bidTotalXp": 84.5008647526127,
+      "username": null,
+      "rank": "216",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x0a124ccda66cdc16f5eb0d87f875a2d7292a9db2",
+      "bid24hrXp": 51.77521356184849,
+      "bidTotalXp": 204.2610072993497,
+      "username": null,
+      "rank": "217",
+      "blurListings": 20,
+      "numberListings": 20
+    },
+    {
+      "walletAddress": "0xe022495524d753f2a64b07e3da878ad1e45abbb0",
+      "bid24hrXp": 51.699682314538485,
+      "bidTotalXp": 187.92760801845756,
+      "username": null,
+      "rank": "218",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xa0c6e86e59e3f2b2e58b4893cc371a2d71188d76",
+      "bid24hrXp": 51.5850697530236,
+      "bidTotalXp": 1214.9338066756836,
+      "username": null,
+      "rank": "219",
+      "blurListings": 52,
+      "numberListings": 52
+    },
+    {
+      "walletAddress": "0xfbff2739978790aa7655fb1b75bb1811e347c1fd",
+      "bid24hrXp": 51.52031531095654,
+      "bidTotalXp": 79.42024499111751,
+      "username": null,
+      "rank": "220",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xdd91a2c0a8a256f49fd009cb3cf054a389e83c9f",
+      "bid24hrXp": 51.09023331563416,
+      "bidTotalXp": 355.3947428207455,
+      "username": null,
+      "rank": "221",
+      "blurListings": 382,
+      "numberListings": 382
+    },
+    {
+      "walletAddress": "0xf5c7f272702c00217e8baba288ad74c106cb841b",
+      "bid24hrXp": 50.9265215523743,
+      "bidTotalXp": 577.9400448603204,
+      "username": null,
+      "rank": "222",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0xd7b2879c8922cd704e41e8cc1f18f6994d6b7c36",
+      "bid24hrXp": 50.49716989954511,
+      "bidTotalXp": 88.2687228102893,
+      "username": null,
+      "rank": "223",
+      "blurListings": 22,
+      "numberListings": 22
+    },
+    {
+      "walletAddress": "0x967b073201215cabbbc0f1c1f2b258683b495cb4",
+      "bid24hrXp": 50.36284942998057,
+      "bidTotalXp": 150.60263525433302,
+      "username": null,
+      "rank": "224",
+      "blurListings": 34,
+      "numberListings": 34
+    },
+    {
+      "walletAddress": "0x6f6903dc86974f25c6d135387ac9de338cabf2b5",
+      "bid24hrXp": 50.167879537199084,
+      "bidTotalXp": 94.62496514151096,
+      "username": "edubz.eth",
+      "rank": "225",
+      "blurListings": 10,
+      "numberListings": 10
+    },
+    {
+      "walletAddress": "0x2c36342035a60481de948d5cf869a69794fad731",
+      "bid24hrXp": 50.07424108316427,
+      "bidTotalXp": 98.34866320543338,
+      "username": null,
+      "rank": "226",
+      "blurListings": 11,
+      "numberListings": 11
+    },
+    {
+      "walletAddress": "0x00d762886e24d3784fa83017a3083f56b3b2117a",
+      "bid24hrXp": 49.944187555932345,
+      "bidTotalXp": 437.199919753518,
+      "username": null,
+      "rank": "227",
+      "blurListings": 3,
+      "numberListings": 6
+    },
+    {
+      "walletAddress": "0x96234e93d9fb27fda6414d89adeb963f126f4704",
+      "bid24hrXp": 49.91567915407421,
+      "bidTotalXp": 50.00518708450765,
+      "username": "bobgav.eth",
+      "rank": "228",
+      "blurListings": 8,
+      "numberListings": 8
+    },
+    {
+      "walletAddress": "0xbfb4d7570b5afe6bb10e026749c695dda03cf3fd",
+      "bid24hrXp": 49.898654069104445,
+      "bidTotalXp": 176.8577352180602,
+      "username": "dracouka.eth",
+      "rank": "229",
+      "blurListings": 20,
+      "numberListings": 20
+    },
+    {
+      "walletAddress": "0x227e26ef1c1293da3d240409961b1c4d7c3cf0fc",
+      "bid24hrXp": 49.834290798047135,
+      "bidTotalXp": 179.97172338990083,
+      "username": null,
+      "rank": "230",
+      "blurListings": 219,
+      "numberListings": 219
+    },
+    {
+      "walletAddress": "0x96dc89dbe84970ee42a2f0b35fb50599e6745ff8",
+      "bid24hrXp": 49.62798179151552,
+      "bidTotalXp": 388.5269901772193,
+      "username": "metasailor.eth",
+      "rank": "231",
+      "blurListings": 117,
+      "numberListings": 117
+    },
+    {
+      "walletAddress": "0x008eab1c733e9819e70f566cf95ba4cc4adda635",
+      "bid24hrXp": 49.58411629132485,
+      "bidTotalXp": 78.96192667023442,
+      "username": null,
+      "rank": "232",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x28f597801cbe0c7ad1890807ef5c539fc002476a",
+      "bid24hrXp": 49.266962191709375,
+      "bidTotalXp": 326.1069360489287,
+      "username": null,
+      "rank": "233",
+      "blurListings": 11,
+      "numberListings": 11
+    },
+    {
+      "walletAddress": "0x337dc87d948c78c3080a94bb2a80dffc3a8578af",
+      "bid24hrXp": 49.17702744085451,
+      "bidTotalXp": 85.84542825467739,
+      "username": null,
+      "rank": "234",
+      "blurListings": 12,
+      "numberListings": 12
+    },
+    {
+      "walletAddress": "0xbec69dfce4c1fa8b7843fee1ca85788d84a86b06",
+      "bid24hrXp": 49.064810526655435,
+      "bidTotalXp": 49.06481052665544,
+      "username": "anonymoux.eth",
+      "rank": "235",
+      "blurListings": 8,
+      "numberListings": 8
+    },
+    {
+      "walletAddress": "0x0d2dcfb901c476aeb9105e38a7b7b451fd109a92",
+      "bid24hrXp": 48.80658236566992,
+      "bidTotalXp": 136.87435559826295,
+      "username": null,
+      "rank": "236",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xa176574d000b6c0ebd512397a7b8a6f2ec1716e5",
+      "bid24hrXp": 48.80526111477258,
+      "bidTotalXp": 136.86978427602452,
+      "username": null,
+      "rank": "237",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x130ebf09f40b3f64b99f1313c2e4b5878852b684",
+      "bid24hrXp": 48.653607235823436,
+      "bidTotalXp": 70.17038446239907,
+      "username": null,
+      "rank": "238",
+      "blurListings": 6,
+      "numberListings": 6
+    },
+    {
+      "walletAddress": "0xbe7ff91921caff7c4e9323e36aa523fe6faec14a",
+      "bid24hrXp": 48.51741563551694,
+      "bidTotalXp": 209.9832166453784,
+      "username": null,
+      "rank": "239",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xb5938f76a5850cadeb1f1705ba18a7ae76c897f2",
+      "bid24hrXp": 48.47744127209716,
+      "bidTotalXp": 71.1662120392213,
+      "username": null,
+      "rank": "240",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x5dbb1ccb543d79c19f4038c90c5f3bca4c28d113",
+      "bid24hrXp": 48.037150154133364,
+      "bidTotalXp": 99.02987810267138,
+      "username": "dylzz.eth",
+      "rank": "241",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x392e7d1065760324771c6a74a1d3231da3401b43",
+      "bid24hrXp": 47.84830002723597,
+      "bidTotalXp": 47.84003111700378,
+      "username": null,
+      "rank": "242",
+      "blurListings": 0,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0xbf42da6c3e65b61aff6ac5a4034caf94a68f52ba",
+      "bid24hrXp": 47.74618581402722,
+      "bidTotalXp": 311.0723079257997,
+      "username": null,
+      "rank": "243",
+      "blurListings": 13,
+      "numberListings": 22
+    },
+    {
+      "walletAddress": "0xeddb2b1dc4d9e2acd34f04f263eb6ac54a393909",
+      "bid24hrXp": 47.599041974397586,
+      "bidTotalXp": 286.73623634276385,
+      "username": null,
+      "rank": "244",
+      "blurListings": 6,
+      "numberListings": 6
+    },
+    {
+      "walletAddress": "0xcdfe43a37ce771da321a3528e163ec1501fd2516",
+      "bid24hrXp": 47.40465351805547,
+      "bidTotalXp": 88.38302552216322,
+      "username": null,
+      "rank": "245",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x6f7ce10cf9335216f63f37f15d6734a1d417db92",
+      "bid24hrXp": 46.642494979405406,
+      "bidTotalXp": 630.6319804814028,
+      "username": "noobean.eth",
+      "rank": "246",
+      "blurListings": 67,
+      "numberListings": 67
+    },
+    {
+      "walletAddress": "0x05882f535c4cc7077018cc20a60223d2ec2ea34a",
+      "bid24hrXp": 46.61655722215165,
+      "bidTotalXp": 1679.864127450026,
+      "username": null,
+      "rank": "247",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xf5d3dca1d4cc5f21f8df1a96d7b852f7c61ab435",
+      "bid24hrXp": 46.176855233509805,
+      "bidTotalXp": 89.13942452272074,
+      "username": null,
+      "rank": "248",
+      "blurListings": 14,
+      "numberListings": 14
+    },
+    {
+      "walletAddress": "0xff90731baba1bf051a6f1bbd8d8ddc0499bad894",
+      "bid24hrXp": 45.97781697051808,
+      "bidTotalXp": 55.22683986747364,
+      "username": null,
+      "rank": "249",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x74a2756b46c628f5790aa2caf9a809451f677cff",
+      "bid24hrXp": 45.275897293547835,
+      "bidTotalXp": 322.97608146969174,
+      "username": null,
+      "rank": "250",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x51ae51ea0cea748c6dce1bebc50de352345fc822",
+      "bid24hrXp": 45.050479336998094,
+      "bidTotalXp": 919.3066735601487,
+      "username": "الشمع.eth",
+      "rank": "251",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0xac3c837d67b4f638c0abbf711327cfd33149cf3d",
+      "bid24hrXp": 44.9085248681399,
+      "bidTotalXp": 50.65648875208055,
+      "username": "checkblur.eth",
+      "rank": "252",
+      "blurListings": 218,
+      "numberListings": 218
+    },
+    {
+      "walletAddress": "0x218ac84fb802985e99336cd9dfbe71fc54da4bce",
+      "bid24hrXp": 44.79384735367291,
+      "bidTotalXp": 294.1290762265898,
+      "username": null,
+      "rank": "253",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x0b245936e6c3cd1f7b3bb2d7a5c591f7130d31d9",
+      "bid24hrXp": 44.51216836320163,
+      "bidTotalXp": 45.75833339663459,
+      "username": null,
+      "rank": "254",
+      "blurListings": 6,
+      "numberListings": 6
+    },
+    {
+      "walletAddress": "0x9dbd781eeba135ad2a779926880adc89196a3265",
+      "bid24hrXp": 44.29332001401531,
+      "bidTotalXp": 211.24490032006287,
+      "username": null,
+      "rank": "255",
+      "blurListings": 22,
+      "numberListings": 22
+    },
+    {
+      "walletAddress": "0xb960665d4e601063df28c9067c0d925069cf9142",
+      "bid24hrXp": 44.21809767119653,
+      "bidTotalXp": 643.844581159368,
+      "username": null,
+      "rank": "256",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xd078eed5f3aa148ca7b507fe2bbda880fcbeca0e",
+      "bid24hrXp": 44.185688093563876,
+      "bidTotalXp": 48.89303271880466,
+      "username": null,
+      "rank": "257",
+      "blurListings": 6,
+      "numberListings": 6
+    },
+    {
+      "walletAddress": "0xa08a472b2983b5485442b0d3a7ba7d4b2ca8ca9a",
+      "bid24hrXp": 44.18085141572834,
+      "bidTotalXp": 383.8719850859489,
+      "username": null,
+      "rank": "258",
+      "blurListings": 17,
+      "numberListings": 17
+    },
+    {
+      "walletAddress": "0xfcb11f4f6749dd517aaa9f38035fecc1fd91291d",
+      "bid24hrXp": 43.852675444935514,
+      "bidTotalXp": 334.03756890915196,
+      "username": null,
+      "rank": "259",
+      "blurListings": 53,
+      "numberListings": 53
+    },
+    {
+      "walletAddress": "0x3d892f8a18543959c1f8865ce7b6b45654c8f073",
+      "bid24hrXp": 43.780506559771894,
+      "bidTotalXp": 333.8153494515751,
+      "username": null,
+      "rank": "260",
+      "blurListings": 22,
+      "numberListings": 22
+    },
+    {
+      "walletAddress": "0x700996c10aa31f0ff0589cef450e226e66d3f977",
+      "bid24hrXp": 43.50476824816188,
+      "bidTotalXp": 479.41990038107883,
+      "username": "kuaizi.eth",
+      "rank": "261",
+      "blurListings": 6,
+      "numberListings": 6
+    },
+    {
+      "walletAddress": "0x37a3b0556b8bdbd90856427240db1a1d17106143",
+      "bid24hrXp": 43.270308826753734,
+      "bidTotalXp": 43.20049309155266,
+      "username": null,
+      "rank": "262",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x66b0f5a6dc5e26b1a064d5576e349650ec012128",
+      "bid24hrXp": 43.07411722044658,
+      "bidTotalXp": 133.47488436975073,
+      "username": null,
+      "rank": "263",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x757b69134c233b2b52d1c89cd396091501863354",
+      "bid24hrXp": 42.89337986499604,
+      "bidTotalXp": 175.34348443543374,
+      "username": null,
+      "rank": "264",
+      "blurListings": 6,
+      "numberListings": 6
+    },
+    {
+      "walletAddress": "0x1a7f5b81c30ec794ac087e896424b88fa03458fe",
+      "bid24hrXp": 42.305904060424275,
+      "bidTotalXp": 93.90287943386464,
+      "username": null,
+      "rank": "265",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x87b89c9cd374cf4dea224c5f19e0456d1cca5846",
+      "bid24hrXp": 41.95257102831944,
+      "bidTotalXp": 57.508564467087915,
+      "username": null,
+      "rank": "266",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x71b508d4d4169323abd926a0bbf3c474996c19cf",
+      "bid24hrXp": 41.871725048278606,
+      "bidTotalXp": 42.06895620484301,
+      "username": null,
+      "rank": "267",
+      "blurListings": 8,
+      "numberListings": 8
+    },
+    {
+      "walletAddress": "0xffce05977d9bbb31a2afeb10980f7e35247d1121",
+      "bid24hrXp": 41.79987218491343,
+      "bidTotalXp": 351.4416369018383,
+      "username": null,
+      "rank": "268",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0xcdd60e7b7ade44053a67349a6e856c0ae33d2b91",
+      "bid24hrXp": 41.62837934140158,
+      "bidTotalXp": 140.63146516807055,
+      "username": "tomx.eth",
+      "rank": "269",
+      "blurListings": 8,
+      "numberListings": 8
+    },
+    {
+      "walletAddress": "0xd8703fc6046d63cb2293384ef91ff493803c6aa6",
+      "bid24hrXp": 41.318601030544826,
+      "bidTotalXp": 115.14197570890273,
+      "username": "pitchmoneymaker.eth",
+      "rank": "270",
+      "blurListings": 8,
+      "numberListings": 13
+    },
+    {
+      "walletAddress": "0x53dda1c53e09b87cc70e8c7d30362b1377aa887d",
+      "bid24hrXp": 41.26357166524938,
+      "bidTotalXp": 105.33874973905236,
+      "username": null,
+      "rank": "271",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x0ee3ed589578ad435a66c1e78a6c6403c7d8c987",
+      "bid24hrXp": 41.072776009627816,
+      "bidTotalXp": 40.94830622866746,
+      "username": null,
+      "rank": "272",
+      "blurListings": 6,
+      "numberListings": 6
+    },
+    {
+      "walletAddress": "0x27eb78c1eade6fc040d25b94e7acf6bbe0689f0a",
+      "bid24hrXp": 40.668169224452285,
+      "bidTotalXp": 204.03239734525366,
+      "username": null,
+      "rank": "273",
+      "blurListings": 38,
+      "numberListings": 40
+    },
+    {
+      "walletAddress": "0x014a64241e230541626be1060443c16bfe0900c6",
+      "bid24hrXp": 40.47020752621289,
+      "bidTotalXp": 173.1516331951157,
+      "username": null,
+      "rank": "274",
+      "blurListings": 3,
+      "numberListings": 3
+    },
+    {
+      "walletAddress": "0xed1e24f7fe36bcb0ea582da4e2fa079c1997a5d4",
+      "bid24hrXp": 40.38844966968844,
+      "bidTotalXp": 109.70722532426599,
+      "username": null,
+      "rank": "275",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xb4ae4311299c87cec3f714f6b1a7f5af3c84fde3",
+      "bid24hrXp": 40.32125108660357,
+      "bidTotalXp": 51.75977020984043,
+      "username": null,
+      "rank": "276",
+      "blurListings": 48,
+      "numberListings": 48
+    },
+    {
+      "walletAddress": "0xb62c74f6672e9acc0978144b3cc8892d690aa8e0",
+      "bid24hrXp": 40.09352776453836,
+      "bidTotalXp": 156.91430490042467,
+      "username": null,
+      "rank": "277",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x926a7fbb205b5df79c47bcc80786afe091673623",
+      "bid24hrXp": 40.03532610896217,
+      "bidTotalXp": 73.96698263359201,
+      "username": null,
+      "rank": "278",
+      "blurListings": 4,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x7cc6c663107dfcec6735d9497faea446e70d7abc",
+      "bid24hrXp": 40.01828243992146,
+      "bidTotalXp": 40.11416413139033,
+      "username": null,
+      "rank": "279",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x997e56f2b12ebd68d0e561149c9a8d32d6742672",
+      "bid24hrXp": 39.94196533735986,
+      "bidTotalXp": 77.97628449473716,
+      "username": null,
+      "rank": "280",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x7a70536c4d695b1ec9df972e91461e834bfb00e8",
+      "bid24hrXp": 39.78023639546478,
+      "bidTotalXp": 105.61252236759452,
+      "username": "memeticpower.eth",
+      "rank": "281",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x95c1504657ab244cf8b728625fd5e57a14a05606",
+      "bid24hrXp": 39.50214169061805,
+      "bidTotalXp": 80.0011828943157,
+      "username": null,
+      "rank": "282",
+      "blurListings": 24,
+      "numberListings": 24
+    },
+    {
+      "walletAddress": "0x9776c82c8a4e9a388829cf4bd78d3cc7b25e09f3",
+      "bid24hrXp": 39.39717356033815,
+      "bidTotalXp": 156.82857966325486,
+      "username": null,
+      "rank": "283",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x556272591d28705afa610fb6c82d299379fc162b",
+      "bid24hrXp": 39.350557542726456,
+      "bidTotalXp": 247.5119085914358,
+      "username": null,
+      "rank": "284",
+      "blurListings": 12,
+      "numberListings": 28
+    },
+    {
+      "walletAddress": "0xc94c25cf9c92be618bc610aafc523c5a29c9ad85",
+      "bid24hrXp": 38.82574872240311,
+      "bidTotalXp": 38.71086657563883,
+      "username": null,
+      "rank": "285",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x5eba35d60f0f995ac7118d290f43292c7937b52e",
+      "bid24hrXp": 38.7548667185431,
+      "bidTotalXp": 86.75862729990945,
+      "username": null,
+      "rank": "286",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xc01449d7494e0ad498a2e4749531e9216cf77ca0",
+      "bid24hrXp": 38.66987718678769,
+      "bidTotalXp": 121.31955889900141,
+      "username": null,
+      "rank": "287",
+      "blurListings": 8,
+      "numberListings": 8
+    },
+    {
+      "walletAddress": "0x23c9b27441d2a0fc8c4606a56f77809d63428f8e",
+      "bid24hrXp": 38.23868370123435,
+      "bidTotalXp": 61.807020172354605,
+      "username": null,
+      "rank": "288",
+      "blurListings": 12,
+      "numberListings": 12
+    },
+    {
+      "walletAddress": "0xdf2d728abdd2284dfbc1e1cf883444e8afb277e7",
+      "bid24hrXp": 38.23220637921417,
+      "bidTotalXp": 180.15800660718705,
+      "username": null,
+      "rank": "289",
+      "blurListings": 8,
+      "numberListings": 8
+    },
+    {
+      "walletAddress": "0xca7832249f2239c56ca35d017af1c18f2495923f",
+      "bid24hrXp": 37.91891050776912,
+      "bidTotalXp": 163.2841405016758,
+      "username": null,
+      "rank": "290",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xfb643c546acae32584ecd283f97803f344a39f1b",
+      "bid24hrXp": 37.878428297309554,
+      "bidTotalXp": 527.4908725297857,
+      "username": null,
+      "rank": "291",
+      "blurListings": 9,
+      "numberListings": 9
+    },
+    {
+      "walletAddress": "0xed1efb8184a6d9498e98695087da3903376b925a",
+      "bid24hrXp": 37.732187612873055,
+      "bidTotalXp": 40.90577501561601,
+      "username": null,
+      "rank": "292",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0xf9d7bbd99eea38eb67ce7ff13be0ff8e25c98c42",
+      "bid24hrXp": 37.67647417800061,
+      "bidTotalXp": 136.21257948441175,
+      "username": null,
+      "rank": "293",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x7f8e8c47ae4332d8d59befe3b2ffe94aab674005",
+      "bid24hrXp": 37.569700562126926,
+      "bidTotalXp": 64.39609853573457,
+      "username": null,
+      "rank": "294",
+      "blurListings": 21,
+      "numberListings": 21
+    },
+    {
+      "walletAddress": "0x61fd0d043d519f5a2bd05785000f30db96809429",
+      "bid24hrXp": 37.50242829752617,
+      "bidTotalXp": 1096.897394808397,
+      "username": "985.eth",
+      "rank": "295",
+      "blurListings": 18,
+      "numberListings": 21
+    },
+    {
+      "walletAddress": "0x73c4818b537a4108d3e90dc83baabe80405c66d8",
+      "bid24hrXp": 37.491779745464726,
+      "bidTotalXp": 196.29359850749339,
+      "username": null,
+      "rank": "296",
+      "blurListings": 16,
+      "numberListings": 21
+    },
+    {
+      "walletAddress": "0x7f6fe035059b4c332d8984c6fa9d01f1f03ba718",
+      "bid24hrXp": 37.232717833445264,
+      "bidTotalXp": 37.232717833445264,
+      "username": null,
+      "rank": "297",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x319d2cfc79d480481a73180351d66c1d538ba7b4",
+      "bid24hrXp": 37.08016754471814,
+      "bidTotalXp": 37.08016754471814,
+      "username": null,
+      "rank": "298",
+      "blurListings": 9,
+      "numberListings": 9
+    },
+    {
+      "walletAddress": "0x29f1327bb1d97c50ac4b62d7686de154d40d207a",
+      "bid24hrXp": 37.01249900748123,
+      "bidTotalXp": 306.46997314298466,
+      "username": null,
+      "rank": "299",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x1155d3ac9fdcf15bd82c89a571af3aebe9bf4333",
+      "bid24hrXp": 36.984413621440645,
+      "bidTotalXp": 63.39454978482238,
+      "username": null,
+      "rank": "300",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x1910515ced2e66d40a093341e961bc92eff0e4db",
+      "bid24hrXp": 36.927639115685785,
+      "bidTotalXp": 1143.1836218621013,
+      "username": null,
+      "rank": "301",
+      "blurListings": 116,
+      "numberListings": 116
+    },
+    {
+      "walletAddress": "0xcb892e05fa8f48d6c531cba279eea615f23a0c77",
+      "bid24hrXp": 36.906431070819366,
+      "bidTotalXp": 1602.7919427489173,
+      "username": "lostbid.eth",
+      "rank": "302",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xd3dbdda24c37eb951142a42412fc401f6601cde2",
+      "bid24hrXp": 36.89934350359789,
+      "bidTotalXp": 125.08475460980777,
+      "username": null,
+      "rank": "303",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0xba26877c2036e1f2baba63bdd5bfe996b050e13c",
+      "bid24hrXp": 36.73489392882124,
+      "bidTotalXp": 4308.187266747027,
+      "username": null,
+      "rank": "304",
+      "blurListings": 78,
+      "numberListings": 78
+    },
+    {
+      "walletAddress": "0xdd90986c500320b97636984194eba00299089e5a",
+      "bid24hrXp": 36.59910544723373,
+      "bidTotalXp": 54.939466695843066,
+      "username": "braindamaged.eth",
+      "rank": "305",
+      "blurListings": 3,
+      "numberListings": 3
+    },
+    {
+      "walletAddress": "0xaafb164259d27122530aef535dcd059f5b3dc844",
+      "bid24hrXp": 36.52437962049678,
+      "bidTotalXp": 42.471308642865075,
+      "username": "diamondcruiser.eth",
+      "rank": "306",
+      "blurListings": 6,
+      "numberListings": 6
+    },
+    {
+      "walletAddress": "0xe0c13b28698397521b5eb7e93c9695bee72b4cf1",
+      "bid24hrXp": 36.517159027358026,
+      "bidTotalXp": 345.41413657775564,
+      "username": null,
+      "rank": "307",
+      "blurListings": 8,
+      "numberListings": 9
+    },
+    {
+      "walletAddress": "0x46a29db355abdc3801448ece9832944b99cf6c12",
+      "bid24hrXp": 36.50563560328534,
+      "bidTotalXp": 174.54007784043407,
+      "username": null,
+      "rank": "308",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x4fde6e0af241816a38346ee014482f88311d0451",
+      "bid24hrXp": 36.42791496129702,
+      "bidTotalXp": 160.3946968475471,
+      "username": "0xflipstate.eth",
+      "rank": "309",
+      "blurListings": 13,
+      "numberListings": 15
+    },
+    {
+      "walletAddress": "0x4e51a06e4643197e1be2f050b6af60f9ad3cef06",
+      "bid24hrXp": 36.41946297794525,
+      "bidTotalXp": 131.02506303556893,
+      "username": null,
+      "rank": "310",
+      "blurListings": 51,
+      "numberListings": 51
+    },
+    {
+      "walletAddress": "0x484a85bd6bce83c30b7680e1822e4ddfd335e481",
+      "bid24hrXp": 36.050081684638855,
+      "bidTotalXp": 434.86874088527804,
+      "username": null,
+      "rank": "311",
+      "blurListings": 3,
+      "numberListings": 3
+    },
+    {
+      "walletAddress": "0xa0c82f268409d9cdda1077c687c93889e528e517",
+      "bid24hrXp": 36.00769912484821,
+      "bidTotalXp": 124.76672361959461,
+      "username": null,
+      "rank": "312",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0xebe01d1898b97644cacc9cf7913291515a5ae968",
+      "bid24hrXp": 35.92494894574561,
+      "bidTotalXp": 441.3660234446884,
+      "username": null,
+      "rank": "313",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x142668dc89e7e69ce985643ad3759fa8c518a884",
+      "bid24hrXp": 35.7118150374561,
+      "bidTotalXp": 107.14038644350815,
+      "username": null,
+      "rank": "314",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x7852f070ff1929cf555ceee0b12e98b4b1544a1c",
+      "bid24hrXp": 35.70828920696651,
+      "bidTotalXp": 42.95453120223233,
+      "username": null,
+      "rank": "315",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x862bb4dae420ad9bbf9292b8915e4bc6a4de6802",
+      "bid24hrXp": 35.553824697847524,
+      "bidTotalXp": 183.9849053013633,
+      "username": null,
+      "rank": "316",
+      "blurListings": 8,
+      "numberListings": 8
+    },
+    {
+      "walletAddress": "0x9328429372db08d406a8953f6b4bf9f6c86797aa",
+      "bid24hrXp": 35.35558808359031,
+      "bidTotalXp": 314.47823299385055,
+      "username": null,
+      "rank": "317",
+      "blurListings": 8,
+      "numberListings": 8
+    },
+    {
+      "walletAddress": "0x468a3dd19a5b8cb94fa143d01fe44b151c648552",
+      "bid24hrXp": 35.263126296665334,
+      "bidTotalXp": 75.15255805431967,
+      "username": "808168.eth",
+      "rank": "318",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x5498f6e2a58b767c3c89431cdb79a8c26adfa14c",
+      "bid24hrXp": 35.18958753817142,
+      "bidTotalXp": 192.06900906325055,
+      "username": null,
+      "rank": "319",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x0de7f448c94d3b9214d3f510300ffc4dd0b7fec5",
+      "bid24hrXp": 35.151114033178644,
+      "bidTotalXp": 513.8502807450636,
+      "username": null,
+      "rank": "320",
+      "blurListings": 3,
+      "numberListings": 3
+    },
+    {
+      "walletAddress": "0x9f28152ae399a6f1b9760c04972de4f9303c0c9f",
+      "bid24hrXp": 35.122071285463775,
+      "bidTotalXp": 193.48361409890933,
+      "username": null,
+      "rank": "321",
+      "blurListings": 8,
+      "numberListings": 8
+    },
+    {
+      "walletAddress": "0x482ca786becd868e6a690653a74d440dbeac57be",
+      "bid24hrXp": 35.1145771470454,
+      "bidTotalXp": 242.7831497328352,
+      "username": null,
+      "rank": "322",
+      "blurListings": 28,
+      "numberListings": 28
+    },
+    {
+      "walletAddress": "0x139c459539792b9519bac66fc4c93d6fe53b6708",
+      "bid24hrXp": 35.09354207223552,
+      "bidTotalXp": 385.42435166696754,
+      "username": "facehunter.eth",
+      "rank": "323",
+      "blurListings": 41,
+      "numberListings": 41
+    },
+    {
+      "walletAddress": "0x888888618a6075386ab07f501649c8943d0b3ecd",
+      "bid24hrXp": 35.014046393178944,
+      "bidTotalXp": 58.442022799604466,
+      "username": null,
+      "rank": "324",
+      "blurListings": 7,
+      "numberListings": 7
+    },
+    {
+      "walletAddress": "0x0d7515ab41dec69d0f611db166ed6c011af494b0",
+      "bid24hrXp": 35.01346245057201,
+      "bidTotalXp": 35.56087340782682,
+      "username": null,
+      "rank": "325",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x2244deba8c0e788a60b30b805ff970e082bdbc5a",
+      "bid24hrXp": 34.84480954378154,
+      "bidTotalXp": 133.11314238575642,
+      "username": "6240.eth",
+      "rank": "326",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x3259a0527fb9f127c7d072f651a8d715aa7f2b70",
+      "bid24hrXp": 34.706559263745675,
+      "bidTotalXp": 120.1583160576392,
+      "username": null,
+      "rank": "327",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x7932c2634df57753046053f281ae201fdc167f28",
+      "bid24hrXp": 34.5933811465989,
+      "bidTotalXp": 34.5933811465989,
+      "username": null,
+      "rank": "328",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xa07221143565ac4202371cdcb15e7091cde47474",
+      "bid24hrXp": 34.5112591620065,
+      "bidTotalXp": 644.7573100635313,
+      "username": "tinakitten.eth",
+      "rank": "329",
+      "blurListings": 16,
+      "numberListings": 16
+    },
+    {
+      "walletAddress": "0x5ae73ea42d55a4994050ba8a3351087375aa912c",
+      "bid24hrXp": 34.42007652259502,
+      "bidTotalXp": 46.431601648361784,
+      "username": null,
+      "rank": "330",
+      "blurListings": 22,
+      "numberListings": 22
+    },
+    {
+      "walletAddress": "0xd40abc29445a8899032f6cab196c8cd1addc0baa",
+      "bid24hrXp": 34.34537959369488,
+      "bidTotalXp": 241.78932231964058,
+      "username": null,
+      "rank": "331",
+      "blurListings": 7,
+      "numberListings": 7
+    },
+    {
+      "walletAddress": "0xb26b5d90c8961a779efc8d8ad881b128dd8385eb",
+      "bid24hrXp": 34.33488553482261,
+      "bidTotalXp": 399.1475702542656,
+      "username": null,
+      "rank": "332",
+      "blurListings": 27,
+      "numberListings": 28
+    },
+    {
+      "walletAddress": "0x1d1c9dad9a24b1e9324605153906d584520b8e93",
+      "bid24hrXp": 34.13293716618799,
+      "bidTotalXp": 33.840029546771476,
+      "username": null,
+      "rank": "333",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xa2d6a2c51b2ef08b5363710dd3ab7db4e62abc9e",
+      "bid24hrXp": 34.12085811108968,
+      "bidTotalXp": 77.68296387600623,
+      "username": null,
+      "rank": "334",
+      "blurListings": 3,
+      "numberListings": 3
+    },
+    {
+      "walletAddress": "0xf6d0674ad1edd38765f777eb9faf33e1cb1a401c",
+      "bid24hrXp": 34.11927193791776,
+      "bidTotalXp": 36.16251693111337,
+      "username": null,
+      "rank": "335",
+      "blurListings": 31,
+      "numberListings": 31
+    },
+    {
+      "walletAddress": "0x5fd2c02689d138547b7b1b9e7d9a309d5a03edcd",
+      "bid24hrXp": 34.08649105141541,
+      "bidTotalXp": 288.86185228823405,
+      "username": "jakeandbake.eth",
+      "rank": "336",
+      "blurListings": 9,
+      "numberListings": 9
+    },
+    {
+      "walletAddress": "0xf93a61e145157f5f70e1ec71fe2836497b12ef0e",
+      "bid24hrXp": 33.88675617293055,
+      "bidTotalXp": 39.49002451977139,
+      "username": "zedge.eth",
+      "rank": "337",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x064635e9ad8c770df4430180f0983ac0c59fc3fc",
+      "bid24hrXp": 33.849069859389026,
+      "bidTotalXp": 33.851563395676216,
+      "username": "verymuchpoor.eth",
+      "rank": "338",
+      "blurListings": 31,
+      "numberListings": 31
+    },
+    {
+      "walletAddress": "0x473b6f18a3c80a94cd736658745939aa4c72b47c",
+      "bid24hrXp": 33.827737444866536,
+      "bidTotalXp": 157.9682200802513,
+      "username": null,
+      "rank": "339",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x1314b92d865da191b1ced0cc288cdd4823893029",
+      "bid24hrXp": 33.82158611081866,
+      "bidTotalXp": 108.23267202434391,
+      "username": null,
+      "rank": "340",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xd6e0e28caa6f7e9f65c77291259ef30b26d524d1",
+      "bid24hrXp": 33.584243829675756,
+      "bidTotalXp": 146.1836297679821,
+      "username": null,
+      "rank": "341",
+      "blurListings": 20,
+      "numberListings": 20
+    },
+    {
+      "walletAddress": "0x1ab1c070c7f1958dbfc5537340cd8056580c43fc",
+      "bid24hrXp": 33.534527629181994,
+      "bidTotalXp": 302.8819585530971,
+      "username": "联合国银行.eth",
+      "rank": "342",
+      "blurListings": 17,
+      "numberListings": 17
+    },
+    {
+      "walletAddress": "0xe14e7ee63574ab922eb454d61d2d39ec00e2b02e",
+      "bid24hrXp": 33.476196566052224,
+      "bidTotalXp": 254.3036932864641,
+      "username": null,
+      "rank": "343",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xc60003909d9a4895c40d90acc86409e79e4c1057",
+      "bid24hrXp": 33.44793261127442,
+      "bidTotalXp": 143.96166661927646,
+      "username": null,
+      "rank": "344",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x041c36713d3142b520aed45cbd3ffc5b91311eef",
+      "bid24hrXp": 32.91541593933764,
+      "bidTotalXp": 318.4376728532531,
+      "username": "lay’s.eth",
+      "rank": "345",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xf19e64b88f2240c453e61d1c8d814a7c2c91e1a5",
+      "bid24hrXp": 32.797667034193466,
+      "bidTotalXp": 79.09611470248892,
+      "username": null,
+      "rank": "346",
+      "blurListings": 168,
+      "numberListings": 168
+    },
+    {
+      "walletAddress": "0xac9f48825c51f16125d03583376fb170e94e0a79",
+      "bid24hrXp": 32.79232783484832,
+      "bidTotalXp": 302.05212282097875,
+      "username": null,
+      "rank": "347",
+      "blurListings": 13,
+      "numberListings": 13
+    },
+    {
+      "walletAddress": "0x3843845731be3cadaf77307cbbfd92323fefbcab",
+      "bid24hrXp": 32.63789785881393,
+      "bidTotalXp": 70.47964957050743,
+      "username": null,
+      "rank": "348",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0xe91bb7500df588a333acd7a9c57488fccb40ef4c",
+      "bid24hrXp": 32.61476590470068,
+      "bidTotalXp": 266.73940335979927,
+      "username": null,
+      "rank": "349",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x2cb0d9816223c2fee4c2e5339618cd0347dc6a66",
+      "bid24hrXp": 32.48942010017475,
+      "bidTotalXp": 340.0353525465441,
+      "username": null,
+      "rank": "350",
+      "blurListings": 11,
+      "numberListings": 12
+    },
+    {
+      "walletAddress": "0x0a4dfaedb7776eee66a710e21fb50ca9a0e0ef23",
+      "bid24hrXp": 32.45780242132783,
+      "bidTotalXp": 90.04125061063455,
+      "username": null,
+      "rank": "351",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xd4cc2708515da66a3ec0c25db53d2a623914d179",
+      "bid24hrXp": 32.293740834348384,
+      "bidTotalXp": 118.59091267805324,
+      "username": null,
+      "rank": "352",
+      "blurListings": 7,
+      "numberListings": 13
+    },
+    {
+      "walletAddress": "0x1cdfe1c2fe7496a30c6b654dec5eb2f47a47f8bc",
+      "bid24hrXp": 32.276057025975305,
+      "bidTotalXp": 285.01145364600626,
+      "username": null,
+      "rank": "353",
+      "blurListings": 4,
+      "numberListings": 4
+    },
+    {
+      "walletAddress": "0x1b4e0986d073b44a30fad7fa5e68088579c279cf",
+      "bid24hrXp": 32.265821944820196,
+      "bidTotalXp": 93.82279945300381,
+      "username": null,
+      "rank": "354",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xbcc84dd5456fab41d2abe9d54c7a1abc8e74cd7e",
+      "bid24hrXp": 32.227907822501024,
+      "bidTotalXp": 240.38723278681138,
+      "username": "qqqwwweee.eth",
+      "rank": "355",
+      "blurListings": 4,
+      "numberListings": 4
+    },
+    {
+      "walletAddress": "0xfdc178bb3e0d6f38894f66a1a6377da89bbb9aea",
+      "bid24hrXp": 32.19931902189708,
+      "bidTotalXp": 135.15330786352274,
+      "username": null,
+      "rank": "356",
+      "blurListings": 2,
+      "numberListings": 4
+    },
+    {
+      "walletAddress": "0xaab961723e77c77af13968f89beb80ee8c815cf4",
+      "bid24hrXp": 32.05659328988731,
+      "bidTotalXp": 91.85057881170431,
+      "username": null,
+      "rank": "357",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xea64ea9bf64d66df7c7bfb5d973cf069342b6ef2",
+      "bid24hrXp": 32.01641465198828,
+      "bidTotalXp": 167.99099601634566,
+      "username": "901209.eth",
+      "rank": "358",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0xba2039974a2e088344b4dc804da8ef88ae00edd9",
+      "bid24hrXp": 32.00537646524839,
+      "bidTotalXp": 269.56535523457495,
+      "username": "zrool.eth",
+      "rank": "359",
+      "blurListings": 4,
+      "numberListings": 4
+    },
+    {
+      "walletAddress": "0xb76da5dd24754b54634feac410602d678f30d7b0",
+      "bid24hrXp": 31.970633245602478,
+      "bidTotalXp": 36.774411589183146,
+      "username": null,
+      "rank": "360",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xe414c3a450193b47e9684919040ef608c3b378ae",
+      "bid24hrXp": 31.953057397476364,
+      "bidTotalXp": 82.18160283091825,
+      "username": null,
+      "rank": "361",
+      "blurListings": 15,
+      "numberListings": 15
+    },
+    {
+      "walletAddress": "0x3933da0c6bed62028ee126f24ae9e43063eceb17",
+      "bid24hrXp": 31.929841189564947,
+      "bidTotalXp": 153.81888279376903,
+      "username": null,
+      "rank": "362",
+      "blurListings": 3,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x7defd223df7566f8bfdf2d03df2c442c43133e82",
+      "bid24hrXp": 31.90710302842211,
+      "bidTotalXp": 104.02012427480481,
+      "username": null,
+      "rank": "363",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x02efc390c8c60e978e991b15d71ebaa34783f090",
+      "bid24hrXp": 31.791513577648175,
+      "bidTotalXp": 80.72720049312422,
+      "username": "bagholder69.eth",
+      "rank": "364",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x2039eea37fc99f70015b07aae4d99300b112c62b",
+      "bid24hrXp": 31.74895064548954,
+      "bidTotalXp": 31.748950645489547,
+      "username": null,
+      "rank": "365",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x5d3f81ad171616571bf3119a3120e392b914fd7c",
+      "bid24hrXp": 31.521382734981575,
+      "bidTotalXp": 1276.3416223909692,
+      "username": null,
+      "rank": "366",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0xf40ca4ca8a135d11d981a0226ea35b9900d5fd5f",
+      "bid24hrXp": 31.447835980521745,
+      "bidTotalXp": 95.16391143758219,
+      "username": null,
+      "rank": "367",
+      "blurListings": 3,
+      "numberListings": 3
+    },
+    {
+      "walletAddress": "0x1fbe7279da134c53fa521f5ee65891948e775e17",
+      "bid24hrXp": 31.442185973963095,
+      "bidTotalXp": 227.49690359864866,
+      "username": null,
+      "rank": "368",
+      "blurListings": 203,
+      "numberListings": 203
+    },
+    {
+      "walletAddress": "0xfc2f1aaddcea2ba6b930d198df290c212f37256d",
+      "bid24hrXp": 31.401130566482585,
+      "bidTotalXp": 33.71525228318514,
+      "username": null,
+      "rank": "369",
+      "blurListings": 0,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x7e5124202b1a177cbc254b2c2262541682f20601",
+      "bid24hrXp": 31.35763645405561,
+      "bidTotalXp": 106.18934312063965,
+      "username": "finanshill.eth",
+      "rank": "370",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xa858b62061e014686e1a5ba57e88516ae64271fa",
+      "bid24hrXp": 31.047115318325037,
+      "bidTotalXp": 302.383592999772,
+      "username": null,
+      "rank": "371",
+      "blurListings": 49,
+      "numberListings": 49
+    },
+    {
+      "walletAddress": "0xe03d7cb5e146e7f67c5da6bd81d7252b2d6eea09",
+      "bid24hrXp": 30.92157617781561,
+      "bidTotalXp": 148.3192137992396,
+      "username": null,
+      "rank": "372",
+      "blurListings": 9,
+      "numberListings": 17
+    },
+    {
+      "walletAddress": "0x16224283be3f7c0245d9d259ea82ead7fcb8343d",
+      "bid24hrXp": 30.91170494459366,
+      "bidTotalXp": 142.72680242716208,
+      "username": null,
+      "rank": "373",
+      "blurListings": 31,
+      "numberListings": 34
+    },
+    {
+      "walletAddress": "0xf490f58567fabfc2aee47ffa3a87be29590df3b3",
+      "bid24hrXp": 30.657891175340396,
+      "bidTotalXp": 110.32813871268783,
+      "username": null,
+      "rank": "374",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x1bd501428b33c24c3a6d8c2ae850ad89b5b630ab",
+      "bid24hrXp": 30.657840114825298,
+      "bidTotalXp": 47.760912870283654,
+      "username": null,
+      "rank": "375",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x17a3ea29dcb26e04bdb1d7c08c3fe98211edad0f",
+      "bid24hrXp": 30.604801859827184,
+      "bidTotalXp": 205.088663773272,
+      "username": null,
+      "rank": "376",
+      "blurListings": 33,
+      "numberListings": 33
+    },
+    {
+      "walletAddress": "0xfaf9f55e72d088f68cc01b2ff505abc11f6597b9",
+      "bid24hrXp": 30.524079477577512,
+      "bidTotalXp": 233.9429866022867,
+      "username": "mandoo.eth",
+      "rank": "377",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x41e72d30c967a595cc2c7dbc9e1ed98638f3b8c8",
+      "bid24hrXp": 30.519960142580945,
+      "bidTotalXp": 33.578379760636764,
+      "username": null,
+      "rank": "378",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x30c98ab8fb66212634bf284f3c13b1e1fe61b3ce",
+      "bid24hrXp": 30.514132669603406,
+      "bidTotalXp": 225.53554834183453,
+      "username": "pinpoong.eth",
+      "rank": "379",
+      "blurListings": 3,
+      "numberListings": 3
+    },
+    {
+      "walletAddress": "0x49cadc05a6fdb334b4a9ebb979c814db1d0f03a2",
+      "bid24hrXp": 30.38907748698565,
+      "bidTotalXp": 547.6878499823224,
+      "username": null,
+      "rank": "380",
+      "blurListings": 68,
+      "numberListings": 68
+    },
+    {
+      "walletAddress": "0x606e10a0f38b936f86ba98e11496cb5677952c09",
+      "bid24hrXp": 30.364883190728865,
+      "bidTotalXp": 242.19398059257622,
+      "username": "chipdiamond.eth",
+      "rank": "381",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0xd43124f95b42c78b7352e965c647d7574e515014",
+      "bid24hrXp": 30.362290316354475,
+      "bidTotalXp": 349.42960343328883,
+      "username": null,
+      "rank": "382",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x3c94850199b9dad42bb9e2abeff73bf07c1eced3",
+      "bid24hrXp": 30.21515796718209,
+      "bidTotalXp": 159.56958520829218,
+      "username": null,
+      "rank": "383",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x3c6d46596bcced856e462e41504304b0994f8679",
+      "bid24hrXp": 30.18683575360776,
+      "bidTotalXp": 53.018707881774894,
+      "username": null,
+      "rank": "384",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x82bbcac5a8b81368a4a96f0265cb40e46020a1e1",
+      "bid24hrXp": 30.185096405385263,
+      "bidTotalXp": 459.8479191377264,
+      "username": "bxby.eth",
+      "rank": "385",
+      "blurListings": 9,
+      "numberListings": 9
+    },
+    {
+      "walletAddress": "0xdd3c169af9b439cd19a3e7aad98e30b782525ffd",
+      "bid24hrXp": 29.982757881873535,
+      "bidTotalXp": 161.31346149852467,
+      "username": null,
+      "rank": "386",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0xa0f3ec4ac5ecc9f94f05c7110bf1d268e0cb0faf",
+      "bid24hrXp": 29.919856546539922,
+      "bidTotalXp": 261.5074421466079,
+      "username": "baof.eth",
+      "rank": "387",
+      "blurListings": 3,
+      "numberListings": 3
+    },
+    {
+      "walletAddress": "0x5bbce58940e10a953ad691659c84b203167bfd3e",
+      "bid24hrXp": 29.85565426080137,
+      "bidTotalXp": 191.7014977794949,
+      "username": null,
+      "rank": "388",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x7791db1131057d001b1c598a06a5e232a2b26d41",
+      "bid24hrXp": 29.836677535777255,
+      "bidTotalXp": 45.68113271923204,
+      "username": null,
+      "rank": "389",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xd7e3101489d6e9a02848c50cc132c111e81c80bc",
+      "bid24hrXp": 29.737155868593945,
+      "bidTotalXp": 73.17315168433619,
+      "username": null,
+      "rank": "390",
+      "blurListings": 18,
+      "numberListings": 52
+    },
+    {
+      "walletAddress": "0x493a401122d858324517c5ec95145dc970c2c363",
+      "bid24hrXp": 29.574991795879274,
+      "bidTotalXp": 59.944293078415754,
+      "username": "lizs-vault.eth",
+      "rank": "391",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xd9ec6bef8eedcdb96c185fbb8f7fbedcb1aaf582",
+      "bid24hrXp": 29.493031455001773,
+      "bidTotalXp": 1224.6202245548382,
+      "username": null,
+      "rank": "392",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xae42cb3783ad5aa59830333dacdddf7c88ade03f",
+      "bid24hrXp": 29.406166459487327,
+      "bidTotalXp": 28.783937869737798,
+      "username": null,
+      "rank": "393",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x863e7aaded2b90a08802d362b7fbf228b65c5bc9",
+      "bid24hrXp": 29.28076460186124,
+      "bidTotalXp": 204.58132929863007,
+      "username": null,
+      "rank": "394",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0xa0a90f8a3bd49b561d98d2cae9783658ccaf00a4",
+      "bid24hrXp": 29.25952981671491,
+      "bidTotalXp": 161.52105671701884,
+      "username": null,
+      "rank": "395",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x6300bbce3090fd737277365bd9d38aa650d2aac6",
+      "bid24hrXp": 29.21207198224762,
+      "bidTotalXp": 281.02774710733746,
+      "username": null,
+      "rank": "396",
+      "blurListings": 40,
+      "numberListings": 64
+    },
+    {
+      "walletAddress": "0xb22e9e9edb80e705d038cc1bd9bedeaae20d2cf8",
+      "bid24hrXp": 29.190121827216238,
+      "bidTotalXp": 1575.4366777908629,
+      "username": null,
+      "rank": "397",
+      "blurListings": 12,
+      "numberListings": 12
+    },
+    {
+      "walletAddress": "0x43d5ae611ae02084487c73de38b2f2053292a1e1",
+      "bid24hrXp": 29.099401394058667,
+      "bidTotalXp": 104.97712721767901,
+      "username": null,
+      "rank": "398",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x66b0daa97ef0b4ab85d2eda0fa518a4c2f992a6b",
+      "bid24hrXp": 28.883640758985543,
+      "bidTotalXp": 48.37159971012852,
+      "username": null,
+      "rank": "399",
+      "blurListings": 16,
+      "numberListings": 22
+    },
+    {
+      "walletAddress": "0xf653cfa85eacd26ad8b9ecabbfadee52e8d9fa72",
+      "bid24hrXp": 28.864450653384296,
+      "bidTotalXp": 37.38010988548048,
+      "username": null,
+      "rank": "400",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x593e176bfa7a5ad9d394334b2f9157802878f94d",
+      "bid24hrXp": 28.778634049845966,
+      "bidTotalXp": 160.49174940276768,
+      "username": null,
+      "rank": "401",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x8b6680416dbfe39ce2eda9189eac0dfe72cab92a",
+      "bid24hrXp": 28.741450886795278,
+      "bidTotalXp": 33.709449476939646,
+      "username": null,
+      "rank": "402",
+      "blurListings": 16,
+      "numberListings": 29
+    },
+    {
+      "walletAddress": "0x0113a8c6585bc2f36c7ece5fc912f0063a3998cf",
+      "bid24hrXp": 28.68600427606967,
+      "bidTotalXp": 33.099068951790905,
+      "username": null,
+      "rank": "403",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xf4e08262148d6cc11a6dc8e8009d47b53d89e51b",
+      "bid24hrXp": 28.669219080942817,
+      "bidTotalXp": 66.54624472454074,
+      "username": null,
+      "rank": "404",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x95759d87638cd0880e059062af9f9eb7956a1c6a",
+      "bid24hrXp": 28.628945991036858,
+      "bidTotalXp": 42.620935481402505,
+      "username": "slushiecapital.eth",
+      "rank": "405",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xcbc69338c98887ddf680da64bf2495855e3a7218",
+      "bid24hrXp": 28.46994961463098,
+      "bidTotalXp": 100.96798253349877,
+      "username": null,
+      "rank": "406",
+      "blurListings": 4,
+      "numberListings": 4
+    },
+    {
+      "walletAddress": "0x8dbcbd5a3936091bd881d3c52edb14fe689633a1",
+      "bid24hrXp": 28.456911833105988,
+      "bidTotalXp": 54.340711499480456,
+      "username": null,
+      "rank": "407",
+      "blurListings": 35,
+      "numberListings": 35
+    },
+    {
+      "walletAddress": "0x869dd519c431732155b93bb1a8689f51e40c6a2d",
+      "bid24hrXp": 28.33241973909639,
+      "bidTotalXp": 70.4688009684752,
+      "username": null,
+      "rank": "408",
+      "blurListings": 7,
+      "numberListings": 7
+    },
+    {
+      "walletAddress": "0x7063b329f3eea1412e76530ca2a54aa864f9ae1b",
+      "bid24hrXp": 28.31315721624757,
+      "bidTotalXp": 101.0833942217104,
+      "username": null,
+      "rank": "409",
+      "blurListings": 5,
+      "numberListings": 10
+    },
+    {
+      "walletAddress": "0x14dcae28535c4ede02d0b7ec4d5257f7326e0bf9",
+      "bid24hrXp": 28.282137190944955,
+      "bidTotalXp": 484.60634952410896,
+      "username": null,
+      "rank": "410",
+      "blurListings": 16,
+      "numberListings": 16
+    },
+    {
+      "walletAddress": "0xf195ae9369cae55d585fd839ae9255b11c06b455",
+      "bid24hrXp": 28.17611626853911,
+      "bidTotalXp": 4825.617657965822,
+      "username": "eckozhang.eth",
+      "rank": "411",
+      "blurListings": 8,
+      "numberListings": 8
+    },
+    {
+      "walletAddress": "0xe15a7adbf17fbe4706b728b711ff60633445b6ae",
+      "bid24hrXp": 28.142041956245386,
+      "bidTotalXp": 73.73494204396063,
+      "username": null,
+      "rank": "412",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x7eeae0d210194f822d5facf06450d2c407728e09",
+      "bid24hrXp": 28.1117823961203,
+      "bidTotalXp": 251.04237595070688,
+      "username": null,
+      "rank": "413",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x954021052072c6b6d8e1feb5fa2c093cba72a344",
+      "bid24hrXp": 28.101922881130747,
+      "bidTotalXp": 40.599128798563044,
+      "username": null,
+      "rank": "414",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x1a969604e7c715324906bccc5f82d609d2e0c0f2",
+      "bid24hrXp": 28.08138282411928,
+      "bidTotalXp": 318.55603041901855,
+      "username": "metavulus.eth",
+      "rank": "415",
+      "blurListings": 104,
+      "numberListings": 104
+    },
+    {
+      "walletAddress": "0xf112fe9ca1dc915b1c5f4729789009ceb3ab3017",
+      "bid24hrXp": 27.93997289835754,
+      "bidTotalXp": 170.05621563402622,
+      "username": "polishdegen.eth",
+      "rank": "416",
+      "blurListings": 11,
+      "numberListings": 11
+    },
+    {
+      "walletAddress": "0xfb147907a182a8f613af8afde0cf83b8101fb8b7",
+      "bid24hrXp": 27.863745714987285,
+      "bidTotalXp": 115.32871229523681,
+      "username": null,
+      "rank": "417",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0xa7b452e57de8a705a23c33001f90e4adf9004a90",
+      "bid24hrXp": 27.820416403513974,
+      "bidTotalXp": 576.2746701006621,
+      "username": null,
+      "rank": "418",
+      "blurListings": 9,
+      "numberListings": 9
+    },
+    {
+      "walletAddress": "0xbf9fda32692b25c6083cbe48399ef019b62f0712",
+      "bid24hrXp": 27.797400113412863,
+      "bidTotalXp": 74.25206939104741,
+      "username": "pocarisvet.eth",
+      "rank": "419",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x87c36ea040e8f4e5a4c0be426514484567d190db",
+      "bid24hrXp": 27.793958013000662,
+      "bidTotalXp": 50.60374588049573,
+      "username": "ensed.eth",
+      "rank": "420",
+      "blurListings": 32,
+      "numberListings": 32
+    },
+    {
+      "walletAddress": "0xc52d469700fd9723e8d21b7ec7fea52e83bd78d1",
+      "bid24hrXp": 27.708314306347045,
+      "bidTotalXp": 161.89376328409094,
+      "username": null,
+      "rank": "421",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x9bc5f114622cc2cd0509e245c9f32633ce48149e",
+      "bid24hrXp": 27.543794885118594,
+      "bidTotalXp": 206.00652378396902,
+      "username": null,
+      "rank": "422",
+      "blurListings": 14,
+      "numberListings": 14
+    },
+    {
+      "walletAddress": "0x90dc1cd8da9858a8bee4436cc9761c3c24ae77df",
+      "bid24hrXp": 27.459684261938754,
+      "bidTotalXp": 39.56518221305028,
+      "username": null,
+      "rank": "423",
+      "blurListings": 10,
+      "numberListings": 45
+    },
+    {
+      "walletAddress": "0xf4ae4026f3e9f31bd830b5093122dc38cc04616a",
+      "bid24hrXp": 27.387718749754686,
+      "bidTotalXp": 28.89780092781155,
+      "username": null,
+      "rank": "424",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x70a2db807234916ae774e22a41453d6b64c3b537",
+      "bid24hrXp": 27.34262044739365,
+      "bidTotalXp": 189.32611850049497,
+      "username": null,
+      "rank": "425",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x13fb8e9df53dde6fb1a4018b3bd76e7f170933c3",
+      "bid24hrXp": 27.33954538187393,
+      "bidTotalXp": 161.9466532460675,
+      "username": "лечу2222гвей.eth",
+      "rank": "426",
+      "blurListings": 38,
+      "numberListings": 38
+    },
+    {
+      "walletAddress": "0xf02692a0a1c848658f176286a8cbf75010a9090b",
+      "bid24hrXp": 27.27851873845401,
+      "bidTotalXp": 242.73974910815704,
+      "username": null,
+      "rank": "427",
+      "blurListings": 19,
+      "numberListings": 19
+    },
+    {
+      "walletAddress": "0x1064aa646a7aedbd40816fc0c35e044d0244a764",
+      "bid24hrXp": 27.270193954067683,
+      "bidTotalXp": 719.4615386927353,
+      "username": "rightclickdave.eth",
+      "rank": "428",
+      "blurListings": 92,
+      "numberListings": 92
+    },
+    {
+      "walletAddress": "0x3b4dc2b06218efd3e5938bb19e1bc412073b4563",
+      "bid24hrXp": 27.16428248161083,
+      "bidTotalXp": 55.68039970933509,
+      "username": null,
+      "rank": "429",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x9380009a35d63246eee35efcf139e6610fe77ed3",
+      "bid24hrXp": 27.11313715023567,
+      "bidTotalXp": 26.992637571542968,
+      "username": null,
+      "rank": "430",
+      "blurListings": 9,
+      "numberListings": 9
+    },
+    {
+      "walletAddress": "0xaebc58c8b711452def1bb5dd7fdd04be15fa4aec",
+      "bid24hrXp": 27.06246105132965,
+      "bidTotalXp": 155.41151763618637,
+      "username": null,
+      "rank": "431",
+      "blurListings": 18,
+      "numberListings": 18
+    },
+    {
+      "walletAddress": "0x025487125787efef30cdb43dbcbc73839dac2734",
+      "bid24hrXp": 26.759189020835663,
+      "bidTotalXp": 29.123998537555124,
+      "username": null,
+      "rank": "432",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x8476b6a8aa0b4037e69e79f116f662aa0096b0c0",
+      "bid24hrXp": 26.496458528713884,
+      "bidTotalXp": 205.71796720145946,
+      "username": null,
+      "rank": "433",
+      "blurListings": 13,
+      "numberListings": 13
+    },
+    {
+      "walletAddress": "0xbaaba861464f25f52c2ee10cc3ac024f4f77812a",
+      "bid24hrXp": 26.439581680566224,
+      "bidTotalXp": 36.139485932983476,
+      "username": null,
+      "rank": "434",
+      "blurListings": 90,
+      "numberListings": 90
+    },
+    {
+      "walletAddress": "0xa04c597509e40f1b8d81c4d26f8d4d94c55ec849",
+      "bid24hrXp": 26.21649114625137,
+      "bidTotalXp": 124.40019902387728,
+      "username": null,
+      "rank": "435",
+      "blurListings": 21,
+      "numberListings": 21
+    },
+    {
+      "walletAddress": "0x1166ae53a4d8779532260dfdd84dc065bcc5b1a4",
+      "bid24hrXp": 26.173255755691454,
+      "bidTotalXp": 296.3645088320252,
+      "username": null,
+      "rank": "436",
+      "blurListings": 12,
+      "numberListings": 12
+    },
+    {
+      "walletAddress": "0x5886977245d8831eef08dea9e76f55ffffaf2af8",
+      "bid24hrXp": 26.138464990180413,
+      "bidTotalXp": 149.58000933417168,
+      "username": null,
+      "rank": "437",
+      "blurListings": 11,
+      "numberListings": 11
+    },
+    {
+      "walletAddress": "0x901f1a621be23367292633b0182a03fdba6160f9",
+      "bid24hrXp": 26.111699329903285,
+      "bidTotalXp": 66.68567144141517,
+      "username": null,
+      "rank": "438",
+      "blurListings": 18,
+      "numberListings": 18
+    },
+    {
+      "walletAddress": "0x223363b848da0272a08781d08f7678530d7238db",
+      "bid24hrXp": 26.099671297883866,
+      "bidTotalXp": 52.07162760088758,
+      "username": null,
+      "rank": "439",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x7eb1cfb984e5115db5f603e108ea451b01843593",
+      "bid24hrXp": 26.089109602314007,
+      "bidTotalXp": 143.17158247701738,
+      "username": null,
+      "rank": "440",
+      "blurListings": 19,
+      "numberListings": 19
+    },
+    {
+      "walletAddress": "0x46b4c15158ba0ea531ff88297078d4b8f0f1aa09",
+      "bid24hrXp": 26.02580941850897,
+      "bidTotalXp": 266.979547903044,
+      "username": null,
+      "rank": "441",
+      "blurListings": 34,
+      "numberListings": 34
+    },
+    {
+      "walletAddress": "0x566e64ec941a293224de6309853a7c68a96c2860",
+      "bid24hrXp": 25.79598016748198,
+      "bidTotalXp": 32.31864928493314,
+      "username": null,
+      "rank": "442",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x9951a784784348f99b1256b0c15a791e4a82c0b8",
+      "bid24hrXp": 25.743757033680716,
+      "bidTotalXp": 29.058471961660953,
+      "username": null,
+      "rank": "443",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xc29a989274fe99cc483de7ede3e0b70e947b32cf",
+      "bid24hrXp": 25.66959220692545,
+      "bidTotalXp": 41.42154848586437,
+      "username": null,
+      "rank": "444",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x51fee9bf45c5dab188b57048658696edab9d72cf",
+      "bid24hrXp": 25.635413927373175,
+      "bidTotalXp": 75.18041435268829,
+      "username": "unclebrian.eth",
+      "rank": "445",
+      "blurListings": 11,
+      "numberListings": 12
+    },
+    {
+      "walletAddress": "0x1f69f435f8cb53eca0e4495f43f74ae96de75529",
+      "bid24hrXp": 25.539938877767028,
+      "bidTotalXp": 275.6200614721355,
+      "username": null,
+      "rank": "446",
+      "blurListings": 56,
+      "numberListings": 56
+    },
+    {
+      "walletAddress": "0xc7d430d97b86fad363139f98874ffc2eeb582fdd",
+      "bid24hrXp": 25.470090459176024,
+      "bidTotalXp": 93.82684071165613,
+      "username": "smashedaces.eth",
+      "rank": "447",
+      "blurListings": 4,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x6520d71fc6226f6743ce571f0e9aa58c406a58cd",
+      "bid24hrXp": 25.420281765673277,
+      "bidTotalXp": 194.49758335097036,
+      "username": null,
+      "rank": "448",
+      "blurListings": 6,
+      "numberListings": 6
+    },
+    {
+      "walletAddress": "0x1e2ab2c1ee48aa5c705e6a638087bf7fc1877095",
+      "bid24hrXp": 25.371148295308064,
+      "bidTotalXp": 198.91658873928492,
+      "username": null,
+      "rank": "449",
+      "blurListings": 15,
+      "numberListings": 15
+    },
+    {
+      "walletAddress": "0x6112083d4bb12dbf64e4850842685aaefbeacb10",
+      "bid24hrXp": 25.332634819033263,
+      "bidTotalXp": 220.06770027842754,
+      "username": null,
+      "rank": "450",
+      "blurListings": 25,
+      "numberListings": 26
+    },
+    {
+      "walletAddress": "0x29f7d0722b567e4b243285de7210d3846fa6bc11",
+      "bid24hrXp": 25.266908222507922,
+      "bidTotalXp": 25.15058562473838,
+      "username": null,
+      "rank": "451",
+      "blurListings": 27,
+      "numberListings": 27
+    },
+    {
+      "walletAddress": "0x50dfaf1969fd5fb86a3d477449a7fac6d45a1b1a",
+      "bid24hrXp": 25.17440777292788,
+      "bidTotalXp": 25.174407772927875,
+      "username": null,
+      "rank": "452",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xc0b026cd12196153a0a13b79c3480dc24fe30447",
+      "bid24hrXp": 25.051121210210596,
+      "bidTotalXp": 145.62348629889357,
+      "username": null,
+      "rank": "453",
+      "blurListings": 14,
+      "numberListings": 14
+    },
+    {
+      "walletAddress": "0x94b8d81254db1eaa9be28a8ba7a1236dda618c35",
+      "bid24hrXp": 25.023375966120444,
+      "bidTotalXp": 124.03947394015285,
+      "username": null,
+      "rank": "454",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0xfb19c8aa78e62be0721d6f4ddc5b2b22a8e37f71",
+      "bid24hrXp": 25.021794435660464,
+      "bidTotalXp": 48.56920507200622,
+      "username": null,
+      "rank": "455",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x35f2281416437a6e3f84a459673f7a755bcc9310",
+      "bid24hrXp": 24.982867663839006,
+      "bidTotalXp": 506.5599628274992,
+      "username": null,
+      "rank": "456",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x1ca1e75e44d7d524a1f9e4fb1fa03a566f3015a5",
+      "bid24hrXp": 24.87582936397785,
+      "bidTotalXp": 162.1882124448695,
+      "username": null,
+      "rank": "457",
+      "blurListings": 7,
+      "numberListings": 7
+    },
+    {
+      "walletAddress": "0x443f58dfff2322cdd13c2c3c673a877e387fa4cf",
+      "bid24hrXp": 24.714674598055325,
+      "bidTotalXp": 44.080281566289244,
+      "username": null,
+      "rank": "458",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x2f0830b9cc296e5baef35381a78e77f42a1fe4ad",
+      "bid24hrXp": 24.661401327693106,
+      "bidTotalXp": 222.22916560436477,
+      "username": "chosta.eth",
+      "rank": "459",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x17203b9555261dd980c8134913286d27a9219b10",
+      "bid24hrXp": 24.6472979463,
+      "bidTotalXp": 319.50945875766195,
+      "username": null,
+      "rank": "460",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xf87acaa7c2446ff1bd45827f55f7f75104ab8614",
+      "bid24hrXp": 24.57214686006663,
+      "bidTotalXp": 132.129639863087,
+      "username": null,
+      "rank": "461",
+      "blurListings": 6,
+      "numberListings": 6
+    },
+    {
+      "walletAddress": "0x7f5df3ed616ec0d3dc86b999691da36215a69d85",
+      "bid24hrXp": 24.568258445238033,
+      "bidTotalXp": 25.724507378377133,
+      "username": null,
+      "rank": "462",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x40ef3ef4225e7c69188b8825f26c84983a468e7c",
+      "bid24hrXp": 24.449848485732147,
+      "bidTotalXp": 249.05719189561626,
+      "username": null,
+      "rank": "463",
+      "blurListings": 9,
+      "numberListings": 9
+    },
+    {
+      "walletAddress": "0x420e90eff0275ebdf876a2a7bef219a5db83fd15",
+      "bid24hrXp": 24.414148708354976,
+      "bidTotalXp": 30.504212541969206,
+      "username": null,
+      "rank": "464",
+      "blurListings": 3,
+      "numberListings": 3
+    },
+    {
+      "walletAddress": "0xd2811849947d3cbb8489dffb723d558270475fa2",
+      "bid24hrXp": 24.409018192168528,
+      "bidTotalXp": 507.9878476500803,
+      "username": null,
+      "rank": "465",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x0c75f526299846668f1e9323764ad45ff9c15b07",
+      "bid24hrXp": 24.3591002500792,
+      "bidTotalXp": 207.05140901426518,
+      "username": null,
+      "rank": "466",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xc0986d68e483376291922a5aa3a5a8cd8928e523",
+      "bid24hrXp": 24.293709883003324,
+      "bidTotalXp": 141.05063569850014,
+      "username": null,
+      "rank": "467",
+      "blurListings": 6,
+      "numberListings": 6
+    },
+    {
+      "walletAddress": "0x42bca311fe32d132365eb278fb7864ae300b50b2",
+      "bid24hrXp": 24.2765528189574,
+      "bidTotalXp": 132.1710498646189,
+      "username": null,
+      "rank": "468",
+      "blurListings": 11,
+      "numberListings": 11
+    },
+    {
+      "walletAddress": "0x116335c3ee633eba27c02bcfb7ee5de695e4d201",
+      "bid24hrXp": 24.222380345042218,
+      "bidTotalXp": 24.222380345042218,
+      "username": null,
+      "rank": "469",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0xce4b6b9be8ad4726b84b37951a3147c64d20e14d",
+      "bid24hrXp": 24.18069437506461,
+      "bidTotalXp": 189.4126155534638,
+      "username": null,
+      "rank": "470",
+      "blurListings": 33,
+      "numberListings": 33
+    },
+    {
+      "walletAddress": "0x65b2f2a016424438d4d1841f9a69e1ee76704cba",
+      "bid24hrXp": 24.177631505466646,
+      "bidTotalXp": 98.58089426714396,
+      "username": null,
+      "rank": "471",
+      "blurListings": 148,
+      "numberListings": 210
+    },
+    {
+      "walletAddress": "0x163c29e5d553b3ecb5f31c2b7fb9714f66ebb8d9",
+      "bid24hrXp": 24.172650686096343,
+      "bidTotalXp": 97.58909042105442,
+      "username": null,
+      "rank": "472",
+      "blurListings": 9,
+      "numberListings": 10
+    },
+    {
+      "walletAddress": "0xbdca8494017a1f359c3289378409400dc47f1457",
+      "bid24hrXp": 24.01749959833413,
+      "bidTotalXp": 112.14243925021037,
+      "username": "0xbitsun.eth",
+      "rank": "473",
+      "blurListings": 22,
+      "numberListings": 22
+    },
+    {
+      "walletAddress": "0xa25cfeee138d01e2716b963e3271549f2f28c1aa",
+      "bid24hrXp": 23.99166325262517,
+      "bidTotalXp": 125.51720555666223,
+      "username": null,
+      "rank": "474",
+      "blurListings": 5,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0x5d5335e6bea4b12dcb942cec1da951ae63f2ae64",
+      "bid24hrXp": 23.886740192678673,
+      "bidTotalXp": 466.83208528025915,
+      "username": null,
+      "rank": "475",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x04c89495405538ccf74ee8bd2a3a86f5af03f563",
+      "bid24hrXp": 23.805868012932727,
+      "bidTotalXp": 153.54134424932877,
+      "username": null,
+      "rank": "476",
+      "blurListings": 13,
+      "numberListings": 13
+    },
+    {
+      "walletAddress": "0x96025f21f49d7f63f38e43cfc8498ef1cc396497",
+      "bid24hrXp": 23.579268269737025,
+      "bidTotalXp": 23.579268269737025,
+      "username": null,
+      "rank": "477",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0xcf99a96a4f67d22aeeafd1a3758bc58684ff5907",
+      "bid24hrXp": 23.572338375249196,
+      "bidTotalXp": 157.68133537992287,
+      "username": null,
+      "rank": "478",
+      "blurListings": 15,
+      "numberListings": 30
+    },
+    {
+      "walletAddress": "0xf40f793ba6bf4ff3b7a7180e4da9c721bea85c69",
+      "bid24hrXp": 23.555037622945495,
+      "bidTotalXp": 2008.603770549386,
+      "username": null,
+      "rank": "479",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0x64178cb8054e231a355bfc5db740f0268b5ca0d2",
+      "bid24hrXp": 23.45671262745849,
+      "bidTotalXp": 128.20514883807786,
+      "username": "rvd.eth",
+      "rank": "480",
+      "blurListings": 11,
+      "numberListings": 12
+    },
+    {
+      "walletAddress": "0x65172d46bd1543a51d904d1bde6c9b037b55ac59",
+      "bid24hrXp": 23.425680110588797,
+      "bidTotalXp": 35.320804650526284,
+      "username": "paulinho.eth",
+      "rank": "481",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x360b6cc2d47d580623fe122ec5e3a1d01590ee2c",
+      "bid24hrXp": 23.29671387278268,
+      "bidTotalXp": 61.79974602652246,
+      "username": "fat-fingered.eth",
+      "rank": "482",
+      "blurListings": 36,
+      "numberListings": 38
+    },
+    {
+      "walletAddress": "0xf71946496600e1e1d47b8a77eb2f109fd82dc86a",
+      "bid24hrXp": 23.24079261910711,
+      "bidTotalXp": 211.8317329276333,
+      "username": null,
+      "rank": "483",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x22f6c4ecc8a477d8af81a56dd81f21213e586d20",
+      "bid24hrXp": 23.142390941109667,
+      "bidTotalXp": 266.75107005275026,
+      "username": null,
+      "rank": "484",
+      "blurListings": 2,
+      "numberListings": 2
+    },
+    {
+      "walletAddress": "0xe0f5afbfa874cef79e67deb4f9bdbf96f36c9083",
+      "bid24hrXp": 23.112517620884176,
+      "bidTotalXp": 54.10980006973775,
+      "username": "8701.eth",
+      "rank": "485",
+      "blurListings": 17,
+      "numberListings": 17
+    },
+    {
+      "walletAddress": "0x5be8f739c8ea94d99b44ab0b1421889c8b99b2e1",
+      "bid24hrXp": 23.07316053883953,
+      "bidTotalXp": 205.3492997619964,
+      "username": "tre.eth",
+      "rank": "486",
+      "blurListings": 75,
+      "numberListings": 75
+    },
+    {
+      "walletAddress": "0x7785a134110cc6191bc8d476beaab19e2460914e",
+      "bid24hrXp": 23.062516656663913,
+      "bidTotalXp": 169.37883870978092,
+      "username": null,
+      "rank": "487",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x3556869d14ecb3bde9f2ec51327019109f108ba0",
+      "bid24hrXp": 23.019496464260556,
+      "bidTotalXp": 88.09481033573483,
+      "username": null,
+      "rank": "488",
+      "blurListings": 4,
+      "numberListings": 4
+    },
+    {
+      "walletAddress": "0xf50131d7d2b5239fe1e934658fe3f6131532a437",
+      "bid24hrXp": 23.00249713991653,
+      "bidTotalXp": 74.37667478433605,
+      "username": null,
+      "rank": "489",
+      "blurListings": 0,
+      "numberListings": 0
+    },
+    {
+      "walletAddress": "0x68bed77273ec4794a1238c02f6de1b467fd4e952",
+      "bid24hrXp": 22.979995158918303,
+      "bidTotalXp": 315.56326209212875,
+      "username": null,
+      "rank": "490",
+      "blurListings": 8,
+      "numberListings": 8
+    },
+    {
+      "walletAddress": "0x875a7dfc5749eacfc5f2725e717d7b17cd5492fa",
+      "bid24hrXp": 22.975693636616565,
+      "bidTotalXp": 28.173105452131786,
+      "username": "realplawhale.eth",
+      "rank": "491",
+      "blurListings": 4,
+      "numberListings": 4
+    },
+    {
+      "walletAddress": "0x49c76bad5046ea4bb0876019b84fddb0d4011be5",
+      "bid24hrXp": 22.950797602042876,
+      "bidTotalXp": 150.0949106066472,
+      "username": null,
+      "rank": "492",
+      "blurListings": 4,
+      "numberListings": 4
+    },
+    {
+      "walletAddress": "0x3e34f89b48461f26e760a0ef546f8f1d4b7414b0",
+      "bid24hrXp": 22.880460221598312,
+      "bidTotalXp": 143.37416734671802,
+      "username": null,
+      "rank": "493",
+      "blurListings": 12,
+      "numberListings": 12
+    },
+    {
+      "walletAddress": "0xbb393a5e614704f5aec87d4b06e047ba23ec19ce",
+      "bid24hrXp": 22.858958142227472,
+      "bidTotalXp": 60.34231703698417,
+      "username": "web3visionist.eth",
+      "rank": "494",
+      "blurListings": 4,
+      "numberListings": 4
+    },
+    {
+      "walletAddress": "0x230f1b0fab914430fc7d53008bd61414b2910d92",
+      "bid24hrXp": 22.851128663718224,
+      "bidTotalXp": 259.59993280418706,
+      "username": "ugilucky.eth",
+      "rank": "495",
+      "blurListings": 16,
+      "numberListings": 16
+    },
+    {
+      "walletAddress": "0x8ee0033f81aa75d222b43b2b4571eb2bbd0c185a",
+      "bid24hrXp": 22.843810931958632,
+      "bidTotalXp": 263.0077486960099,
+      "username": null,
+      "rank": "496",
+      "blurListings": 20,
+      "numberListings": 20
+    },
+    {
+      "walletAddress": "0x4c092f3597a5c81bcbc6746ed598c58a890d26ff",
+      "bid24hrXp": 22.839755959394033,
+      "bidTotalXp": 71.17877182400791,
+      "username": null,
+      "rank": "497",
+      "blurListings": 8,
+      "numberListings": 16
+    },
+    {
+      "walletAddress": "0x520e6df592faa2bf2242bf73317bee298d7caff7",
+      "bid24hrXp": 22.806497878728894,
+      "bidTotalXp": 22.806351873162296,
+      "username": null,
+      "rank": "498",
+      "blurListings": 1,
+      "numberListings": 1
+    },
+    {
+      "walletAddress": "0x2816b2ea90f80212de0cea60fea000346f3614b8",
+      "bid24hrXp": 22.767042124978534,
+      "bidTotalXp": 163.23199778842428,
+      "username": "wilc.eth",
+      "rank": "499",
+      "blurListings": 3,
+      "numberListings": 5
+    },
+    {
+      "walletAddress": "0xdcf64f15f2c677bf7346b2ff8a964d4ccc84660b",
+      "bid24hrXp": 22.7126721287113,
+      "bidTotalXp": 73.32352163701117,
+      "username": null,
+      "rank": "500",
+      "blurListings": 1,
+      "numberListings": 1
+    }
+  ],
+  "success": true
+}

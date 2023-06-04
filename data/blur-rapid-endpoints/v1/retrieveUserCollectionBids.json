@@ -1,0 +1,444 @@
+{
+  "url": "https://gyazo.com/41ce9c2d062a8670111183d2e24fe5f2",
+	"success": true,
+  "priceLevels": [
+    {
+      "price": "66.04",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "66.02",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "60.5",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "executableSize": 11,
+      "openSize": 11
+    },
+    {
+      "price": "60.06",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "executableSize": 5,
+      "openSize": 5
+    },
+    {
+      "price": "60",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "executableSize": 11,
+      "openSize": 11
+    },
+    {
+      "price": "58.51",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "executableSize": 5,
+      "openSize": 5
+    },
+    {
+      "price": "57.01",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "executableSize": 11,
+      "openSize": 11
+    },
+    {
+      "price": "56",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "executableSize": 3,
+      "openSize": 3
+    },
+    {
+      "price": "55",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "executableSize": 5,
+      "openSize": 5
+    },
+    {
+      "price": "50.5",
+      "contractAddress": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "executableSize": 15,
+      "openSize": 15
+    },
+    {
+      "price": "14.46",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 2,
+      "openSize": 2
+    },
+    {
+      "price": "14.45",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 2,
+      "openSize": 2
+    },
+    {
+      "price": "14.44",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 3,
+      "openSize": 3
+    },
+    {
+      "price": "14.43",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 6,
+      "openSize": 6
+    },
+    {
+      "price": "14.42",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 12,
+      "openSize": 12
+    },
+    {
+      "price": "14.4",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 26,
+      "openSize": 26
+    },
+    {
+      "price": "14.39",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 21,
+      "openSize": 21
+    },
+    {
+      "price": "14.36",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "14.35",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "14.31",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "14.28",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "14.26",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "14.25",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "14.24",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "14.23",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "14.22",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 2,
+      "openSize": 2
+    },
+    {
+      "price": "14.21",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 5,
+      "openSize": 5
+    },
+    {
+      "price": "14.2",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 14,
+      "openSize": 14
+    },
+    {
+      "price": "14.19",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 11,
+      "openSize": 11
+    },
+    {
+      "price": "14.18",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 12,
+      "openSize": 12
+    },
+    {
+      "price": "14.15",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "14.14",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "14.13",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 11,
+      "openSize": 11
+    },
+    {
+      "price": "14.12",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 11,
+      "openSize": 11
+    },
+    {
+      "price": "14.11",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 25,
+      "openSize": 25
+    },
+    {
+      "price": "14.1",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 25,
+      "openSize": 25
+    },
+    {
+      "price": "14.09",
+      "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+      "executableSize": 21,
+      "openSize": 21
+    },
+    {
+      "price": "13.88",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "13.76",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "13.74",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "13.73",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "13.72",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 3,
+      "openSize": 3
+    },
+    {
+      "price": "13.54",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 3,
+      "openSize": 3
+    },
+    {
+      "price": "13.53",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 3,
+      "openSize": 3
+    },
+    {
+      "price": "13.52",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 11,
+      "openSize": 11
+    },
+    {
+      "price": "13.51",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 21,
+      "openSize": 21
+    },
+    {
+      "price": "13.5",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 25,
+      "openSize": 25
+    },
+    {
+      "price": "13.43",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "13.42",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 1,
+      "openSize": 1
+    },
+    {
+      "price": "13.41",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 2,
+      "openSize": 2
+    },
+    {
+      "price": "13.4",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 3,
+      "openSize": 3
+    },
+    {
+      "price": "13.39",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 8,
+      "openSize": 8
+    },
+    {
+      "price": "13.37",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 21,
+      "openSize": 21
+    },
+    {
+      "price": "13.36",
+      "contractAddress": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "executableSize": 21,
+      "openSize": 21
+    },
+    {
+      "price": "4.81",
+      "contractAddress": "0xbd3531da5cf5857e7cfaa92426877b022e612cf8",
+      "executableSize": 11,
+      "openSize": 11
+    },
+    {
+      "price": "1.73",
+      "contractAddress": "0x34d85c9cdeb23fa97cb08333b511ac86e1c4e258",
+      "executableSize": 82,
+      "openSize": 82
+    },
+    {
+      "price": "1.72",
+      "contractAddress": "0x34d85c9cdeb23fa97cb08333b511ac86e1c4e258",
+      "executableSize": 100,
+      "openSize": 100
+    },
+    {
+      "price": "1.71",
+      "contractAddress": "0x34d85c9cdeb23fa97cb08333b511ac86e1c4e258",
+      "executableSize": 100,
+      "openSize": 100
+    },
+    {
+      "price": "1.25",
+      "contractAddress": "0x3bf2922f4520a8ba0c2efc3d2a1539678dad5e9d",
+      "executableSize": 21,
+      "openSize": 21
+    },
+    {
+      "price": "1.21",
+      "contractAddress": "0x3bf2922f4520a8ba0c2efc3d2a1539678dad5e9d",
+      "executableSize": 31,
+      "openSize": 31
+    },
+    {
+      "price": "1.16",
+      "contractAddress": "0x3bf2922f4520a8ba0c2efc3d2a1539678dad5e9d",
+      "executableSize": 100,
+      "openSize": 100
+    },
+    {
+      "price": "0.25",
+      "contractAddress": "0x3c6fbc94288f5af5201085948ddb18aded2e6879",
+      "executableSize": 9,
+      "openSize": 9
+    },
+    {
+      "price": "0.22",
+      "contractAddress": "0x3c6fbc94288f5af5201085948ddb18aded2e6879",
+      "executableSize": 8,
+      "openSize": 8
+    },
+    {
+      "price": "0.2",
+      "contractAddress": "0x3c6fbc94288f5af5201085948ddb18aded2e6879",
+      "executableSize": 5,
+      "openSize": 5
+    },
+    {
+      "price": "0.19",
+      "contractAddress": "0x3c6fbc94288f5af5201085948ddb18aded2e6879",
+      "executableSize": 3,
+      "openSize": 3
+    },
+    {
+      "price": "0.18",
+      "contractAddress": "0x3c6fbc94288f5af5201085948ddb18aded2e6879",
+      "executableSize": 5,
+      "openSize": 5
+    },
+    {
+      "price": "0.17",
+      "contractAddress": "0x3c6fbc94288f5af5201085948ddb18aded2e6879",
+      "executableSize": 8,
+      "openSize": 8
+    },
+    {
+      "price": "0.16",
+      "contractAddress": "0x3c6fbc94288f5af5201085948ddb18aded2e6879",
+      "executableSize": 100,
+      "openSize": 100
+    },
+    {
+      "price": "0.15",
+      "contractAddress": "0x3c6fbc94288f5af5201085948ddb18aded2e6879",
+      "executableSize": 111,
+      "openSize": 111
+    },
+    {
+      "price": "0.13",
+      "contractAddress": "0x3c6fbc94288f5af5201085948ddb18aded2e6879",
+      "executableSize": 100,
+      "openSize": 100
+    },
+    {
+      "price": "0.12",
+      "contractAddress": "0x3c6fbc94288f5af5201085948ddb18aded2e6879",
+      "executableSize": 100,
+      "openSize": 100
+    },
+    {
+      "price": "0.11",
+      "contractAddress": "0x3c6fbc94288f5af5201085948ddb18aded2e6879",
+      "executableSize": 100,
+      "openSize": 100
+    },
+    {
+      "price": "0.1",
+      "contractAddress": "0x3c6fbc94288f5af5201085948ddb18aded2e6879",
+      "executableSize": 445,
+      "openSize": 445
+    }
+  ]
+}

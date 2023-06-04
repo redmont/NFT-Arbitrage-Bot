@@ -1,0 +1,628 @@
+{
+  "success": true,
+	"url": "https://gyazo.com/a9714c13e46e61f52e42b720ed9f6dfe",
+  "priceLevels": [
+    {
+      "price": "1.06",
+      "executableSize": 2,
+      "numberBidders": 2,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "1.05",
+      "executableSize": 4,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "1.04",
+      "executableSize": 10,
+      "numberBidders": 6,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "1.03",
+      "executableSize": 1,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0x5d7dcb9f59d4e1cf96463a72e866966149df1552"
+      ]
+    },
+    {
+      "price": "1.02",
+      "executableSize": 1,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0x99344acea3bca6399caab4b5a5c56e9988d9d644"
+      ]
+    },
+    {
+      "price": "1.01",
+      "executableSize": 4,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "1",
+      "executableSize": 19,
+      "numberBidders": 14,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.99",
+      "executableSize": 10,
+      "numberBidders": 7,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.97",
+      "executableSize": 16,
+      "numberBidders": 5,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.95",
+      "executableSize": 2,
+      "numberBidders": 2,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.93",
+      "executableSize": 1,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0x416b0cde62f8618158703d4abaee391bcc519e6d"
+      ]
+    },
+    {
+      "price": "0.92",
+      "executableSize": 9,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.91",
+      "executableSize": 50,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.9",
+      "executableSize": 111,
+      "numberBidders": 8,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.89",
+      "executableSize": 23,
+      "numberBidders": 2,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.88",
+      "executableSize": 3,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.87",
+      "executableSize": 10,
+      "numberBidders": 5,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.85",
+      "executableSize": 105,
+      "numberBidders": 6,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.83",
+      "executableSize": 8,
+      "numberBidders": 4,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.82",
+      "executableSize": 7,
+      "numberBidders": 4,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.81",
+      "executableSize": 11,
+      "numberBidders": 7,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.8",
+      "executableSize": 19,
+      "numberBidders": 13,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.79",
+      "executableSize": 7,
+      "numberBidders": 5,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.78",
+      "executableSize": 1,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0x81b55fbe66c5ffbb8468328e924af96a84438f14"
+      ]
+    },
+    {
+      "price": "0.77",
+      "executableSize": 3,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.76",
+      "executableSize": 8,
+      "numberBidders": 6,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.75",
+      "executableSize": 32,
+      "numberBidders": 14,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.74",
+      "executableSize": 5,
+      "numberBidders": 5,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.73",
+      "executableSize": 4,
+      "numberBidders": 4,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.72",
+      "executableSize": 7,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.71",
+      "executableSize": 32,
+      "numberBidders": 6,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.7",
+      "executableSize": 62,
+      "numberBidders": 28,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.69",
+      "executableSize": 6,
+      "numberBidders": 6,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.67",
+      "executableSize": 18,
+      "numberBidders": 2,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.66",
+      "executableSize": 1067,
+      "numberBidders": 4,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.65",
+      "executableSize": 109,
+      "numberBidders": 6,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.63",
+      "executableSize": 12,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0x1e2ab2c1ee48aa5c705e6a638087bf7fc1877095"
+      ]
+    },
+    {
+      "price": "0.62",
+      "executableSize": 4,
+      "numberBidders": 4,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.61",
+      "executableSize": 11,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0x96dc89dbe84970ee42a2f0b35fb50599e6745ff8"
+      ]
+    },
+    {
+      "price": "0.6",
+      "executableSize": 29,
+      "numberBidders": 9,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.59",
+      "executableSize": 9,
+      "numberBidders": 2,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.58",
+      "executableSize": 55,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.57",
+      "executableSize": 2,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0xa4c3b3d4358220db11f4b03894d9a4003f7065ae"
+      ]
+    },
+    {
+      "price": "0.56",
+      "executableSize": 1,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0x480cd4e750404321422ae015e7e5102b67517810"
+      ]
+    },
+    {
+      "price": "0.55",
+      "executableSize": 41,
+      "numberBidders": 7,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.54",
+      "executableSize": 102,
+      "numberBidders": 2,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.53",
+      "executableSize": 94,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0x0ae3d5949202165584a270cbac7a733b0307a766"
+      ]
+    },
+    {
+      "price": "0.52",
+      "executableSize": 20,
+      "numberBidders": 5,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.51",
+      "executableSize": 39,
+      "numberBidders": 8,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.5",
+      "executableSize": 221,
+      "numberBidders": 37,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.49",
+      "executableSize": 4,
+      "numberBidders": 4,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.48",
+      "executableSize": 1,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0xc15add7eb1ba708bc7189cef6a4c47200b77a52b"
+      ]
+    },
+    {
+      "price": "0.47",
+      "executableSize": 5,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.46",
+      "executableSize": 9,
+      "numberBidders": 2,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.45",
+      "executableSize": 21,
+      "numberBidders": 5,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.44",
+      "executableSize": 1,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0x0b3d25698629749f2c0272ce417e4cd6027f3870"
+      ]
+    },
+    {
+      "price": "0.43",
+      "executableSize": 4,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0xc93445359baaa7b0a384d4b47cf5d8056b5933f4"
+      ]
+    },
+    {
+      "price": "0.42",
+      "executableSize": 4,
+      "numberBidders": 4,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.41",
+      "executableSize": 1,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0x3a13646cf7fac5a566d76b048ded85bab2f1e075"
+      ]
+    },
+    {
+      "price": "0.4",
+      "executableSize": 40,
+      "numberBidders": 11,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.39",
+      "executableSize": 11,
+      "numberBidders": 2,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.38",
+      "executableSize": 1,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0x97a3cf9f58bf2b27191dab922c60f889b27a0e51"
+      ]
+    },
+    {
+      "price": "0.36",
+      "executableSize": 22,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.35",
+      "executableSize": 10,
+      "numberBidders": 6,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.34",
+      "executableSize": 4,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.33",
+      "executableSize": 1,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0x5a75cd902db7b22568e568530965b653c7903841"
+      ]
+    },
+    {
+      "price": "0.32",
+      "executableSize": 13,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.31",
+      "executableSize": 1,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0x84f02fa1db196f085a084abd502216d3ff6dcc5e"
+      ]
+    },
+    {
+      "price": "0.3",
+      "executableSize": 399,
+      "numberBidders": 28,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.29",
+      "executableSize": 2,
+      "numberBidders": 2,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.28",
+      "executableSize": 3,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.27",
+      "executableSize": 1,
+      "numberBidders": 1,
+      "bidderAddressesSample": [
+        "0x0bbdbedbf99454aed3c17637661f64b83b253154"
+      ]
+    },
+    {
+      "price": "0.26",
+      "executableSize": 43,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.25",
+      "executableSize": 217,
+      "numberBidders": 13,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.24",
+      "executableSize": 11,
+      "numberBidders": 2,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.23",
+      "executableSize": 53,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.22",
+      "executableSize": 102,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.21",
+      "executableSize": 35,
+      "numberBidders": 2,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.2",
+      "executableSize": 210,
+      "numberBidders": 21,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.19",
+      "executableSize": 121,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.18",
+      "executableSize": 161,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.17",
+      "executableSize": 107,
+      "numberBidders": 4,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.16",
+      "executableSize": 209,
+      "numberBidders": 3,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.15",
+      "executableSize": 225,
+      "numberBidders": 7,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.14",
+      "executableSize": 157,
+      "numberBidders": 6,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.13",
+      "executableSize": 115,
+      "numberBidders": 5,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.12",
+      "executableSize": 357,
+      "numberBidders": 8,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.11",
+      "executableSize": 748,
+      "numberBidders": 7,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.1",
+      "executableSize": 859,
+      "numberBidders": 46,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.09",
+      "executableSize": 1105,
+      "numberBidders": 5,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.08",
+      "executableSize": 404,
+      "numberBidders": 7,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.07",
+      "executableSize": 254,
+      "numberBidders": 7,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.06",
+      "executableSize": 400,
+      "numberBidders": 8,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.05",
+      "executableSize": 1434,
+      "numberBidders": 47,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.04",
+      "executableSize": 3361,
+      "numberBidders": 23,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.03",
+      "executableSize": 5903,
+      "numberBidders": 37,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.02",
+      "executableSize": 3965,
+      "numberBidders": 46,
+      "bidderAddressesSample": []
+    },
+    {
+      "price": "0.01",
+      "executableSize": 5721,
+      "numberBidders": 81,
+      "bidderAddressesSample": []
+    }
+  ]
+}

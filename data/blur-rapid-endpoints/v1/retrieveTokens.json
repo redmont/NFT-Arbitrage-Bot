@@ -1,0 +1,3816 @@
+{
+  "url": "https://gyazo.com/24180d85b7f1f8b4a39aa99572312aa2",
+	"success": true,
+  "contractAddress": "0x60e4d786628fea6478f785a6d7e704777c86a7c6",
+  "totalCount": 1218,
+  "tokens": [
+    {
+      "tokenId": "3093",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/3093-79a1ff7381e0743d",
+      "traits": {
+        "Fur": "M1 Black",
+        "Eyes": "M1 Angry",
+        "Mouth": "M1 Jovial",
+        "Clothes": "M1 Work Vest",
+        "Earring": "M1 Silver Hoop",
+        "Background": "M1 Army Green"
+      },
+      "rarityScore": 84.45954,
+      "rarityRank": 12386,
+      "price": {
+        "amount": "14.6",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T10:15:14.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.46",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T09:58:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.46",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T09:58:59.000Z"
+      },
+      "owner": {
+        "address": "0x5e1416e0ec35b47a6b7687c5e783e9b98a83dd45",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "4976",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/4976-fe2f9cb7a028fb50",
+      "traits": {
+        "Fur": "M1 Black",
+        "Hat": "M1 Cowboy Hat",
+        "Eyes": "M1 3d",
+        "Mouth": "M1 Dumbfounded",
+        "Clothes": "M1 Wool Turtleneck",
+        "Background": "M1 Purple"
+      },
+      "rarityScore": 61.68193,
+      "rarityRank": 17903,
+      "price": {
+        "amount": "14.666",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T13:12:54.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.51",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:37:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.51",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:37:35.000Z"
+      },
+      "owner": {
+        "address": "0xabf05235523ceecb5a5b9a155657af0ffcfec944",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "29276",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/29276-86060de3ce55ac3d",
+      "traits": {
+        "Fur": "M1 Dark Brown",
+        "Hat": "M1 Army Hat",
+        "Eyes": "M1 Sleepy",
+        "Mouth": "M1 Tongue Out",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 67.7709,
+      "rarityRank": 16467,
+      "price": {
+        "amount": "14.693333",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:09:28.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.46",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T08:22:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.46",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T08:22:23.000Z"
+      },
+      "owner": {
+        "address": "0xb70c67d6da9db6ffe565c20339e18edb69140cb8",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "23340",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/23340-e811c5f2587ead89",
+      "traits": {
+        "Fur": "M1 Noise",
+        "Hat": "M1 Cowboy Hat",
+        "Eyes": "M1 Heart",
+        "Mouth": "M1 Bored Unshaven Cigarette",
+        "Clothes": "M1 Navy Striped Tee",
+        "Background": "M1 Blue"
+      },
+      "rarityScore": 94.60595,
+      "rarityRank": 10640,
+      "price": {
+        "amount": "14.777",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:51:34.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.8643",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T13:36:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.8643",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T13:36:35.000Z"
+      },
+      "owner": {
+        "address": "0x77e3e957082ca648c1c5b0f3e6aec00ab1245186",
+        "username": null
+      },
+      "numberOwnedByOwner": 12,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "23692",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/23692-c18f804d8fdb783f",
+      "traits": {
+        "Fur": "M1 Tan",
+        "Eyes": "M1 Closed",
+        "Mouth": "M1 Rage",
+        "Clothes": "M1 Leather Punk Jacket",
+        "Background": "M1 Aquamarine"
+      },
+      "rarityScore": 76.79651,
+      "rarityRank": 14113,
+      "price": {
+        "amount": "14.777",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:51:34.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T13:43:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T13:43:23.000Z"
+      },
+      "owner": {
+        "address": "0x77e3e957082ca648c1c5b0f3e6aec00ab1245186",
+        "username": null
+      },
+      "numberOwnedByOwner": 12,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "6682",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/6682-0a314bd7e8cc73c7",
+      "traits": {
+        "Fur": "M1 Black",
+        "Hat": "M1 Cowboy Hat",
+        "Eyes": "M1 Sleepy",
+        "Mouth": "M1 Bored Cigarette",
+        "Clothes": "M1 Tweed Suit",
+        "Earring": "M1 Silver Hoop",
+        "Background": "M1 New Punk Blue"
+      },
+      "rarityScore": 93.54444,
+      "rarityRank": 10827,
+      "price": {
+        "amount": "14.777",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:51:34.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.8643",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T13:36:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.8643",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T13:36:35.000Z"
+      },
+      "owner": {
+        "address": "0x77e3e957082ca648c1c5b0f3e6aec00ab1245186",
+        "username": null
+      },
+      "numberOwnedByOwner": 12,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "17942",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/17942-65fff7cddbe8be18",
+      "traits": {
+        "Fur": "M1 Dark Brown",
+        "Hat": "M1 Sushi Chef Headband",
+        "Eyes": "M1 Sleepy",
+        "Mouth": "M1 Dumbfounded",
+        "Clothes": "M1 Navy Striped Tee",
+        "Earring": "M1 Diamond Stud",
+        "Background": "M1 Aquamarine"
+      },
+      "rarityScore": 154.21053,
+      "rarityRank": 5766,
+      "price": {
+        "amount": "14.778",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:40:01.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.51",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:39:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.51",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:39:11.000Z"
+      },
+      "owner": {
+        "address": "0xb70c67d6da9db6ffe565c20339e18edb69140cb8",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "17272",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/17272-e0074fb15695cbe9",
+      "traits": {
+        "Fur": "M1 Golden Brown",
+        "Hat": "M1 Army Hat",
+        "Eyes": "M1 Bored",
+        "Mouth": "M1 Bored",
+        "Clothes": "M1 Black T",
+        "Background": "M1 Gray"
+      },
+      "rarityScore": 51.95726,
+      "rarityRank": 19248,
+      "price": {
+        "amount": "14.779",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T07:41:46.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.479",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T07:41:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.479",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T07:41:23.000Z"
+      },
+      "owner": {
+        "address": "0x4aefd0e16502ad41c85780c235768e944e6a7fc8",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "10432",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/10432-e9b1cc7d67d745f3",
+      "traits": {
+        "Fur": "M1 Tan",
+        "Eyes": "M1 Coins",
+        "Mouth": "M1 Bored",
+        "Earring": "M1 Silver Stud",
+        "Background": "M1 Army Green"
+      },
+      "rarityScore": 73.02768,
+      "rarityRank": 15024,
+      "price": {
+        "amount": "14.829",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T07:54:12.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.238",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T06:55:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.238",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T06:55:59.000Z"
+      },
+      "owner": {
+        "address": "0x72fc26fb38acb4ce3ede228dfc963560c2b33827",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "29222",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/29222-2abd92d652b2f217",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Eyes": "M1 Closed",
+        "Mouth": "M1 Discomfort",
+        "Clothes": "M1 Tuxedo Tee",
+        "Earring": "M1 Silver Hoop",
+        "Background": "M1 Blue"
+      },
+      "rarityScore": 79.6733,
+      "rarityRank": 13457,
+      "price": {
+        "amount": "14.829",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T13:22:49.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.18",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T01:12:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.18",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T01:12:47.000Z"
+      },
+      "owner": {
+        "address": "0x9f28152ae399a6f1b9760c04972de4f9303c0c9f",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "19344",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/19344-9aaa71132184fd72",
+      "traits": {
+        "Fur": "M1 Gray",
+        "Hat": "M1 Sea Captain's Hat",
+        "Eyes": "M1 Sleepy",
+        "Mouth": "M1 Phoneme L",
+        "Clothes": "M1 Smoking Jacket",
+        "Background": "M1 Army Green"
+      },
+      "rarityScore": 75.83596,
+      "rarityRank": 14340,
+      "price": {
+        "amount": "14.83",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T06:02:17.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": {
+        "amount": "14.2",
+        "unit": "WETH",
+        "listedAt": "2023-02-25T11:14:29.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "lastSale": {
+        "amount": "14.58",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T17:59:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T06:00:23.000Z"
+      },
+      "owner": {
+        "address": "0x9fc4a721ae053de0f42b4da6c7f842bcb3e35e0b",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "23390",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/23390-f25843c7c302ee6d",
+      "traits": {
+        "Fur": "M1 Pink",
+        "Hat": "M1 Safari",
+        "Eyes": "M1 Coins",
+        "Mouth": "M1 Bored",
+        "Clothes": "M1 Navy Striped Tee",
+        "Earring": "M1 Silver Stud",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 101.600975,
+      "rarityRank": 9484,
+      "price": {
+        "amount": "14.839",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T09:00:58.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": {
+        "amount": "14.5",
+        "unit": "WETH",
+        "listedAt": "2023-02-25T12:22:42.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "lastSale": {
+        "amount": "14.47",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T08:57:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.47",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T08:57:11.000Z"
+      },
+      "owner": {
+        "address": "0x677f828b252e02e7050e7ddb43655caea1cb1f7e",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "24342",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/24342-2502b3cd307f9854",
+      "traits": {
+        "Fur": "M1 Blue",
+        "Eyes": "M1 3d",
+        "Mouth": "M1 Tongue Out",
+        "Clothes": "M1 Work Vest",
+        "Earring": "M1 Silver Hoop",
+        "Background": "M1 New Punk Blue"
+      },
+      "rarityScore": 94.83012,
+      "rarityRank": 10599,
+      "price": {
+        "amount": "14.84",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T06:04:32.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.5",
+        "unit": "ETH",
+        "listedAt": "2023-01-05T21:42:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:08:47.000Z"
+      },
+      "owner": {
+        "address": "0xf035af8a3dff1f90aeb21f9623589ae1330e9e09",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "6315",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/6315-6b2702305846a80e",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Eyes": "M1 Blindfold",
+        "Mouth": "M1 Bored Unshaven",
+        "Earring": "M1 Gold Hoop",
+        "Background": "M1 Blue"
+      },
+      "rarityScore": 94.49116,
+      "rarityRank": 10660,
+      "price": {
+        "amount": "14.841",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:30:50.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.2",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T06:45:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.2",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T06:45:47.000Z"
+      },
+      "owner": {
+        "address": "0x87de74597c1f8af0309cc4eea15f137c14180f7f",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "19986",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/19986-1602e6ca9f3a3348",
+      "traits": {
+        "Fur": "M1 Gray",
+        "Hat": "M1 Bandana Blue",
+        "Eyes": "M1 Heart",
+        "Mouth": "M1 Bored Cigarette",
+        "Clothes": "M1 Sleeveless T",
+        "Background": "M1 Army Green"
+      },
+      "rarityScore": 93.08199,
+      "rarityRank": 10888,
+      "price": {
+        "amount": "14.86",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:31:55.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.16",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T02:35:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.16",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T02:35:11.000Z"
+      },
+      "owner": {
+        "address": "0x77e3e957082ca648c1c5b0f3e6aec00ab1245186",
+        "username": null
+      },
+      "numberOwnedByOwner": 12,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "21440",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/21440-096c8ec79396fc12",
+      "traits": {
+        "Fur": "M1 Cream",
+        "Hat": "M1 Fisherman's Hat",
+        "Eyes": "M1 Wide Eyed",
+        "Mouth": "M1 Bored Pipe",
+        "Background": "M1 Army Green"
+      },
+      "rarityScore": 85.22318,
+      "rarityRank": 12249,
+      "price": {
+        "amount": "14.86",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:31:55.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:58:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:58:11.000Z"
+      },
+      "owner": {
+        "address": "0x77e3e957082ca648c1c5b0f3e6aec00ab1245186",
+        "username": null
+      },
+      "numberOwnedByOwner": 12,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2272",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/2272-e0e35b61d54602d3",
+      "traits": {
+        "Fur": "M1 Black",
+        "Hat": "M1 Fisherman's Hat",
+        "Eyes": "M1 Eyepatch",
+        "Mouth": "M1 Bored",
+        "Clothes": "M1 Navy Striped Tee",
+        "Background": "M1 Gray"
+      },
+      "rarityScore": 59.88023,
+      "rarityRank": 18270,
+      "price": {
+        "amount": "14.86",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:17:02.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.16",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T02:35:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.16",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T02:35:11.000Z"
+      },
+      "owner": {
+        "address": "0x77e3e957082ca648c1c5b0f3e6aec00ab1245186",
+        "username": null
+      },
+      "numberOwnedByOwner": 12,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "956",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/956-6c4ed7ee0ec81c7d",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Hat": "M1 Cowboy Hat",
+        "Eyes": "M1 Coins",
+        "Mouth": "M1 Bored",
+        "Clothes": "M1 Admirals Coat",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 85.76297,
+      "rarityRank": 12144,
+      "price": {
+        "amount": "14.86",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:17:02.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:58:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:58:11.000Z"
+      },
+      "owner": {
+        "address": "0x77e3e957082ca648c1c5b0f3e6aec00ab1245186",
+        "username": null
+      },
+      "numberOwnedByOwner": 12,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1472",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/1472-59c06c1ac0864acd",
+      "traits": {
+        "Fur": "M1 Dark Brown",
+        "Hat": "M1 Irish Boho",
+        "Eyes": "M1 Sad",
+        "Mouth": "M1 Grin",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 62.057602,
+      "rarityRank": 17819,
+      "price": {
+        "amount": "14.8744",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T02:48:21.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T02:35:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T02:35:11.000Z"
+      },
+      "owner": {
+        "address": "0x386c1ed28df54bd0be40d2d43f16380e62b03b34",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "5218",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/5218-f5f63727a6d102f6",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Hat": "M1 Short Mohawk",
+        "Eyes": "M1 Sleepy",
+        "Mouth": "M1 Tongue Out",
+        "Clothes": "M1 Tie Dye",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 75.49032,
+      "rarityRank": 14435,
+      "price": {
+        "amount": "14.8744",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:09:29.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.46",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T10:51:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.46",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T10:51:47.000Z"
+      },
+      "owner": {
+        "address": "0xedb29a9811a6018b6c60e2f338fc5b46b57af5aa",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "4337",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/4337-131efa04f929648b",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Hat": "M1 Bowler",
+        "Eyes": "M1 Wide Eyed",
+        "Mouth": "M1 Phoneme Vuh",
+        "Clothes": "M1 Biker Vest",
+        "Background": "M1 Gray"
+      },
+      "rarityScore": 67.720634,
+      "rarityRank": 16482,
+      "price": {
+        "amount": "14.88",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T04:24:18.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.644",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:56:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.644",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:56:47.000Z"
+      },
+      "owner": {
+        "address": "0x34383a9f83c86eceb3748fb89fd9be2805c8b02c",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "5182",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/5182-725ef58de9e491e4",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Eyes": "M1 Scumbag",
+        "Mouth": "M1 Bored Unshaven",
+        "Clothes": "M1 Navy Striped Tee",
+        "Earring": "M1 Silver Hoop",
+        "Background": "M1 Purple"
+      },
+      "rarityScore": 77.5009,
+      "rarityRank": 13945,
+      "price": {
+        "amount": "14.88",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T01:03:13.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.59",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T20:09:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.59",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T20:09:35.000Z"
+      },
+      "owner": {
+        "address": "0x385ce35599ae5e6f0eaf0f69841fffa9f41acdd5",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "15342",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/15342-256dd3830eab81d3",
+      "traits": {
+        "Fur": "M1 Gray",
+        "Hat": "M1 Beanie",
+        "Eyes": "M1 Bored",
+        "Mouth": "M1 Phoneme Wah",
+        "Earring": "M1 Silver Hoop",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 81.49248,
+      "rarityRank": 13018,
+      "price": {
+        "amount": "14.888",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:21:06.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.9488",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:20:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.9488",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:20:47.000Z"
+      },
+      "owner": {
+        "address": "0x4aefd0e16502ad41c85780c235768e944e6a7fc8",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "5814",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/5814-e4ceee5bf68fd840",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Hat": "M1 Bowler",
+        "Eyes": "M1 Sunglasses",
+        "Mouth": "M1 Bored Cigarette",
+        "Clothes": "M1 Tuxedo Tee",
+        "Background": "M1 Aquamarine"
+      },
+      "rarityScore": 68.02142,
+      "rarityRank": 16400,
+      "price": {
+        "amount": "14.9146",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T07:32:23.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T01:05:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T01:05:59.000Z"
+      },
+      "owner": {
+        "address": "0x4dcbb1fe5983ad5b44dc661273a4f11ca812f8b8",
+        "username": null
+      },
+      "numberOwnedByOwner": 3,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "822",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/822-c6530bda80316065",
+      "traits": {
+        "Fur": "M1 Golden Brown",
+        "Eyes": "M1 Wide Eyed",
+        "Mouth": "M1 Phoneme Vuh",
+        "Earring": "M1 Silver Stud",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 77.85641,
+      "rarityRank": 13863,
+      "price": {
+        "amount": "14.9146",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T07:32:23.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T01:10:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T01:10:47.000Z"
+      },
+      "owner": {
+        "address": "0x4dcbb1fe5983ad5b44dc661273a4f11ca812f8b8",
+        "username": null
+      },
+      "numberOwnedByOwner": 3,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "12840",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/12840-c557aaed35ae855c",
+      "traits": {
+        "Fur": "M1 Red",
+        "Eyes": "M1 Crazy",
+        "Mouth": "M1 Discomfort",
+        "Clothes": "M1 Tie Dye",
+        "Background": "M1 Blue"
+      },
+      "rarityScore": 87.59892,
+      "rarityRank": 11809,
+      "price": {
+        "amount": "14.94",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:46:26.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.26",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:58:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.26",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:58:11.000Z"
+      },
+      "owner": {
+        "address": "0x77e3e957082ca648c1c5b0f3e6aec00ab1245186",
+        "username": null
+      },
+      "numberOwnedByOwner": 12,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "19674",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/19674-921a089903d5ad41",
+      "traits": {
+        "Fur": "M1 Red",
+        "Hat": "M1 Baby's Bonnet",
+        "Eyes": "M1 Coins",
+        "Mouth": "M1 Discomfort",
+        "Clothes": "M1 Work Vest",
+        "Earring": "M1 Silver Hoop",
+        "Background": "M1 Aquamarine"
+      },
+      "rarityScore": 124.18432,
+      "rarityRank": 7224,
+      "price": {
+        "amount": "14.94",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:46:26.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.25",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:58:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.25",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:58:11.000Z"
+      },
+      "owner": {
+        "address": "0x77e3e957082ca648c1c5b0f3e6aec00ab1245186",
+        "username": null
+      },
+      "numberOwnedByOwner": 12,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "22906",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/22906-b69e4ae1ccad2f63",
+      "traits": {
+        "Fur": "M1 Zombie",
+        "Hat": "M1 Fisherman's Hat",
+        "Eyes": "M1 Sleepy",
+        "Mouth": "M1 Phoneme Oh",
+        "Clothes": "M1 Tuxedo Tee",
+        "Background": "M1 New Punk Blue"
+      },
+      "rarityScore": 81.367455,
+      "rarityRank": 13055,
+      "price": {
+        "amount": "14.94",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:11:39.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:58:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:58:11.000Z"
+      },
+      "owner": {
+        "address": "0x77e3e957082ca648c1c5b0f3e6aec00ab1245186",
+        "username": null
+      },
+      "numberOwnedByOwner": 12,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "28394",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/28394-1bddc3e9d8bb2ed8",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Hat": "M1 Short Mohawk",
+        "Eyes": "M1 X Eyes",
+        "Mouth": "M1 Bored Unshaven Bubblegum",
+        "Clothes": "M1 Navy Striped Tee",
+        "Earring": "M1 Gold Hoop",
+        "Background": "M1 Gray"
+      },
+      "rarityScore": 161.62123,
+      "rarityRank": 5435,
+      "price": {
+        "amount": "14.94",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:46:26.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.16",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T02:35:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.16",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T02:35:11.000Z"
+      },
+      "owner": {
+        "address": "0x77e3e957082ca648c1c5b0f3e6aec00ab1245186",
+        "username": null
+      },
+      "numberOwnedByOwner": 12,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "9246",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/9246-e84fe0ff596d5578",
+      "traits": {
+        "Fur": "M1 Blue",
+        "Eyes": "M1 Sunglasses",
+        "Mouth": "M1 Phoneme  Ooo",
+        "Clothes": "M1 Sleeveless T",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 81.122185,
+      "rarityRank": 13114,
+      "price": {
+        "amount": "14.94",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:12:32.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.26",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:58:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.26",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:58:11.000Z"
+      },
+      "owner": {
+        "address": "0x77e3e957082ca648c1c5b0f3e6aec00ab1245186",
+        "username": null
+      },
+      "numberOwnedByOwner": 12,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1133",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/1133-f42450a52dee01a6",
+      "traits": {
+        "Fur": "M1 White",
+        "Hat": "M1 S&m Hat",
+        "Eyes": "M1 Crazy",
+        "Mouth": "M1 Phoneme Oh",
+        "Clothes": "M1 Tie Dye",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 93.790665,
+      "rarityRank": 10786,
+      "price": {
+        "amount": "14.95",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:16:09.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.55",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.55",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:23.000Z"
+      },
+      "owner": {
+        "address": "0xf76b99a8d9ecdf00f0cf49b9923e86afbbbf5a89",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "16488",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/16488-e6fc1a66c51e4c53",
+      "traits": {
+        "Fur": "M1 Black",
+        "Hat": "M1 Commie Hat",
+        "Eyes": "M1 Sad",
+        "Mouth": "M1 Phoneme Oh",
+        "Clothes": "M1 Prom Dress",
+        "Earring": "M1 Gold Hoop",
+        "Background": "M1 Aquamarine"
+      },
+      "rarityScore": 138.19095,
+      "rarityRank": 6399,
+      "price": {
+        "amount": "14.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T09:14:23.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.18",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T12:37:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.18",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T12:37:59.000Z"
+      },
+      "owner": {
+        "address": "0x773d5532edf521ce1ffde48895930f0e97439cbc",
+        "username": null
+      },
+      "numberOwnedByOwner": 3,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2169",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/2169-8f366af15405d222",
+      "traits": {
+        "Fur": "M1 Dark Brown",
+        "Hat": "M1 Halo",
+        "Eyes": "M1 Crazy",
+        "Mouth": "M1 Bored",
+        "Clothes": "M1 Smoking Jacket",
+        "Background": "M1 Blue"
+      },
+      "rarityScore": 60.615253,
+      "rarityRank": 18115,
+      "price": {
+        "amount": "14.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T08:13:32.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": {
+        "amount": "14.5",
+        "unit": "WETH",
+        "listedAt": "2023-02-25T12:23:18.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "lastSale": {
+        "amount": "14.243",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T04:08:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.243",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T04:08:47.000Z"
+      },
+      "owner": {
+        "address": "0x4ce0f96c459df322df68f393569549d5a54a1929",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "25594",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/25594-ee8a8f84817d6084",
+      "traits": {
+        "Fur": "M1 Tan",
+        "Eyes": "M1 Crazy",
+        "Mouth": "M1 Bored",
+        "Clothes": "M1 Caveman Pelt",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 69.12712,
+      "rarityRank": 16083,
+      "price": {
+        "amount": "14.98",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:58:41.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.52",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:42:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.52",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:42:47.000Z"
+      },
+      "owner": {
+        "address": "0x773d5532edf521ce1ffde48895930f0e97439cbc",
+        "username": null
+      },
+      "numberOwnedByOwner": 3,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "29138",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/29138-762253e218e4470a",
+      "traits": {
+        "Fur": "M1 Black",
+        "Eyes": "M1 Scumbag",
+        "Mouth": "M1 Bored",
+        "Clothes": "M1 Black T",
+        "Background": "M1 New Punk Blue"
+      },
+      "rarityScore": 66.230606,
+      "rarityRank": 16870,
+      "price": {
+        "amount": "15",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T13:15:06.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.46",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T11:46:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.46",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T11:46:35.000Z"
+      },
+      "owner": {
+        "address": "0xe6a04dd40944d95f4a7105bb92483708b4ddda0a",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "5622",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/5622-70daf9516f432777",
+      "traits": {
+        "Fur": "M1 Golden Brown",
+        "Eyes": "M1 Closed",
+        "Mouth": "M1 Phoneme  Ooo",
+        "Clothes": "M1 Prison Jumpsuit",
+        "Earring": "M1 Gold Hoop",
+        "Background": "M1 Gray"
+      },
+      "rarityScore": 99.95154,
+      "rarityRank": 9737,
+      "price": {
+        "amount": "15",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:30:51.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.31",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T07:40:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.31",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T07:40:47.000Z"
+      },
+      "owner": {
+        "address": "0x54bc45f94de58c6e802ed6c3ba51cb10a07c4789",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "6348",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/6348-c4389f99767402c6",
+      "traits": {
+        "Fur": "M1 Gray",
+        "Hat": "M1 Prussian Helmet",
+        "Eyes": "M1 Bloodshot",
+        "Mouth": "M1 Bored",
+        "Clothes": "M1 Smoking Jacket",
+        "Background": "M1 Aquamarine"
+      },
+      "rarityScore": 76.71104,
+      "rarityRank": 14134,
+      "price": {
+        "amount": "15",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:06:38.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.32",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T07:42:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.32",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T07:42:23.000Z"
+      },
+      "owner": {
+        "address": "0x012a955d559637fb398e33248f9a1dc83f4e7c0d",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "6365",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/6365-21ef713b9094ba99",
+      "traits": {
+        "Fur": "M1 Gray",
+        "Hat": "M1 S&m Hat",
+        "Eyes": "M1 Crazy",
+        "Mouth": "M1 Phoneme Wah",
+        "Background": "M1 New Punk Blue"
+      },
+      "rarityScore": 88.58245,
+      "rarityRank": 11636,
+      "price": {
+        "amount": "15",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:38:58.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.995",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T08:52:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.995",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T08:52:47.000Z"
+      },
+      "owner": {
+        "address": "0x9c3be699475cfea571d1910d02c518c6c45e7b5b",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "22470",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/22470-a279cdcff177d1de",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Hat": "M1 Fez",
+        "Eyes": "M1 Bored",
+        "Mouth": "M1 Grin",
+        "Clothes": "M1 Sailor Shirt",
+        "Background": "M1 Gray"
+      },
+      "rarityScore": 51.361294,
+      "rarityRank": 19290,
+      "price": {
+        "amount": "15.01",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:01:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:01:59.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "12490",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/12490-7571fa7accc32400",
+      "traits": {
+        "Fur": "M1 Black",
+        "Hat": "M1 Vietnam Era Helmet",
+        "Eyes": "M1 Bored",
+        "Mouth": "M1 Bored Unshaven",
+        "Clothes": "M1 Guayabera",
+        "Background": "M1 Blue"
+      },
+      "rarityScore": 56.35652,
+      "rarityRank": 18831,
+      "price": {
+        "amount": "15.02",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:17:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:17:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "4741",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/4741-7d7497f74f4376f9",
+      "traits": {
+        "Fur": "M1 Black",
+        "Hat": "M1 Beanie",
+        "Eyes": "M1 X Eyes",
+        "Mouth": "M1 Bored",
+        "Background": "M1 Purple"
+      },
+      "rarityScore": 60.477898,
+      "rarityRank": 18142,
+      "price": {
+        "amount": "15.03",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:17:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:17:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "3003",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/3003-c40ee8d46f093d09",
+      "traits": {
+        "Fur": "M1 Dark Brown",
+        "Eyes": "M1 Sunglasses",
+        "Mouth": "M1 Grin",
+        "Clothes": "M1 Sleeveless T",
+        "Background": "M1 Blue"
+      },
+      "rarityScore": 64.05413,
+      "rarityRank": 17362,
+      "price": {
+        "amount": "15.04",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T20:25:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T20:25:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2597",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/2597-84157a08d31b160d",
+      "traits": {
+        "Fur": "M1 Golden Brown",
+        "Hat": "M1 Spinner Hat",
+        "Eyes": "M1 Closed",
+        "Mouth": "M1 Bored Unshaven",
+        "Clothes": "M1 Wool Turtleneck",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 64.78828,
+      "rarityRank": 17187,
+      "price": {
+        "amount": "15.05",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:01:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:01:59.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "3603",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/3603-82eea994c9a2745a",
+      "traits": {
+        "Fur": "M1 Dark Brown",
+        "Hat": "M1 Safari",
+        "Eyes": "M1 Crazy",
+        "Mouth": "M1 Bored Unshaven",
+        "Clothes": "M1 Black T",
+        "Background": "M1 Army Green"
+      },
+      "rarityScore": 65.07834,
+      "rarityRank": 17117,
+      "price": {
+        "amount": "15.06",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.14",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T22:32:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.14",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T22:32:23.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "9176",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/9176-b21f3cbb1e95281d",
+      "traits": {
+        "Fur": "M1 Tan",
+        "Hat": "M1 Sushi Chef Headband",
+        "Eyes": "M1 Sleepy",
+        "Mouth": "M1 Grin",
+        "Clothes": "M1 Navy Striped Tee",
+        "Background": "M1 Purple"
+      },
+      "rarityScore": 66.85131,
+      "rarityRank": 16705,
+      "price": {
+        "amount": "15.07",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:01:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:01:59.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "24548",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/24548-ddabd1b69bb6aace",
+      "traits": {
+        "Fur": "M1 Black",
+        "Hat": "M1 Sushi Chef Headband",
+        "Eyes": "M1 Robot",
+        "Mouth": "M1 Bored",
+        "Clothes": "M1 Tanktop",
+        "Background": "M1 Aquamarine"
+      },
+      "rarityScore": 69.75248,
+      "rarityRank": 15927,
+      "price": {
+        "amount": "15.08",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:15:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:15:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "19836",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/19836-9d1b9a397b80b3ce",
+      "traits": {
+        "Fur": "M1 Black",
+        "Hat": "M1 Fez",
+        "Eyes": "M1 Sad",
+        "Mouth": "M1 Phoneme Vuh",
+        "Clothes": "M1 Leather Punk Jacket",
+        "Background": "M1 Blue"
+      },
+      "rarityScore": 70.755035,
+      "rarityRank": 15649,
+      "price": {
+        "amount": "15.09",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:17:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:17:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "9342",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/9342-367f67ebde015ae2",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Hat": "M1 Short Mohawk",
+        "Eyes": "M1 Angry",
+        "Mouth": "M1 Tongue Out",
+        "Clothes": "M1 Wool Turtleneck",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 73.016785,
+      "rarityRank": 15027,
+      "price": {
+        "amount": "15.1",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T20:30:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T20:30:23.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "14986",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/14986-9e5510de482b0377",
+      "traits": {
+        "Fur": "M1 Tan",
+        "Hat": "M1 Seaman's Hat",
+        "Eyes": "M1 Eyepatch",
+        "Mouth": "M1 Phoneme Vuh",
+        "Clothes": "M1 Biker Vest",
+        "Background": "M1 Army Green"
+      },
+      "rarityScore": 74.22769,
+      "rarityRank": 14721,
+      "price": {
+        "amount": "15.11",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:01:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:01:59.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "3719",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/3719-b74d020e61cf30cd",
+      "traits": {
+        "Fur": "M1 Pink",
+        "Hat": "M1 Faux Hawk",
+        "Eyes": "M1 Closed",
+        "Mouth": "M1 Bored",
+        "Clothes": "M1 Smoking Jacket",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 77.43398,
+      "rarityRank": 13961,
+      "price": {
+        "amount": "15.12",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.2",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T12:03:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.2",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T12:03:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "14562",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/14562-a3a0277b685f9844",
+      "traits": {
+        "Fur": "M1 Pink",
+        "Eyes": "M1 Sunglasses",
+        "Mouth": "M1 Bored Unshaven",
+        "Clothes": "M1 Sleeveless T",
+        "Earring": "M1 Silver Hoop",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 79.458176,
+      "rarityRank": 13497,
+      "price": {
+        "amount": "15.13",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:17:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:17:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "23866",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/23866-d0d564f40a70e619",
+      "traits": {
+        "Fur": "M1 Black",
+        "Eyes": "M1 Closed",
+        "Mouth": "M1 Bored Unshaven Cigarette",
+        "Clothes": "M1 Rainbow Suspenders",
+        "Earring": "M1 Silver Hoop",
+        "Background": "M1 New Punk Blue"
+      },
+      "rarityScore": 81.13766,
+      "rarityRank": 13110,
+      "price": {
+        "amount": "15.14",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:17:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:17:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "466",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/466-305488a93e2bf379",
+      "traits": {
+        "Fur": "M1 Robot",
+        "Eyes": "M1 Closed",
+        "Mouth": "M1 Small Grin",
+        "Clothes": "M1 Wool Turtleneck",
+        "Background": "M1 Blue"
+      },
+      "rarityScore": 81.445625,
+      "rarityRank": 13034,
+      "price": {
+        "amount": "15.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T18:34:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T18:34:11.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "13620",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/13620-b368297634ae4382",
+      "traits": {
+        "Fur": "M1 Red",
+        "Hat": "M1 Fisherman's Hat",
+        "Eyes": "M1 Eyepatch",
+        "Mouth": "M1 Jovial",
+        "Clothes": "M1 Black Holes T",
+        "Background": "M1 Aquamarine"
+      },
+      "rarityScore": 81.533165,
+      "rarityRank": 13008,
+      "price": {
+        "amount": "15.16",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:17:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:17:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "21212",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/21212-7f17af484f567b34",
+      "traits": {
+        "Fur": "M1 White",
+        "Hat": "M1 Ww2 Pilot Helm",
+        "Eyes": "M1 Robot",
+        "Mouth": "M1 Grin",
+        "Clothes": "M1 Navy Striped Tee",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 90.25757,
+      "rarityRank": 11337,
+      "price": {
+        "amount": "15.16",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T19:47:45.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.773",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:43:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.773",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:43:47.000Z"
+      },
+      "owner": {
+        "address": "0x87de74597c1f8af0309cc4eea15f137c14180f7f",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "25712",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/25712-48006f0f31b70469",
+      "traits": {
+        "Fur": "M1 Tan",
+        "Hat": "M1 Prussian Helmet",
+        "Eyes": "M1 Closed",
+        "Mouth": "M1 Bored Unshaven Cigarette",
+        "Clothes": "M1 Sleeveless T",
+        "Background": "M1 Gray"
+      },
+      "rarityScore": 81.845055,
+      "rarityRank": 12931,
+      "price": {
+        "amount": "15.17",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:01:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:01:59.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1657",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/1657-c4b599a691d86184",
+      "traits": {
+        "Fur": "M1 Death Bot",
+        "Hat": "M1 Girl's Hair Pink",
+        "Eyes": "M1 Sleepy",
+        "Mouth": "M1 Bored Unshaven",
+        "Earring": "M1 Gold Hoop",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 128.3458,
+      "rarityRank": 6954,
+      "price": {
+        "amount": "15.1759",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T22:57:56.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "24.8",
+        "unit": "ETH",
+        "listedAt": "2022-01-30T17:26:13.600Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T19:22:47.000Z"
+      },
+      "owner": {
+        "address": "0xe6b4cd8d3f0de86836f74c9e6ea24325219f2347",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "29526",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/29526-eb6e12e509504294",
+      "traits": {
+        "Fur": "M1 Gray",
+        "Hat": "M1 Baby's Bonnet",
+        "Eyes": "M1 Sunglasses",
+        "Mouth": "M1 Phoneme L",
+        "Clothes": "M1 Striped Tee",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 88.00735,
+      "rarityRank": 11743,
+      "price": {
+        "amount": "15.1759",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T22:57:56.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.85",
+        "unit": "ETH",
+        "listedAt": "2022-08-07T09:49:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T12:58:59.000Z"
+      },
+      "owner": {
+        "address": "0xe6b4cd8d3f0de86836f74c9e6ea24325219f2347",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "3329",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/3329-566816202af2d766",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Eyes": "M1 Bored",
+        "Mouth": "M1 Tongue Out",
+        "Clothes": "M1 Blue Dress",
+        "Background": "M1 Gray"
+      },
+      "rarityScore": 81.34463,
+      "rarityRank": 13060,
+      "price": {
+        "amount": "15.1759",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T22:57:56.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "8.8",
+        "unit": "ETH",
+        "listedAt": "2021-08-29T09:00:25.920Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T17:42:11.000Z"
+      },
+      "owner": {
+        "address": "0xe6b4cd8d3f0de86836f74c9e6ea24325219f2347",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "6800",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/6800-758637f8b842c8c2",
+      "traits": {
+        "Fur": "M1 Dark Brown",
+        "Eyes": "M1 Bloodshot",
+        "Mouth": "M1 Grin",
+        "Clothes": "M1 Stunt Jacket",
+        "Background": "M1 Blue"
+      },
+      "rarityScore": 59.61384,
+      "rarityRank": 18307,
+      "price": {
+        "amount": "15.1759",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T22:57:56.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "4.95",
+        "unit": "ETH",
+        "listedAt": "2021-09-07T05:32:45.640Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T02:15:47.000Z"
+      },
+      "owner": {
+        "address": "0xe6b4cd8d3f0de86836f74c9e6ea24325219f2347",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "9754",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/9754-b66b6a669e6aec51",
+      "traits": {
+        "Fur": "M1 Noise",
+        "Hat": "M1 Army Hat",
+        "Eyes": "M1 Wide Eyed",
+        "Mouth": "M1 Jovial",
+        "Clothes": "M1 Biker Vest",
+        "Earring": "M1 Silver Hoop",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 129.04265,
+      "rarityRank": 6909,
+      "price": {
+        "amount": "15.1759",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T22:57:56.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "17.5",
+        "unit": "ETH",
+        "listedAt": "2022-07-27T08:39:19.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T23:46:35.000Z"
+      },
+      "owner": {
+        "address": "0xe6b4cd8d3f0de86836f74c9e6ea24325219f2347",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "7385",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/7385-22df22bb85518ebe",
+      "traits": {
+        "Fur": "M1 Dark Brown",
+        "Hat": "M1 Horns",
+        "Eyes": "M1 Bloodshot",
+        "Mouth": "M1 Dumbfounded",
+        "Clothes": "M1 Striped Tee",
+        "Earring": "M1 Silver Stud",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 88.13784,
+      "rarityRank": 11720,
+      "price": {
+        "amount": "15.18",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.2",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T12:03:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.2",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T12:03:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "25040",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/25040-3683adc74a8b8051",
+      "traits": {
+        "Fur": "M1 White",
+        "Hat": "M1 Sea Captain's Hat",
+        "Eyes": "M1 Angry",
+        "Mouth": "M1 Grin",
+        "Clothes": "M1 Bandolier",
+        "Background": "M1 Purple"
+      },
+      "rarityScore": 78.31559,
+      "rarityRank": 13743,
+      "price": {
+        "amount": "15.19",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:54:53.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.17",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T15:31:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.17",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T15:31:23.000Z"
+      },
+      "owner": {
+        "address": "0x99b476d2d2a1d13b81454a11c81ab8211b18902d",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "27610",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/27610-7e349d3fa67d5244",
+      "traits": {
+        "Fur": "M1 Noise",
+        "Hat": "M1 Short Mohawk",
+        "Eyes": "M1 Zombie",
+        "Mouth": "M1 Bored Unshaven",
+        "Clothes": "M1 Wool Turtleneck",
+        "Background": "M1 Army Green"
+      },
+      "rarityScore": 94.44899,
+      "rarityRank": 10671,
+      "price": {
+        "amount": "15.19",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T17:39:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T17:39:59.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "380",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/380-f6461eb3278b737a",
+      "traits": {
+        "Fur": "M1 White",
+        "Hat": "M1 Faux Hawk",
+        "Eyes": "M1 Closed",
+        "Mouth": "M1 Phoneme  Ooo",
+        "Clothes": "M1 Leather Punk Jacket",
+        "Background": "M1 New Punk Blue"
+      },
+      "rarityScore": 98.545105,
+      "rarityRank": 9959,
+      "price": {
+        "amount": "15.2",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.26",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T23:56:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.26",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T23:56:11.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "8193",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/8193-a0aef33b1dc01b8b",
+      "traits": {
+        "Fur": "M1 Black",
+        "Hat": "M1 Beanie",
+        "Eyes": "M1 Bored",
+        "Mouth": "M1 Dumbfounded",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 49.777405,
+      "rarityRank": 19363,
+      "price": {
+        "amount": "15.2",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T07:37:14.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.99999",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T17:46:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.99999",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T17:46:35.000Z"
+      },
+      "owner": {
+        "address": "0xb412f82383d0f9a97e3be04598ea79cd4af96d51",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "780",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/780-21be72bc9bd0e9ef",
+      "traits": {
+        "Fur": "M1 Dark Brown",
+        "Eyes": "M1 Angry",
+        "Mouth": "M1 Rage",
+        "Clothes": "M1 Guayabera",
+        "Earring": "M1 Gold Hoop",
+        "Background": "M1 Blue"
+      },
+      "rarityScore": 100.66831,
+      "rarityRank": 9633,
+      "price": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T05:04:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T05:04:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "4224",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/4224-4d6c832827fc5e8d",
+      "traits": {
+        "Fur": "M1 Noise",
+        "Hat": "M1 Fez",
+        "Eyes": "M1 Coins",
+        "Mouth": "M1 Bored Unshaven Cigarette",
+        "Clothes": "M1 Tie Dye",
+        "Background": "M1 Gray"
+      },
+      "rarityScore": 101.703094,
+      "rarityRank": 9466,
+      "price": {
+        "amount": "15.22",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.167",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T09:44:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.167",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T09:44:59.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "19646",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/19646-e5fff341a86531bf",
+      "traits": {
+        "Fur": "M1 Blue",
+        "Hat": "M1 Halo",
+        "Eyes": "M1 Zombie",
+        "Mouth": "M1 Bored",
+        "Clothes": "M1 Smoking Jacket",
+        "Earring": "M1 Silver Stud",
+        "Background": "M1 Army Green"
+      },
+      "rarityScore": 103.81707,
+      "rarityRank": 9176,
+      "price": {
+        "amount": "15.23",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T18:13:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T18:13:59.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "8503",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/8503-1e06bbefd51e5f53",
+      "traits": {
+        "Fur": "M1 Red",
+        "Hat": "M1 Beanie",
+        "Eyes": "M1 Sad",
+        "Mouth": "M1 Bored Kazoo",
+        "Clothes": "M1 Vietnam Jacket",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 106.278076,
+      "rarityRank": 8889,
+      "price": {
+        "amount": "15.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T05:11:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T05:11:11.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "7237",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/7237-98e2576144841382",
+      "traits": {
+        "Fur": "M1 Dark Brown",
+        "Eyes": "M1 Angry",
+        "Mouth": "M1 Bored Unshaven Kazoo",
+        "Clothes": "M1 Navy Striped Tee",
+        "Background": "M1 Aquamarine"
+      },
+      "rarityScore": 108.091866,
+      "rarityRank": 8688,
+      "price": {
+        "amount": "15.25",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.18",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T03:32:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.18",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T03:32:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "16344",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/16344-dde3a68b17d30c3c",
+      "traits": {
+        "Fur": "M1 Dark Brown",
+        "Hat": "M1 Baby's Bonnet",
+        "Eyes": "M1 Sleepy",
+        "Mouth": "M1 Discomfort",
+        "Clothes": "M1 Wool Turtleneck",
+        "Earring": "M1 Silver Stud",
+        "Background": "M1 Gray"
+      },
+      "rarityScore": 109.84189,
+      "rarityRank": 8500,
+      "price": {
+        "amount": "15.26",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.23",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T11:49:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.23",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T11:49:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "27684",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/27684-c4f6a1e354ce7877",
+      "traits": {
+        "Fur": "M1 Tan",
+        "Hat": "M1 Bowler",
+        "Eyes": "M1 Bored",
+        "Mouth": "M1 Bored Unshaven Bubblegum",
+        "Earring": "M1 Silver Stud",
+        "Background": "M1 Army Green"
+      },
+      "rarityScore": 116.751175,
+      "rarityRank": 7822,
+      "price": {
+        "amount": "15.27",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:01:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:01:59.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "259",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/259-1a7fef11c3f8725b",
+      "traits": {
+        "Fur": "M1 Zombie",
+        "Eyes": "M1 Zombie",
+        "Mouth": "M1 Phoneme Oh",
+        "Clothes": "M1 Tuxedo Tee",
+        "Earring": "M1 Gold Stud",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 121.20012,
+      "rarityRank": 7455,
+      "price": {
+        "amount": "15.28",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.16",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T11:04:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.16",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T11:04:59.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "1713",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/1713-a0b1f8e49186e7ef",
+      "traits": {
+        "Fur": "M1 Blue",
+        "Hat": "M1 Sea Captain's Hat",
+        "Eyes": "M1 Sunglasses",
+        "Mouth": "M1 Bored Cigarette",
+        "Earring": "M1 Silver Stud",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 84.140755,
+      "rarityRank": 12439,
+      "price": {
+        "amount": "15.288",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T02:14:17.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "highestBid": {
+        "amount": "14.6",
+        "unit": "WETH",
+        "listedAt": "2023-02-25T12:24:00.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "lastSale": {
+        "amount": "14.5",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T23:46:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T02:11:59.000Z"
+      },
+      "owner": {
+        "address": "0x1128bd9cf36405f7b2ce25301b127a7647a2097a",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "19470",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/19470-e49f4019c00fdabf",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Hat": "M1 Vietnam Era Helmet",
+        "Eyes": "M1 Coins",
+        "Mouth": "M1 Phoneme Vuh",
+        "Clothes": "M1 Stunt Jacket",
+        "Earring": "M1 Gold Stud",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 125.38027,
+      "rarityRank": 7137,
+      "price": {
+        "amount": "15.29",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.18",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T03:32:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.18",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T03:32:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "255",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/255-0f97014e4b4e0bb9",
+      "traits": {
+        "Fur": "M1 Pink",
+        "Hat": "M1 Bayc Hat Red",
+        "Eyes": "M1 Eyepatch",
+        "Mouth": "M1 Bored Pipe",
+        "Clothes": "M1 Biker Vest",
+        "Background": "M1 Aquamarine"
+      },
+      "rarityScore": 109.40893,
+      "rarityRank": 8542,
+      "price": {
+        "amount": "15.29",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T01:22:08.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.995",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T06:30:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.995",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T06:30:47.000Z"
+      },
+      "owner": {
+        "address": "0x9f28152ae399a6f1b9760c04972de4f9303c0c9f",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "9199",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/9199-ff295367e7fc1e3d",
+      "traits": {
+        "Fur": "M1 Cream",
+        "Eyes": "M1 Bored",
+        "Mouth": "M1 Phoneme Wah",
+        "Clothes": "M1 Wool Turtleneck",
+        "Background": "M1 Army Green"
+      },
+      "rarityScore": 73.4083,
+      "rarityRank": 14925,
+      "price": {
+        "amount": "15.2965",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T16:42:49.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.23",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T14:24:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.23",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T14:24:35.000Z"
+      },
+      "owner": {
+        "address": "0xcdd60e7b7ade44053a67349a6e856c0ae33d2b91",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "6228",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/6228-98b37b26dda916e5",
+      "traits": {
+        "Fur": "M1 Black",
+        "Hat": "M1 S&m Hat",
+        "Eyes": "M1 Closed",
+        "Mouth": "M1 Dumbfounded",
+        "Clothes": "M1 Lumberjack Shirt",
+        "Earring": "M1 Silver Hoop",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 95.66297,
+      "rarityRank": 10448,
+      "price": {
+        "amount": "15.3",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T22:05:37.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "highestBid": {
+        "amount": "0.1",
+        "unit": "WETH",
+        "listedAt": "2023-02-24T17:10:32.000Z",
+        "marketplace": "OPENSEA"
+      },
+      "lastSale": {
+        "amount": "16.5",
+        "unit": "WETH",
+        "listedAt": "2022-07-29T16:23:14.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:43:35.000Z"
+      },
+      "owner": {
+        "address": "0xfb9d289070e6f80f9df38afb35ffc1b9cc16b4d3",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "6673",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/6673-acb9c3a312fa524e",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Hat": "M1 Bunny Ears",
+        "Eyes": "M1 Sad",
+        "Mouth": "M1 Rage",
+        "Clothes": "M1 Bone Tee",
+        "Earring": "M1 Gold Stud",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 125.56613,
+      "rarityRank": 7121,
+      "price": {
+        "amount": "15.3",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T05:07:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T05:07:59.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "27404",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/27404-aa1532378c543025",
+      "traits": {
+        "Fur": "M1 Tan",
+        "Hat": "M1 Stuntman Helmet",
+        "Eyes": "M1 Sleepy",
+        "Mouth": "M1 Bored Unshaven Cigarette",
+        "Clothes": "M1 Lumberjack Shirt",
+        "Earring": "M1 Gold Hoop",
+        "Background": "M1 Purple"
+      },
+      "rarityScore": 126.81901,
+      "rarityRank": 7040,
+      "price": {
+        "amount": "15.31",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.19",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T23:09:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.19",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T23:09:59.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "3898",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/3898-b8049f8e303a9151",
+      "traits": {
+        "Fur": "M1 Noise",
+        "Hat": "M1 S&m Hat",
+        "Eyes": "M1 Coins",
+        "Mouth": "M1 Phoneme Oh",
+        "Clothes": "M1 Kings Robe",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 131.43549,
+      "rarityRank": 6786,
+      "price": {
+        "amount": "15.32",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.26",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T23:53:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.26",
+        "unit": "ETH",
+        "listedAt": "2023-02-21T23:53:35.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "17296",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/17296-1db02196a0991bf4",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Hat": "M1 Beanie",
+        "Eyes": "M1 Bloodshot",
+        "Mouth": "M1 Bored",
+        "Clothes": "M1 Black T",
+        "Background": "M1 New Punk Blue"
+      },
+      "rarityScore": 45.77442,
+      "rarityRank": 19446,
+      "price": {
+        "amount": "15.3266",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T07:32:23.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.23",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T00:32:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.23",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T00:32:23.000Z"
+      },
+      "owner": {
+        "address": "0x4dcbb1fe5983ad5b44dc661273a4f11ca812f8b8",
+        "username": null
+      },
+      "numberOwnedByOwner": 3,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "25834",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/25834-cfd57b8a622dcf8a",
+      "traits": {
+        "Fur": "M1 Cream",
+        "Hat": "M1 Fisherman's Hat",
+        "Eyes": "M1 Holographic",
+        "Mouth": "M1 Bored Cigarette",
+        "Background": "M1 Purple"
+      },
+      "rarityScore": 84.02816,
+      "rarityRank": 12465,
+      "price": {
+        "amount": "15.3266",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:35:58.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:11:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.21",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:11:47.000Z"
+      },
+      "owner": {
+        "address": "0xedb29a9811a6018b6c60e2f338fc5b46b57af5aa",
+        "username": null
+      },
+      "numberOwnedByOwner": 5,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "6804",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/6804-862ea4cb9fb505ab",
+      "traits": {
+        "Fur": "M1 Blue",
+        "Eyes": "M1 Bloodshot",
+        "Mouth": "M1 Phoneme Oh",
+        "Clothes": "M1 Smoking Jacket",
+        "Background": "M1 New Punk Blue"
+      },
+      "rarityScore": 75.37216,
+      "rarityRank": 14465,
+      "price": {
+        "amount": "15.3266",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T04:09:33.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T02:35:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T02:35:11.000Z"
+      },
+      "owner": {
+        "address": "0xaa0dee58a36b72c774317eb5f71afb2a04c85527",
+        "username": null
+      },
+      "numberOwnedByOwner": 4,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "12384",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/12384-badc4fa97dff4116",
+      "traits": {
+        "Fur": "M1 White",
+        "Hat": "M1 Fez",
+        "Eyes": "M1 Coins",
+        "Mouth": "M1 Bored",
+        "Earring": "M1 Diamond Stud",
+        "Background": "M1 Purple"
+      },
+      "rarityScore": 136.58041,
+      "rarityRank": 6476,
+      "price": {
+        "amount": "15.33",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T05:07:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.24",
+        "unit": "ETH",
+        "listedAt": "2023-02-22T05:07:35.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "10160",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/10160-05e81559e4daa32d",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Hat": "M1 Horns",
+        "Eyes": "M1 Sad",
+        "Mouth": "M1 Bored Unshaven",
+        "Clothes": "M1 Tanktop",
+        "Earring": "M1 Diamond Stud",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 151.53308,
+      "rarityRank": 5857,
+      "price": {
+        "amount": "15.34",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T18:13:59.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.15",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T18:13:59.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "8424",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/8424-bcedb8abbd767250",
+      "traits": {
+        "Fur": "M1 White",
+        "Eyes": "M1 Sleepy",
+        "Mouth": "M1 Bored Unshaven",
+        "Clothes": "M1 Guayabera",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 65.1333,
+      "rarityRank": 17105,
+      "price": {
+        "amount": "15.34",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T21:01:37.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.56",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T20:55:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.56",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T20:55:23.000Z"
+      },
+      "owner": {
+        "address": "0x276cd56089e7576fb80d39a763aa0d213b98e948",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "3400",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/3400-1cec0b8735f369da",
+      "traits": {
+        "Fur": "M1 Tan",
+        "Eyes": "M1 Angry",
+        "Mouth": "M1 Grin",
+        "Background": "M1 Gray"
+      },
+      "rarityScore": 172.50949,
+      "rarityRank": 4928,
+      "price": {
+        "amount": "15.35",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T11:04:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.2",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T12:03:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.2",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T12:03:47.000Z"
+      },
+      "owner": {
+        "address": "0x8bc110db7029197c3621bea8092ab1996d5dd7be",
+        "username": null
+      },
+      "numberOwnedByOwner": 35,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "18340",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/18340-d68647415f57e4b5",
+      "traits": {
+        "Fur": "M1 Black",
+        "Hat": "M1 Girl's Hair Short",
+        "Eyes": "M1 3d",
+        "Mouth": "M1 Bored",
+        "Clothes": "M1 Bayc T Black",
+        "Earring": "M1 Silver Hoop",
+        "Background": "M1 Purple"
+      },
+      "rarityScore": 101.80894,
+      "rarityRank": 9446,
+      "price": {
+        "amount": "15.379",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T15:12:58.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.2",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T11:54:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.2",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T11:54:35.000Z"
+      },
+      "owner": {
+        "address": "0x677f828b252e02e7050e7ddb43655caea1cb1f7e",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2563",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/2563-c8d1d5dbe48124fb",
+      "traits": {
+        "Fur": "M1 Golden Brown",
+        "Eyes": "M1 Closed",
+        "Mouth": "M1 Grin",
+        "Clothes": "M1 Sleeveless T",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 59.277508,
+      "rarityRank": 18352,
+      "price": {
+        "amount": "15.38",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T03:02:37.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.87",
+        "unit": "ETH",
+        "listedAt": "2023-02-09T09:47:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.87",
+        "unit": "ETH",
+        "listedAt": "2023-02-09T09:47:23.000Z"
+      },
+      "owner": {
+        "address": "0xac671b03ce1c14018f99da62802e79c44e93c8c5",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "9003",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/9003-fb5668faf9cbb55c",
+      "traits": {
+        "Fur": "M1 Brown",
+        "Eyes": "M1 Wide Eyed",
+        "Mouth": "M1 Rage",
+        "Clothes": "M1 Cowboy Shirt",
+        "Background": "M1 Army Green"
+      },
+      "rarityScore": 77.91381,
+      "rarityRank": 13846,
+      "price": {
+        "amount": "15.38",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T03:02:37.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "12",
+        "unit": "ETH",
+        "listedAt": "2022-11-25T19:53:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-20T03:04:35.000Z"
+      },
+      "owner": {
+        "address": "0xac671b03ce1c14018f99da62802e79c44e93c8c5",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "2047",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/2047-4507042d11ee2fe3",
+      "traits": {
+        "Fur": "M1 Gray",
+        "Eyes": "M1 Scumbag",
+        "Mouth": "M1 Bored",
+        "Clothes": "M1 Stunt Jacket",
+        "Background": "M1 Purple"
+      },
+      "rarityScore": 79.83449,
+      "rarityRank": 13415,
+      "price": {
+        "amount": "15.39",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T12:56:40.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "15.776",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:47:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "15.776",
+        "unit": "ETH",
+        "listedAt": "2023-02-23T19:47:23.000Z"
+      },
+      "owner": {
+        "address": "0x70a8e804229d1acff33f1f178b9f38d44879df1c",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "13024",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/13024-fc48df17d86bee9e",
+      "traits": {
+        "Fur": "M1 Black",
+        "Eyes": "M1 Closed",
+        "Mouth": "M1 Grin",
+        "Clothes": "M1 Lumberjack Shirt",
+        "Background": "M1 Army Green"
+      },
+      "rarityScore": 58.9936,
+      "rarityRank": 18409,
+      "price": {
+        "amount": "15.4",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T05:34:45.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.17",
+        "unit": "ETH",
+        "listedAt": "2023-02-16T01:28:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.17",
+        "unit": "ETH",
+        "listedAt": "2023-02-16T01:28:35.000Z"
+      },
+      "owner": {
+        "address": "0xfd61cef0879dafb9ebfabe59b8e25d221821c722",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "14198",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/14198-351b52dfb69a9d9f",
+      "traits": {
+        "Fur": "M1 Gray",
+        "Eyes": "M1 Wide Eyed",
+        "Mouth": "M1 Bored",
+        "Earring": "M1 Silver Hoop",
+        "Background": "M1 Blue"
+      },
+      "rarityScore": 72.61392,
+      "rarityRank": 15126,
+      "price": {
+        "amount": "15.4",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T05:34:45.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.1",
+        "unit": "ETH",
+        "listedAt": "2022-12-21T03:04:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.1",
+        "unit": "ETH",
+        "listedAt": "2022-12-21T03:04:47.000Z"
+      },
+      "owner": {
+        "address": "0xfd61cef0879dafb9ebfabe59b8e25d221821c722",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "14694",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/14694-89694f3ed2759d35",
+      "traits": {
+        "Fur": "M1 Golden Brown",
+        "Hat": "M1 Ww2 Pilot Helm",
+        "Eyes": "M1 Bored",
+        "Mouth": "M1 Bored",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 68.66458,
+      "rarityRank": 16217,
+      "price": {
+        "amount": "15.4",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T05:34:45.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.09",
+        "unit": "ETH",
+        "listedAt": "2022-12-21T03:04:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.09",
+        "unit": "ETH",
+        "listedAt": "2022-12-21T03:04:47.000Z"
+      },
+      "owner": {
+        "address": "0xfd61cef0879dafb9ebfabe59b8e25d221821c722",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "15310",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/15310-17ad0c6cca187c16",
+      "traits": {
+        "Fur": "M1 Black",
+        "Eyes": "M1 Crazy",
+        "Mouth": "M1 Dumbfounded",
+        "Clothes": "M1 Wool Turtleneck",
+        "Background": "M1 Army Green"
+      },
+      "rarityScore": 63.704113,
+      "rarityRank": 17440,
+      "price": {
+        "amount": "15.4",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T05:34:45.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.32",
+        "unit": "ETH",
+        "listedAt": "2023-01-30T04:53:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "14.32",
+        "unit": "ETH",
+        "listedAt": "2023-01-30T04:53:47.000Z"
+      },
+      "owner": {
+        "address": "0xfd61cef0879dafb9ebfabe59b8e25d221821c722",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "17696",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/17696-08c8c3667afab2d9",
+      "traits": {
+        "Fur": "M1 Black",
+        "Hat": "M1 S&m Hat",
+        "Eyes": "M1 Wide Eyed",
+        "Mouth": "M1 Rage",
+        "Clothes": "M1 Biker Vest",
+        "Background": "M1 Yellow"
+      },
+      "rarityScore": 71.63574,
+      "rarityRank": 15413,
+      "price": {
+        "amount": "15.4",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T05:34:45.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "10.31",
+        "unit": "WETH",
+        "listedAt": "2022-11-09T21:59:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "10.31",
+        "unit": "WETH",
+        "listedAt": "2022-11-09T21:59:11.000Z"
+      },
+      "owner": {
+        "address": "0xfd61cef0879dafb9ebfabe59b8e25d221821c722",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": true
+    },
+    {
+      "tokenId": "18572",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/18572-52d4473dab677fa3",
+      "traits": {
+        "Fur": "M1 Black",
+        "Eyes": "M1 Closed",
+        "Mouth": "M1 Bored Unshaven Cigarette",
+        "Clothes": "M1 Smoking Jacket",
+        "Earring": "M1 Silver Stud",
+        "Background": "M1 Purple"
+      },
+      "rarityScore": 73.74271,
+      "rarityRank": 14838,
+      "price": {
+        "amount": "15.4",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T05:34:45.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "16.16",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T18:11:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "16.16",
+        "unit": "ETH",
+        "listedAt": "2023-02-18T18:11:23.000Z"
+      },
+      "owner": {
+        "address": "0xfd61cef0879dafb9ebfabe59b8e25d221821c722",
+        "username": null
+      },
+      "numberOwnedByOwner": 20,
+      "isSuspicious": false
+    },
+    {
+      "tokenId": "19362",
+      "name": null,
+      "imageUrl": "https://images.blur.io/_blur-prod/0x60e4d786628fea6478f785a6d7e704777c86a7c6/19362-90201d9c429a365f",
+      "traits": {
+        "Fur": "M1 Black",
+        "Eyes": "M1 Zombie",
+        "Mouth": "M1 Bored Unshaven Cigarette",
+        "Clothes": "M1 Sailor Shirt",
+        "Background": "M1 Orange"
+      },
+      "rarityScore": 67.70741,
+      "rarityRank": 16486,
+      "price": {
+        "amount": "15.4",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T07:56:41.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "14.199",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T03:24:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0",
+        "unit": "ETH",
+        "listedAt": "2023-02-25T03:27:23.000Z"
+      },
+      "owner": {
+        "address": "0xd3ab24aec82b9e2ba4732e68d4cfb5d129fdf229",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false
+    }
+  ]
+}

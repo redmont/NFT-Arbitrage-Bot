@@ -1,0 +1,87 @@
+{
+	event {
+		event_type: 'item_received_bid',
+		payload: {
+			base_price: '368000000000000000',
+			collection: { slug: 'momoguro-holoself' },
+			created_date: '2023-04-06T16:49:33.000000+00:00',
+			event_timestamp: '2023-04-06T16:49:36.667228+00:00',
+			expiration_date: '2023-04-06T17:09:25.000000+00:00',
+			item: {
+				chain: { name: 'ethereum' },
+				metadata: {
+					animation_url: null,
+					image_url: 'https://i.seadn.io/gcs/files/ec88ecb10602b748e7646f555d6e67d8.png?w=500&auto=format',
+					metadata_url: 'https://beehive-api-q7ic5.ondigitalocean.app/v1/characters/holoselfs/metadata/7928',
+					name: 'Holoself #7928'
+				},
+				nft_id: 'ethereum/0x59ad67e9c6a84e602bc73b3a606f731cc6df210d/7928',
+				permalink: 'https://opensea.io/assets/ethereum/0x59ad67e9c6a84e602bc73b3a606f731cc6df210d/7928'
+			},
+			maker: { address: '0xeff8d04de8bd0f13994210da7e11d74f9d957675' },
+			order_hash: '0x6548fdcf1d3efd7df2774602a9c75e8dbc89a56c04cb80b05b65c46462923a85',
+			payment_token: {
+				address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+				decimals: 18,
+				eth_price: '1.000000000000000',
+				name: 'Wrapped Ether',
+				symbol: 'WETH',
+				usd_price: '1877.750000000000000000'
+			},
+			protocol_address: '0x00000000000001ad428e4906ae43d8f9852d0dd6',
+			protocol_data: {
+				parameters: {
+				conduitKey: '0x0000007b02230091a7ed01230072f7006a004d60a8d4e71d599b8104250f0000',
+				consideration: [
+					{
+						endAmount: '1',
+						identifierOrCriteria: '7928',
+						itemType: 2,
+						recipient: '0xEfF8d04DE8bD0f13994210da7E11d74f9d957675',
+						startAmount: '1',
+						token: '0x59Ad67e9c6a84e602BC73B3A606F731CC6dF210d'
+					},
+					{
+						endAmount: '9200000000000000',
+						identifierOrCriteria: '0',
+						itemType: 1,
+						recipient: '0x0000a26b00c1F0DF003000390027140000fAa719',
+						startAmount: '9200000000000000',
+						token: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
+					},
+					{
+						endAmount: '18400000000000000',
+						identifierOrCriteria: '0',
+						itemType: 1,
+						recipient: '0xeA803944E87142d44b945b3f5a0639f442ba361B',
+						startAmount: '18400000000000000',
+						token: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
+					}
+				],
+				counter: 0,
+				endTime: '1680800965',
+				offer: [
+					{
+						endAmount: '368000000000000000',
+						identifierOrCriteria: '0',
+						itemType: 1,
+						startAmount: '368000000000000000',
+						token: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
+					}
+				],
+				offerer: '0xeff8d04de8bd0f13994210da7e11d74f9d957675',
+				orderType: 1,
+				salt: '0x768ba363de1def4d4345033a837b7ea6',
+				startTime: '1680799773',
+				totalOriginalConsiderationItems: 3,
+				zone: '0x0000000000000000000000000000000000000000',
+				zoneHash: '0x0000000000000000000000000000000000000000000000000000000000000000'
+			},
+				signature: null
+			},
+			quantity: 1,
+			taker: null
+		},
+		signature: null
+	}
+}

@@ -1,0 +1,56 @@
+{
+  "order_hash": "0xbebfaa10c088dc4ff60d701b50cbfc27367092701e6878644e8b4202631d4aa0",
+  "chain": "ethereum",
+  "criteria": {
+    "collection": {
+      "slug": "rarepepe-by-matt-furie"
+    },
+    "contract": {
+      "address": "0x937a2cd137fe77db397c51975b0caaaa29559cf7"
+    },
+    "trait": null
+  },
+  "protocol_data": {
+    "parameters": {
+      "offerer": "0x2ee4c45af89774c76a8a73178c281089a8771a00",
+      "offer": [
+        {
+          "itemType": 1,
+          "token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "identifierOrCriteria": "0",
+          "startAmount": "3269000000000000",
+          "endAmount": "3269000000000000"
+        }
+      ],
+      "consideration": [
+        {
+          "itemType": 4,
+          "token": "0x937a2cd137FE77dB397c51975b0CaAaa29559CF7",
+          "identifierOrCriteria": "94308629115779921323093172161258994649233537690659147476879377678353338735173",
+          "startAmount": "1",
+          "endAmount": "1",
+          "recipient": "0x2Ee4c45af89774c76A8a73178C281089A8771A00"
+        },
+        {
+          "itemType": 1,
+          "token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "identifierOrCriteria": "0",
+          "startAmount": "81725000000000",
+          "endAmount": "81725000000000",
+          "recipient": "0x0000a26b00c1F0DF003000390027140000fAa719"
+        }
+      ],
+      "startTime": "1683192346",
+      "endTime": "1685870743",
+      "orderType": 2,
+      "zone": "0x000000e7Ec00e7B300774b00001314B8610022b8",
+      "zoneHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "salt": "0x360c6ebe00000000000000000000000000000000000000007b696e64158c19ce",
+      "conduitKey": "0x0000007b02230091a7ed01230072f7006a004d60a8d4e71d599b8104250f0000",
+      "totalOriginalConsiderationItems": 2,
+      "counter": 0
+    },
+    "signature": null
+  },
+  "protocol_address": "0x00000000000000adc04c56bf30ac9d3c0aaf14dc"
+}

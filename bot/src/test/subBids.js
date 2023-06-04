@@ -99,8 +99,8 @@ function logAndUpdate() {
       }
 
       if (
-        event.event_type === EventType.TRAIT_OFFER ||
-        event.event_type === EventType.COLLECTION_OFFER &&
+        event.event_type === EventType.TRAIT_OFFER &&
+        // (event.event_type === EventType.COLLECTION_OFFER &&
         event.payload.protocol_data.parameters.orderType <= 1
         // BigInt(event?.payload?.base_price) <= ethers.parseEther("0.02")
         //   .lt(ethers.parseEther("0.02"))

@@ -1,0 +1,78 @@
+{
+  "created_date": "2022-05-16T14:26:59.545926",
+  "closing_date": "2022-05-19T14:21:50",
+  "listing_time": 1652711219,
+  "expiration_time": 1652970110,
+  "order_hash": "0x771b326d9f1495505fab51ae92253a8501153dd159cd33313481ea76bcbd0417",
+  "protocol_data": {
+    "parameters": {
+      "offerer": "0x11C5fdb169Ac61373224DBF8586504EDc2480d71",
+      "zone": "0x9B814233894Cd227f561B78Cc65891AA55C62Ad2",
+      "orderType": 0,
+      "startTime": 0,
+      "endTime": 1652970110,
+      "salt": 42932811392529640,
+      "offer": [
+        {
+          "itemType": 1,
+          "token": "0xc778417E063141139Fce010982780140Aa0cD5Ab",
+          "identifierOrCriteria": 0,
+          "startAmount": 100000000000000000,
+          "endAmount": 100000000000000000
+        }
+      ],
+      "consideration": [
+        {
+          "itemType": 2,
+          "token": "0x7dca125b1e805dC88814aeD7ccc810f677d3E1DB",
+          "identifierOrCriteria": 23,
+          "startAmount": 1,
+          "endAmount": 1,
+          "recipient": "0x11C5fdb169Ac61373224DBF8586504EDc2480d71"
+        },
+        {
+          "itemType": 1,
+          "token": "0xc778417E063141139Fce010982780140Aa0cD5Ab",
+          "identifierOrCriteria": 0,
+          "startAmount": 2500000000000000,
+          "endAmount": 2500000000000000,
+          "recipient": "0x5b3256965e7C3cF26E11FCAf296DfC8807C01073"
+        }
+      ],
+      "zoneHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "conduitKey": "0x000000000000000000000000f873ddbdb8f3f85f4baa183e26a42996cdf9e728",
+      "totalOriginalConsiderationItems": 2,
+      "nonce": 0
+    },
+    "signature": "0x"
+  },
+  "protocol_address": null,
+  "maker": {
+    "user": 136093,
+    "profile_img_url": "https://storage.googleapis.com/opensea-static/opensea-profile/28.png",
+    "address": "0x11c5fdb169ac61373224dbf8586504edc2480d71",
+    "config": ""
+  },
+  "taker": null,
+  "current_price": "100000000000000000",
+  "maker_fees": [],
+  "taker_fees": [
+    {
+      "account": {
+        "user": 3282,
+        "profile_img_url": "https://storage.googleapis.com/opensea-static/opensea-profile/28.png",
+        "address": "0x5b3256965e7c3cf26e11fcaf296dfc8807c01073",
+        "config": ""
+      },
+      "basis_points": "250"
+    }
+  ],
+  "side": "bid",
+  "order_type": "basic",
+  "cancelled": false,
+  "finalized": false,
+  "marked_invalid": true,
+  "client_signature": "0x4aeca6536db4bed6e9f0c37ad5003dd0591b28f6d2e6e3c94f9dc76c321ec492693c8717853daf9d2e078f04495396631534d79990f1a800b03b5213372595271b",
+  "maker_asset_bundle": {},
+  "taker_asset_bundle": {}
+}

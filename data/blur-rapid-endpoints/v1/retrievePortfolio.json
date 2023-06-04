@@ -1,0 +1,233 @@
+{
+  "url": "https://gyazo.com/00c97f2aeab046eb773173f64a45a660",
+	"success": true,
+  "totalCount": 6,
+  "tokens": [
+    {
+      "tokenId": "1602",
+      "contractAddress": "0x839e73a4f3826702332d807abfcfe417211dc192",
+      "name": "Council Crew #1602",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x839e73a4f3826702332d807abfcfe417211dc192/1602-56dc02f38c53e92c",
+      "traits": {
+        "Shield": "Kite_Shield_3",
+        "Weapon": "Fire_Saber",
+        "Eyewear": "Green_Nouns_Glasses",
+        "Jetpack": "Red_Flame",
+        "Species": "Yellow_Cat",
+        "Uniform": "Black_Astro_Suit",
+        "Headband": "Red_Headband",
+        "Background": "Neon"
+      },
+      "rarityScore": 209.80478,
+      "rarityRank": 4,
+      "price": null,
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.0002",
+        "unit": "WETH",
+        "listedAt": "2022-12-13T22:45:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.0002",
+        "unit": "WETH",
+        "listedAt": "2022-12-13T22:45:23.000Z"
+      },
+      "owner": {
+        "address": "0x174240aa4b903fe0e2ea964b32d2c229dff511f1",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false,
+      "asks": []
+    },
+    {
+      "tokenId": "2186",
+      "contractAddress": "0x839e73a4f3826702332d807abfcfe417211dc192",
+      "name": "Council Crew #2186",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x839e73a4f3826702332d807abfcfe417211dc192/2186-4e6666dfdf634dc0",
+      "traits": {
+        "Shield": "Titanium_Square_Shield",
+        "Weapon": "Divine_Sword",
+        "Eyewear": "Glasses_1",
+        "Jetpack": "Blue_Flame",
+        "Species": "Fox",
+        "Uniform": "Yellow_Astro_Suit",
+        "Headband": "None",
+        "Background": "Yellow"
+      },
+      "rarityScore": 102.04067,
+      "rarityRank": 4738,
+      "price": null,
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.0002",
+        "unit": "WETH",
+        "listedAt": "2022-12-13T22:39:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.0002",
+        "unit": "WETH",
+        "listedAt": "2022-12-13T22:39:47.000Z"
+      },
+      "owner": {
+        "address": "0x174240aa4b903fe0e2ea964b32d2c229dff511f1",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false,
+      "asks": []
+    },
+    {
+      "tokenId": "877",
+      "contractAddress": "0xa7f551feab03d1f34138c900e7c08821f3c3d1d0",
+      "name": "Yes Ser #877",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xa7f551feab03d1f34138c900e7c08821f3c3d1d0/877-e970d7a39851472a",
+      "traits": {
+        "hat": "Angel Holo",
+        "eyes": "Innocent",
+        "mouth": "Cigarette",
+        "skins": "Purple",
+        "background": "Gray"
+      },
+      "rarityScore": 110.19188,
+      "rarityRank": 1251,
+      "price": null,
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.001",
+        "unit": "WETH",
+        "listedAt": "2022-11-29T15:11:35.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.001",
+        "unit": "WETH",
+        "listedAt": "2022-11-29T15:11:35.000Z"
+      },
+      "owner": {
+        "address": "0x174240aa4b903fe0e2ea964b32d2c229dff511f1",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false,
+      "asks": []
+    },
+    {
+      "tokenId": "2947",
+      "contractAddress": "0xa7f551feab03d1f34138c900e7c08821f3c3d1d0",
+      "name": "Yes Ser #2947",
+      "imageUrl": "https://images.blur.io/_blur-prod/0xa7f551feab03d1f34138c900e7c08821f3c3d1d0/2947-3e8dc2909f82e7f0",
+      "traits": {
+        "hat": "Cowboy",
+        "eyes": "Sunglasses",
+        "mouth": "Yes Ser",
+        "skins": "Purple",
+        "background": "Gray"
+      },
+      "rarityScore": 83.370255,
+      "rarityRank": 3713,
+      "price": null,
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.001",
+        "unit": "WETH",
+        "listedAt": "2022-11-29T13:30:47.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.001",
+        "unit": "WETH",
+        "listedAt": "2022-11-29T13:30:47.000Z"
+      },
+      "owner": {
+        "address": "0x174240aa4b903fe0e2ea964b32d2c229dff511f1",
+        "username": null
+      },
+      "numberOwnedByOwner": 2,
+      "isSuspicious": false,
+      "asks": []
+    },
+    {
+      "tokenId": "24438002",
+      "contractAddress": "0xabb3738f04dc2ec20f4ae4462c3d069d02ae045b",
+      "name": null,
+      "imageUrl": null,
+      "traits": {},
+      "rarityScore": null,
+      "rarityRank": null,
+      "price": {
+        "amount": "0.5714",
+        "unit": "ETH",
+        "listedAt": "2023-02-24T13:20:31.000Z",
+        "marketplace": "BLUR"
+      },
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.002",
+        "unit": "WETH",
+        "listedAt": "2022-11-24T12:42:11.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.002",
+        "unit": "WETH",
+        "listedAt": "2022-11-24T12:42:11.000Z"
+      },
+      "owner": {
+        "address": "0x174240aa4b903fe0e2ea964b32d2c229dff511f1",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false,
+      "asks": [
+        {
+          "amount": "0.5714",
+          "unit": "ETH",
+          "listedAt": "2023-02-24T13:21:24.000Z",
+          "marketplace": "OPENSEA"
+        },
+        {
+          "amount": "0.5714",
+          "unit": "ETH",
+          "listedAt": "2023-02-24T13:20:31.000Z",
+          "marketplace": "BLUR"
+        }
+      ]
+    },
+    {
+      "tokenId": "4425",
+      "contractAddress": "0x8f0a704e24fcea2572d201a22979a98363656c55",
+      "name": "WTCHS_ #4425",
+      "imageUrl": "https://images.blur.io/_blur-prod/0x8f0a704e24fcea2572d201a22979a98363656c55/4425-a795cb24882c90c3",
+      "traits": {
+        "Eyes": "Mad",
+        "Hair": "Curly Black",
+        "Head": "Pentagram Hat",
+        "Nose": "Lighting",
+        "Mouth": "Teeth",
+        "Scene": "Green Clouds",
+        "Add On": "Red Potion",
+        "Figure": "Green",
+        "Garments": "Olive Suspenders"
+      },
+      "rarityScore": 111.90503,
+      "rarityRank": 1575,
+      "price": null,
+      "highestBid": null,
+      "lastSale": {
+        "amount": "0.001",
+        "unit": "WETH",
+        "listedAt": "2022-11-07T16:42:23.000Z"
+      },
+      "lastCostBasis": {
+        "amount": "0.001",
+        "unit": "WETH",
+        "listedAt": "2022-11-07T16:42:23.000Z"
+      },
+      "owner": {
+        "address": "0x174240aa4b903fe0e2ea964b32d2c229dff511f1",
+        "username": null
+      },
+      "numberOwnedByOwner": 1,
+      "isSuspicious": false,
+      "asks": []
+    }
+  ]
+}
