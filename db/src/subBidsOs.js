@@ -7,30 +7,32 @@ const uri = "mongodb://localhost:27017";
 const mongoClient = new MongoClient(uri);
 const { ensureIndexes } = require("../../utils/mongoIndexes");
 
-// const osClient = new OpenSeaStreamClient({
-//   token: process.env.API_OS_0,
-//   networkName: "mainnet",
-//   connectOptions: {
-//     transport: WebSocket,
-//   },
-//   onError: (error) => console.error("ERR: osClient", error),
-//   logLevel: 1,
-// });
+const osClient = new OpenSeaStreamClient({
+  token: process.env.API_OS_0,
+  networkName: "mainnet",
+  connectOptions: {
+    transport: WebSocket,
+  },
+  onError: (error) => console.error("ERR: osClient", error),
+  logLevel: 1,
+});
 
 const db = {
-  TEST_MODE: false,
+  TEST_MODE: true,
 
   SUBS: mongoClient.db("BOT_NFT").collection("SUBS"),
   BIDS: mongoClient.db("BOT_NFT").collection("BIDS"),
+
+  ACTIVE_SUBS: new Map(), //~13k elements
 
   AMT_BIDS: 0,
   TEST_NFT_ID: "877",
   TEST_NFT: "0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0",
   MIN_SELL_TO_PRICE: 10n ** 16n,
   OS_SUB_EVENTS: [
-    EventType.ITEM_RECEIVED_BID,
     EventType.COLLECTION_OFFER,
     EventType.TRAIT_OFFER,
+    EventType.ITEM_CANCELLED,
     // EventType.ITEM_LISTED,
   ],
   ADDR_SEAPORT: [
@@ -42,8 +44,50 @@ const db = {
   ],
 };
 
+const setup = async () => {
+  await ensureIndexes(mongoClient);
+  // '0x4df60a38D8c6b30bBaAA733Aa4DE1431bf9014f7' => 'slug_name'
+  const SUBS = await db.SUBS.find({}, { _id: 1 }).toArray();
+  for (const sub of SUBS) {
+    if (!db.ACTIVE_SUBS.has(sub._id)) {
+      db.ACTIVE_SUBS.set(sub._id, sub.slug);
+    }
+  }
+};
+
+const subSubs = async () => {
+  db.streamSUBS = db.SUBS.watch().on("change", async (next) => {
+    if (!next || !next.documentKey || !next.fullDocument) return;
+    const addr = next.fullDocument._id;
+    const slug = next.fullDocument.slug;
+
+    //add to active subs
+    if (!db.ACTIVE_SUBS.has(addr)) {
+      lenBefore = db.ACTIVE_SUBS.size;
+      db.ACTIVE_SUBS.set(addr, slug);
+      console.log(
+        `\nAdded ${addr} with slug ${slug} to active subs, len: ${lenBefore} => ${db.ACTIVE_SUBS.size}`
+      );
+    }
+  });
+};
+
+const subBids = async () => {
+  osClient.onEvents("*", db.OS_SUB_EVENTS, async (event) => {
+    addToBidsDB(event);
+
+    if (db.TEST_MODE && ++db.AMT_BIDS % 1000 == 0) {
+      process.stdout.write(
+        `\r\x1b[38;5;39mSUBSCRIBE OS BIDS\x1b[0m: ${
+          db.AMT_BIDS
+        }, date: ${new Date().toISOString()}`
+      );
+    }
+  });
+};
+
 const addToBidsDB = async (bid) => {
-  const _getFormattedBid = async (addr_tkn, id_tkn, price, bid) => {
+  const _getFormattedBid = async (addr_tkn, id_tkn, price, traits, bid) => {
     const order_hash = bid.payload.order_hash.toLowerCase();
     const exp_time = bid.payload.protocol_data.parameters.endTime;
     const addr_buyer = ethers.getAddress(bid.payload.maker.address);
@@ -60,7 +104,7 @@ const addToBidsDB = async (bid) => {
         type = "OS_BID_SUB_TRAIT";
         break;
       default:
-        console.log("\nbRR: bid.type not found", bid);
+        console.log("\nERR: bid.type not found", bid);
         return;
     }
 
@@ -68,16 +112,17 @@ const addToBidsDB = async (bid) => {
       _id: order_hash,
       addr_tkn,
       id_tkn,
-      addr_buyer,
       price,
       exp_time,
+      addr_buyer,
+      traits,
       type,
       bid,
     };
   };
 
   const _validateBid = async (bid) => {
-    //chain if addr to approve
+    /// avoid surprises ///
     const protocol_address = ethers.getAddress(bid.payload.protocol_address);
     if (!db.ADDR_SEAPORT.includes(protocol_address)) {
       //to avoid surprises
@@ -94,64 +139,37 @@ const addToBidsDB = async (bid) => {
       bid.payload?.protocol_data?.parameters?.consideration[0]?.token
     );
 
+    /// only active subs ///
+    if (!db.ACTIVE_SUBS.has(addr_tkn)) return;
+
+    /// only basic have chain info & id ///
     let id_tkn = null;
-
-    switch (bid.event_type) {
-      case EventType.ITEM_RECEIVED_BID:
-        //check chain only for non criteria bids
-        if (bid.payload?.item?.chain?.name !== "ethereum") return;
-
-        id_tkn =
-          bid.payload?.protocol_data?.parameters?.consideration[0]
-            ?.identifierOrCriteria;
-        //validate
-        if (
-          !(await db.SUBS.findOne(
-            { _id: addr_tkn, id: { $elemMatch: { $eq: id_tkn } } },
-            { projection: { _id: 1 } }
-          ))
-        ) {
-          return;
-        }
-        break;
-
-      case EventType.COLLECTION_OFFER:
-        //@todo check if addr in subs
-        //validate
-        if (
-          !(await db.SUBS.findOne(
-            { _id: addr_tkn },
-            { projection: { _id: 1 } }
-          ))
-        ) {
-          return;
-        }
-        break;
-
-      case EventType.TRAIT_OFFER:
-        //@todo check if addr in subs
-        //@todo should also check if trait in subs?
-        //@todo SALES_BLUR_SUB does not have traits
-        //@todo SALES_BLUR_GET does have traits
-        //event.payload.trait_criteria
-        // "trait_criteria": {
-        //   "trait_name": "Deceiver Staff",
-        //   "trait_type": "Weapon"
-        // }
-
-        //then if there are sales with price < than this bid, send call to get by criteria & check if exists in db, if so exec
-
-        //will need to edit subSalesBlur, so that if new sale, make call to get criteria
-        //if old, then just check if db & lower price
-        break;
+    if (bid.event_type === EventType.ITEM_RECEIVED_BID) {
+      if (bid.payload?.item?.chain?.name !== "ethereum") {
+        console.log("\nERR: non-ETH bid", JSON.stringify(bid, null, 2));
+        process.exit(0);
+      }
+      id_tkn =
+        bid.payload?.protocol_data?.parameters?.consideration[0]
+          ?.identifierOrCriteria;
     }
 
-    if (db.TEST_MODE) {
-      console.log(`DETECTED TEST NFT: ${db.TEST_NFT} @ ${db.TEST_NFT_ID}`);
+    /// only orderType 0 & 1 for criteria offers (itemType 4 & 5) to support 1x block ///
+    if (
+      (bid.event_type === EventType.COLLECTION_OFFER ||
+        bid.event_type === EventType.TRAIT_OFFER) &&
+      bid.payload?.protocol_data?.parameters?.orderType > 1
+    ) {
+      return;
     }
 
-    //check if there's a matching blur sale
-    //check if potential profit higher than fees
+    let traits = null;
+
+    if (bid.event_type === EventType.TRAIT_OFFER) {
+      traits = bid.payload?.trait_criteria;
+    }
+
+    //@todo implement osFees calc based on time (~1/100k bids can have that)
     let price = BigInt(bid.payload.base_price);
     for (const osFeeData of bid.payload?.protocol_data?.parameters
       .consideration) {
@@ -167,35 +185,28 @@ const addToBidsDB = async (bid) => {
       }
     }
 
-    if (
-      price <= db.MIN_SELL_TO_PRICE &&
-      addr_tkn !== db.TEST_NFT &&
-      id_tkn !== db.TEST_NFT_ID
-    )
-      return; //2small
-    price = price.toString();
-
-    return [addr_tkn, id_tkn, price];
+    /// need to cover gas ///
+    if (!db.TEST_MODE && price <= db.MIN_SELL_TO_PRICE) return; //2small
+    return [addr_tkn, id_tkn, price.toString(), traits];
   };
 
   try {
-    const [addr_tkn, id_tkn, price] = (await _validateBid(bid)) || [];
+    const [addr_tkn, id_tkn, price, traits] = (await _validateBid(bid)) || [];
     if (!addr_tkn) return;
 
     const formattedBid =
-      (await _getFormattedBid(addr_tkn, id_tkn, price, bid)) || {};
-    console.log(formattedBid);
+      (await _getFormattedBid(addr_tkn, id_tkn, price, traits, bid)) || {};
     if (!formattedBid._id) return;
 
-    //// better in case of many duplicates
-    // const existingBid = await db.BIDS.findOne({ _id: formattedBid._id });
-    // if (existingBid) return
-    // await db.BIDS.insertOne(formattedBid);
-
     //// usually it will be unique, so this is better
+    //// true, @todo if we'll face performance issues, we can collect & insert in bulk (e.g. per 10 or 100 bids)
     try {
-      await db.BIDS.insertOne(formattedBid);
-      if (db.TEST_MODE) console.log(`\nInserted BID`);
+      const result = await db.BIDS.insertOne(formattedBid);
+      // if (db.TEST_MODE) {
+      //   console.log(`\nInserted BID`, JSON.stringify(result, null, 2));
+      //   console.log(formattedBid);
+      //   process.exit(0);
+      // }
     } catch (error) {
       if (error.code !== 11000) {
         console.error("Error inserting document:", error);
@@ -211,36 +222,10 @@ const addToBidsDB = async (bid) => {
 };
 
 (async function root() {
-  await ensureIndexes(mongoClient);
   try {
-    osClient.onEvents("*", db.OS_SUB_EVENTS, async (event) => {
-      // if(db.TEST_MODE){
-      if (++db.AMT_BIDS % 1000 == 0) {
-        process.stdout.write(
-          `\r\x1b[38;5;39mSUBSCRIBE OS BIDS\x1b[0m: ${
-            db.AMT_BIDS
-          }, date: ${new Date().toISOString()}`
-        );
-      }
-      // process.stdout.write(`\r\x1b[38;5;12mSUBSCRIBE OS BIDS\x1b[0m: ${++db.AMT_BIDS}`);
-      // }
-
-      switch (event.event_type) {
-        case EventType.ITEM_RECEIVED_BID:
-          //addToBidsDB(event);
-          break;
-        case EventType.COLLECTION_OFFER:
-          addToBidsDB(event); //perhaps initially use addCollectionToSalesDB
-          break;
-        case EventType.TRAIT_OFFER:
-          return;
-          addToBidsDB(event); //perhaps initially use addTraitToSalesDB
-          break;
-        // case EventType.ITEM_LISTED:
-        //   handleItemListed(event);
-        //   break;
-      }
-    });
+    await setup();
+    subSubs();
+    subBids();
   } catch (e) {
     console.error("\nERR: root:", e);
     await root();
