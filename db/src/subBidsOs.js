@@ -1,6 +1,6 @@
 const { OpenSeaStreamClient, EventType } = require("@opensea/stream-js");
 const { WebSocket } = require("ws");
-const ethers = require("ethers");}
+const ethers = require("ethers");
 
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
