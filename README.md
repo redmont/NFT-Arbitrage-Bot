@@ -6,12 +6,13 @@
 
 - [x] `subSalesBlur` (get & save to `SALES` & `SUBS`)
 - [x] `getSalesBlur` (get & save to `SALES` & `SUBS`)
-- [ ] `subBidsOs`
+- [x] `subBidsOs`
 - [ ] `getBidsOs`
-- [ ] VPS setup
+- [ ] VPS new db setup
 - [ ] Test if OS stream sub exists on 2x diff continent vps
-- [ ] if bid has trait starting with "$" delete (get/sub sales blur already have implemented it)
+- [ ] if trait bid trait name or value will have leading $'s, then in bot.js delete them & then search for sale
 - [ ] create a whitelist for getBuyBlurData
+- [ ] check 'ITEM_METADATA_UPDATED = "item_metadata_updated",' and how it affects traits arbs
 
 ## Project Diagram 🔧
 
@@ -23,11 +24,11 @@
 
 ## To-do DB Initialization :floppy_disk:
 
-- [x] 1. `getSubsBlur` (1-time, local, then send to VPS)
-- [x] 2. `getSalesBlur` (same)
-- [x] 3. `subSalesBlur`
-- [x] 4. `subBidsOs`
-- [x] 5. `getBidsOs`
+- [ ] 1. `getSubsBlur` (1-time, local, then 2.)
+- [ ] 2. `getSalesBlur` (also 1-time, then send to VPS)
+- [ ] 3. `subSalesBlur` (set sync for 1 day to catch missed)
+- [ ] 4. `subBidsOs`
+- [ ] 5. `getBidsOs`
 
 ## Commands :
 
