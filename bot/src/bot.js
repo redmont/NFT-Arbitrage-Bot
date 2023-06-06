@@ -944,8 +944,9 @@ const subBidsGetSales = async () => {
     const salesToFind = {};
 
     salesToFind["addr_tkn"] = bid.addr_tkn;
-    salesToFind[`traits.$.trait_type`] = bid.trait_type;
-    salesToFind[`traits.$.trait_name`] = bid.trait_name;
+    salesToFind["traits"] = {
+      $elemMatch: { trait_type: bid.trait_type, trait_name: bid.trait_name },
+    };
 
     // Get all matching sales in increasing order of price
     const matchingSalesCursor = db.SALES.find(salesToFind)
