@@ -3,14 +3,15 @@ const INDEX = {
   BOT_NFT: {
     SALES: [
       { key: { _id: 1 }, name: "_id_" },
-      { key: { type: 1 }, name: "type_1" },
-      { key: { "sale.createdAt": -1 }, name: "sale.createdAt_-1" },
       { key: { addr_tkn: 1, id_tkn: 1 }, name: "addr_tkn_1_id_tkn_1" },
       {
         key: {
-          price: 1.0,
+          addr_tkn: 1,
+          "traits.trait_type": 1,
+          "traits.trait_name": 1,
+          price: 1,
         },
-        name: "price_1",
+        name: "addr_tkn_1_traits.trait_type_1_traits.trait_name_1_price_1",
         collation: {
           locale: "en_US",
           caseLevel: false,
@@ -30,11 +31,15 @@ const INDEX = {
         name: "_id_",
         key: { _id: 1 },
       },
+      // For the fields used in the equality checks (addr_tkn and id_tkn):
       {
         name: "addr_tkn_1_id_tkn_1",
         key: { addr_tkn: 1, id_tkn: 1 },
       },
+      // For the fields used in the equality checks (addr_tkn,id_tkn and type) and range checks (exp_time and price):
+      // collation.numericOrdering is used to make the index numericOrdering for the same query to work.
       {
+        v: 2,
         key: {
           addr_tkn: 1,
           id_tkn: 1,
@@ -43,12 +48,6 @@ const INDEX = {
           price: 1,
         },
         name: "addr_tkn_1_id_tkn_1_type_1_exp_time_1_price_1",
-      },
-      {
-        key: {
-          price: 1.0,
-        },
-        name: "price_1",
         collation: {
           locale: "en_US",
           caseLevel: false,
@@ -67,22 +66,6 @@ const INDEX = {
           type: 1,
         },
         name: "type_1",
-      },
-      {
-        name: "exp_time_1",
-        key: { exp_time: 1.0 },
-        collation: {
-          locale: "en_US",
-          caseLevel: false,
-          caseFirst: "off",
-          strength: 3,
-          numericOrdering: true,
-          alternate: "non-ignorable",
-          maxVariable: "punct",
-          normalization: false,
-          backwards: false,
-          version: "57.1",
-        },
       },
     ],
   },
