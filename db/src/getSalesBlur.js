@@ -129,15 +129,10 @@ const addToSalesDB = async (addr, blurSales) => {
         const id_tkn = sale.tokenId;
         const notify = true;
         const price = ethers.parseEther(sale.price.amount).toString();
-        const traits = sale.traits;
+        const traits = [];
 
-        //fix for mongo "$" not valid storage
-        for (let key in traits) {
-          if (key.startsWith("$")) {
-            let newKey = key.replace(/^\$+/, ""); // replace one or more dollar signs only at the start
-            traits[newKey] = traits[key]; // assign the value to the new key
-            delete traits[key]; // delete the old key-value pair
-          }
+        for (let key in sale.traits) {
+          traits.push({ trait_name: key, trait_type: sale.traits[key] });
         }
 
         return {
