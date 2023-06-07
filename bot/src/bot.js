@@ -61,7 +61,7 @@ const db = {
   BIDS: mongoClient.db("BOT_NFT").collection("BIDS"),
 
   var: {
-    TEST_NFT: "0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0",
+    TEST_NFT: "0xD41CE249c8683733f129F8be337bb23D4F70c933",
     TEST_NFT_ID: "4171",
     TEST_BUYER: "0x00000E8C78e461678E455b1f6878Bb0ce50ce587",
 
@@ -667,7 +667,7 @@ const execArb = async (buyFrom, sellTo) => {
         {
           isSuspicious: false, //tknIdBlurData.token.isSuspicious,
           price: {
-            amount: buyFrom.sale.price.amount, //tknIdBlurData.token.price.amount,
+            amount: buyFrom.price, //tknIdBlurData.token.price.amount,
             unit: "ETH", //sale.sale.price.unit
           },
           tokenId: buyFrom.id_tkn, //tknIdBlurData.token.tokenId,

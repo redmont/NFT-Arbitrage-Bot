@@ -12,11 +12,11 @@ const provider = new ethers.AlchemyProvider(
 const wallet = new ethers.Wallet(process.env.PK_0, provider);
 
 const testData = {
-  collectionSlug: "yes-ser",
-  contractAddress: "0xa7f551feab03d1f34138c900e7c08821f3c3d1d0",
+  collectionSlug: "mignon-train-ticket",
+  contractAddress: "0xD41CE249c8683733f129F8be337bb23D4F70c933",
   walletAddress: "0x00000E8C78e461678E455b1f6878Bb0ce50ce587",
-  offerAmount: "0.0027",
-  trait: { name: "clothes", value: "TShirt" },
+  offerAmount: "0.0028",
+  trait: { name: "Status", value: "At London" },
 };
 
 const apiCall = async ({ url, options }) => {
