@@ -799,10 +799,16 @@ const execArb = async (buyFrom, sellTo) => {
     console.log("\nexecArb", buyFrom, sellTo);
     //(1/6)
     if (!(await _preValidate(buyFrom, sellTo))) return;
+    if (db.TEST_MODE) {
+      console.log("passed preValidate");
+    }
 
     //(2/6)
     const buyBlurData = (await _getBuyBlurData(buyFrom)) ?? {};
     if (!buyBlurData) return;
+    if (db.TEST_MODE) {
+      console.log("buyBlurData", buyBlurData);
+    }
 
     //(3/6)
     let sellOsData = (await _getSellOsData(sellTo)) ?? {};
@@ -820,6 +826,9 @@ const execArb = async (buyFrom, sellTo) => {
       sellOsData
     );
     if (!estProfitGross) return;
+    if (db.TEST_MODE) {
+      console.log("estProfitGross", estProfitGross);
+    }
 
     //(5/6)
     const bundle =
@@ -941,12 +950,19 @@ const subBidsGetSales = async () => {
   };
 
   const _getArbSaleTrait = async (bid) => {
+    const traitCriteria = bid.bid?.payload?.trait_criteria;
     const salesToFind = {};
 
     salesToFind["addr_tkn"] = bid.addr_tkn;
     salesToFind["traits"] = {
-      $elemMatch: { trait_type: bid.trait_type, trait_name: bid.trait_name },
+      $elemMatch: {
+        trait_type: traitCriteria.trait_type,
+        trait_name: traitCriteria.trait_name,
+      },
     };
+    if (db.TEST_MODE) {
+      console.log("\nGOT salesToFind", salesToFind);
+    }
 
     // Get all matching sales in increasing order of price
     const matchingSalesCursor = db.SALES.find(salesToFind)
@@ -982,6 +998,7 @@ const subBidsGetSales = async () => {
         ) {
           return;
         }
+        console.log("bid", bid);
         console.log("\nDETECTED TEST bid");
       }
 
@@ -1002,6 +1019,8 @@ const subBidsGetSales = async () => {
           console.log("\nbRR: bid.type not found", bid);
           return;
       }
+
+      if (db.TEST_MODE) console.log("\nGOT sales", sales);
 
       if (!sales || sales.length === 0) return;
 
