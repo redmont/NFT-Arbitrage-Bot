@@ -19,9 +19,10 @@ const db = {
   // (~) 75% bids are made within an hour, 25% hour older, 5% day older.
   // so run stream for 1h or one day for faster syncing, then getBidsOs
   CATCH_UP_START: false,
-  // CATCH_UP_END: false,\
+  // CATCH_UP_END: false,
   // CATCH_UP_START: "2023-06-04T18:04:54.398426",
-  CATCH_UP_END: "2023-06-06T19:00:00.398426",
+  CATCH_UP_END: "2023-06-08T20:00:00.398426", //when started subBidsOs
+  PROCESSED_FIRST_QUEUE: false,
   START: performance.now(),
   AMT_CALLS: 0,
   PING_TOTAL: 0,
@@ -113,7 +114,8 @@ const getData = async (url, key) => {
     case data.detail &&
       data.detail.includes("Request was throttled. Expected available in"):
       const seconds = data.detail.split("available in ")[1].split(" second")[0];
-      console.log(`\nThrottled request, retry in ${seconds} seconds`);
+      // comment-out, cuz unknown limits for for getAllOrders endpoint & not >= 1s throttling for 1 call/s/key (~fastest)
+      // console.log(`\nThrottled request, retry in ${seconds} seconds`);
       await new Promise((resolve) => setTimeout(resolve, seconds * 1000));
       return getData(url, key);
 
@@ -309,14 +311,7 @@ const addToBidsDB = async (osBids) => {
 
 const getBidsFor = async (slug) => {
   const _hasCatchUp = async (next) => {
-    if (!db.CATCH_UP_END) {
-      // const decodedNext = Buffer.from(next, "base64").toString("ascii");
-      // const params = new URLSearchParams(decodedNext);
-      // const createdDateString = params.get("created_date");
-      // const createdDateFormatted = createdDateString
-      //   .replace("+", "T")
-      //   .replace("%3A", ":");
-      // console.log(`\n\nCreated date string: ${createdDateString}`);
+    if (db.PROCESSED_FIRST_QUEUE || !db.CATCH_UP_END) {
       return false;
     }
 
@@ -381,7 +376,7 @@ const getBidsFor = async (slug) => {
   const [url, params] = _setUrl();
 
   while (true) {
-    const availableKey = await getKey(); //@todo edit to only 1x
+    const availableKey = await getKey();
 
     setKey(availableKey, true, 0);
     const [data, ping] = await getData(url, availableKey);
@@ -394,10 +389,6 @@ const getBidsFor = async (slug) => {
     _setUrl(url, params, data.next);
   }
 
-  // console.log("\nbids", JSON.stringify(bids, null, 2));
-  // console.log("bids.length", bids.length);
-  // process.exit(0);
-
   if (bids.length > 0) {
     addToBidsDB(bids); //todo add addr
   }
@@ -408,28 +399,29 @@ const getBidsFor = async (slug) => {
     getBidsFor(db.QUEUE[0]);
   } else if (!db.PROCESSED_FIRST_QUEUE) {
     console.log("\n\n\nPROCESSED_FIRST_QUEUE, DB IS READY FOR BOT.");
+    console.log(
+      "set db.INITIATED=true, in case will quickly restart getBidsOs in the future"
+    );
     db.PROCESSED_FIRST_QUEUE = true;
   }
 };
 
 (async function root() {
   await ensureIndexes(mongoClient);
-  console.log("\nENDING, rest to re-test");
-  process.exit();
+
   try {
-    // if (!db.INITIATED) {
-    //   const subs = await db.SUBS.find().toArray();
-    //   db.QUEUE = subs.map((sub) => sub.slug);
-    //   db.INITIATED = true;
-    //   getBidsFor(db.QUEUE[0]);
-    // }
+    if (!db.INITIATED) {
+      const subs = await db.SUBS.find().toArray();
+      db.QUEUE = subs.map((sub) => sub.slug);
+      db.INITIATED = true;
+      getBidsFor(db.QUEUE[0]);
+    }
 
     db.streamSUBS = db.SUBS.watch().on("change", async (next) => {
       if (!next || !next.documentKey || !next.fullDocument) return;
-      const addr = next.fullDocument._id;
+      // const addr = next.fullDocument._id;
       const slug = next.fullDocument.slug;
 
-      return;
       db.QUEUE.push(slug);
 
       if (db.QUEUE.length === 1) {

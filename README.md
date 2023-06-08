@@ -8,15 +8,15 @@
 - [x] `getSalesBlur` (get & save to `SALES` & `SUBS`)
 - [x] `subBidsOs`
 - [x] `getBidsOs`
-- [ ] VPS new db setup
-- [ ] Test if OS stream sub exists on 2x diff continent vps
+- [x] VPS new db setup
+- [ ] remove expired from BIDS (updater.js)
 - [ ] create a whitelist for getBuyBlurData
 - [ ] create a whitelist for conduict
 - [ ] check 'ITEM_METADATA_UPDATED = "item_metadata_updated",' and how it affects traits arbs
-- [ ] add last synced to sales and bids to know when to start catching up
+- [ ] add info about last synced SALES & BIDS (perhaps in these collections) to know when to start catching up
 - [ ] add support for non-weth payment bids (usually usdc) in getBidsOs & subBidsOs
 
-## Project Diagram 🔧
+## OLD Project Diagram 🔧
 
 ![Project Diagram](https://i.gyazo.com/791201f3bd138f3ee8ffb15d9c177451.png)
 
@@ -82,6 +82,12 @@ db.getCollectionNames().forEach(function(collName) {
     var sizeInMB = stats.size / (1024 * 1024);
     print(collName + " (" + count + " elements): " + sizeInMB.toFixed(2) + " MB");
 });
+```
+
+Transfer mongo collection to VPS
+
+```
+scp -i "nft_bot.pem" /home/xter/mongo-collections/BOT_NFT/SALES_LOCAL.bson ubuntu@ec2-35-170-79-201.compute-1.amazonaws.com:db-from-local
 ```
 
 DB VPS bashrc aliases:
