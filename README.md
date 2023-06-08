@@ -7,12 +7,14 @@
 - [x] `subSalesBlur` (get & save to `SALES` & `SUBS`)
 - [x] `getSalesBlur` (get & save to `SALES` & `SUBS`)
 - [x] `subBidsOs`
-- [ ] `getBidsOs`
+- [x] `getBidsOs`
 - [ ] VPS new db setup
 - [ ] Test if OS stream sub exists on 2x diff continent vps
-- [ ] if trait bid trait name or value will have leading $'s, then in bot.js delete them & then search for sale
 - [ ] create a whitelist for getBuyBlurData
+- [ ] create a whitelist for conduict
 - [ ] check 'ITEM_METADATA_UPDATED = "item_metadata_updated",' and how it affects traits arbs
+- [ ] add last synced to sales and bids to know when to start catching up
+- [ ] add support for non-weth payment bids (usually usdc) in getBidsOs & subBidsOs
 
 ## Project Diagram 🔧
 
@@ -24,11 +26,11 @@
 
 ## To-do DB Initialization :floppy_disk:
 
-- [ ] 1. `getSubsBlur` (1-time, local, then 2.)
-- [ ] 2. `getSalesBlur` (also 1-time, then send to VPS)
-- [ ] 3. `subSalesBlur` (set sync for 1 day to catch missed)
-- [ ] 4. `subBidsOs`
-- [ ] 5. `getBidsOs`
+- [ ] 1. `getSubsBlur` (local, 1-time, then...)
+- [ ] 2. `getSalesBlur` (local, 1-time, then...)
+- [ ] 3.0. `subSalesBlur` (VPS, set sync for ~1 day to catch missed SALES + SUBS & start listen recent)
+- [ ] 3.1. `subBidsOs` (VPS, run for 1h+ (cuz +90% of bids are last hour), then...)
+- [ ] 4. `getBidsOs` (VPS, set sync range from-to, run (~3h))
 
 ## Commands :
 

@@ -1,0 +1,231 @@
+///vps
+2082041, date: 2023-06-08T14:52:53.297Z
+3113322, date: 2023-06-08T15:59:17.500Z
+
+
+//local
+2081653, date: 2023-06-08T14:52:54.536Z (same as vps)
+2430765, date: 2023-06-08T15:15:37.001Z (not on vps)
+2583643, date: 2023-06-08T15:29:12.477Z (not on vps)
+3145975, date: 2023-06-08T16:02:45.604Z (vps 3m earlier)
+
+
+//~time-off
+3150149, date: 2023-06-08T16:04:35.246Z
+3145975, date: 2023-06-08T16:02:45.604Z
+
+
+
+
+/////// vps err
+ERR: osClient ErrorEvent {
+  [Symbol(kTarget)]: WebSocket {
+    _events: [Object: null prototype] {
+      open: [Function],
+      error: [Function],
+      message: [Function],
+      close: [Function]
+    },
+    _eventsCount: 4,
+    _maxListeners: undefined,
+    _binaryType: 'arraybuffer',
+    _closeCode: 1006,
+    _closeFrameReceived: false,
+    _closeFrameSent: false,
+    _closeMessage: <Buffer >,
+    _closeTimer: null,
+    _extensions: {},
+    _paused: false,
+    _protocol: '',
+    _readyState: 2,
+    _receiver: null,
+    _sender: null,
+    _socket: null,
+    _bufferedAmount: 0,
+    _isServer: false,
+    _redirects: 0,
+    _url: 'wss://stream.openseabeta.com/socket/websocket?token=874a81a64da1451788512ac5df86c446&vsn=2.0.0',
+    _req: ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: true,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'GET /socket/websocket?token=874a81a64da1451788512ac5df86c446&vsn=2.0.0 HTTP/1.1\r\n' +
+        'Sec-WebSocket-Version: 13\r\n' +
+        'Sec-WebSocket-Key: yXdmPmmyvhNspJD0rczgTw==\r\n' +
+        'Connection: Upgrade\r\n' +
+        'Upgrade: websocket\r\n' +
+        'Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits\r\n' +
+        'Host: stream.openseabeta.com\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: undefined,
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      path: '/socket/websocket?token=874a81a64da1451788512ac5df86c446&vsn=2.0.0',
+      _ended: false,
+      res: [IncomingMessage],
+      aborted: true,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: [HTTPParser],
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'stream.openseabeta.com',
+      protocol: 'https:',
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kEndCalled)]: true,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(kUniqueHeaders)]: null,
+      [Symbol(kAborted)]: true,
+      [Symbol(kError)]: undefined
+    },
+    timeout: 20000,
+    [Symbol(kCapture)]: false
+  },
+  [Symbol(kType)]: 'error',
+  [Symbol(kError)]: Error: Unexpected server response: 502
+      at ClientRequest.<anonymous> (/home/ubuntu/bot-nft/db/node_modules/.pnpm/ws@8.13.0/node_modules/ws/lib/websocket.js:888:7)
+      at ClientRequest.emit (node:events:513:28)
+      at HTTPParser.parserOnIncomingClient [as onIncoming] (node:_http_client:693:27)
+      at HTTPParser.parserOnHeadersComplete (node:_http_common:128:17)
+      at TLSSocket.socketOnData (node:_http_client:534:22)
+      at TLSSocket.emit (node:events:513:28)
+      at addChunk (node:internal/streams/readable:315:12)
+      at readableAddChunk (node:internal/streams/readable:289:9)
+      at TLSSocket.Readable.push (node:internal/streams/readable:228:10)
+      at TLSWrap.onStreamRead (node:internal/stream_base_commons:190:23),
+  [Symbol(kMessage)]: 'Unexpected server response: 502'
+}
+
+
+////// local err
+ERR: osClient ErrorEvent {
+  [Symbol(kTarget)]: WebSocket {
+    _events: [Object: null prototype] {
+      open: [Function],
+      error: [Function],
+      message: [Function],
+      close: [Function]
+    },
+    _eventsCount: 4,
+    _maxListeners: undefined,
+    _binaryType: 'arraybuffer',
+    _closeCode: 1006,
+    _closeFrameReceived: false,
+    _closeFrameSent: false,
+    _closeMessage: <Buffer >,
+    _closeTimer: null,
+    _extensions: {},
+    _paused: false,
+    _protocol: '',
+    _readyState: 2,
+    _receiver: null,
+    _sender: null,
+    _socket: null,
+    _bufferedAmount: 0,
+    _isServer: false,
+    _redirects: 0,
+    _url: 'wss://stream.openseabeta.com/socket/websocket?token=3e95df03325b4c739914b62a12c17d45&vsn=2.0.0',
+    _req: ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: true,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: true,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'GET /socket/websocket?token=3e95df03325b4c739914b62a12c17d45&vsn=2.0.0 HTTP/1.1\r\n' +
+        'Sec-WebSocket-Version: 13\r\n' +
+        'Sec-WebSocket-Key: clLy5PXQaZLEz6hSY66g4A==\r\n' +
+        'Connection: Upgrade\r\n' +
+        'Upgrade: websocket\r\n' +
+        'Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits\r\n' +
+        'Host: stream.openseabeta.com\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: undefined,
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      path: '/socket/websocket?token=3e95df03325b4c739914b62a12c17d45&vsn=2.0.0',
+      _ended: false,
+      res: [IncomingMessage],
+      aborted: true,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: [HTTPParser],
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'stream.openseabeta.com',
+      protocol: 'https:',
+      [Symbol(kCapture)]: false,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(kAborted)]: true,
+      [Symbol(kError)]: undefined
+    },
+    timeout: 20000,
+    [Symbol(kCapture)]: false
+  },
+  [Symbol(kType)]: 'error',
+  [Symbol(kError)]: Error: Unexpected server response: 502
+      at ClientRequest.<anonymous> (/home/xter/code/nft-all/bot-nft/db/node_modules/.pnpm/ws@8.13.0/node_modules/ws/lib/websocket.js:888:7)
+      at ClientRequest.emit (node:events:527:28)
+      at HTTPParser.parserOnIncomingClient [as onIncoming] (node:_http_client:631:27)
+      at HTTPParser.parserOnHeadersComplete (node:_http_common:128:17)
+      at TLSSocket.socketOnData (node:_http_client:494:22)
+      at TLSSocket.emit (node:events:527:28)
+      at addChunk (node:internal/streams/readable:315:12)
+      at readableAddChunk (node:internal/streams/readable:289:9)
+      at TLSSocket.Readable.push (node:internal/streams/readable:228:10)
+      at TLSWrap.onStreamRead (node:internal/stream_base_commons:190:23),
+  [Symbol(kMessage)]: 'Unexpected server response: 502'
+}

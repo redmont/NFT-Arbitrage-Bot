@@ -15,7 +15,7 @@ const db = {
   SLUGS: [],
   TO_SAVE: {},
 
-  SUBS: mongoClient.db("BOT_NFT").collection("SUBS"),
+  SUBS: mongoClient.db("BOT_NFT").collection("SUBS_LOCAL"),
 
   NFT_COUNT: 0,
   BLUR_AUTH_TKN: "",
@@ -164,6 +164,8 @@ const getSubsBlur = async () => {
   try {
     await setup();
     await getSubsBlur(); //!separated cuz <1m
+    amtOfSubs = await db.SUBS.countDocuments();
+    console.log("\nFINISHED, amt of SUBS", amtOfSubs);
     return;
   } catch (e) {
     console.error("\nERR: getSubsBlur root:", e);

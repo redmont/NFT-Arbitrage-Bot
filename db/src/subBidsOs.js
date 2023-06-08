@@ -13,7 +13,11 @@ const osClient = new OpenSeaStreamClient({
   connectOptions: {
     transport: WebSocket,
   },
-  onError: (error) => console.error("ERR: osClient", error),
+  onError: (error) =>
+    console.error(
+      `ERR: osClient time: ${new Date()}`,
+      JSON.stringify(error, null, 2)
+    ),
   logLevel: 1,
 });
 
@@ -30,18 +34,19 @@ const db = {
   TEST_NFT: "0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0",
   MIN_SELL_TO_PRICE: 10n ** 16n,
   OS_SUB_EVENTS: [
+    EventType.ITEM_RECEIVED_BID,
     EventType.COLLECTION_OFFER,
     EventType.TRAIT_OFFER,
-    EventType.ITEM_CANCELLED,
+    // EventType.ITEM_CANCELLED,
     // EventType.ITEM_LISTED,
   ],
-  ADDR_SEAPORT: [
+  ADDR_SEAPORT: new Set([
     "0x00000000006c3852cbEf3e08E8dF289169EdE581", //1.1
     "0x00000000000006c7676171937C444f6BDe3D6282", //1.2
     "0x0000000000000aD24e80fd803C6ac37206a45f15", //1.3
     "0x00000000000001ad428e4906aE43D8F9852d0dD6", //1.4
     "0x00000000000000ADc04C56Bf30aC9d3c0aAF14dC", //1.5
-  ],
+  ]),
 };
 
 const setup = async () => {
@@ -63,7 +68,7 @@ const subSubs = async () => {
 
     //add to active subs
     if (!db.ACTIVE_SUBS.has(addr)) {
-      lenBefore = db.ACTIVE_SUBS.size;
+      const lenBefore = db.ACTIVE_SUBS.size;
       db.ACTIVE_SUBS.set(addr, slug);
       console.log(
         `\nAdded ${addr} with slug ${slug} to active subs, len: ${lenBefore} => ${db.ACTIVE_SUBS.size}`
@@ -123,8 +128,12 @@ const addToBidsDB = async (bid) => {
 
   const _validateBid = async (bid) => {
     /// avoid surprises ///
-    const protocol_address = ethers.getAddress(bid.payload.protocol_address);
-    if (!db.ADDR_SEAPORT.includes(protocol_address)) {
+    // if (!bid?.payload?.protocol_address) {
+    //   console.log("\nbad bid", JSON.stringify(bid, null, 2));
+    //   process.exit(0);
+    // }
+    const protocol_address = ethers.getAddress(bid?.payload?.protocol_address);
+    if (!db.ADDR_SEAPORT.has(protocol_address)) {
       //to avoid surprises
       console.log(
         "ERR: protocol_address!=SEAPORT:",
@@ -139,6 +148,11 @@ const addToBidsDB = async (bid) => {
       bid.payload?.protocol_data?.parameters?.consideration[0]?.token
     );
 
+    // if (addr_tkn === db.TEST_NFT) {
+    //   console.log(JSON.stringify(bid, null, 2));
+    //   process.exit(0);
+    // }
+    // return;
     /// only active subs ///
     if (!db.ACTIVE_SUBS.has(addr_tkn)) return;
 
@@ -146,8 +160,9 @@ const addToBidsDB = async (bid) => {
     let id_tkn = null;
     if (bid.event_type === EventType.ITEM_RECEIVED_BID) {
       if (bid.payload?.item?.chain?.name !== "ethereum") {
-        console.log("\nERR: non-ETH bid", JSON.stringify(bid, null, 2));
-        process.exit(0);
+        // console.log("\nERR: non-ETH bid", JSON.stringify(bid, null, 2));
+        // process.exit(0);
+        return;
       }
       id_tkn =
         bid.payload?.protocol_data?.parameters?.consideration[0]

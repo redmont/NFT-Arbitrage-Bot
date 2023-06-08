@@ -4,7 +4,7 @@ const ethers = require("ethers");
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
 const mongoClient = new MongoClient(uri);
-const { ensureIndexes } = require("../../utils/mongoIndexes");
+const { ensureIndexes } = require("../../../utils/mongoIndexes");
 
 const wallet = ethers.Wallet.createRandom();
 
@@ -15,8 +15,8 @@ const db = {
   SLUGS: [],
   TO_SAVE: {},
 
-  SUBS: mongoClient.db("BOT_NFT").collection("SUBS"),
-  SALES: mongoClient.db("BOT_NFT").collection("SALES"),
+  SUBS: mongoClient.db("BOT_NFT").collection("SUBS_LOCAL"),
+  SALES: mongoClient.db("BOT_NFT").collection("SALES_LOCAL"),
 
   AMT_PROCESSED_SLUGS: 0,
   AMT_BATCH_SIZE: 5,
@@ -129,15 +129,10 @@ const addToSalesDB = async (addr, blurSales) => {
         const id_tkn = sale.tokenId;
         const notify = true;
         const price = ethers.parseEther(sale.price.amount).toString();
-        const traits = sale.traits;
+        const traits = [];
 
-        //fix for mongo "$" not valid storage
-        for (let key in traits) {
-          if (key.startsWith("$")) {
-            let newKey = key.replace(/^\$+/, ""); // replace one or more dollar signs only at the start
-            traits[newKey] = traits[key]; // assign the value to the new key
-            delete traits[key]; // delete the old key-value pair
-          }
+        for (let key in sale.traits) {
+          traits.push({ trait_type: key, trait_name: sale.traits[key] });
         }
 
         return {
