@@ -15,7 +15,7 @@ const db = {
   SLUGS: [],
   TO_SAVE: {},
 
-  SUBS: mongoClient.db("BOT_NFT").collection("SUBS_LOCAL"),
+  SUBS: mongoClient.db("BOT_NFT").collection("SUBS"),
 
   NFT_COUNT: 0,
   BLUR_AUTH_TKN: "",

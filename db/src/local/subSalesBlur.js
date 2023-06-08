@@ -29,8 +29,8 @@ const db = {
   START_CATCHING_UP: 0,
   CATCHING_UP: true,
 
-  SUBS: mongoClient.db("BOT_NFT").collection("SUBS_LOCAL"),
-  SALES: mongoClient.db("BOT_NFT").collection("SALES_LOCAL"),
+  SUBS: mongoClient.db("BOT_NFT").collection("SUBS"),
+  SALES: mongoClient.db("BOT_NFT").collection("SALES"),
 
   ACTIVE_SUBS: new Map(), //~13k elements
   ACTIVE_SALES: new Map(), //~1M elements (~700 MB)
