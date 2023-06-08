@@ -132,7 +132,7 @@ const addToSalesDB = async (addr, blurSales) => {
         const traits = [];
 
         for (let key in sale.traits) {
-          traits.push({ trait_name: key, trait_type: sale.traits[key] });
+          traits.push({ trait_type: key, trait_name: sale.traits[key] });
         }
 
         return {

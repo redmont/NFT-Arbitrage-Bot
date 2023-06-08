@@ -61,7 +61,7 @@ const db = {
   BIDS: mongoClient.db("BOT_NFT").collection("BIDS"),
 
   var: {
-    TEST_NFT: "0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0",
+    TEST_NFT: "0xD41CE249c8683733f129F8be337bb23D4F70c933",
     TEST_NFT_ID: "4171",
     TEST_BUYER: "0x00000E8C78e461678E455b1f6878Bb0ce50ce587",
 
@@ -567,6 +567,15 @@ const execArb = async (buyFrom, sellTo) => {
       }
 
       criteriaBids.data?.orders?.edges?.every((order) => {
+        // if this is a trait bid, but the current order is not a trait bid, skip
+        // is there a way to only fetch trait bids from graphql ?
+        if (
+          sellTo.bid?.payload?.trait_criteria &&
+          order.node?.criteria?.trait == null
+        ) {
+          return true;
+        }
+
         const currentBidPriceGraphQL = ethers.parseEther(
           order.node?.perUnitPriceType?.eth
         );
@@ -658,7 +667,7 @@ const execArb = async (buyFrom, sellTo) => {
         {
           isSuspicious: false, //tknIdBlurData.token.isSuspicious,
           price: {
-            amount: buyFrom.sale.price.amount, //tknIdBlurData.token.price.amount,
+            amount: buyFrom.price, //tknIdBlurData.token.price.amount,
             unit: "ETH", //sale.sale.price.unit
           },
           tokenId: buyFrom.id_tkn, //tknIdBlurData.token.tokenId,
@@ -790,10 +799,16 @@ const execArb = async (buyFrom, sellTo) => {
     console.log("\nexecArb", buyFrom, sellTo);
     //(1/6)
     if (!(await _preValidate(buyFrom, sellTo))) return;
+    if (db.TEST_MODE) {
+      console.log("passed preValidate");
+    }
 
     //(2/6)
     const buyBlurData = (await _getBuyBlurData(buyFrom)) ?? {};
     if (!buyBlurData) return;
+    if (db.TEST_MODE) {
+      console.log("buyBlurData", buyBlurData);
+    }
 
     //(3/6)
     let sellOsData = (await _getSellOsData(sellTo)) ?? {};
@@ -811,6 +826,9 @@ const execArb = async (buyFrom, sellTo) => {
       sellOsData
     );
     if (!estProfitGross) return;
+    if (db.TEST_MODE) {
+      console.log("estProfitGross", estProfitGross);
+    }
 
     //(5/6)
     const bundle =
@@ -932,7 +950,34 @@ const subBidsGetSales = async () => {
   };
 
   const _getArbSaleTrait = async (bid) => {
-    //@todo will to get multiple sales that salePrice < bidPrice
+    const traitCriteria = bid.bid?.payload?.trait_criteria;
+    const salesToFind = {};
+
+    salesToFind["addr_tkn"] = bid.addr_tkn;
+    salesToFind["traits"] = {
+      $elemMatch: {
+        trait_type: traitCriteria.trait_type,
+        trait_name: traitCriteria.trait_name,
+      },
+    };
+    if (db.TEST_MODE) {
+      console.log("\nGOT salesToFind", salesToFind);
+    }
+
+    // Get all matching sales in increasing order of price
+    const matchingSalesCursor = db.SALES.find(salesToFind)
+      .sort({ price: 1 })
+      .collation({ locale: "en_US", numericOrdering: true });
+
+    let matchingSales = await matchingSalesCursor.toArray();
+    if (matchingSales.length === 0) return;
+
+    // Filter out sales with price < bid.price
+    matchingSales = matchingSales.filter((sale) => {
+      return sale.price < BigInt(bid.price);
+    });
+
+    return matchingSales;
   };
 
   try {
@@ -953,6 +998,7 @@ const subBidsGetSales = async () => {
         ) {
           return;
         }
+        console.log("bid", bid);
         console.log("\nDETECTED TEST bid");
       }
 
@@ -973,6 +1019,8 @@ const subBidsGetSales = async () => {
           console.log("\nbRR: bid.type not found", bid);
           return;
       }
+
+      if (db.TEST_MODE) console.log("\nGOT sales", sales);
 
       if (!sales || sales.length === 0) return;
 
@@ -997,16 +1045,27 @@ const subSalesGetBids = async () => {
   const _getArbBids = async (sale) => {
     const currentTime = Math.floor(Date.now() / 1000).toString();
 
-    const queryBasicBid = { addr_tkn: sale.addr_tkn, id_tkn: sale.id_tkn };
+    // Find all types of bids that match the blur sale
+
+    const queryBasicBid = {
+      addr_tkn: sale.addr_tkn,
+      id_tkn: sale.id_tkn,
+      type: "OS_BID_GET_BASIC",
+    };
     const queryCollectionBid = {
       addr_tkn: sale.addr_tkn,
       type: "OS_BID_SUB_COLLECTION",
     };
+    const queryTraitsBid = {
+      addr_tkn: sale.addr_tkn,
+      type: "OS_BID_SUB_TRAIT",
+    };
+
     // get all matching bids
     const matchingBidsCursor = db.BIDS.find({
       $and: [
-        // find basic or collection bids
-        { $or: [queryBasicBid, queryCollectionBid] },
+        // find basic or collection or traits bids
+        { $or: [queryBasicBid, queryCollectionBid, queryTraitsBid] },
         // filter out expired bids
         // filter bids that are lower than sale price
         { exp_time: { $gt: currentTime }, price: { $gt: sale.price } },
