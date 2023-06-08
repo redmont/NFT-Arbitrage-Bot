@@ -15,8 +15,8 @@ const db = {
   SLUGS: [],
   TO_SAVE: {},
 
-  SUBS: mongoClient.db("BOT_NFT").collection("SUBS_LOCAL"),
-  SALES: mongoClient.db("BOT_NFT").collection("SALES_LOCAL"),
+  SUBS: mongoClient.db("BOT_NFT").collection("SUBS"),
+  SALES: mongoClient.db("BOT_NFT").collection("SALES"),
 
   AMT_PROCESSED_SLUGS: 0,
   AMT_BATCH_SIZE: 5,
