@@ -41,6 +41,7 @@ const db = {
     //just to prevent errors, collected in blur orders last week
 
     //osAddr, slug, blurAddr
+    "0x0a78c052BBBF4Ed294C273Cbe06255D7D94A7340",
     "0x2B4BB904Cfde74Ec423cC534Ef08579ee1c79148", //killabearsxl //exists...
     "0xFBeef911Dc5821886e1dda71586d90eD28174B7d", //known-origin  //0xabb3738f04dc2ec20f4ae4462c3d069d02ae045b
     "0x3248e8bA90FAcC4fdD3814518c14F8Cc4D980E4B", //3landers //0xb4d06d46a8285f4ec79fd294f78a881799d8ced9
@@ -411,10 +412,11 @@ const upsertDB = async (newBlurSales) => {
 
     for (const res of responses) {
       if (!res.success) {
-        console.log(`\nNEW SUB ADDR MISMATCH: ${JSON.stringify(res, null, 2)}`);
+        // console.log(`\nNEW SUB ADDR MISMATCH: ${JSON.stringify(res, null, 2)}`);
         const mismatched_addr = ethers.getAddress(
           res.message.match(/0x[a-fA-F0-9]{40}/)[0]
         );
+        if (db.BLUR_OS_ADDR_MISMATCH.has(mismatched_addr)) continue;
         console.log("\nAdd to db.BLUR_OS_ADDR_MISMATCH addr:", mismatched_addr);
         db.BLUR_OS_ADDR_MISMATCH.add(mismatched_addr);
         continue;
