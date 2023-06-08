@@ -4,7 +4,7 @@ const ethers = require("ethers");
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
 const mongoClient = new MongoClient(uri);
-const { ensureIndexes } = require("../../utils/mongoIndexes");
+const { ensureIndexes } = require("../../../utils/mongoIndexes");
 
 const wallet = ethers.Wallet.createRandom();
 
@@ -15,8 +15,8 @@ const db = {
   SLUGS: [],
   TO_SAVE: {},
 
-  SUBS: mongoClient.db("BOT_NFT").collection("SUBS"),
-  SALES: mongoClient.db("BOT_NFT").collection("SALES"),
+  SUBS: mongoClient.db("BOT_NFT").collection("SUBS_LOCAL"),
+  SALES: mongoClient.db("BOT_NFT").collection("SALES_LOCAL"),
 
   AMT_PROCESSED_SLUGS: 0,
   AMT_BATCH_SIZE: 5,

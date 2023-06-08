@@ -97,7 +97,7 @@ export class CollectionsController {
       collection +
       "/prices?filters=" +
       encodeURIComponent(filtersString);
-    console.log(`\nGET ID SLUG for: https://blur.io/asset/${collection} ...`);
+    // console.log(`\nGET ID SLUG for: https://blur.io/asset/${collection} ...`);
 
     const timeStart = Date.now();
 
@@ -119,9 +119,9 @@ export class CollectionsController {
 
     //timeDiff > 10s
     if (timeDiff > 5000) {
-      console.log("timeDiff>5000ms, timeDiff", timeDiff);
+      // console.log("timeDiff>5000ms, timeDiff", timeDiff);
     } else {
-      console.log("ok, timeDiff", timeDiff);
+      // console.log("ok, timeDiff", timeDiff);
     }
 
     return response;
@@ -155,7 +155,7 @@ export class CollectionsController {
       collection +
       "/tokens?filters=" +
       encodeURIComponent(filtersString);
-    console.log(`\nGET ID SLUG for: https://blur.io/asset/${collection} ...`);
+    // console.log(`\nGET ID SLUG for: https://blur.io/asset/${collection} ...`);
 
     const timeStart = Date.now();
 
@@ -177,9 +177,9 @@ export class CollectionsController {
 
     //timeDiff > 10s
     if (timeDiff > 5000) {
-      console.log("timeDiff>5000ms, timeDiff", timeDiff);
+      // console.log("timeDiff>5000ms, timeDiff", timeDiff);
     } else {
-      console.log("ok, timeDiff", timeDiff);
+      // console.log("ok, timeDiff", timeDiff);
     }
 
     return response;
@@ -192,7 +192,7 @@ export class CollectionsController {
     @param.path.string("collection") collection: string,
     @param.path.string("id") id: string
   ): Promise<any> {
-    console.log(`GET ID for: https://blur.io/asset/${collection}/${id}`);
+    // console.log(`GET ID for: https://blur.io/asset/${collection}/${id}`);
     const { authtoken, walletaddress } = this.req.headers;
     const cookies = [
       {
@@ -213,7 +213,7 @@ export class CollectionsController {
       collection +
       "/tokens/" +
       id;
-    console.log(`GET price for: ${apiURL}`);
+    // console.log(`GET price for: ${apiURL}`);
 
     const timeStart = Date.now();
     const response = await globalThis.page.evaluate(async (apiURL: string) => {
@@ -231,7 +231,7 @@ export class CollectionsController {
 
     const timeEnd = Date.now();
     const timeDiff = timeEnd - timeStart;
-    console.log("timeDiff", timeDiff);
+    // console.log("timeDiff", timeDiff);
     return response;
   }
 
@@ -242,7 +242,7 @@ export class CollectionsController {
     @param.path.string("collection") collection: string,
     @param.path.string("id") id: string
   ): Promise<any> {
-    console.log(`GET ID for: https://blur.io/asset/${collection}/${id}`);
+    // console.log(`GET ID for: https://blur.io/asset/${collection}/${id}`);
     const { authtoken, walletaddress } = this.req.headers;
     const cookies = [
       {
@@ -258,7 +258,7 @@ export class CollectionsController {
     await page.setCookie(...cookies);
     const apiURL =
       "https://core-api.prod.blur.io/v1/asset/" + collection + "/" + id;
-    console.log(`GET asset data for: ${apiURL}`);
+    // console.log(`GET asset data for: ${apiURL}`);
 
     const response = await globalThis.page.evaluate(async (apiURL: string) => {
       const xhr = new XMLHttpRequest();
@@ -302,7 +302,7 @@ export class CollectionsController {
       filtersString
     )}`;
 
-    console.log();
+    // console.log();
 
     const response = await globalThis.page.evaluate(async (apiURL: string) => {
       const xhr = new XMLHttpRequest();
@@ -324,7 +324,7 @@ export class CollectionsController {
   @get("/v1/collections/{addr}")
   @response(200, RESPONSE)
   async collection(@param.path.string("addr") addr: string): Promise<any> {
-    console.log(`GET ID for: https://blur.io/collections/${addr}`);
+    // console.log(`GET ID for: https://blur.io/collections/${addr}`);
     const { authtoken, walletaddress } = this.req.headers;
     const cookies = [
       {
@@ -339,7 +339,7 @@ export class CollectionsController {
 
     await page.setCookie(...cookies);
     const apiURL = "https://core-api.prod.blur.io/v1/collections/" + addr;
-    console.log(`GET collection: ${apiURL}`);
+    // console.log(`GET collection: ${apiURL}`);
 
     const response = await globalThis.page.evaluate(async (apiURL: string) => {
       const xhr = new XMLHttpRequest();

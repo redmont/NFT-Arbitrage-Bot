@@ -1,6 +1,24 @@
 const dbName = "BOT_NFT";
 const INDEX = {
   BOT_NFT: {
+    SALES_LOCAL: [
+      { key: { _id: 1 }, name: "_id_" },
+      { key: { addr_tkn: 1, id_tkn: 1 }, name: "addr_tkn_1_id_tkn_1" },
+      {
+        key: {
+          addr_tkn: 1,
+          "traits.trait_type": 1,
+          "traits.trait_name": 1,
+          price: 1,
+        },
+        name: "addr_tkn_1_traits.trait_type_1_traits.trait_name_1_price_1",
+        collation: {
+          locale: "en_US",
+          strength: 3,
+          numericOrdering: true,
+        },
+      },
+    ],
     SALES: [
       { key: { _id: 1 }, name: "_id_" },
       { key: { addr_tkn: 1, id_tkn: 1 }, name: "addr_tkn_1_id_tkn_1" },

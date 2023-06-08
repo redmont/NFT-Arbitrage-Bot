@@ -4,7 +4,7 @@ const ethers = require("ethers");
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
 const mongoClient = new MongoClient(uri);
-const { ensureIndexes } = require("../../utils/mongoIndexes");
+const { ensureIndexes } = require("../../../utils/mongoIndexes");
 
 const wallet = ethers.Wallet.createRandom();
 // const wallet = new ethers.Wallet(process.env.PK_7);
@@ -15,7 +15,7 @@ const db = {
   TEST_MODE: process.env.TEST_MODE ? true : false, //true locally, false on VPS
   DB_OPS_LIMIT: 10000, //prevent memory issues while syncing & upserting many elements to DB
   AMT_BATCH_CALL: 5, //in subSales to get sales with addr, id & traits
-  MINUTES_TO_CATCH_UP: 240, // * 24 * 7, //to setup manually based on the length of break
+  MINUTES_TO_CATCH_UP: 60, // * 24 * 7, //to setup manually based on the length of break
   TEST_NFT_ADDR: "0x5B11Fe58a893F8Afea6e8b1640B2A4432827726c",
   TEST_NFT_ID: "1703",
 
@@ -29,8 +29,8 @@ const db = {
   START_CATCHING_UP: 0,
   CATCHING_UP: true,
 
-  SUBS: mongoClient.db("BOT_NFT").collection("SUBS"),
-  SALES: mongoClient.db("BOT_NFT").collection("SALES"),
+  SUBS: mongoClient.db("BOT_NFT").collection("SUBS_LOCAL"),
+  SALES: mongoClient.db("BOT_NFT").collection("SALES_LOCAL"),
 
   ACTIVE_SUBS: new Map(), //~13k elements
   ACTIVE_SALES: new Map(), //~1M elements (~700 MB)
@@ -170,6 +170,8 @@ const setup = async () => {
       body: {}, //pass buy data
     },
   };
+
+  // await ensureIndexes();
 
   ///////// SETUP DB /////////
 

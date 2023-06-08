@@ -16,15 +16,23 @@ const db = {
   BIDS: mongoClient.db("BOT_NFT").collection("BIDS"),
   SUBS: mongoClient.db("BOT_NFT").collection("SUBS"),
 
+  // (~) 75% bids are made within an hour, 25% hour older, 5% day older.
+  // so run stream for 1h or one day for faster syncing, then getBidsOs
+  CATCH_UP_START: false,
+  // CATCH_UP_END: false,\
+  // CATCH_UP_START: "2023-06-04T18:04:54.398426",
+  CATCH_UP_END: "2023-06-06T19:00:00.398426",
+  START: performance.now(),
   AMT_CALLS: 0,
   PING_TOTAL: 0,
   MIN_PING: 1000,
+  WETH_ADDR: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
   TEST_NFT_ID: "877",
   TEST_NFT: "0xa7f551FEAb03D1F34138c900e7C08821F3C3d1d0",
 
   MIN_SELL_TO_PRICE: 10n ** 16n,
   MAX_IDS_PER_CALL: 30,
-  KEY_CALLS_PER_SEC: 2,
+  KEY_CALLS_PER_SEC: 1,
 
   KEYS: OS_KEYS,
   KEY_MANAGER: OS_KEYS.reduce(
@@ -77,16 +85,24 @@ const getData = async (url, key) => {
         ((start + end) / 2 - db.START)
       ).toFixed(2)} ` +
       `\x1b[38;5;12m queue:\x1b[0m ${db.QUEUE.length} ` +
-      `\x1b[38;5;12m Time:\x1b[0m ${new Date().toISOString()}`
+      `\x1b[38;5;12m queue:\x1b[0m RUNTIME ${(
+        Math.floor(end - db.START) / 1000
+      ).toFixed(2)}s ` +
+      `\x1b[38;5;12m MEMORY:\x1b[0m ${(
+        process.memoryUsage().heapUsed /
+        1024 /
+        1024
+      ).toFixed(2)} MB `
+    // `\x1b[38;5;12m Time:\x1b[0m ${new Date().toISOString()}`
     // `\x1b[38;5;12m runtime:\x1b[0m ${((end - db.START) / 1000).toFixed(2)}s` +
   );
   // }
 
   switch (true) {
-    case !data || data?.orders?.length === 0:
+    case !data || data?.offers?.length === 0:
       return [null, ping];
 
-    case data?.orders?.length > 0:
+    case data?.offers?.length > 0:
       return [data, ping];
 
     case data.detail === "Request was throttled." && data.id === "1KQIYV":
@@ -99,6 +115,13 @@ const getData = async (url, key) => {
       const seconds = data.detail.split("available in ")[1].split(" second")[0];
       console.log(`\nThrottled request, retry in ${seconds} seconds`);
       await new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+      return getData(url, key);
+
+    case data.success === false:
+      console.log("\nERR get bids for slug", data);
+      console.log("url", url);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      return [null, ping];
       return getData(url, key);
 
     default:
@@ -114,72 +137,132 @@ const setKey = (key, status, ping) => {
   if (status === false) {
     // after response
     db.KEY_MANAGER[key].blockedUntil =
-      Date.now() -
-      Math.floor(ping / 2) +
+      Date.now() +
+      // - Math.floor(ping / 2) +
       Math.floor(1000 / db.KEY_CALLS_PER_SEC);
   }
 };
 
-const getKeys = async () => {
+const getKey = async () => {
   while (true) {
-    const unblockedKeys = db.KEYS.filter(
-      (key) =>
+    for (let i = 0; i < db.KEYS.length; i++) {
+      const key = db.KEYS[i];
+      if (
         !db.KEY_MANAGER[key].blocked &&
         db.KEY_MANAGER[key].blockedUntil <= Date.now()
-    );
-
-    if (unblockedKeys.length > 0) {
-      return unblockedKeys;
+      ) {
+        return key; // Returns immediately when it finds the first unblocked key
+      }
     }
-
     await new Promise((resolve) => setTimeout(resolve, 10));
   }
 };
 
-const addToBidsDB = async (addr, osBids) => {
-  const _getFilteredBids = async (formattedBids) => {
-    // Get all _ids from formattedBids
-    const formattedBidsIds = formattedBids.map((sale) => sale._id);
+// bid example
+// {
+//   "order_hash": "0xde2e7375b530bfee119df38b7d55eb4267a49f21f8b9fe72e17b16a48507ef5e",
+//   "chain": "ethereum",
+//   "criteria": null,
+//   "protocol_data": {
+//     "parameters": {
+//       "offerer": "0xcdbbc4133c9098a3027620d2546f853e59417d1d",
+//       "offer": [
+//         {
+//           "itemType": 1,
+//           "token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+//           "identifierOrCriteria": "0",
+//           "startAmount": "10000000000000000000",
+//           "endAmount": "10000000000000000000"
+//         }
+//       ],
+//       "consideration": [
+//         {
+//           "itemType": 2,
+//           "token": "0x34d85c9CDeB23FA97cb08333b511ac86E1C4E258",
+//           "identifierOrCriteria": "68531",
+//           "startAmount": "1",
+//           "endAmount": "1",
+//           "recipient": "0xcdBbc4133C9098a3027620d2546F853E59417d1d"
+//         },
+//         {
+//           "itemType": 1,
+//           "token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+//           "identifierOrCriteria": "0",
+//           "startAmount": "250000000000000000",
+//           "endAmount": "250000000000000000",
+//           "recipient": "0x0000a26b00c1F0DF003000390027140000fAa719"
+//         }
+//       ],
+//       "startTime": "1684440528",
+//       "endTime": "1687118917",
+//       "orderType": 0,
+//       "zone": "0x004C00500000aD104D7DBd00e3ae0A5C00560C00",
+//       "zoneHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+//       "salt": "0x360c6ebe00000000000000000000000000000000000000007900344e440126d2",
+//       "conduitKey": "0x0000007b02230091a7ed01230072f7006a004d60a8d4e71d599b8104250f0000",
+//       "totalOriginalConsiderationItems": 2,
+//       "counter": 0
+//     },
+//     "signature": null
+//   },
+//   "protocol_address": "0x00000000000000adc04c56bf30ac9d3c0aaf14dc"
+// },
 
-    // Find existing documents that match the _ids from formattedBids
-    const existingDocs = await db.BIDS.find(
-      { _id: { $in: formattedBidsIds } },
-      { projection: { _id: 1 } }
-    ).toArray();
-
-    // Extract the _ids from the existing documents
-    const existingIds = existingDocs.map((doc) => doc._id);
-
-    // Filter out formattedBids that have an existing _id in the database
-    const filteredBids = formattedBids.filter(
-      (sale) => !existingIds.includes(sale._id)
-    );
-    return filteredBids;
-  };
-
+const addToBidsDB = async (osBids) => {
   const _getFormattedBids = async (osBids) => {
     return osBids
       .map((bid) => {
-        let price = BigInt(bid.current_price);
+        /// VALIDATE ///
+        if (bid.chain !== "ethereum") return;
+        if (bid.protocol_data?.parameters?.orderType > 1) return;
+
+        //non-weth return
+        if (
+          ethers.getAddress(bid.protocol_data?.parameters?.offer[0]?.token) !==
+          db.WETH_ADDR
+        ) {
+          return;
+        }
+
+        //@todo add support for start-endAmounts
+        let price = BigInt(bid.protocol_data?.parameters?.offer[0]?.endAmount);
         for (const osFeeData of bid.protocol_data?.parameters?.consideration) {
           if (osFeeData.itemType <= 1) {
-            //0: ETH, 1: ERC20, 2: ERC721...
+            //0: ETH, 1: ERC20, 2: ERC721... @todo check if are offers with ETH
             price -= BigInt(osFeeData.endAmount);
           }
         }
         if (!db.TEST_MODE && price <= db.MIN_SELL_TO_PRICE) return; //2small
 
+        let type;
+        let traits = null;
+        const { trait } = bid.criteria ?? {};
+
+        if (trait?.type && trait?.value) {
+          traits = { trait_name: trait.type, trait_type: trait.value };
+          type = "OS_BID_GET_TRAIT";
+        } else if (bid.criteria) {
+          type = "OS_BID_GET_COLLECTION";
+        } else {
+          type = "OS_BID_GET_BASIC";
+        }
+
         price = price.toString();
         const order_hash = bid.order_hash.toLowerCase();
-        const exp_time = bid.expiration_time;
+        const exp_time = bid.protocol_data.parameters.endTime;
         const addr_buyer = ethers.getAddress(
           bid.protocol_data.parameters.offerer
         );
-        const id_tkn = bid.taker_asset_bundle.assets[0].token_id;
-        const addr_tkn = addr;
-        const type = "OS_BID_GET_BASIC";
 
-        if (addr_tkn === db.TEST_NFT && id_tkn === db.TEST_NFT_ID) {
+        let id_tkn = null;
+        if (type === "OS_BID_GET_BASIC") {
+          id_tkn = bid.protocol_data.parameters.offer[0].identifierOrCriteria;
+        }
+        const addr_tkn = ethers.getAddress(
+          bid.protocol_data.parameters.consideration[0].token
+        );
+
+        if (db.TEST_MODE && addr_tkn === db.TEST_NFT) {
           console.log(`\nDETECTED TEST NFT BID: ${order_hash}`);
         }
 
@@ -191,6 +274,7 @@ const addToBidsDB = async (addr, osBids) => {
           exp_time,
           price,
           type,
+          traits,
           bid,
         };
       })
@@ -201,21 +285,13 @@ const addToBidsDB = async (addr, osBids) => {
     const formattedBids = await _getFormattedBids(osBids);
     if (formattedBids.length === 0) return; //if price 2small
 
-    let bulkOps = formattedBids.map((bid) => ({
+    const bulkOps = formattedBids.map((bid) => ({
       updateOne: {
         filter: { _id: bid._id },
         update: { $set: bid },
         upsert: true,
       },
     }));
-
-    // } else {
-    // const filteredBids = await _getFilteredBids(formattedBids);
-    // if(filteredBids.length === 0) return; //if all bids already in db
-    // bulkOps = filteredBids.map(bid => ({
-    //   insertOne: { document: bid }
-    // }));
-    // }
 
     const result = await db.BIDS.bulkWrite(bulkOps, { ordered: true });
     if (db.TEST_MODE) {
@@ -228,87 +304,107 @@ const addToBidsDB = async (addr, osBids) => {
   }
 };
 
-const getBidsFor = async ({ addr, ids }) => {
-  // 1
-  const _getUrlBatches = () => {
-    const batches = [];
-    const baseURL = db.URL_GET_OFFERS + addr + "&";
-    for (let i = 0; i < ids.length; i += db.MAX_IDS_PER_CALL) {
-      const batch = ids.slice(i, i + db.MAX_IDS_PER_CALL);
-      const batchUrl =
-        baseURL + batch.map((tokenId) => `token_ids=${tokenId}`).join("&");
-      batches.push(batchUrl);
+//https://api.opensea.io/v2/offers/collection/yes-ser/all?limit=100
+//https://api.opensea.io/v2/offers/collection/otherdeed/all?limit=100&next=cGs9OTU5NzIzNzc1NCZjcmVhdGVkX2RhdGU9MjAyMy0wNS0xOCsyMCUzQTAxJTNBMzYuODM0MTU4
+
+const getBidsFor = async (slug) => {
+  const _hasCatchUp = async (next) => {
+    if (!db.CATCH_UP_END) {
+      // const decodedNext = Buffer.from(next, "base64").toString("ascii");
+      // const params = new URLSearchParams(decodedNext);
+      // const createdDateString = params.get("created_date");
+      // const createdDateFormatted = createdDateString
+      //   .replace("+", "T")
+      //   .replace("%3A", ":");
+      // console.log(`\n\nCreated date string: ${createdDateString}`);
+      return false;
     }
-    return batches;
+
+    const decodedNext = Buffer.from(next, "base64").toString("ascii");
+    const params = new URLSearchParams(decodedNext);
+    const createdDateString = params.get("created_date");
+    const createdDateFormatted = createdDateString
+      .replace("+", "T")
+      .replace("%3A", ":");
+
+    const currentTime = new Date(createdDateFormatted).getTime();
+    const toCatchTime = new Date(db.CATCH_UP_END).getTime();
+
+    // console.log(`\n\nCreated date string: ${createdDateString}`);
+    // console.log(`db.CATCH_UP_END: ${db.CATCH_UP_END}`);
+
+    // console.log(
+    //   `currentTime: ${currentTime}\ntoCatchTime: ${toCatchTime}\nms to catch: ${
+    //     toCatchTime - currentTime
+    //   }`
+    // );
+    // console.log("has catch up?: ", currentTime > toCatchTime);
+    return currentTime > toCatchTime;
   };
 
-  // 2
-  const _fetchAndStoreBids = async (urlBatches) => {
-    //// 2.1
-    const __fetchAndStoreBids = async (batchCurrUrl, batchCurrKey) => {
-      // !NOTE: No point of calling "batchCurrUrl" in parallel as
-      //        the next "potential" call depends on previous call
-      //        and will happen only if "data.next" / amtBids>50.
-      const bids = [];
+  const _getEncodedNextPage = (date) => {
+    const dateToConvert = new Date(date);
 
-      while (true) {
-        setKey(batchCurrKey, true, 0);
-        const [data, ping] = await getData(batchCurrUrl, batchCurrKey);
-        setKey(batchCurrKey, false, ping);
-        if (!data) break;
+    // Format the date and time
+    const year = dateToConvert.getUTCFullYear();
+    const month = String(dateToConvert.getUTCMonth() + 1).padStart(2, "0"); // JS months are 0-indexed
+    const day = String(dateToConvert.getUTCDate()).padStart(2, "0");
+    const hour = String(dateToConvert.getUTCHours()).padStart(2, "0");
+    const minutes = String(dateToConvert.getUTCMinutes()).padStart(2, "0");
+    const seconds = String(dateToConvert.getUTCSeconds()).padStart(2, "0");
+    const ms = String(dateToConvert.getUTCMilliseconds()).padStart(6, "0");
 
-        bids.push(...data.orders);
-        if (!data.next) break;
+    // Concatenate and format the result
+    const nextPage = `${year}-${month}-${day}+${hour}%3A${minutes}%3A${seconds}.${ms}`;
+    const toEncode = `pk=0&created_date=${nextPage}`;
+    const encoded = Buffer.from(toEncode).toString("base64");
+    return encoded;
+  };
 
-        batchCurrUrl += "&cursor=" + data.next;
-        batchCurrKey = (await getKeys())[0];
+  const _setUrl = (url, params, next) => {
+    if (url === undefined) {
+      url = new URL(`https://api.opensea.io/v2/offers/collection/${slug}/all`);
+      params = new URLSearchParams({ limit: 100 });
+
+      //@todo set synced === true in memory to catch whole history for recent sub
+      if (db.CATCH_UP_START) {
+        console.log("\n Setting CATCH_UP_START", db.CATCH_UP_START);
+        next = _getEncodedNextPage(db.CATCH_UP_START);
       }
-
-      if (bids.length > 0) {
-        addToBidsDB(addr, bids);
-      }
-    };
-
-    //// 2.0 divide batches for parallel processing
-    while (urlBatches.length > 0) {
-      const availableKeys = await getKeys();
-      const parallelBatches = Math.min(availableKeys.length, urlBatches.length);
-
-      const promises = availableKeys
-        .slice(0, parallelBatches)
-        .map((key, index) => {
-          return __fetchAndStoreBids(urlBatches[index], key);
-        });
-
-      await Promise.all(promises);
-      urlBatches.splice(0, parallelBatches);
     }
+    if (next !== undefined) params.set("next", next);
+    url.search = params;
+    return [url, params];
   };
 
-  // 3
-  const _mergeQueueItemsByAddr = async () => {
-    db.QUEUE = db.QUEUE.reduce((accumulator, obj) => {
-      const { addr, ids } = obj;
-      const existing = accumulator.find((item) => item.addr === addr);
+  const bids = [];
+  const [url, params] = _setUrl();
 
-      if (existing) {
-        existing.ids = [...new Set([...existing.ids, ...ids])];
-      } else {
-        accumulator.push({ addr, ids: [...new Set(ids)] });
-      }
+  while (true) {
+    const availableKey = await getKey(); //@todo edit to only 1x
 
-      return accumulator;
-    }, []);
-  };
+    setKey(availableKey, true, 0);
+    const [data, ping] = await getData(url, availableKey);
+    setKey(availableKey, false, ping);
 
-  //0
-  const urlBatches = _getUrlBatches(); // 1
-  await _fetchAndStoreBids(urlBatches); // 2 (w8 to !exceed API limit)
+    if (!data) break;
+    bids.push(...data.offers);
+
+    if (!data.next || (await _hasCatchUp(data.next))) break;
+    _setUrl(url, params, data.next);
+  }
+
+  // console.log("\nbids", JSON.stringify(bids, null, 2));
+  // console.log("bids.length", bids.length);
+  // process.exit(0);
+
+  if (bids.length > 0) {
+    addToBidsDB(bids); //todo add addr
+  }
 
   // 4
   db.QUEUE.shift(); //remove processed addr
   if (db.QUEUE.length > 0) {
-    await _mergeQueueItemsByAddr(); //e.g. if new ids added to same addr during subSales
     getBidsFor(db.QUEUE[0]);
   } else if (!db.PROCESSED_FIRST_QUEUE) {
     console.log("\n\n\nPROCESSED_FIRST_QUEUE, DB IS READY FOR BOT.");
@@ -316,64 +412,25 @@ const getBidsFor = async ({ addr, ids }) => {
   }
 };
 
-const extractData = async (next) => {
-  if (!next || !next.documentKey) return;
-  //also can extract db name and collection from: "next.ns: { db: 'BOT_NFT', coll: 'SUBS' }"
-  try {
-    const addr = next.documentKey._id;
-    var ids = [];
-
-    switch (next.operationType) {
-      case "insert":
-        ids = next.fullDocument.id;
-        break;
-      case "update":
-        ids = Object.values(next.updateDescription?.updatedFields);
-        break;
-    }
-
-    if (!addr || !ids || ids?.length === 0) return;
-    return { addr, ids };
-  } catch (err) {
-    console.error("\nERR extractData: ", err);
-    return;
-  }
-};
-
-const test = async () => {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      "X-API-KEY": "aa276a19b6914dfa8cbe504901f3d8ed",
-    },
-  };
-
-  const url = "https://api.opensea.io/api/v1/events?collection_slug=yes-ser";
-
-  fetch(url, options)
-    .then((response) => response.json())
-    .then((response) => console.log(response))
-    .catch((err) => console.error(err));
-};
-
 (async function root() {
   await ensureIndexes(mongoClient);
+  console.log("\nENDING, rest to re-test");
+  process.exit();
   try {
-    if (!db.INITIATED) {
-      const subsArray = await db.SUBS.find().toArray();
-      db.QUEUE.push(
-        ...subsArray.map((doc) => ({ addr: doc._id, ids: doc.id }))
-      );
-      db.INITIATED = true;
-      getBidsFor(db.QUEUE[0]);
-    }
+    // if (!db.INITIATED) {
+    //   const subs = await db.SUBS.find().toArray();
+    //   db.QUEUE = subs.map((sub) => sub.slug);
+    //   db.INITIATED = true;
+    //   getBidsFor(db.QUEUE[0]);
+    // }
 
     db.streamSUBS = db.SUBS.watch().on("change", async (next) => {
-      const data = await extractData(next);
-      if (!data) return;
+      if (!next || !next.documentKey || !next.fullDocument) return;
+      const addr = next.fullDocument._id;
+      const slug = next.fullDocument.slug;
 
-      db.QUEUE.push(data);
+      return;
+      db.QUEUE.push(slug);
 
       if (db.QUEUE.length === 1) {
         getBidsFor(db.QUEUE[0]);
