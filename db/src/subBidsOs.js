@@ -94,7 +94,10 @@ const subBids = async () => {
 const addToBidsDB = async (bid) => {
   const _getFormattedBid = async (addr_tkn, id_tkn, price, traits, bid) => {
     const order_hash = bid.payload.order_hash.toLowerCase();
-    const exp_time = bid.payload.protocol_data.parameters.endTime;
+    const exp_time = new Date(
+      Number(bid.payload.protocol_data.parameters.endTime) * 1000
+    );
+
     const addr_buyer = ethers.getAddress(bid.payload.maker.address);
 
     let type;
