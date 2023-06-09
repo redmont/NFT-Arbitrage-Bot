@@ -951,13 +951,22 @@ const subBidsGetSales = async () => {
 
   const _getArbSaleTrait = async (bid) => {
     const traitCriteria = bid.bid?.payload?.trait_criteria;
+
+    const hashKey = crypto.createHash("md5");
+    hashKey.update(traitCriteria.trait_type.toString());
+    const trait_key_hash = hashKey.digest("hex");
+
+    const hashValue = crypto.createHash("md5"); //need to redeclare after digest
+    hashValue.update(traitCriteria.trait_name.toString());
+    const trait_value_hash = hashValue.digest("hex");
+
     const salesToFind = {};
 
     salesToFind["addr_tkn"] = bid.addr_tkn;
     salesToFind["traits"] = {
       $elemMatch: {
-        trait_type: traitCriteria.trait_type,
-        trait_name: traitCriteria.trait_name,
+        trait_key: trait_key_hash,
+        trait_value: trait_value_hash,
       },
     };
     if (db.TEST_MODE) {
