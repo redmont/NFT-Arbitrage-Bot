@@ -53,6 +53,15 @@ const INDEX = {
         },
         name: "type_1",
       },
+      // TTL index on exp_time field
+      {
+        v: 2,
+        key: {
+          exp_time: 1,
+        },
+        name: "exp_time_1",
+        expireAfterSeconds: 0,
+      },
     ],
     SUBS: [
       {
