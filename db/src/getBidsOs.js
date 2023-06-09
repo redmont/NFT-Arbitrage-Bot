@@ -251,7 +251,9 @@ const addToBidsDB = async (osBids) => {
 
         price = price.toString();
         const order_hash = bid.order_hash.toLowerCase();
-        const exp_time = bid.protocol_data.parameters.endTime;
+        const exp_time = new Date(
+          Number(bid.protocol_data.parameters.endTime) * 1000
+        );
         const addr_buyer = ethers.getAddress(
           bid.protocol_data.parameters.offerer
         );

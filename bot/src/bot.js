@@ -1043,7 +1043,7 @@ const subBidsGetSales = async () => {
 //3
 const subSalesGetBids = async () => {
   const _getArbBids = async (sale) => {
-    const currentTime = Math.floor(Date.now() / 1000).toString();
+    const currentTime = new Date();
 
     // Find all types of bids that match the blur sale
 
