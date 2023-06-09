@@ -92,7 +92,7 @@ const subBids = async () => {
 };
 
 const addToBidsDB = async (bid) => {
-  const _getFormattedBid = async (addr_tkn, id_tkn, price, traits, bid) => {
+  const _getFormattedBid = async (addr_tkn, id_tkn, price, bid) => {
     const order_hash = bid.payload.order_hash.toLowerCase();
     const exp_time = new Date(
       Number(bid.payload.protocol_data.parameters.endTime) * 1000
@@ -100,6 +100,7 @@ const addToBidsDB = async (bid) => {
 
     const addr_buyer = ethers.getAddress(bid.payload.maker.address);
 
+    let traits = null;
     let type;
     switch (bid.event_type) {
       case EventType.ITEM_RECEIVED_BID:
@@ -110,6 +111,22 @@ const addToBidsDB = async (bid) => {
         break;
       case EventType.TRAIT_OFFER:
         type = "OS_BID_SUB_TRAIT";
+
+        if (
+          bid?.payload?.trait_criteria?.trait_type &&
+          bid?.payload?.trait_criteria?.trait_name
+        ) {
+          const hashKey = crypto.createHash("md5");
+          hashKey.update(bid?.payload?.trait_criteria?.trait_type.toString());
+          const trait_key_hash = hashKey.digest("hex");
+
+          const hashValue = crypto.createHash("md5"); //need to redeclare after digest
+          hashValue.update(bid?.payload?.trait_criteria?.trait_name.toString()); // Ensure the value is a string
+          const trait_value_hash = hashValue.digest("hex");
+
+          traits = { trait_key: trait_key_hash, trait_value: trait_value_hash };
+          type = "OS_BID_GET_TRAIT";
+        }
         break;
       default:
         console.log("\nERR: bid.type not found", bid);
@@ -181,12 +198,6 @@ const addToBidsDB = async (bid) => {
       return;
     }
 
-    let traits = null;
-
-    if (bid.event_type === EventType.TRAIT_OFFER) {
-      traits = bid.payload?.trait_criteria;
-    }
-
     //@todo implement osFees calc based on time (~1/100k bids can have that)
     let price = BigInt(bid.payload.base_price);
     for (const osFeeData of bid.payload?.protocol_data?.parameters
@@ -205,15 +216,15 @@ const addToBidsDB = async (bid) => {
 
     /// need to cover gas ///
     if (!db.TEST_MODE && price <= db.MIN_SELL_TO_PRICE) return; //2small
-    return [addr_tkn, id_tkn, price.toString(), traits];
+    return [addr_tkn, id_tkn, price.toString()];
   };
 
   try {
-    const [addr_tkn, id_tkn, price, traits] = (await _validateBid(bid)) || [];
+    const [addr_tkn, id_tkn, price] = (await _validateBid(bid)) || [];
     if (!addr_tkn) return;
 
     const formattedBid =
-      (await _getFormattedBid(addr_tkn, id_tkn, price, traits, bid)) || {};
+      (await _getFormattedBid(addr_tkn, id_tkn, price, bid)) || {};
     if (!formattedBid._id) return;
 
     //// usually it will be unique, so this is better

@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 const ethers = require("ethers");
+const crypto = require("crypto");
 
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
@@ -14,8 +15,8 @@ const db = {
   CALL_TIMEOUT: 10000, //after 10s, retry api call
   TEST_MODE: process.env.TEST_MODE ? true : false, //true locally, false on VPS
   DB_OPS_LIMIT: 10000, //prevent memory issues while syncing & upserting many elements to DB
-  AMT_BATCH_CALL: 5, //in subSales to get sales with addr, id & traits
-  MINUTES_TO_CATCH_UP: 240, // * 24 * 7, //to setup manually based on the length of break
+  AMT_BATCH_CALL: 1, //in subSales to get sales with addr, id & traits
+  MINUTES_TO_CATCH_UP: 10, //60 * 30, // * 24 * 7, //to setup manually based on the length of break
   TEST_NFT_ADDR: "0x5B11Fe58a893F8Afea6e8b1640B2A4432827726c",
   TEST_NFT_ID: "1703",
 
@@ -173,6 +174,7 @@ const setup = async () => {
   };
 
   ///////// SETUP DB /////////
+  await ensureIndexes(mongoClient);
 
   // '0x4df60a38D8c6b30bBaAA733Aa4DE1431bf9014f7' => 'slug_name'
   const SUBS = await db.SUBS.find({}, { _id: 1 }).toArray();
@@ -224,7 +226,11 @@ const updateCheaperSales = async (cheaperSales) => {
         { ordered: true }
       );
       if (db.TEST_MODE) {
-        // console.log("updateCheaperSales result:", result.upsertedCount);
+        console.log(
+          "\nUPDATE SALES bulkWrite result:",
+          JSON.stringify(result, null, 2)
+        );
+        console.log("\nupdateCheaperSales result:", result.upsertedCount);
       }
     }
   } catch (err) {
@@ -280,11 +286,11 @@ const upsertDB = async (newBlurSales) => {
         );
 
         if (db.TEST_MODE) {
-          //   console.log(
-          //     `\nADD to SALES ${i + db.DB_OPS_LIMIT} of ${bulkOps.length}, res: ${
-          //       res.upsertedCount
-          //     }`
-          //   );
+          console.log(
+            `\nADD to SALES ${i + db.DB_OPS_LIMIT} of ${bulkOps.length}, res: ${
+              res.upsertedCount
+            }`
+          );
         }
       }
     } catch (err) {
@@ -322,10 +328,27 @@ const upsertDB = async (newBlurSales) => {
               : ethers.parseEther(sale.price.amount).toString();
 
           const notify = price === "0" ? false : true;
-          const traits = [];
 
-          for (let key in sale.traits) {
-            traits.push({ trait_type: key, trait_name: sale.traits[key] });
+          let traits = [];
+          if (sale.traits) {
+            for (const [trait_key, trait_value] of Object.entries(
+              sale.traits
+            )) {
+              const hashKey = crypto.createHash("md5");
+              hashKey.update(trait_key.toString());
+              const trait_key_hash = hashKey.digest("hex");
+
+              const hashValue = crypto.createHash("md5"); //need to redeclare after digest
+              hashValue.update(trait_value.toString()); // Ensure the value is a string
+              const trait_value_hash = hashValue.digest("hex");
+
+              traits.push({
+                trait_key: trait_key_hash,
+                trait_value: trait_value_hash,
+              });
+            }
+          } else {
+            traits = null;
           }
 
           db.ACTIVE_SALES.set(key, BigInt(price));
@@ -358,12 +381,14 @@ const upsertDB = async (newBlurSales) => {
         .filter(Boolean);
 
       const results = await Promise.all(promises);
+      // console.log("results", JSON.stringify(results, null, 2));
       const formattedSales = await __getFormattedSales(results);
+      // console.log("\nformattedSales", JSON.stringify(formattedSales, null, 2));
 
       allSales.push(...formattedSales);
 
       if (db.TEST_MODE) {
-        // console.log(`\nTRAITS executed batch ${i} of ${traitsToGet.length}`);
+        console.log(`\nTRAITS executed batch ${i} of ${traitsToGet.length}`);
         // console.log("promises length", promises.length);
         // console.log("result length", results.length);
         // console.log("formattedSales length", formattedSales.length);
@@ -386,9 +411,9 @@ const upsertDB = async (newBlurSales) => {
       }));
 
       const result = await db.SUBS.bulkWrite(bulkOps);
-      if (db.TEST_MODE) {
-        console.log("\nADD NEW SUBS, result:", result);
-      }
+      // if (db.TEST_MODE) {
+      console.log("\nADD NEW SUBS, result:", result);
+      // }
     } catch (e) {
       if (e.code !== 11000) console.error("ERR: addToSubsDB:", e);
     } finally {
@@ -477,9 +502,9 @@ const upsertDB = async (newBlurSales) => {
     }
 
     if (db.TEST_MODE) {
-      // console.log("\nsubsToGet", subsToGet.size);
-      // console.log("traitsToGet", traitsToGet.size);
-      // console.log("cheaperSales", cheaperSales.size);
+      console.log("\nsubsToGet", subsToGet.size);
+      console.log("traitsToGet", traitsToGet.size);
+      console.log("cheaperSales", cheaperSales.size);
     }
 
     return [
@@ -495,14 +520,14 @@ const upsertDB = async (newBlurSales) => {
       newBlurSales
     );
 
-    // if (db.TEST_MODE) console.log("\nSetting cheaper sales...");
+    if (db.TEST_MODE) console.log("\nSetting cheaper sales...");
     if (cheaperSales.length > 0) await updateCheaperSales(cheaperSales);
 
-    // if (db.TEST_MODE) console.log("\nGetting new subs...");
+    if (db.TEST_MODE) console.log("\nGetting new subs...");
     const newSubs = await _getNewSubs(subsToGet);
     if (newSubs.length > 0) await _addToSubsDB(newSubs);
 
-    // if (db.TEST_MODE) console.log("\nGetting new traits...");
+    if (db.TEST_MODE) console.log("\nGetting new traits...");
     const saleIdsWithTraits = await _getSalesWithTraits(traitsToGet);
     if (saleIdsWithTraits.length > 0) await _addToSalesDB(saleIdsWithTraits);
   } catch (err) {
@@ -515,17 +540,18 @@ const upsertDB = async (newBlurSales) => {
 const subSalesBlur = async () => {
   console.log(`\n\x1b[38;5;202mSTARTED SUBSCRIBE BLUR SALES\x1b[0m`);
 
-  // (4/4)
+  // (3/3)
   const _waitBasedOn = async (newOrdersLength) => {
     const toWait = Math.max(0, -10 * newOrdersLength + 500); //0new:500ms; 10new:400ms; ... >=50new:0ms
     return new Promise((resolve) => setTimeout(resolve, toWait));
   };
 
-  // (2/4)
+  // (2/3)
   const _getNewBlurSales = async (sales) => {
     return sales.filter((order) => !db.PREV_SALES.has(order.id)); //can't filter Blur only, cuz !detect amt of missed orders
   };
 
+  // (1/3)
   const _logCatchingUpInfo = async (currDate, data) => {
     const memoryUsage = process.memoryUsage();
 
@@ -544,7 +570,7 @@ const subSalesBlur = async () => {
     );
   };
 
-  // (0/4)
+  // (0/3)
   try {
     while (true) {
       let data = await getData(); // (1/4)
@@ -611,7 +637,18 @@ const updatePrices = async () => {
 
     for (const { tokenId, price } of newPrices) {
       const key = `${addr}-${tokenId}`;
-      const oldPrice = db.ACTIVE_SALES.get(key) ?? 0n;
+      const oldPrice = db.ACTIVE_SALES.get(key);
+
+      if (!oldPrice) {
+        //shouldn't happen if synced properly
+        console.log(
+          `\nWARN, updatePrices found sale before getSaleWithTraits, key: ${key}` +
+            `\nif this will occur often & getSaleWithTraits will not catch these SALES,` +
+            `\nthen upsert updated prices with addr & id to support basic & collection bids in bot.js getArbSales();`
+        );
+        continue;
+      }
+
       const newPrice = ethers.parseEther(price.amount) ?? 0n;
 
       if (newPrice < oldPrice || oldPrice === 0n) {
@@ -645,14 +682,9 @@ const updatePrices = async () => {
     return url;
   };
 
-  // ERR: getEachNftId TypeError: (intermediate value) is not iterable
-  //   at updatePrices (/home/xter/code/nft-all/bot-nft/db/src/subSalesBlur.js:1:1)
-  //   at runMicrotasks (<anonymous>)
-  //   at processTicksAndRejections (node:internal/process/task_queues:96:5)
-
-  // slug nftfi-promissory-note-v3
-
   //→→→ STARTS HERE ←←←
+  // w8 10 min to let subSalesBlur() catch up after 1st run
+  // await new Promise((resolve) => setTimeout(resolve, 10 * 60 * 1000));
   let amtLoop = 0;
   const startLoop = performance.now();
 
@@ -673,6 +705,7 @@ const updatePrices = async () => {
         do {
           const url = await _setUrl(data, slug);
           data = await apiCall({ url, options: db.api.blur.options.GET });
+          await new Promise((resolve) => setTimeout(resolve, 500)); //for 13k sales, loop takes ~1.5h
           if (!data || !data.nftPrices) break;
 
           newPrices = [...newPrices, ...data?.nftPrices];
@@ -683,7 +716,7 @@ const updatePrices = async () => {
         const cheaperSales = await _getCheaperSales(addr, newPrices);
         if (cheaperSales.length > 0) updateCheaperSales(cheaperSales);
       } catch (e) {
-        console.error("\nERR: getEachNftId", e);
+        console.error("\nERR: updatePrices", e);
         console.log("slug", slug);
         console.log("addr", addr);
         console.log("data", JSON.stringify(data, null, 2));

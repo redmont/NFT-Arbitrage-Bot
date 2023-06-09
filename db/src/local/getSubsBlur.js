@@ -1,11 +1,10 @@
 const fetch = require("node-fetch");
 const ethers = require("ethers");
-const fs = require("fs");
-const path = require("path");
 
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
 const mongoClient = new MongoClient(uri);
+const { ensureIndexes } = require("../../../utils/mongoIndexes");
 
 const wallet = ethers.Wallet.createRandom();
 
@@ -92,6 +91,7 @@ const setup = async () => {
     },
   };
 
+  await ensureIndexes(mongoClient);
   // await db.SUBS.deleteMany({}); //clear db
 };
 

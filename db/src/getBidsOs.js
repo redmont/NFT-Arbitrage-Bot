@@ -241,7 +241,15 @@ const addToBidsDB = async (osBids) => {
         const { trait } = bid.criteria ?? {};
 
         if (trait?.type && trait?.value) {
-          traits = { trait_name: trait.type, trait_type: trait.value };
+          const hashKey = crypto.createHash("md5");
+          hashKey.update(trait.type.toString());
+          const trait_key_hash = hashKey.digest("hex");
+
+          const hashValue = crypto.createHash("md5"); //need to redeclare after digest
+          hashValue.update(trait.value.toString()); // Ensure the value is a string
+          const trait_value_hash = hashValue.digest("hex");
+
+          traits = { trait_key: trait_key_hash, trait_value: trait_value_hash };
           type = "OS_BID_GET_TRAIT";
         } else if (bid.criteria) {
           type = "OS_BID_GET_COLLECTION";

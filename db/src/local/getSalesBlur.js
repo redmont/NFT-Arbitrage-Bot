@@ -112,6 +112,8 @@ const setup = async () => {
     },
   };
 
+  await ensureIndexes(mongoClient);
+
   const subs = await db.SUBS.find({}).toArray();
   db.SLUGS = subs.map((sub) => sub.slug);
   console.log("amt slugs", db.SLUGS.length);
@@ -122,17 +124,29 @@ const addToSalesDB = async (addr, blurSales) => {
   const __getFormattedSales = async (addr, blurSales) => {
     return blurSales
       .map((sale) => {
-        // const marketplace = sale.price.marketplace;
-        // if (marketplace !== "BLUR") return null;
-
         const addr_tkn = ethers.getAddress(addr);
         const id_tkn = sale.tokenId;
         const notify = true;
         const price = ethers.parseEther(sale.price.amount).toString();
-        const traits = [];
 
-        for (let key in sale.traits) {
-          traits.push({ trait_type: key, trait_name: sale.traits[key] });
+        let traits = [];
+        if (sale.traits) {
+          for (const [trait_key, trait_value] of Object.entries(sale.traits)) {
+            const hashKey = crypto.createHash("md5");
+            hashKey.update(trait_key.toString());
+            const trait_key_hash = hashKey.digest("hex");
+
+            const hashValue = crypto.createHash("md5"); //need to redeclare after digest
+            hashValue.update(trait_value.toString()); // Ensure the value is a string
+            const trait_value_hash = hashValue.digest("hex");
+
+            traits.push({
+              trait_key: trait_key_hash,
+              trait_value: trait_value_hash,
+            });
+          }
+        } else {
+          traits = null;
         }
 
         return {
