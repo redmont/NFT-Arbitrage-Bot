@@ -8,10 +8,10 @@ const INDEX = {
         key: {
           addr_tkn: 1,
           "traits.trait_type": 1,
-          "traits.trait_name": 1,
+          //"traits.trait_name": 1,
           price: 1,
         },
-        name: "addr_tkn_1_traits.trait_type_1_traits.trait_name_1_price_1",
+        name: "addr_tkn_1_traits.trait_type_1_price_1",
         collation: {
           locale: "en_US",
           strength: 3,
