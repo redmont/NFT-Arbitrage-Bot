@@ -27,9 +27,9 @@ export async function main(options: ApplicationConfig = {}) {
       "http://tJCulVRS:NFA7dwKimBCANhgm5mEaiBBpeFHNGXEy72mfAxUOM1y0CiOJf8PqI65rrwyxrpKQ3s3Pb-R7dznZEt@ustr16.p.ap2.me:49022",
     ];
 
-    let proxyURL = "";
+    // let proxyURL = "";
     // proxyURL = await proxyChain.anonymizeProxy(proxies[0])
-    // const proxyURL = await proxyChain.anonymizeProxy(proxies[0]);
+    const proxyURL = await proxyChain.anonymizeProxy(proxies[0]);
 
     if (proxyURL.length == 0) {
       console.log("!!! Proxy not found, if use on VPS, update it.");
@@ -39,7 +39,7 @@ export async function main(options: ApplicationConfig = {}) {
       headless: true,
       devtools: true,
       args: [
-        // `--proxy-server=${proxyURL}`, //can comment locally
+        `--proxy-server=${proxyURL}`, //can comment locally
         "--disable-web-security",
         "--disable-features=IsolateOrigins",
         "--disable-site-isolation-trials",
