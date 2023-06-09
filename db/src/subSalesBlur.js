@@ -137,6 +137,8 @@ const apiCall = async ({ url, options }, amtRetry) => {
 };
 
 const setup = async () => {
+  await ensureIndexes(mongoClient);
+
   ///////// SETUP BLUR AUTH TKN /////////
   const dataToSign = await apiCall({
     url: db.api.blur.url.AUTH_GET,

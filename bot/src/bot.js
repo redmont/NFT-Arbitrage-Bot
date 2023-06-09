@@ -1194,6 +1194,8 @@ const subBlocks = async () => {
 
 //1
 const setup = async () => {
+  await ensureIndexes(mongoClient);
+
   if (db.TEST_MODE) {
     console.log("Running in TEST MODE");
   }
@@ -1373,8 +1375,6 @@ const setup = async () => {
   //todo setup graphql options
   db.streamSALES = db.SALES.watch();
   db.streamBIDS = db.BIDS.watch();
-
-  await ensureIndexes(mongoClient);
 };
 
 //0
