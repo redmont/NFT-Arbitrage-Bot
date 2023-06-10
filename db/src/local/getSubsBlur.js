@@ -53,13 +53,12 @@ const apiCall = async ({ url, options }) => {
   process.stdout.write(
     `\r\x1b[38;5;12mAMT calls:\x1b[0m ${db.AMT_SEND} ` +
       `\x1b[38;5;12mAMT responses:\x1b[0m ${++db.AMT_RESPONSE} ` +
-      `\x1b[38;5;12mMEMORY usage:\x1b[0m ${
-        Math.round(memory * 100) / 100
-      } MB ` +
-      `\x1b[38;5;12mTIME:\x1b[0m ${(
+      `\x1b[38;5;12mRAM:\x1b[0m ${Math.round(memory * 100) / 100} MB ` +
+      `\x1b[38;5;12mRUNTIME:\x1b[0m ${(
         (performance.now() - db.TIME_START) /
         1000
-      ).toFixed(2)}s`
+      ).toFixed(2)}s ` +
+      `\x1b[38;5;12mTIME:\x1b[0m ${new Date().toLocaleTimeString()}`
   );
 
   // await new Promise((resolve) => setTimeout(resolve, 100));
@@ -166,7 +165,7 @@ const getSubsBlur = async () => {
     await getSubsBlur(); //!separated cuz <1m
     amtOfSubs = await db.SUBS.countDocuments();
     console.log("\nFINISHED, amt of SUBS", amtOfSubs);
-    return;
+    process.exit(0);
   } catch (e) {
     console.error("\nERR: getSubsBlur root:", e);
     await root();

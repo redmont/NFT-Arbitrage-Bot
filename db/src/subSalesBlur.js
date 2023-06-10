@@ -12,13 +12,13 @@ const wallet = ethers.Wallet.createRandom();
 
 const db = {
   /// TO SETUP ///
-  CALL_TIMEOUT: 10000, //after 10s, retry api call
-  TEST_MODE: process.env.TEST_MODE ? true : false, //true locally, false on VPS
-  DB_OPS_LIMIT: 10000, //prevent memory issues while syncing & upserting many elements to DB
-  AMT_BATCH_CALL: 1, //in subSales to get sales with addr, id & traits
-  MINUTES_TO_CATCH_UP: 10, //60 * 30, // * 24 * 7, //to setup manually based on the length of break
-  TEST_NFT_ADDR: "0x5B11Fe58a893F8Afea6e8b1640B2A4432827726c",
+  MINUTES_TO_CATCH_UP: 1, //60 * 30, // * 24 * 7, //to setup manually based on the length of break
   TEST_NFT_ID: "1703",
+  TEST_NFT_ADDR: "0x5B11Fe58a893F8Afea6e8b1640B2A4432827726c",
+  TEST_MODE: process.env.TEST_MODE ? true : false, //true locally, false on VPS
+  AMT_BATCH_CALL: 1, //in subSales to get sales with addr, id & traits
+  DB_OPS_LIMIT: 10000, //prevent memory issues while syncing & upserting many elements to DB
+  CALL_TIMEOUT: 10000, //after 10s, retry api call
 
   //info
   AMT_CALL_RETRY: 10,
@@ -349,10 +349,9 @@ const upsertDB = async (newBlurSales) => {
                 trait_value: trait_value_hash,
               });
             }
-          } else {
-            traits = null;
           }
 
+          if (traits.length === 0) traits = null;
           db.ACTIVE_SALES.set(key, BigInt(price));
 
           return {
@@ -620,12 +619,14 @@ const subSalesBlur = async () => {
         ].slice(-1000)
       );
 
-      await upsertDB(newBlurSales);
-      await _waitBasedOn(newBlurSales.length);
       if (db.CATCHING_UP) {
         db.CATCHING_UP = false;
+        await upsertDB(newBlurSales);
         updatePrices();
+      } else {
+        upsertDB(newBlurSales);
       }
+      await _waitBasedOn(newBlurSales.length);
     }
   } catch (e) {
     console.error("ERR: subSalesBlur", e);
@@ -634,14 +635,14 @@ const subSalesBlur = async () => {
 };
 
 const updatePrices = async () => {
+  console.log("updatePrices, prevent adding sales with key & price only");
+  process.exit(0);
   const _getCheaperSales = async (addr, newPrices) => {
     const cheaperSales = [];
 
     for (const { tokenId, price } of newPrices) {
       const key = `${addr}-${tokenId}`;
-      const oldPrice = db.ACTIVE_SALES.get(key);
-
-      if (!oldPrice) {
+      if (!db.ACTIVE_SALES.has(key)) {
         //shouldn't happen if synced properly
         console.log(
           `\nWARN, updatePrices found sale before getSaleWithTraits, key: ${key}` +
@@ -651,11 +652,12 @@ const updatePrices = async () => {
         continue;
       }
 
+      const oldPrice = db.ACTIVE_SALES.get(key);
       const newPrice = ethers.parseEther(price.amount) ?? 0n;
 
       if (newPrice < oldPrice || oldPrice === 0n) {
         cheaperSales.push([key, newPrice.toString()]);
-        db.ACTIVE_SALES.set(key, newPrice);
+        // db.ACTIVE_SALES.set(key, newPrice);
       }
     }
 

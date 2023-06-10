@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 const ethers = require("ethers");
+const crypto = require("crypto");
 
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
@@ -145,9 +146,9 @@ const addToSalesDB = async (addr, blurSales) => {
               trait_value: trait_value_hash,
             });
           }
-        } else {
-          traits = null;
         }
+
+        if (traits.length === 0) traits = null;
 
         return {
           _id: addr_tkn + "-" + id_tkn,
@@ -253,8 +254,10 @@ const getSalesBlur = async () => {
     for (const response of responses) {
       const [blurSales, addrTkn] = response;
       if (!blurSales) return;
-      addToSalesDB(addrTkn, blurSales);
+      await addToSalesDB(addrTkn, blurSales);
     }
+
+    process.exit(0);
 
     db.AMT_PROCESSED_SLUGS += tmp_slugs.length;
   }

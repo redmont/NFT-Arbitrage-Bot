@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 const ethers = require("ethers");
+const crypto = require("crypto");
 
 const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017";
