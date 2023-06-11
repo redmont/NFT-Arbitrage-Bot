@@ -10,9 +10,10 @@ const { ensureIndexes } = require("../../utils/mongoIndexes");
 const OS_KEYS = [process.env.API_OS_0, process.env.API_OS_1];
 
 const db = {
-  TEST_MODE: false,
+  TEST_MODE: process.env.TEST_MODE ? true : false,
   INITIATED: false,
 
+  QUEUE_TMP: [],
   QUEUE: [],
   BIDS: mongoClient.db("BOT_NFT").collection("BIDS"),
   SUBS: mongoClient.db("BOT_NFT").collection("SUBS"),
@@ -20,7 +21,7 @@ const db = {
   // (~) 75% bids are made within an hour, 25% hour older, 5% day older.
   // so run stream for 1h or one day for faster syncing, then getBidsOs
   CATCH_UP_START: false,
-  // CATCH_UP_END: false,
+  CATCH_UP_END: "",
   // CATCH_UP_START: "2023-06-04T18:04:54.398426",
   CATCH_UP_END: "2023-06-08T20:00:00.398426", //when started subBidsOs
   PROCESSED_FIRST_QUEUE: false,
@@ -86,17 +87,16 @@ const getData = async (url, key) => {
         (db.AMT_CALLS * 1000) /
         ((start + end) / 2 - db.START)
       ).toFixed(2)} ` +
-      `\x1b[38;5;12m queue:\x1b[0m ${db.QUEUE.length} ` +
-      `\x1b[38;5;12m queue:\x1b[0m RUNTIME ${(
-        Math.floor(end - db.START) / 1000
-      ).toFixed(2)}s ` +
-      `\x1b[38;5;12m MEMORY:\x1b[0m ${(
+      `\x1b[38;5;12m QUEUE:\x1b[0m ${db.QUEUE.length} ` +
+      `\x1b[38;5;12m RAM:\x1b[0m ${(
         process.memoryUsage().heapUsed /
         1024 /
         1024
-      ).toFixed(2)} MB `
-    // `\x1b[38;5;12m Time:\x1b[0m ${new Date().toISOString()}`
-    // `\x1b[38;5;12m runtime:\x1b[0m ${((end - db.START) / 1000).toFixed(2)}s` +
+      ).toFixed(2)} MB ` +
+      `\x1b[38;5;12m RUNTIME:\x1b[0m ${(
+        Math.floor(end - db.START) / 1000
+      ).toFixed(2)}s ` +
+      `\x1b[38;5;12m Time:\x1b[0m ${new Date().toISOString()}`
   );
   // }
 
@@ -308,7 +308,7 @@ const addToBidsDB = async (osBids) => {
 
     const result = await db.BIDS.bulkWrite(bulkOps, { ordered: true });
     if (db.TEST_MODE) {
-      console.log(`\nInserted new ${result} OS BIDS`);
+      console.log(`\nInserted new OS BIDS, result`, result);
     }
   } catch (err) {
     console.error("Error during bulkWrite:", err);
@@ -322,29 +322,28 @@ const addToBidsDB = async (osBids) => {
 
 const getBidsFor = async (slug) => {
   const _hasCatchUp = async (next) => {
-    if (db.PROCESSED_FIRST_QUEUE || !db.CATCH_UP_END) {
-      return false;
-    }
+    if (db.PROCESSED_FIRST_QUEUE) return false;
 
     const decodedNext = Buffer.from(next, "base64").toString("ascii");
     const params = new URLSearchParams(decodedNext);
     const createdDateString = params.get("created_date");
-    const createdDateFormatted = createdDateString
-      .replace("+", "T")
-      .replace("%3A", ":");
+    const createdDateFormatted =
+      createdDateString.slice(0, 23).replace(" ", "T") + "Z"; // Assuming it's UTC
 
     const currentTime = new Date(createdDateFormatted).getTime();
     const toCatchTime = new Date(db.CATCH_UP_END).getTime();
 
-    // console.log(`\n\nCreated date string: ${createdDateString}`);
-    // console.log(`db.CATCH_UP_END: ${db.CATCH_UP_END}`);
+    if (db.TEST_MODE) {
+      console.log(`\n\nCreated date string: ${createdDateFormatted}`);
+      console.log(`db.CATCH_UP_END: ${db.CATCH_UP_END}`);
 
-    // console.log(
-    //   `currentTime: ${currentTime}\ntoCatchTime: ${toCatchTime}\nms to catch: ${
-    //     toCatchTime - currentTime
-    //   }`
-    // );
-    // console.log("has catch up?: ", currentTime > toCatchTime);
+      console.log(
+        `currentTime: ${currentTime}\ntoCatchTime: ${toCatchTime}\nmin to catch: ${
+          (toCatchTime - currentTime) / 1000 / 60
+        }`
+      );
+      console.log("has catch up?: ", currentTime > toCatchTime);
+    }
     return currentTime > toCatchTime;
   };
 
@@ -410,28 +409,55 @@ const getBidsFor = async (slug) => {
     getBidsFor(db.QUEUE[0]);
   } else if (!db.PROCESSED_FIRST_QUEUE) {
     console.log("\n\n\nPROCESSED_FIRST_QUEUE, DB IS READY FOR BOT.");
-    console.log(
-      "set db.INITIATED=true, in case will quickly restart getBidsOs in the future"
-    );
     db.PROCESSED_FIRST_QUEUE = true;
+    db.QUEUE.push(...db.QUEUE_TMP);
+
+    if (db.QUEUE.length > 0) {
+      getBidsFor(db.QUEUE[0]);
+    }
   }
 };
 
-(async function root() {
+const setup = async () => {
   await ensureIndexes(mongoClient);
 
+  const info = await db.BIDS.findOne({ _id: "info" });
+  if (!info) {
+    console.log("\n ERR, b4 running getBids, run for >=1h subBidsOs");
+    process.exit(1);
+  }
+
+  db.CATCH_UP_END = info.sub_bids_last;
+  console.log("CURRENT DATE:", new Date().toISOString());
+  console.log("CATCH_UP_END:", db.CATCH_UP_END + "\n");
+};
+
+(async function root() {
+  await setup();
+
+  // wait if getBids will go off for 1h & new SUBS will append?
   try {
     if (!db.INITIATED) {
       const subs = await db.SUBS.find().toArray();
       db.QUEUE = subs.map((sub) => sub.slug);
-      db.INITIATED = true;
+      if (db.TEST_MODE) db.QUEUE = ["otherdeed"];
       getBidsFor(db.QUEUE[0]);
+      db.INITIATED = true;
     }
+
+    console.log("db.QUEUE", db.QUEUE.length);
 
     db.streamSUBS = db.SUBS.watch().on("change", async (next) => {
       if (!next || !next.documentKey || !next.fullDocument) return;
       // const addr = next.fullDocument._id;
       const slug = next.fullDocument.slug;
+
+      //if syncing & new sub, then w8 for sync to finish, cuz new req. whole history
+      if (!db.PROCESSED_FIRST_QUEUE) {
+        console.log("\nadding to tmp", slug);
+        db.QUEUE_TMP.push(slug);
+        return;
+      }
 
       db.QUEUE.push(slug);
 

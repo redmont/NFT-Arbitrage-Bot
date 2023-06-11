@@ -133,6 +133,16 @@ const addToSalesDB = async (addr, blurSales) => {
         let traits = [];
         if (sale.traits) {
           for (const [trait_key, trait_value] of Object.entries(sale.traits)) {
+            if (
+              trait_key === null ||
+              trait_value === null ||
+              trait_key === "" ||
+              trait_value === "" ||
+              trait_key === undefined ||
+              trait_value === undefined
+            ) {
+              continue;
+            }
             const hashKey = crypto.createHash("md5");
             hashKey.update(trait_key.toString());
             const trait_key_hash = hashKey.digest("hex");
@@ -257,24 +267,52 @@ const getSalesBlur = async () => {
       await addToSalesDB(addrTkn, blurSales);
     }
 
-    process.exit(0);
-
     db.AMT_PROCESSED_SLUGS += tmp_slugs.length;
   }
 
   console.log("\x1b[33m%s\x1b[0m", "\nFINISHED COLLECTING BLUR SALES");
 };
 
+const addStartInfoToSalesDB = async (obj) => {
+  await db.SALES.updateOne(
+    { _id: "info" },
+    {
+      $set: {
+        get_sales_start: new Date().toISOString(),
+      },
+    },
+    { upsert: true }
+  );
+};
+
+const addEndInfoToSalesDB = async () => {
+  //get sales count
+  const amt = await db.SALES.countDocuments();
+  await db.SALES.updateOne(
+    { _id: "info" },
+    {
+      $set: {
+        get_sales_end: new Date().toISOString(),
+        get_sales_end_amt: amt,
+      },
+    },
+    { upsert: true }
+  );
+};
+
 (async function root() {
   try {
     await setup();
-
     // const lastSuccessfulSlug = "rengoku-legends-samurai";
     // console.log("db.SLUGS before", db.SLUGS.length);
     // db.SLUGS = db.SLUGS.slice(db.SLUGS.indexOf(lastSuccessfulSlug));
     // console.log("db.SLUGS after", db.SLUGS.length);
+    // db.SLUGS = ["otherdeed"];
 
+    await addStartInfoToSalesDB();
     await getSalesBlur();
+    await addEndInfoToSalesDB();
+    process.exit(0);
   } catch (e) {
     console.error("\nERR: getSalesBlur root:", e);
     // await root();

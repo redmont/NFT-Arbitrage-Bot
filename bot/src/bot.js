@@ -1,8 +1,7 @@
 const fetch = require("node-fetch");
 const ethers = require("ethers");
 const abi = require("./data/abi.json");
-
-require("dotenv").config();
+const crypto = require("crypto");
 
 const provider = new ethers.AlchemyProvider(
   "homestead",

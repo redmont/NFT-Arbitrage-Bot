@@ -59,6 +59,16 @@ const setup = async () => {
       db.ACTIVE_SUBS.set(sub._id, sub.slug);
     }
   }
+
+  await db.BIDS.updateOne(
+    { _id: "info" },
+    {
+      $set: {
+        sub_bids_last: new Date().toISOString(),
+      },
+    },
+    { upsert: true }
+  );
 };
 
 const subSubs = async () => {
@@ -87,6 +97,17 @@ const subBids = async () => {
         `\r\x1b[38;5;39mSUBSCRIBE OS BIDS\x1b[0m: ${
           db.AMT_BIDS
         }, date: ${new Date().toISOString()}`
+      );
+
+      //add info about ~update time to know when to catch up in getBids
+      db.BIDS.updateOne(
+        { _id: "info" },
+        {
+          $set: {
+            sub_bids_last: new Date().toISOString(),
+          },
+        },
+        { upsert: true }
       );
     }
   });
@@ -126,7 +147,6 @@ const addToBidsDB = async (bid) => {
           const trait_value_hash = hashValue.digest("hex");
 
           traits = { trait_key: trait_key_hash, trait_value: trait_value_hash };
-          type = "OS_BID_GET_TRAIT";
         }
         break;
       default:
@@ -149,10 +169,6 @@ const addToBidsDB = async (bid) => {
 
   const _validateBid = async (bid) => {
     /// avoid surprises ///
-    // if (!bid?.payload?.protocol_address) {
-    //   console.log("\nbad bid", JSON.stringify(bid, null, 2));
-    //   process.exit(0);
-    // }
     const protocol_address = ethers.getAddress(bid?.payload?.protocol_address);
     if (!db.ADDR_SEAPORT.has(protocol_address)) {
       //to avoid surprises

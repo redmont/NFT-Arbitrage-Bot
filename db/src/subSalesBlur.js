@@ -12,13 +12,13 @@ const wallet = ethers.Wallet.createRandom();
 
 const db = {
   /// TO SETUP ///
-  MINUTES_TO_CATCH_UP: 1, //60 * 30, // * 24 * 7, //to setup manually based on the length of break
   TEST_NFT_ID: "1703",
   TEST_NFT_ADDR: "0x5B11Fe58a893F8Afea6e8b1640B2A4432827726c",
   TEST_MODE: process.env.TEST_MODE ? true : false, //true locally, false on VPS
-  AMT_BATCH_CALL: 1, //in subSales to get sales with addr, id & traits
+  AMT_BATCH_CALL: 5, //in subSales to get sales with addr, id & traits
   DB_OPS_LIMIT: 10000, //prevent memory issues while syncing & upserting many elements to DB
   CALL_TIMEOUT: 10000, //after 10s, retry api call
+  MIN_TO_WAIT_FOR_PRICE_UPDATER: 0,
 
   //info
   AMT_CALL_RETRY: 10,
@@ -92,7 +92,7 @@ const logProgress = () => {
       `\r\x1b[38;5;12mAMT calls:\x1b[0m ${db.AMT_SEND} ` +
         `\x1b[38;5;12mAMT responses:\x1b[0m ${db.AMT_RESPONSE} ` +
         `\x1b[38;5;12mAMT_TOTAL_SALES:\x1b[0m ${db.AMT_TOTAL_SALES} ` +
-        `\x1b[38;5;12mMEMORY:\x1b[0m ${Math.round(memory * 100) / 100} MB ` +
+        `\x1b[38;5;12mRAM:\x1b[0m ${Math.round(memory * 100) / 100} MB ` +
         `\x1b[38;5;12mTIME:\x1b[0m ${(
           (performance.now() - db.TIME_START) /
           1000
@@ -189,24 +189,47 @@ const setup = async () => {
   // '0x4df60a38D8c6b30bBaAA733Aa4DE1431bf9014f7-773' => '600000000000000000' (price)
   const SALES = await db.SALES.find({}, { _id: 1 }).toArray();
   for (const sale of SALES) {
+    if (sale._id === "info") continue;
     if (!db.ACTIVE_SALES.has(sale._id)) {
       db.ACTIVE_SALES.set(sale._id, BigInt(sale.price));
     }
   }
 
+  const info = await db.SALES.findOne({ _id: "info" });
+  if (!db.TEST_MODE && !info) {
+    console.log("\nERR, in !TEST_MODE, collect sales via getSalesBlur."); //to avoid spam
+    process.exit(1);
+  }
+
+  if (!info.sub_sales_last) {
+    db.DATE_TO_CATCH = new Date(info.get_sales_start);
+  } else {
+    db.DATE_TO_CATCH = new Date(info.sub_sales_last);
+  }
+
+  await db.SALES.updateOne(
+    { _id: "info" },
+    {
+      $set: {
+        sub_sales_start: new Date().toISOString(),
+      },
+    },
+    { upsert: true }
+  );
+
   console.log(
-    `setup amt ${db.ACTIVE_SUBS.size} subs; ${db.ACTIVE_SALES.size} sales`
+    `setup amt ${db.ACTIVE_SUBS.size} subs; ${db.ACTIVE_SALES.size} sales, date to catch: ${db.DATE_TO_CATCH}`
   );
 
   ///////// SETUP SALE TO CATCH (based on "db.MINUTES_TO_CATCH_UP") /////////
-  const date = new Date();
-  date.setMinutes(date.getMinutes() - db.MINUTES_TO_CATCH_UP);
-  const toDecode = { beforeDate: date.toISOString(), id: "10000000000" };
+  // const date = new Date();
+  // date.setMinutes(date.getMinutes() - db.MINUTES_TO_CATCH_UP);
+  const toDecode = { beforeDate: db.DATE_TO_CATCH, id: "10000000000" };
   const decoded = Buffer.from(JSON.stringify(toDecode)).toString("base64");
 
   const sale_to_catch = (await getData(decoded)).activityItems[0];
   const id_to_catch = sale_to_catch.id;
-  db.DATE_TO_CATCH = new Date(sale_to_catch.createdAt);
+  // db.DATE_TO_CATCH = new Date(sale_to_catch.createdAt);
   db.PREV_SALES = new Set([id_to_catch]);
   db.TIME_START = performance.now();
 };
@@ -281,6 +304,18 @@ const upsertDB = async (newBlurSales) => {
         },
       }));
 
+      bulkOps.push({
+        updateOne: {
+          filter: { _id: "info" },
+          update: {
+            $set: {
+              sub_sales_last: new Date().toISOString(),
+            },
+          },
+          upsert: true,
+        },
+      });
+
       for (let i = 0; i < bulkOps.length; i += db.DB_OPS_LIMIT) {
         const res = await db.SALES.bulkWrite(
           bulkOps.slice(i, i + db.DB_OPS_LIMIT),
@@ -288,11 +323,11 @@ const upsertDB = async (newBlurSales) => {
         );
 
         if (db.TEST_MODE) {
-          console.log(
-            `\nADD to SALES ${i + db.DB_OPS_LIMIT} of ${bulkOps.length}, res: ${
-              res.upsertedCount
-            }`
-          );
+          // console.log(
+          //   `\nADD to SALES ${i + db.DB_OPS_LIMIT} of ${bulkOps.length}, res: ${
+          //     res.upsertedCount
+          //   }`
+          // );
         }
       }
     } catch (err) {
@@ -336,6 +371,17 @@ const upsertDB = async (newBlurSales) => {
             for (const [trait_key, trait_value] of Object.entries(
               sale.traits
             )) {
+              if (
+                trait_key === null ||
+                trait_value === null ||
+                trait_key === "" ||
+                trait_value === "" ||
+                trait_key === undefined ||
+                trait_value === undefined
+              ) {
+                continue;
+              }
+
               const hashKey = crypto.createHash("md5");
               hashKey.update(trait_key.toString());
               const trait_key_hash = hashKey.digest("hex");
@@ -382,9 +428,7 @@ const upsertDB = async (newBlurSales) => {
         .filter(Boolean);
 
       const results = await Promise.all(promises);
-      // console.log("results", JSON.stringify(results, null, 2));
       const formattedSales = await __getFormattedSales(results);
-      // console.log("\nformattedSales", JSON.stringify(formattedSales, null, 2));
 
       allSales.push(...formattedSales);
 
@@ -619,12 +663,11 @@ const subSalesBlur = async () => {
         ].slice(-1000)
       );
 
+      await upsertDB(newBlurSales);
+
       if (db.CATCHING_UP) {
         db.CATCHING_UP = false;
-        await upsertDB(newBlurSales);
         updatePrices();
-      } else {
-        upsertDB(newBlurSales);
       }
       await _waitBasedOn(newBlurSales.length);
     }
@@ -635,8 +678,8 @@ const subSalesBlur = async () => {
 };
 
 const updatePrices = async () => {
-  console.log("updatePrices, prevent adding sales with key & price only");
-  process.exit(0);
+  // console.log("updatePrices, prevent adding sales with key & price only");
+  // process.exit(0);
   const _getCheaperSales = async (addr, newPrices) => {
     const cheaperSales = [];
 
@@ -687,8 +730,10 @@ const updatePrices = async () => {
   };
 
   //→→→ STARTS HERE ←←←
-  // w8 10 min to let subSalesBlur() catch up after 1st run
-  // await new Promise((resolve) => setTimeout(resolve, 10 * 60 * 1000));
+  await new Promise((resolve) =>
+    setTimeout(resolve, db.MIN_TO_WAIT_FOR_PRICE_UPDATER * 60 * 1000)
+  );
+
   let amtLoop = 0;
   const startLoop = performance.now();
 
