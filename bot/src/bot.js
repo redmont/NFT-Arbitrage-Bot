@@ -382,6 +382,7 @@ const execArb = async (buyFrom, sellTo) => {
       sellOsData.transaction.input_data.parameters.offerAmount
     );
 
+    //@todo add support for time based bids with startAmount!=endAmount
     sellPrice = sellOsData?.orders[0]?.parameters?.consideration.reduce(
       (total, fee) => total - BigInt(fee.endAmount),
       sellPrice
@@ -446,10 +447,10 @@ const execArb = async (buyFrom, sellTo) => {
         hash: sellTo._id,
         chain: "ethereum", //sellTo.payload.item?.chain?.name,
         //sellTo.payload?.protocol_address
-        protocol_address:
-          sellTo.type === "OS_BID_GET"
-            ? sellTo.bid.protocol_address
-            : sellTo.bid.payload.protocol_address,
+        protocol_address: sellTo.protocol_address,
+        // sellTo.type === "OS_BID"
+        //   ? sellTo.bid.protocol_address
+        //   : sellTo.bid.payload.protocol_address,
       },
       fulfiller: {
         address: wallet.address,
@@ -544,7 +545,8 @@ const execArb = async (buyFrom, sellTo) => {
 
     // Filter out only corresponding bid from OS bid sub
     const makerAddr = sellTo.addr_buyer;
-    const priceInETH = ethers.formatEther(sellTo.bid.payload.base_price);
+    const priceInETH = ethers.formatEther(sellTo.base_price);
+    // const priceInETH = ethers.formatEther(sellTo.bid.payload.base_price);
     const bidPriceOS = ethers.parseEther(priceInETH);
 
     while (!exitLoop) {
@@ -568,10 +570,8 @@ const execArb = async (buyFrom, sellTo) => {
       criteriaBids.data?.orders?.edges?.every((order) => {
         // if this is a trait bid, but the current order is not a trait bid, skip
         // is there a way to only fetch trait bids from graphql ?
-        if (
-          sellTo.bid?.payload?.trait_criteria &&
-          order.node?.criteria?.trait == null
-        ) {
+        if (sellTo.traits && order.node?.criteria?.trait == null) {
+          // if (sellTo.bid?.traits && order.node?.criteria?.trait == null) {
           return true;
         }
 
@@ -638,16 +638,13 @@ const execArb = async (buyFrom, sellTo) => {
   const _getSellOsData = async (sellTo) => {
     let sellOsData = null;
     switch (true) {
-      case sellTo.type === "OS_BID_SUB_BASIC" ||
-        sellTo.type === "OS_BID_GET_BASIC":
+      case sellTo.type === "OS_BID_BASIC":
         sellOsData = (await _getSellOsDataFromAPI(sellTo)) ?? {};
         break;
-      case sellTo.type === "OS_BID_SUB_COLLECTION" ||
-        sellTo.type === "OS_BID_GET_COLLECTION":
+      case sellTo.type === "OS_BID_COLLECTION":
         sellOsData = (await _getSellOsDataFromGraphql(sellTo)) ?? {};
         break;
-      case sellTo.type === "OS_BID_SUB_TRAIT" ||
-        sellTo.type === "OS_BID_GET_TRAIT":
+      case sellTo.type === "OS_BID_TRAIT":
         sellOsData = (await _getSellOsDataFromGraphql(sellTo)) ?? {};
         break;
       default:
@@ -810,11 +807,11 @@ const execArb = async (buyFrom, sellTo) => {
     }
 
     //(3/6)
-    let sellOsData = (await _getSellOsData(sellTo)) ?? {};
+    const sellOsData = (await _getSellOsData(sellTo)) ?? {};
     if (!sellOsData) return;
 
     if (db.TEST_MODE) {
-      console.log("sellOsData:", sellOsData);
+      console.log("\nsellOsData:", sellOsData);
     }
 
     //(4/6)
@@ -898,7 +895,7 @@ const subBidsGetSales = async () => {
 
     salesToFind["addr_tkn"] = bid.addr_tkn;
 
-    // if (bid.type === "OS_BID_SUB_BASIC" || bid.type === "OS_BID_GET_BASIC") {
+    // if (bid.type === "OS_BID_BASIC" || bid.type === "OS_BID_BASIC") {
     salesToFind["id_tkn"] = bid.id_tkn;
     // }
 
@@ -949,14 +946,17 @@ const subBidsGetSales = async () => {
   };
 
   const _getArbSaleTrait = async (bid) => {
-    const traitCriteria = bid.bid?.payload?.trait_criteria;
+    if (!bid?.traits) return; //not tested
+    // const traitCriteria = bid.bid?.payload?.trait_criteria;
 
     const hashKey = crypto.createHash("md5");
-    hashKey.update(traitCriteria.trait_type.toString());
+    hashKey.update(bid.traits.trait_key);
+    // hashKey.update(traitCriteria.trait_type.toString());
     const trait_key_hash = hashKey.digest("hex");
 
     const hashValue = crypto.createHash("md5"); //need to redeclare after digest
-    hashValue.update(traitCriteria.trait_name.toString());
+    hashValue.update(bid.traits.trait_value);
+    // hashValue.update(traitCriteria.trait_name.toString());
     const trait_value_hash = hashValue.digest("hex");
 
     const salesToFind = {};
@@ -1013,14 +1013,14 @@ const subBidsGetSales = async () => {
       let sales = null;
 
       switch (true) {
-        case bid.type === "OS_BID_SUB_BASIC" || bid.type === "OS_BID_GET_BASIC":
+        case bid.type === "OS_BID_BASIC" || bid.type === "OS_BID_BASIC":
           sales = await _getArbSaleBasic(bid); //1x only
           break;
-        case bid.type === "OS_BID_SUB_COLLECTION" ||
-          bid.type === "OS_BID_GET_COLLECTION":
+        case bid.type === "OS_BID_COLLECTION" ||
+          bid.type === "OS_BID_COLLECTION":
           sales = await _getArbSalesCollection(bid); //multi
           break;
-        case bid.type === "OS_BID_SUB_TRAIT" || bid.type === "OS_BID_GET_TRAIT":
+        case bid.type === "OS_BID_TRAIT" || bid.type === "OS_BID_TRAIT":
           sales = await _getArbSaleTrait(bid); //multi
           break;
         default:
@@ -1058,15 +1058,15 @@ const subSalesGetBids = async () => {
     const queryBasicBid = {
       addr_tkn: sale.addr_tkn,
       id_tkn: sale.id_tkn,
-      type: "OS_BID_GET_BASIC",
+      type: "OS_BID_BASIC",
     };
     const queryCollectionBid = {
       addr_tkn: sale.addr_tkn,
-      type: "OS_BID_SUB_COLLECTION",
+      type: "OS_BID_COLLECTION",
     };
     const queryTraitsBid = {
       addr_tkn: sale.addr_tkn,
-      type: "OS_BID_SUB_TRAIT",
+      type: "OS_BID_TRAIT",
     };
 
     // get all matching bids

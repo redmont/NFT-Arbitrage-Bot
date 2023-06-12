@@ -42,6 +42,7 @@ const db = {
     //just to prevent errors, collected in blur orders last week
 
     //osAddr, slug, blurAddr
+    "0x4D7d2e237D64d1484660b55c0A4cC092fa5e6716",
     "0x0a78c052BBBF4Ed294C273Cbe06255D7D94A7340",
     "0x2B4BB904Cfde74Ec423cC534Ef08579ee1c79148", //killabearsxl //exists...
     "0xFBeef911Dc5821886e1dda71586d90eD28174B7d", //known-origin  //0xabb3738f04dc2ec20f4ae4462c3d069d02ae045b
@@ -179,8 +180,17 @@ const setup = async () => {
   await ensureIndexes(mongoClient);
 
   // '0x4df60a38D8c6b30bBaAA733Aa4DE1431bf9014f7' => 'slug_name'
+  const info_subs = await db.SUBS.findOne({ _id: "info" });
+  if (!db.TEST_MODE && !info_subs) {
+    console.log(
+      "\nERR, in !TEST_MODE, collect subs before sales via getSalesBlur."
+    ); //to avoid spam
+    process.exit(1);
+  }
+
   const SUBS = await db.SUBS.find({}, { _id: 1 }).toArray();
   for (const sub of SUBS) {
+    if (sub._id === "info") continue;
     if (!db.ACTIVE_SUBS.has(sub._id)) {
       db.ACTIVE_SUBS.set(sub._id, sub.slug);
     }
@@ -201,8 +211,8 @@ const setup = async () => {
     process.exit(1);
   }
 
-  if (!info.sub_sales_last) {
-    db.DATE_TO_CATCH = new Date(info.get_sales_start);
+  if (!info?.sub_sales_last) {
+    db.DATE_TO_CATCH = new Date(info_subs.get_subs_start);
   } else {
     db.DATE_TO_CATCH = new Date(info.sub_sales_last);
   }
@@ -217,8 +227,13 @@ const setup = async () => {
     { upsert: true }
   );
 
+  minToCatch = Math.round((new Date() - db.DATE_TO_CATCH) / 1000 / 60);
+
   console.log(
-    `setup amt ${db.ACTIVE_SUBS.size} subs; ${db.ACTIVE_SALES.size} sales, date to catch: ${db.DATE_TO_CATCH}`
+    `Setup amount: ${db.ACTIVE_SUBS.size} subscriptions;
+    ${db.ACTIVE_SALES.size} sales;
+    Date to catch: ${db.DATE_TO_CATCH};
+    ${minToCatch} minutes to catch.`
   );
 
   ///////// SETUP SALE TO CATCH (based on "db.MINUTES_TO_CATCH_UP") /////////
@@ -454,6 +469,18 @@ const upsertDB = async (newBlurSales) => {
           upsert: true,
         },
       }));
+
+      bulkOps.push({
+        updateOne: {
+          filter: { _id: "info" },
+          update: {
+            $set: {
+              sub_subs_last: new Date().toISOString(),
+            },
+          },
+          upsert: true,
+        },
+      });
 
       const result = await db.SUBS.bulkWrite(bulkOps);
       // if (db.TEST_MODE) {

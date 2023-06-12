@@ -16,36 +16,32 @@ export async function main(options: ApplicationConfig = {}) {
   await app.start();
 
   (async () => {
-    // const url1 = "http://xnmldktr:p980i7e5knud@185.199.229.156:7492";
-    // const proxyUrl = "http://user-sps2v0tyzc-country-us-city-ashburn-sessionduration-30:qW3aVSn6buop47Ndfj@gate.smartproxy.com:10000" //sticky 30m (stop after 30m)
-    // const proxyUrl = "http://tJCulVRS:NFA7dwKimBCANhgm5mEaiBBpeFHNGXEy72mfAxUOM1y0CiOJf8PqI65rrwyxrpKQ3s3Pb@ustr16.p.ap2.me:49000" //rotating
-    // const proxyUrl = "http://tJCulVRS:NFA7dwKimBCANhgm5mEaiBBpeFHNGXEy72mfAxUOM1y0CiOJf8PqI65rrwyxrpKQ3s3Pb-uw3SY85h@ustr16.p.ap2.me:49006" //sticky
-    // const proxyUrl = "http://user-sps2v0tyzc-country-us-city-ashburn:qW3aVSn6buop47Ndfj@gate.smartproxy.com:7000" //rotating (stop after 10m)
-
     const proxies = [
       "http://tJCulVRS:NFA7dwKimBCANhgm5mEaiBBpeFHNGXEy72mfAxUOM1y0CiOJf8PqI65rrwyxrpKQ3s3Pb-5Rrjx5Mg@ustr16.p.ap2.me:49067",
       "http://tJCulVRS:NFA7dwKimBCANhgm5mEaiBBpeFHNGXEy72mfAxUOM1y0CiOJf8PqI65rrwyxrpKQ3s3Pb-R7dznZEt@ustr16.p.ap2.me:49022",
+      // "http://xnmldktr:p980i7e5knud@185.199.229.156:7492".
     ];
 
-    // let proxyURL = "";
-    // proxyURL = await proxyChain.anonymizeProxy(proxies[0])
-    const proxyURL = await proxyChain.anonymizeProxy(proxies[0]);
-
-    if (proxyURL.length == 0) {
-      console.log("!!! Proxy not found, if use on VPS, update it.");
-    }
-
-    const browser = await puppeteer.launch({
+    const launchOptions = {
       headless: true,
       devtools: true,
       args: [
-        `--proxy-server=${proxyURL}`, //can comment locally
         "--disable-web-security",
         "--disable-features=IsolateOrigins",
         "--disable-site-isolation-trials",
       ],
       executablePath: executablePath(),
-    });
+    };
+
+    if (!process.env.TEST_MODE) {
+      console.log("No TEST_MODE, Setting proxy...");
+      const proxyURL = await proxyChain.anonymizeProxy(proxies[0]);
+      launchOptions.args.push(`--proxy-server=${proxyURL}`);
+    } else {
+      console.log("Detected TEST_MODE, no Proxy ");
+    }
+
+    const browser = await puppeteer.launch(launchOptions);
 
     globalThis.page = await browser.newPage();
     await globalThis.page.goto("https://core-api.prod.blur.io/v1/");

@@ -91,6 +91,16 @@ const setup = async () => {
   };
 
   await ensureIndexes(mongoClient);
+
+  await db.SUBS.updateOne(
+    { _id: "info" },
+    {
+      $set: {
+        get_subs_start: new Date().toISOString(),
+      },
+    },
+    { upsert: true }
+  );
   // await db.SUBS.deleteMany({}); //clear db
 };
 
@@ -159,12 +169,27 @@ const getSubsBlur = async () => {
   await _getSlugsBlur();
 };
 
+const addEndInfoToSalesDB = async () => {
+  //get sales count
+  await db.SUBS.updateOne(
+    { _id: "info" },
+    {
+      $set: {
+        get_subs_end: new Date().toISOString(),
+      },
+    },
+    { upsert: true }
+  );
+};
+
 (async function root() {
   try {
     await setup();
     await getSubsBlur(); //!separated cuz <1m
     amtOfSubs = await db.SUBS.countDocuments();
     console.log("\nFINISHED, amt of SUBS", amtOfSubs);
+
+    await addEndInfoToSalesDB();
     process.exit(0);
   } catch (e) {
     console.error("\nERR: getSubsBlur root:", e);

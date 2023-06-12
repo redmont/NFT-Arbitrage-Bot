@@ -55,6 +55,7 @@ const setup = async () => {
   // '0x4df60a38D8c6b30bBaAA733Aa4DE1431bf9014f7' => 'slug_name'
   const SUBS = await db.SUBS.find({}, { _id: 1 }).toArray();
   for (const sub of SUBS) {
+    if (sub._id === "info") continue;
     if (!db.ACTIVE_SUBS.has(sub._id)) {
       db.ACTIVE_SUBS.set(sub._id, sub.slug);
     }
@@ -114,7 +115,14 @@ const subBids = async () => {
 };
 
 const addToBidsDB = async (bid) => {
-  const _getFormattedBid = async (addr_tkn, id_tkn, price, bid) => {
+  const _getFormattedBid = async (
+    addr_tkn,
+    id_tkn,
+    price,
+    base_price,
+    protocol_address,
+    bid
+  ) => {
     const order_hash = bid.payload.order_hash.toLowerCase();
     const exp_time = new Date(
       Number(bid.payload.protocol_data.parameters.endTime) * 1000
@@ -126,13 +134,13 @@ const addToBidsDB = async (bid) => {
     let type;
     switch (bid.event_type) {
       case EventType.ITEM_RECEIVED_BID:
-        type = "OS_BID_SUB_BASIC";
+        type = "OS_BID_BASIC";
         break;
       case EventType.COLLECTION_OFFER:
-        type = "OS_BID_SUB_COLLECTION";
+        type = "OS_BID_COLLECTION";
         break;
       case EventType.TRAIT_OFFER:
-        type = "OS_BID_SUB_TRAIT";
+        type = "OS_BID_TRAIT";
 
         if (
           bid?.payload?.trait_criteria?.trait_type &&
@@ -158,12 +166,14 @@ const addToBidsDB = async (bid) => {
       _id: order_hash,
       addr_tkn,
       id_tkn,
-      price,
-      exp_time,
       addr_buyer,
-      traits,
+      price,
+      base_price,
+      protocol_address,
+      exp_time,
       type,
-      bid,
+      traits,
+      // bid,
     };
   };
 
@@ -233,15 +243,29 @@ const addToBidsDB = async (bid) => {
 
     /// need to cover gas ///
     if (!db.TEST_MODE && price <= db.MIN_SELL_TO_PRICE) return; //2small
-    return [addr_tkn, id_tkn, price.toString()];
+    return [
+      addr_tkn,
+      id_tkn,
+      price.toString(),
+      bid.payload.base_price,
+      protocol_address,
+    ];
   };
 
   try {
-    const [addr_tkn, id_tkn, price] = (await _validateBid(bid)) || [];
+    const [addr_tkn, id_tkn, price, base_price, protocol_address] =
+      (await _validateBid(bid)) || [];
     if (!addr_tkn) return;
 
     const formattedBid =
-      (await _getFormattedBid(addr_tkn, id_tkn, price, bid)) || {};
+      (await _getFormattedBid(
+        addr_tkn,
+        id_tkn,
+        price,
+        base_price,
+        protocol_address,
+        bid
+      )) || {};
     if (!formattedBid._id) return;
 
     //// usually it will be unique, so this is better

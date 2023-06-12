@@ -8,7 +8,7 @@
 - [x] `getSalesBlur` (get & save to `SALES` & `SUBS`)
 - [x] `subBidsOs`
 - [x] `getBidsOs`
-- [x] VPS new db setup
+- [ ] VPS new db setup
 - [ ] remove expired from BIDS (updater.js)
 - [ ] create a whitelist for getBuyBlurData
 - [ ] create a whitelist for conduict
@@ -96,18 +96,22 @@ DB VPS bashrc aliases:
 alias logGetBid="cat ~/logs/getBidsOs.log && tail -f ~/logs/getBidsOs.log"
 alias logSubBid="cat ~/logs/subBidsOs.log && tail -f ~/logs/subBidsOs.log"
 alias logSubSale="cat ~/logs/subSalesBlur.log && tail -f ~/logs/subSalesBlur.log"
+alias logApiBlur="cat ~/logs/apiBlur.log && tail -f ~/logs/apiBlur.log"
 
-alias logGetBidErr="cat ~/logs/getBidsOsErrorfile.log && tail -f ~/logs/getBidsOsErrorfile.log"
-alias logSubBidErr="cat ~/logs/subBidsOsErrorfile.log && tail -f ~/logs/subBidsOsErrorfile.log"
-alias logSubSaleErr="cat ~/logs/subSalesBlurErrorfile.log && tail -f ~/logs/subSalesBlurErrorfile.log"
+alias logGetBidErr="cat ~/logs/getBidsOsErr.log && tail -f ~/logs/getBidsOsErr.log"
+alias logSubBidErr="cat ~/logs/subBidsOsErr.log && tail -f ~/logs/subBidsOsErr.log"
+alias logSubSaleErr="cat ~/logs/subSalesBlurErr.log && tail -f ~/logs/subSalesBlurErr.log"
+alias logApiBlurErr="cat ~/logs/apiBlurErr.log && tail -f ~/logs/logApiBlurErr.log"
 
 alias logGetBidClear="sudo truncate -s 0 ~/logs/getBidsOs.log"
 alias logSubBidClear="sudo truncate -s 0 ~/logs/subBidsOs.log"
 alias logSubSaleClear="sudo truncate -s 0 ~/logs/subSalesBlur.log"
+alias logApiBlurClear="sudo truncate -s 0 ~/logs/apiBlur.log"
 
-alias logGetBidErrClear="sudo truncate -s 0 ~/logs/getBidsOsErrorfile.log"
-alias logSubBidErrClear="sudo truncate -s 0 ~/logs/subBidsOsErrorfile.log"
-alias logSubSaleErrClear="sudo truncate -s 0 ~/logs/subSalesBlurErrorfile.log"
+alias logGetBidErrClear="sudo truncate -s 0 ~/logs/getBidsOsErr.log"
+alias logSubBidErrClear="sudo truncate -s 0 ~/logs/subBidsOsErr.log"
+alias logSubSaleErrClear="sudo truncate -s 0 ~/logs/subSalesBlurErr.log"
+alias logApiBlurErrClear="sudo truncate -s 0 ~/logs/logApiBlurErr.log"
 ```
 
 BOT VPS bashrc aliases:

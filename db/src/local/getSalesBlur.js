@@ -116,7 +116,10 @@ const setup = async () => {
   await ensureIndexes(mongoClient);
 
   const subs = await db.SUBS.find({}).toArray();
-  db.SLUGS = subs.map((sub) => sub.slug);
+  for (const slug of subs) {
+    if (slug._id === "info") continue;
+    db.SLUGS.push(slug.slug);
+  }
   console.log("amt slugs", db.SLUGS.length);
   db.TIME_START = performance.now();
 };

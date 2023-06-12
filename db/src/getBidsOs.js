@@ -227,12 +227,13 @@ const addToBidsDB = async (osBids) => {
           return;
         }
 
-        //@todo add support for start-endAmounts
-        let price = BigInt(bid.protocol_data?.parameters?.offer[0]?.endAmount);
+        const protocol_address = ethers.getAddress(bid.protocol_address);
+        const base_price = bid.protocol_data?.parameters?.offer[0]?.startAmount;
+        let price = BigInt(base_price);
         for (const osFeeData of bid.protocol_data?.parameters?.consideration) {
           if (osFeeData.itemType <= 1) {
             //0: ETH, 1: ERC20, 2: ERC721... @todo check if are offers with ETH
-            price -= BigInt(osFeeData.endAmount);
+            price -= BigInt(osFeeData.startAmount);
           }
         }
         if (!db.TEST_MODE && price <= db.MIN_SELL_TO_PRICE) return; //2small
@@ -251,11 +252,11 @@ const addToBidsDB = async (osBids) => {
           const trait_value_hash = hashValue.digest("hex");
 
           traits = { trait_key: trait_key_hash, trait_value: trait_value_hash };
-          type = "OS_BID_GET_TRAIT";
+          type = "OS_BID_TRAIT";
         } else if (bid.criteria) {
-          type = "OS_BID_GET_COLLECTION";
+          type = "OS_BID_COLLECTION";
         } else {
-          type = "OS_BID_GET_BASIC";
+          type = "OS_BID_BASIC";
         }
 
         price = price.toString();
@@ -268,7 +269,7 @@ const addToBidsDB = async (osBids) => {
         );
 
         let id_tkn = null;
-        if (type === "OS_BID_GET_BASIC") {
+        if (type === "OS_BID_BASIC") {
           id_tkn = bid.protocol_data.parameters.offer[0].identifierOrCriteria;
         }
         const addr_tkn = ethers.getAddress(
@@ -284,11 +285,13 @@ const addToBidsDB = async (osBids) => {
           addr_tkn,
           id_tkn,
           addr_buyer,
-          exp_time,
           price,
+          base_price,
+          protocol_address,
+          exp_time,
           type,
           traits,
-          bid,
+          // bid,
         };
       })
       .filter(Boolean);
@@ -439,8 +442,12 @@ const setup = async () => {
   try {
     if (!db.INITIATED) {
       const subs = await db.SUBS.find().toArray();
-      db.QUEUE = subs.map((sub) => sub.slug);
-      if (db.TEST_MODE) db.QUEUE = ["otherdeed"];
+
+      for (const sub of subs) {
+        if (sub._id === "info") continue;
+        db.QUEUE.push(sub.slug);
+      }
+      // if (db.TEST_MODE) db.QUEUE = ["otherdeed"];
       getBidsFor(db.QUEUE[0]);
       db.INITIATED = true;
     }
